@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Next.js build
+game/.next/
+game/out/
+
+# Turbopack
+game/.turbo/
+
+# Environment
+.env
+.env.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jekyll build
+site/_site/
+site/.sass-cache/
+site/.jekyll-cache/
+site/.jekyll-metadata
+
+# Draft sprites (large binary files, not tracked)
+drafts/sprites/**/*.png
+drafts/sprites/**/*.jpg
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
