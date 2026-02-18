@@ -1,38 +1,53 @@
 ---
 layout: default
 title: Roadmap
+description: See what's been built, what's in progress, and what's planned for Project Chimera.
 ---
 
 # Roadmap
 
-The public roadmap tracks what's being worked on and what's planned. Each item links to a GitHub Issue for details and discussion.
+Track what's being worked on and what's planned. The full board is on GitHub.
 
-<a href="https://github.com/orgs/colorpulse6/projects" class="btn">View Roadmap Board</a>
+<a href="https://github.com/users/colorpulse6/projects/3" class="btn btn-outline btn-sm">View Project Board</a>
+
+---
 
 ## Completed
 
-- Core game loop (exploration + ATB combat)
-- Sprite rendering and walk animations
-- Shop system, NPC dialogue with choices
-- Quest system with objectives and rewards
-- Bandit Camp dungeon with boss fight
-- Item icons and inventory management
-- Map transitions and building collision
+<ul class="checklist">
+  <li class="done">Core game loop (exploration + ATB combat)</li>
+  <li class="done">Sprite rendering and walk animations</li>
+  <li class="done">Shop system with buy/sell</li>
+  <li class="done">NPC dialogue with branching choices</li>
+  <li class="done">Quest system with tracked objectives and rewards</li>
+  <li class="done">Bandit Camp dungeon with prisoner rescue and boss fight</li>
+  <li class="done">Item icons and inventory management</li>
+  <li class="done">Map transitions and building collision</li>
+  <li class="done">Menu system (inventory, status, equipment, quests)</li>
+  <li class="done">Inn/rest system</li>
+</ul>
 
 ## In Progress
 
-- Act I story content (Lyra recruitment, Glitch cutscene)
-- Save/Load system
-- Sound effects and music
+<ul class="checklist">
+  <li class="wip">Save/Load UI screens</li>
+  <li class="wip">Lyra recruitment sequence (Tavern &rarr; Estate)</li>
+  <li class="wip">Sound effects and music integration</li>
+</ul>
 
 ## Planned
 
-- Whispering Ruins expansion
-- Act I finale
-- Party management (multiple characters)
-- Act II story content
-- itch.io builds with stable/experimental channels
+<ul class="checklist">
+  <li class="planned">Return to Elder Morris quest turn-in</li>
+  <li class="planned">First "Glitch" cutscene</li>
+  <li class="planned">Whispering Ruins expansion</li>
+  <li class="planned">Act I finale and transition to Act II</li>
+  <li class="planned">Additional party members</li>
+  <li class="planned">Act II story content</li>
+</ul>
 
-## How to Suggest Features
+---
 
-Have an idea? Open a discussion in the [Story & Lore](https://github.com/colorpulse6/project-chimera/discussions) or [Balancing & Mechanics](https://github.com/colorpulse6/project-chimera/discussions) category on GitHub Discussions.
+## Suggest a Feature
+
+Have an idea? Open a discussion on [GitHub Discussions](https://github.com/colorpulse6/project-chimera/discussions).
