@@ -18,11 +18,11 @@ Strange lights flicker in the ruins at night. Creatures behave oddly, their move
 
 <div class="gallery">
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/havenwood_square.png" alt="Havenwood" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/havenwood_square.png" alt="Havenwood" loading="lazy">
     <span class="caption">The village of Havenwood</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/whispering_ruins.png" alt="Whispering Ruins" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/whispering_ruins.png" alt="Whispering Ruins" loading="lazy">
     <span class="caption">The Whispering Ruins</span>
   </div>
 </div>
@@ -35,11 +35,11 @@ What begins as a simple quest quickly unravels into something far stranger. The 
 
 <div class="gallery">
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/bandit_camp.png" alt="Bandit Camp" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/bandit_camp.png" alt="Bandit Camp" loading="lazy">
     <span class="caption">The Bandit Camp</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/bandit_cellar.png" alt="Hidden Cellar" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/bandit_cellar.png" alt="Hidden Cellar" loading="lazy">
     <span class="caption">What lies beneath</span>
   </div>
 </div>

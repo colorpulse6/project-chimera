@@ -6,6 +6,8 @@ description: Play Project Chimera directly in your browser. No download required
 
 # Play Demo
 
+<p class="section-label">// READY TO LAUNCH</p>
+
 <a href="{{ site.baseurl }}/play/" class="btn">Launch Game</a>
 
 The demo runs directly in your browser &mdash; no download needed.

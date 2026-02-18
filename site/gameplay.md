@@ -31,11 +31,11 @@ Combat uses an ATB system inspired by Final Fantasy VI. Each character has a tim
 
 <div class="gallery">
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/assets/battle/forest_bg.png" alt="Forest Battle" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/battle/forest_bg.png" alt="Forest Battle" loading="lazy">
     <span class="caption">Forest encounter</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/assets/battle/ruins_bg.png" alt="Ruins Battle" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/battle/ruins_bg.png" alt="Ruins Battle" loading="lazy">
     <span class="caption">Ruins encounter</span>
   </div>
 </div>

@@ -5,12 +5,18 @@ description: An FF6-inspired JRPG where a medieval fantasy slowly reveals itself
 ---
 
 <div class="hero">
-  <p class="section-label">Indie JRPG &mdash; Free &amp; Open Source</p>
-  <h1 class="hero-title">Project <span class="glitch accent" data-text="Chimera">Chimera</span></h1>
-  <p class="hero-subtitle">A classic JRPG where a medieval fantasy slowly reveals itself to be something far stranger. Reality has seams &mdash; and something watches from behind the curtain.</p>
-  <div class="hero-buttons">
-    <a href="{{ site.baseurl }}/play/" class="btn">Play Demo</a>
-    <a href="https://github.com/colorpulse6/project-chimera" class="btn btn-outline">View Source</a>
+  <div class="hero-bg">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/hidden_laboratory.png" alt="Hidden Laboratory">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <span class="sys-label">// SIMULATION INSTANCE v7.34</span>
+    <h1 class="hero-title">Project <span class="glitch-hero" data-text="Chimera">Chimera</span></h1>
+    <p class="hero-subtitle">A classic JRPG where a medieval fantasy slowly reveals itself to be something far stranger. Reality has seams &mdash; and something watches from behind the curtain.</p>
+    <div class="hero-buttons">
+      <a href="{{ site.baseurl }}/play/" class="btn">Play Demo</a>
+      <a href="https://github.com/colorpulse6/project-chimera" class="btn btn-outline">View Source</a>
+    </div>
   </div>
 </div>
 
@@ -18,19 +24,19 @@ description: An FF6-inspired JRPG where a medieval fantasy slowly reveals itself
 
 <div class="gallery">
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/havenwood_square.png" alt="Havenwood Village Square" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/havenwood_square.png" alt="Havenwood Village Square" loading="lazy">
     <span class="caption">Havenwood Village</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/whispering_ruins.png" alt="The Whispering Ruins" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/whispering_ruins.png" alt="The Whispering Ruins" loading="lazy">
     <span class="caption">Whispering Ruins</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/bandit_camp.png" alt="Bandit Camp" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/bandit_camp.png" alt="Bandit Camp" loading="lazy">
     <span class="caption">Bandit Camp</span>
   </div>
   <div class="gallery-item">
-    <img src="{{ site.baseurl }}/play/backgrounds/lumina_estate.png" alt="Lumina Estate" loading="lazy">
+    <img src="{{ site.baseurl }}/assets/images/backgrounds/lumina_estate.png" alt="Lumina Estate" loading="lazy">
     <span class="caption">Lumina Estate</span>
   </div>
 </div>
