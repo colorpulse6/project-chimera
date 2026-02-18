@@ -1148,38 +1148,49 @@
       }
 
       // ---- Glitch page transitions ----
-      function isInternalLink(a) {
+      var baseUrl = '{{ site.baseurl }}'.replace(/\/$/, '');
+
+      function isTransitionLink(a) {
         if (!a.href) return false;
         if (a.target === '_blank') return false;
         if (a.hostname !== window.location.hostname) return false;
-        if (a.getAttribute('href').startsWith('#')) return false;
-        // Skip links to the game itself (/play/ is the actual game)
         var href = a.getAttribute('href');
-        if (href.match(/\/play\/?$/) && a.closest('.hero-buttons, .btn')) {
-          // Allow play buttons to transition normally
-        }
+        if (href.startsWith('#')) return false;
+        // Don't intercept links to the game — /play/ is a separate Next.js app
+        var resolved = a.pathname.replace(/\/$/, '');
+        if (resolved === baseUrl + '/play') return false;
+        // Only transition between Jekyll site pages
         return true;
+      }
+
+      function navigate(href) {
+        window.location.href = href;
       }
 
       document.addEventListener('click', function(e) {
         var link = e.target.closest('a');
-        if (!link || !isInternalLink(link)) return;
-        if (e.ctrlKey || e.metaKey || e.shiftKey) return; // respect modifier keys
+        if (!link || !isTransitionLink(link)) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
 
         e.preventDefault();
         var href = link.href;
 
         if (overlay) {
+          var done = false;
           overlay.classList.add('active', 'exit');
 
           function onExitEnd() {
+            if (done) return;
+            done = true;
             overlay.removeEventListener('animationend', onExitEnd);
-            window.location.href = href;
+            navigate(href);
           }
 
           overlay.addEventListener('animationend', onExitEnd);
+          // Safety fallback — navigate even if animationend never fires
+          setTimeout(onExitEnd, 500);
         } else {
-          window.location.href = href;
+          navigate(href);
         }
       });
 
