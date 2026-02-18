@@ -52,8 +52,10 @@ jobs:
           # Jekyll site at root
           cp -r site/_site/* deploy/
 
-          # Game at /play/ subpath
-          cp -r game/out deploy/play
+          # Game at /play/ subpath — must copy contents, not directory
+          # (deploy/play/ already exists from Jekyll's play.md)
+          mkdir -p deploy/play
+          cp -r game/out/* deploy/play/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
