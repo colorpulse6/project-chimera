@@ -1000,10 +1000,131 @@
       .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
       h2::before { display: none; }
     }
+
+    /* ---- Page Transition Overlay ---- */
+    .page-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .page-transition.active {
+      pointer-events: all;
+    }
+
+    /* Chromatic split layers */
+    .pt-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .pt-static {
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 1px,
+          rgba(0, 240, 255, 0.03) 1px,
+          rgba(0, 240, 255, 0.03) 2px
+        );
+      mix-blend-mode: screen;
+    }
+
+    .pt-bars {
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(255, 255, 255, 0.04) 3px,
+        rgba(255, 255, 255, 0.04) 6px
+      );
+    }
+
+    .pt-color {
+      background: var(--bg-void);
+    }
+
+    /* Exit animation — glitch burst then blackout */
+    @keyframes pt-exit {
+      0% { opacity: 0; }
+      15% { opacity: 1; }
+      20% { opacity: 0.3; }
+      25% { opacity: 1; }
+      30% { opacity: 0.6; }
+      40% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes pt-exit-shift {
+      0% { transform: translate(0) scaleY(1); }
+      10% { transform: translate(-4px, 2px) scaleY(1.002); }
+      20% { transform: translate(3px, -1px) scaleY(0.998); }
+      30% { transform: translate(-2px, 0) scaleY(1.001); }
+      50% { transform: translate(0) scaleY(1); }
+      100% { transform: translate(0) scaleY(1); }
+    }
+
+    @keyframes pt-scanline-rush {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Entry animation — CRT boot up */
+    @keyframes pt-enter {
+      0% { opacity: 1; }
+      30% { opacity: 1; }
+      40% { opacity: 0.8; }
+      45% { opacity: 1; }
+      50% { opacity: 0.5; }
+      55% { opacity: 0.8; }
+      65% { opacity: 0.3; }
+      80% { opacity: 0.1; }
+      100% { opacity: 0; }
+    }
+
+    .page-transition.exit {
+      animation: pt-exit 0.35s ease-out forwards;
+    }
+
+    .page-transition.exit .pt-static {
+      animation: pt-exit-shift 0.35s ease-out;
+    }
+
+    .page-transition.exit .pt-scanline {
+      position: absolute;
+      left: 0; right: 0;
+      height: 30%;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 240, 255, 0.06) 40%,
+        rgba(255, 0, 170, 0.04) 60%,
+        transparent 100%
+      );
+      animation: pt-scanline-rush 0.3s linear;
+    }
+
+    .page-transition.enter {
+      animation: pt-enter 0.4s ease-in forwards;
+    }
+
+    .page-transition.enter .pt-static {
+      animation: pt-exit-shift 0.3s ease-out;
+    }
   </style>
 </head>
 <body>
   <div class="bg-texture"></div>
+
+  <!-- Page transition overlay -->
+  <div class="page-transition" id="pageTransition">
+    <div class="pt-layer pt-color"></div>
+    <div class="pt-layer pt-bars"></div>
+    <div class="pt-layer pt-static"></div>
+    <div class="pt-scanline"></div>
+  </div>
 
   {% include nav.html %}
 
@@ -1015,7 +1136,54 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile nav toggle
+      var overlay = document.getElementById('pageTransition');
+
+      // ---- Page entry animation ----
+      if (overlay) {
+        overlay.classList.add('active', 'enter');
+        overlay.addEventListener('animationend', function onEnter() {
+          overlay.classList.remove('active', 'enter');
+          overlay.removeEventListener('animationend', onEnter);
+        });
+      }
+
+      // ---- Glitch page transitions ----
+      function isInternalLink(a) {
+        if (!a.href) return false;
+        if (a.target === '_blank') return false;
+        if (a.hostname !== window.location.hostname) return false;
+        if (a.getAttribute('href').startsWith('#')) return false;
+        // Skip links to the game itself (/play/ is the actual game)
+        var href = a.getAttribute('href');
+        if (href.match(/\/play\/?$/) && a.closest('.hero-buttons, .btn')) {
+          // Allow play buttons to transition normally
+        }
+        return true;
+      }
+
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a');
+        if (!link || !isInternalLink(link)) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return; // respect modifier keys
+
+        e.preventDefault();
+        var href = link.href;
+
+        if (overlay) {
+          overlay.classList.add('active', 'exit');
+
+          function onExitEnd() {
+            overlay.removeEventListener('animationend', onExitEnd);
+            window.location.href = href;
+          }
+
+          overlay.addEventListener('animationend', onExitEnd);
+        } else {
+          window.location.href = href;
+        }
+      });
+
+      // ---- Mobile nav toggle ----
       var toggle = document.querySelector('.nav-toggle');
       var links = document.querySelector('.nav-links');
       if (toggle && links) {
@@ -1027,14 +1195,14 @@
         });
       }
 
-      // Active nav link
+      // ---- Active nav link ----
       var path = window.location.pathname.replace(/\/$/, '');
       document.querySelectorAll('.nav-links a').forEach(function(a) {
         var href = a.getAttribute('href').replace(/\/$/, '');
         if (href === path) a.classList.add('active');
       });
 
-      // Scroll-triggered fade-in
+      // ---- Scroll-triggered fade-in ----
       var fadeEls = document.querySelectorAll('.feature-card, .character-card, .card, .gallery-item');
       if ('IntersectionObserver' in window && fadeEls.length > 0) {
         fadeEls.forEach(function(el) {
@@ -1054,7 +1222,7 @@
         fadeEls.forEach(function(el) { observer.observe(el); });
       }
 
-      // Random glitch on h2 headings
+      // ---- Random glitch on h2 headings ----
       var headings = document.querySelectorAll('h2');
       if (headings.length > 0) {
         setInterval(function() {
