@@ -22,6 +22,7 @@ import {
   calculateStealChance,
 } from "../../data/items";
 import { useGameStore } from "../../stores/gameStore";
+import { assetUrl } from "../../utils/assetUrl";
 import PartyStatus from "./PartyStatus";
 import CommandMenu from "./CommandMenu";
 import BattleLog from "./BattleLog";
@@ -485,7 +486,7 @@ export default function BattleScreen({ onBattleEnd }: BattleScreenProps) {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(${battleBackground.image})`,
+              backgroundImage: `url(${assetUrl(battleBackground.image)})`,
               opacity: 1 - battleBackground.overlayOpacity,
             }}
           />

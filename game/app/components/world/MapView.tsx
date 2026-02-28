@@ -8,6 +8,7 @@ import { getQuestsByGiver, QUESTS } from "../../data/quests";
 import { OBJECT_SPRITES, WORLD_SPRITE_CONFIGS, NPC_SPRITE_CONFIGS } from "../../data/animations";
 import type { WorldSpriteConfig } from "../../types/animation";
 import { getTileset, getTilePath, type Tileset } from "../../data/tilesets";
+import { assetUrl } from "../../utils/assetUrl";
 
 // Cache for loaded sprite/tileset images
 type DrawableImage = HTMLImageElement | HTMLCanvasElement;
@@ -191,7 +192,7 @@ function loadSprite(src: string): DrawableImage | null {
     spriteCache.delete(src);
     console.warn(`Failed to load sprite: ${src}`);
   };
-  img.src = src;
+  img.src = assetUrl(src);
 
   return null; // Return null while loading
 }
@@ -234,7 +235,7 @@ function loadWorldSheet(config: WorldSpriteConfig): {
     worldSheetCache.delete(config.src);
     console.warn(`Failed to load world sprite sheet: ${config.src}`);
   };
-  img.src = config.src;
+  img.src = assetUrl(config.src);
 
   return null;
 }

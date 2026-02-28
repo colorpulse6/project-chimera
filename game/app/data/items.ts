@@ -3,6 +3,7 @@
 // See docs/items-guide.md for lore details
 
 import type { Item, Inventory } from "../types";
+import { assetUrl } from "../utils/assetUrl";
 
 // ============================================
 // CONSUMABLE ITEMS - Four Humors Healing
@@ -1040,6 +1041,10 @@ export function isEquipment(item: Item): boolean {
  * Uses explicit icon field if set, otherwise derives from item properties
  */
 export function getItemIcon(item: Item): string {
+  return assetUrl(getItemIconPath(item));
+}
+
+function getItemIconPath(item: Item): string {
   // If item has explicit icon, use it
   if (item.icon) {
     return `/icons/items/${item.icon}.png`;

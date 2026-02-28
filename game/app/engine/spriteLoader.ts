@@ -1,6 +1,7 @@
 // Sprite Loader - Handles sprite sheet loading, caching, and frame extraction
 
 import type { SpriteSheetConfig, AnimationFrame } from "../types/animation";
+import { assetUrl } from "../utils/assetUrl";
 
 // Sprite sheet cache
 const spriteCache = new Map<string, HTMLImageElement>();
@@ -32,7 +33,7 @@ export async function loadSpriteSheet(src: string): Promise<HTMLImageElement> {
       loadingPromises.delete(src);
       reject(new Error(`Failed to load sprite: ${src}`));
     };
-    img.src = src;
+    img.src = assetUrl(src);
   });
 
   loadingPromises.set(src, loadPromise);

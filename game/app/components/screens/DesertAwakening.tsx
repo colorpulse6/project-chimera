@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { assetUrl } from "../../utils/assetUrl";
 
 interface DesertAwakeningProps {
   onComplete: () => void;
@@ -112,7 +113,7 @@ export default function DesertAwakening({ onComplete }: DesertAwakeningProps) {
       img.onload = () => {
         imagesRef.current[key] = img;
       };
-      img.src = src;
+      img.src = assetUrl(src);
     };
     load("/backgrounds/stranger_tent.png", "bg");
     load("/sprites/characters/kai_lying.png", "kaiLying");
