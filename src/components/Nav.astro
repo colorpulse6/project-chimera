@@ -24,10 +24,46 @@ const isActive = (href: string) => path.startsWith(base + href);
         {items.map(([href, label]) => (
           <li><a href={base + href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a></li>
         ))}
+        <li class="hum-item">
+          <button class="hum" type="button" aria-pressed="false" title="A low drone, three minutes, loops. Off until you press it.">
+            <span class="ring" aria-hidden="true"></span><span class="hum-label">the hum</span>
+          </button>
+          <audio id="hum-audio" loop preload="none">
+            <source src={base + 'media/hum.opus'} type="audio/ogg; codecs=opus" />
+            <source src={base + 'media/hum.mp3'} type="audio/mpeg" />
+          </audio>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<script>
+  // The hum is off by default and only starts on a press. The choice is remembered
+  // for the session, and resumes on the next page if it was playing.
+  const button = document.querySelector<HTMLButtonElement>('.hum');
+  const audio = document.getElementById('hum-audio') as HTMLAudioElement | null;
+  if (button && audio) {
+    const key = 'chimera-hum';
+    const show = (on: boolean) => { button.setAttribute('aria-pressed', String(on)); };
+    const fadeTo = (target: number, ms: number) => {
+      const start = audio.volume, t0 = performance.now();
+      const step = (now: number) => {
+        const k = Math.min(1, (now - t0) / ms);
+        audio.volume = start + (target - start) * k;
+        if (k < 1) requestAnimationFrame(step); else if (target === 0) audio.pause();
+      };
+      requestAnimationFrame(step);
+    };
+    const start = () => { audio.volume = 0; audio.play().then(() => { fadeTo(0.6, 4000); show(true); sessionStorage.setItem(key, 'on'); }).catch(() => show(false)); };
+    const stop = () => { fadeTo(0, 1500); show(false); sessionStorage.setItem(key, 'off'); };
+    button.addEventListener('click', () => (audio.paused ? start() : stop()));
+    if (sessionStorage.getItem(key) === 'on') {
+      // Browsers only allow this after an earlier interaction on the site; if refused, stay silent.
+      audio.volume = 0.6; audio.play().then(() => show(true)).catch(() => {});
+    }
+  }
+</script>
 
 <style>
   .nav { border-bottom: var(--rule); background: var(--bg-sunk); }
@@ -38,5 +74,12 @@ const isActive = (href: string) => path.startsWith(base + href);
   nav a { text-decoration: none; padding: 0.3rem 0; border-bottom: 1.5px solid transparent; }
   nav a:hover { border-bottom-color: var(--lavender); }
   nav a[aria-current='page'] { border-bottom-color: var(--kai); }
+  .hum { display: inline-flex; align-items: center; gap: 0.45rem; background: none; border: 0; padding: 0.3rem 0; color: var(--fg-faint); font: inherit; font-size: 0.92rem; cursor: pointer; border-bottom: 1.5px solid transparent; }
+  .hum:hover { color: var(--fg); }
+  .hum .ring { width: 0.7em; height: 0.7em; border-radius: 50%; border: 1.5px solid currentColor; }
+  .hum[aria-pressed='true'] { color: var(--fg); }
+  .hum[aria-pressed='true'] .ring { background: var(--kai); border-color: var(--kai); animation: hum-pulse 6s ease-in-out infinite; }
+  @keyframes hum-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) { .hum .ring { animation: none !important; } }
   @media (max-width: 40rem) { .nav-row { justify-content: center; } }
 </style>

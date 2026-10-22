@@ -2,7 +2,7 @@
 title: The painting is the asset
 date: 2026-10-17
 summary: The first playable slice that was approved. The courtyard painting became the level, and Kai came out of a drawing through image-to-3D.
-cover: ../../assets/media/kai-in-game.jpg
+cover: ../../assets/media/kai-hero.jpg
 coverAlt: Kai mid-stride on the painted courtyard, a dark drawn figure on a gouache ground.
 tags: [milestone, characters, pipeline]
 ---

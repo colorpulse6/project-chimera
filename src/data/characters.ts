@@ -1,8 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
 import kaiHero from '../assets/media/kai-hero.jpg';
-import kaiInGame from '../assets/media/kai-in-game.jpg';
-import kaiHair from '../assets/media/kai-hair-turnaround.jpg';
 import wwDrawing from '../assets/media/well-woman-drawing.jpg';
 import wwFull from '../assets/media/well-woman-full.jpg';
 import wwFace from '../assets/media/well-woman-face.jpg';
@@ -42,8 +40,6 @@ export const kai: Character = {
   statusText: 'In the build since the first Unreal day',
   drawing: kaiDrawing,
   inGame: kaiHero,
-  face: kaiInGame,
-  extra: { src: kaiHair, caption: 'The short red spiked crown, built on the scanned head and checked from five angles.' },
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
     'He walks and runs with planted feet and a real stride with flight, solved from his own leg geometry. At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
