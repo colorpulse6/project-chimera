@@ -13,7 +13,7 @@ const lines = [
   'the painting is right',
 ];
 ---
-<div class="scroll" aria-hidden="true">
+<div class="scroll" aria-hidden="true" transition:persist="scroll">
   <p>{[...lines, ...lines].map((l) => <span>{l}</span>)}</p>
 </div>
 <style>

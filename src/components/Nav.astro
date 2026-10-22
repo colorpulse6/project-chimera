@@ -28,7 +28,7 @@ const isActive = (href: string) => path.startsWith(base + href);
           <button class="hum" type="button" aria-pressed="false" title="A low drone, three minutes, loops. Off until you press it.">
             <span class="ring" aria-hidden="true"></span><span class="hum-label">the hum</span>
           </button>
-          <audio id="hum-audio" loop preload="none">
+          <audio id="hum-audio" loop preload="none" transition:persist="hum">
             <source src={base + 'media/hum.opus'} type="audio/ogg; codecs=opus" />
             <source src={base + 'media/hum.mp3'} type="audio/mpeg" />
           </audio>
@@ -39,13 +39,16 @@ const isActive = (href: string) => path.startsWith(base + href);
 </header>
 
 <script>
-  // The hum is off by default and only starts on a press. The choice is remembered
-  // for the session, and resumes on the next page if it was playing.
+  // The hum is off by default and only starts on a press. The audio element persists
+  // across page changes (client router), so it keeps playing between pages. The choice
+  // is remembered for the session for the case of a hard reload.
+  const bind = () => {
   const button = document.querySelector<HTMLButtonElement>('.hum');
   const audio = document.getElementById('hum-audio') as HTMLAudioElement | null;
-  if (button && audio) {
+  if (button && audio && !button.dataset.bound) {
+    button.dataset.bound = '1';
     const key = 'chimera-hum';
-    const show = (on: boolean) => { button.setAttribute('aria-pressed', String(on)); };
+    const show = (on: boolean) => { button.setAttribute('aria-pressed', String(on)); document.body.classList.toggle('humming', on); };
     const fadeTo = (target: number, ms: number) => {
       const start = audio.volume, t0 = performance.now();
       const step = (now: number) => {
@@ -58,11 +61,15 @@ const isActive = (href: string) => path.startsWith(base + href);
     const start = () => { audio.volume = 0; audio.play().then(() => { fadeTo(0.6, 4000); show(true); sessionStorage.setItem(key, 'on'); }).catch(() => show(false)); };
     const stop = () => { fadeTo(0, 1500); show(false); sessionStorage.setItem(key, 'off'); };
     button.addEventListener('click', () => (audio.paused ? start() : stop()));
-    if (sessionStorage.getItem(key) === 'on') {
+    if (!audio.paused) {
+      show(true);
+    } else if (sessionStorage.getItem(key) === 'on') {
       // Browsers only allow this after an earlier interaction on the site; if refused, stay silent.
       audio.volume = 0.6; audio.play().then(() => show(true)).catch(() => {});
     }
   }
+  };
+  document.addEventListener('astro:page-load', bind);
 </script>
 
 <style>

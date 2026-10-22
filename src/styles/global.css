@@ -142,8 +142,33 @@ strong { font-weight: 600; }
 .prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--bg-raised); padding: 0.1em 0.35em; border: 1px solid var(--line); }
 .prose hr { border: 0; border-top: var(--rule); margin: 2.5rem 0; }
 
+/* Phasing: now and then, for a frame, only the outline is there. */
+.phase { position: relative; display: inline-block; }
+.phase::after { content: attr(data-text); position: absolute; inset: 0; color: transparent; -webkit-text-stroke: 1px var(--fg); background: var(--bg); opacity: 0; animation: phase 11s steps(1, end) infinite; pointer-events: none; white-space: nowrap; }
+.phase-once::after { animation: phase-once 700ms steps(1, end) 1; -webkit-text-stroke-color: var(--lavender); }
+@keyframes phase { 0%, 93% { opacity: 0; } 93.5%, 94.5% { opacity: 1; } 95%, 96% { opacity: 0; } 96.3%, 97% { opacity: 1; } 97.2%, 100% { opacity: 0; } }
+@keyframes phase-once { 0% { opacity: 0; } 10%, 30% { opacity: 1; } 32%, 48% { opacity: 0; } 50%, 58% { opacity: 1; } 60%, 100% { opacity: 0; } }
+
+/* Between pages: a cut with a skip in it, not a fade. */
+::view-transition-old(root) { animation: 110ms steps(2, end) both vt-out; }
+::view-transition-new(root) { animation: 300ms steps(6, end) both vt-in; }
+@keyframes vt-out { to { opacity: 0.4; transform: translateX(-4px); } }
+@keyframes vt-in { 0% { opacity: 0; transform: translateX(6px); } 30% { opacity: 1; transform: none; } 45% { opacity: 0.5; transform: translateX(-3px); } 60%, 100% { opacity: 1; transform: none; } }
+
+/* While the hum is on, the page breathes with it: a slow vignette on the same cycle as the drone. */
+body::before { content: ''; position: fixed; inset: 0; z-index: 49; pointer-events: none; opacity: 0; background: radial-gradient(ellipse at center, transparent 55%, rgba(8, 5, 12, 0.75) 100%); transition: opacity 4s ease; }
+body.humming::before { opacity: 1; animation: breathe 23s ease-in-out infinite; }
+body.humming::after { animation: grain-breathe 23s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes grain-breathe { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.22; } }
+
+/* Frames answer a fraction late: the image moves, the shadow follows after a beat. */
+.frame img, .frame video, .prose img { transition: transform 240ms ease, box-shadow 240ms ease 180ms; }
+.frame:hover img, .frame:hover video, .prose img:hover { transform: translate(-2px, -2px); box-shadow: 0.8rem 0.8rem 0 var(--lavender-deep); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
 }
 
 /* A note set in the margin voice: used where the site describes design that is not yet in the build */

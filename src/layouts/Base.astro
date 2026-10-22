@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Scroll from '../components/Scroll.astro';
+import { ClientRouter } from 'astro:transitions';
 const { title, description = 'Chimera is a role-playing game in a painted hill town, with a hero drawn in ink who does not always stay drawn. This is the record of where it stands. The record is kept in order.', ogImage } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fullTitle = title ? `${title} · Chimera` : 'Chimera · the record';
@@ -25,6 +26,7 @@ const og = ogImage ? new URL(ogImage, Astro.site) : new URL(base + 'og.jpg', Ast
     <meta property="og:image" content={og} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#1b1720" />
+    <ClientRouter />
   </head>
   <body>
     <Nav />
@@ -33,5 +35,8 @@ const og = ogImage ? new URL(ogImage, Astro.site) : new URL(base + 'og.jpg', Ast
       <slot />
     </main>
     <Footer />
+    <script>
+      import '../scripts/haunt';
+    </script>
   </body>
 </html>
