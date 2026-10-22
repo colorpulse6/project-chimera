@@ -1,0 +1,25 @@
+---
+/* The Scroll of Judgment, reduced to a strip. Fragments of the world being wrong,
+   kept under the navigation like a running header on a ledger. Static on purpose. */
+const lines = [
+  'order is absolute',
+  'deviation is error',
+  'temporal anchor stabilized',
+  'the clock keeps time and no one winds it',
+  'the mirror answers a fraction late',
+  'three rows of tulips, each the same',
+  'you can\u2019t go there, the gods restrict it',
+  'subject KAI_7.34, final processing deferred',
+  'the painting is right',
+];
+---
+<div class="scroll" aria-hidden="true">
+  <p>{[...lines, ...lines].map((l) => <span>{l}</span>)}</p>
+</div>
+<style>
+  .scroll { border-bottom: var(--rule); background: var(--bg-sunk); overflow: hidden; }
+  .scroll p { margin: 0; padding: 0.35rem 0; white-space: nowrap; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); display: flex; gap: 2.2rem; width: max-content; animation: drift 90s linear infinite; }
+  .scroll span::after { content: '\00b7'; margin-left: 2.2rem; color: var(--lavender-deep); }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .scroll p { animation: none; } }
+</style>

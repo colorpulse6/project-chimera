@@ -6,12 +6,12 @@ const base = import.meta.env.BASE_URL;
 const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title="Updates" description="Development updates for Chimera: what changed in the build, what was decided, and what it looks like.">
+<Base title="Updates" description="Save points. Each one records what changed in the Chimera build, what was decided, and what it looked like from the rig.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h1>Updates</h1>
-        <p>What changed, in order. Each entry records a decision or a build, with frames from the review rig.</p>
+        <p>What changed, in the order the record keeps it, which is not always the order it happened. Each entry is a decision or a build, with frames from the rig.</p>
       </div>
       <ol class="list">
         {updates.map((u) => (

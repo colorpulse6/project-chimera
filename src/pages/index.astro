@@ -25,9 +25,9 @@ const asOf = updates[0]?.data.date;
     <Image class="hero-img" src={hero} alt="Kai walks into the Havenwood courtyard. Five townsfolk stand around the well and the shop, each a tall figure with a round void somewhere in their clothes." widths={[800, 1200, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="hero-text">
       <div class="panel">
-      <h1>Chimera</h1>
-      <p class="lede">A role-playing game set in a painted hill town, with a hero who is drawn rather than modelled. Somewhere in the story, the drawing starts to fail.</p>
-      <p class="asof">This page is the running record of where the game stands. Last entry {asOf ? fmt(asOf) : ''}.</p>
+      <h1><span class="phase" data-text="Chimera">Chimera</span></h1>
+      <p class="lede">A town that was painted before it was built. A boy drawn in ink who does not always stay drawn. Somewhere past the chapel, the paint stops.</p>
+      <p class="asof">Anchor stabilized {asOf ? fmt(asOf) : ''}. This is the record of where the game stands. The record is kept in order.</p>
       </div>
     </div>
   </section>
@@ -36,7 +36,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap status">
       <div>
         <h2>Where it stands</h2>
-        <p class="muted">The build is native, on a Mac, and playable from the courtyard to the street. Everything below is in the packaged build unless it says otherwise.</p>
+        <p class="muted">What is anchored in the packaged build, as far as the record knows. The build is native, on a Mac, and playable from the courtyard to the street. The record has been wrong before and corrected itself.</p>
       </div>
       <dl class="ledger">
         <div><dt>Engine</dt><dd>Unreal Engine 5, since 19 October 2026. Before that the same world was proved in Godot, and before that it was a browser game.</dd></div>
@@ -54,7 +54,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap">
       <div class="section-head">
         <h2>Recent updates</h2>
-        <p><a href={base + 'updates/'}>All updates</a></p>
+        <p>Each entry is a save point. Touch one and it shows you a frame of something that already happened. <a href={base + 'updates/'}>All of them</a>.</p>
       </div>
       <ol class="update-list">
         {latest.map((u) => (
@@ -75,7 +75,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap">
       <div class="section-head">
         <h2>Moving</h2>
-        <p>The first recording of the build, 22 October. Courtyard, street, arch, well, and two conversations. Trimmed at the ends, otherwise as recorded.</p>
+        <p>The first recording. A camera followed a drawing around a painting for forty seconds and nobody stopped it. Courtyard, street, arch, well, two conversations. Trimmed at the ends, otherwise as it happened.</p>
       </div>
       <figure class="frame clip">
         <video src={base + 'media/havenwood-walk-2026-10-22.mp4'} poster={base + 'media/havenwood-walk-poster.jpg'} controls muted playsinline preload="metadata" aria-label="Forty seconds of walking Havenwood in the packaged build."></video>
@@ -88,7 +88,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap">
       <div class="section-head">
         <h2>From the build</h2>
-        <p>Frames straight from the in-game review rig, which captures the same views after every change so the look can be checked against the day it was locked.</p>
+        <p>Frames from the review rig, which takes the same views after every change so the look can be checked against the day it was accepted. The rig does not know what it is looking at.</p>
       </div>
       <div class="frames frames-2">
         <Frame src={courtyardKai} alt="Kai from behind in the courtyard, his cape blowing, the Shopkeeper and Child nearby." label="Courtyard, late afternoon." caption="Kai, the Shopkeeper and the Child under the painted sky." />
@@ -101,7 +101,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap">
       <div class="section-head">
         <h2>Where the people come from</h2>
-        <p>Every figure in the game starts as this drawing. The body goes through image-to-3D, the drawing is projected back on as its own texture, and the head and hands are built by hand.</p>
+        <p>Every figure in the game starts as this drawing. It is taken apart, turned into a shape, and the drawing is put back on as skin. The head and hands are built by hand. They do not remember any of this.</p>
       </div>
       <Frame src={lineup} alt="Lineup drawing of six figures: Kai in a navy cape, a woman in teal, a shopkeeper in yellow with a cone hat, an old man in violet with a ring head, a child in coral, a fisherman in blue." label="The lineup." caption="Masks and holes: tall faceless or masked figures, one round void each. Kai is the one in red." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1600, 2000]} />
     </div>
@@ -111,7 +111,7 @@ const asOf = updates[0]?.data.date;
     <div class="wrap">
       <div class="section-head">
         <h2>How it got here</h2>
-        <p>Three versions of the same square. The story stayed; the way of making it did not.</p>
+        <p>Three versions of the same square. The story stayed where it was. Everything around it was replaced, twice. The record calls this iteration.</p>
       </div>
       <div class="frames frames-3 frames-even">
         <Frame src={browser2025} alt="Pixel-art village square with a fountain and a large tree, from the browser game." label="2025." caption="A browser JRPG in pixel art, with battles and quests. It is still in this repository's history." sizes="(min-width: 60rem) 33vw, 100vw" />
@@ -128,6 +128,11 @@ const asOf = updates[0]?.data.date;
   .hero-text { width: min(100% - 2 * var(--gutter), var(--page)); margin-inline: auto; padding-block: 0 clamp(1.5rem, 5vw, 4rem); }
   .panel { background: color-mix(in oklab, var(--bg) 94%, transparent); border: 1px solid var(--edge); box-shadow: var(--shadow); backdrop-filter: blur(6px); padding: clamp(1.4rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.6rem); max-width: 36rem; }
   .hero h1 { font-size: clamp(3.4rem, 8vw, 6.5rem); margin-bottom: 0.2em; color: var(--fg); }
+  /* The title phases the way Kai does: now and then, for a frame, only the outline is there. */
+  .phase { position: relative; display: inline-block; }
+  .phase::after { content: attr(data-text); position: absolute; inset: 0; color: transparent; -webkit-text-stroke: 1px var(--fg); background: var(--bg); opacity: 0; animation: phase 11s steps(1, end) infinite; pointer-events: none; }
+  @keyframes phase { 0%, 93% { opacity: 0; } 93.5%, 94.5% { opacity: 1; } 95%, 96% { opacity: 0; } 96.3%, 97% { opacity: 1; } 97.2%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .phase::after { animation: none; } }
   .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.15rem, 1.9vw, 1.4rem); line-height: 1.3; max-width: 32ch; margin-bottom: 0.9rem; }
   .asof { max-width: 48ch; margin: 0; color: var(--fg-soft); font-size: 0.95rem; }
 

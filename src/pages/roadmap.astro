@@ -2,17 +2,17 @@
 import Base from '../layouts/Base.astro';
 import { done, now, next } from '../data/roadmap';
 const groups = [
-  ['built', 'Done', done, 'In the packaged build or decided and written down.'],
-  ['now', 'Now', now, 'The current batch, running as parallel streams: places, figures, game side, polish.'],
-  ['next', 'Next', next, 'In order of likely attention, not promise.'],
+  ['built', 'Anchored', done, 'In the packaged build, or decided and written down, which here is the same thing.'],
+  ['now', 'Weaving', now, 'The current batch, running as parallel streams: places, figures, game side, polish.'],
+  ['next', 'Unwritten', next, 'In order of likely attention, not promise. The order changes when nobody is looking.'],
 ] as const;
 ---
-<Base title="Roadmap" description="What is done, what is being built now, and what comes next for Chimera.">
+<Base title="Roadmap" description="What is anchored, what is being woven, and what is still unwritten in the Chimera build. Dates are acceptance, not beginnings.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h1>Roadmap</h1>
-        <p>The honest version. Dates are when something was accepted in the build, not when it was started.</p>
+        <p>The honest version. Dates are when a thing was accepted into the build, not when it began. Things begin earlier than the record admits.</p>
       </div>
       <div class="columns">
         {groups.map(([status, title, items, note]) => (
