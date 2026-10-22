@@ -32,7 +32,7 @@ const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
 /* ---------- loops: the site counts how many times you have come back */
 const LOOP = (() => {
   let n = 0;
-  try { n = Number(localStorage.getItem('chimera-loop') || 0) + 1; localStorage.setItem('chimera-loop', String(n)); } catch { n = 1; }
+  try { n = Number(localStorage.getItem('chimera-loop') || 0) + 1; if (!Number.isFinite(n) || n < 1) n = 1; localStorage.setItem('chimera-loop', String(n)); } catch { n = 1; }
   return n;
 })();
 type Anchor = { path: string; t: number; title: string };
@@ -46,7 +46,7 @@ function stabilise() {
 
 /* ---------- sound: only while the hum is on, which the visitor chose */
 let ctx: AudioContext | null = null;
-const humOn = () => document.body.classList.contains('humming');
+const humOn = () => { const a = document.getElementById('hum-audio') as HTMLAudioElement | null; return !!a && !a.paused; };
 function ac() {
   if (!ctx) ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
   if (ctx.state === 'suspended') ctx.resume().catch(() => {});
@@ -184,6 +184,7 @@ function correct() {
 }
 
 /* ---------- the strip corrupts */
+let stripRestore: (() => void) | null = null;
 const strip = {
   extra: () => {
     const p = document.querySelector('.scroll p');
@@ -208,7 +209,8 @@ const strip = {
     const i = Math.floor(Math.random() * text.length);
     s.textContent = text.slice(0, i) + GLYPHS[Math.floor(Math.random() * 7)] + text.slice(i + 1);
     sfx.tick();
-    later(() => { s.textContent = text; }, 160);
+    stripRestore = () => { s.textContent = text; stripRestore = null; };
+    later(() => stripRestore?.(), 160);
   },
 };
 
@@ -249,16 +251,15 @@ function cursorEcho() {
   const el = document.getElementById('cursor-echo');
   if (!el || !fine || reduced || el.dataset.bound) return;
   el.dataset.bound = '1';
-  let tx = -100, ty = -100, x = -100, y = -100, shown = false;
-  addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; el.classList.add('on'); } });
-  document.documentElement.addEventListener('pointerleave', () => { shown = false; el.classList.remove('on'); });
+  let tx = -100, ty = -100, x = -100, y = -100, shown = false, running = false;
   const loop = () => {
     const gx = innerWidth - tx, gy = ty;
     x += (gx - x) * 0.055; y += (gy - y) * 0.055;
     el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-    requestAnimationFrame(loop);
+    if (Math.abs(gx - x) + Math.abs(gy - y) > 0.3) requestAnimationFrame(loop); else running = false;
   };
-  requestAnimationFrame(loop);
+  addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; el.classList.add('on'); } if (!running) { running = true; requestAnimationFrame(loop); } }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', () => { shown = false; el.classList.remove('on'); });
 }
 
 /* ---------- the clock keeps time and no one winds it */
@@ -281,16 +282,21 @@ function hud() {
     timeEl.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()].map(pad).join(':');
   };
   setInterval(draw, 250);
-  if (!reduced) every(() => {
-    if (stuck) return;
-    stuck = true; offset = -3000; el.classList.add('slip'); sfx.tick();
-    later(() => { offset = 0; stuck = false; el.classList.remove('slip'); }, rand(2000, 5000));
-  }, 15000, 45000);
-  if (!reduced) every(() => {
+  // these outlive page swaps, so they do not use the page-scoped timer list
+  const slip = () => {
+    if (!stuck) {
+      stuck = true; offset = -3000; el.classList.add('slip'); sfx.tick();
+      setTimeout(() => { offset = 0; stuck = false; el.classList.remove('slip'); }, rand(2000, 5000));
+    }
+    setTimeout(slip, rand(15000, 45000));
+  };
+  const flicker = () => {
     const was = subject.textContent;
     subject.textContent = pick(['ELARA_?', 'SUBJECT ░░░', 'KAI_7.33', 'NO SUBJECT']);
-    later(() => { subject.textContent = was; }, 120);
-  }, 20000, 60000);
+    setTimeout(() => { if (subject.textContent !== was) subject.textContent = was; }, 120);
+    setTimeout(flicker, rand(20000, 60000));
+  };
+  if (!reduced) { setTimeout(slip, rand(15000, 45000)); setTimeout(flicker, rand(20000, 60000)); }
   draw();
 }
 
@@ -298,18 +304,19 @@ function hud() {
 function tabWatch() {
   if ((document.body as any)._tabWatched) return;
   (document.body as any)._tabWatched = true;
-  const icon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+  const icon = () => document.querySelector<HTMLLinkElement>('link[rel="icon"]');
   const dot = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231b1720'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23d24a34'/%3E%3C/svg%3E";
-  let kept = { title: document.title, icon: icon?.href ?? '' };
-  document.addEventListener('astro:page-load', () => { kept = { title: document.title, icon: icon?.href ?? '' }; });
+  let kept = { title: document.title, icon: icon()?.href ?? '' };
+  document.addEventListener('astro:page-load', () => { kept = { title: document.title, icon: icon()?.href ?? '' }; });
   document.addEventListener('visibilitychange', () => {
+    const link = icon();
     if (document.hidden) {
-      kept = { title: document.title, icon: icon?.href ?? '' };
+      kept = { title: document.title, icon: link?.href ?? '' };
       document.title = pick(['the anchor drifts', 'come back to the courtyard', 'the clock is still running', 'you left the painting', 'deviation noted']);
-      if (icon) icon.href = dot;
+      if (link) link.href = dot;
     } else {
       document.title = kept.title;
-      if (icon) icon.href = kept.icon;
+      if (link && kept.icon) link.href = kept.icon;
     }
   });
 }
@@ -361,7 +368,8 @@ function renderAnchors() {
   list.replaceChildren(...mine.map((a, i) => {
     const li = document.createElement('li');
     const d = new Date(a.t);
-    li.innerHTML = `<span class="slot">${pad(i + 1)}</span><span class="where">${a.title || a.path}</span><span class="when">${[d.getHours(), d.getMinutes(), d.getSeconds()].map(pad).join(':')}</span><span class="st">STABILISED</span>`;
+    const cell = (cls: string, text: string) => { const s = document.createElement('span'); s.className = cls; s.textContent = text; return s; };
+    li.append(cell('slot', pad(i + 1)), cell('where', a.title || a.path), cell('when', [d.getHours(), d.getMinutes(), d.getSeconds()].map(pad).join(':')), cell('st', 'STABILISED'));
     return li;
   }));
   const count = document.getElementById('anchor-count');
@@ -379,7 +387,7 @@ function remember() {
   const tulips = document.querySelectorAll<HTMLElement>('.tulips span');
   if (tulips.length) {
     tulips.forEach((t) => t.classList.remove('wrong'));
-    tulips[(LOOP * 7 + 3) % tulips.length].classList.add('wrong');
+    tulips[(LOOP * 7 + 3) % tulips.length]?.classList.add('wrong');
   }
 }
 
@@ -451,7 +459,7 @@ function pageLoad() {
 }
 
 document.addEventListener('astro:page-load', pageLoad);
-document.addEventListener('astro:before-swap', () => { mirror?.stop(); mirror = null; clearTimers(); });
+document.addEventListener('astro:before-swap', () => { mirror?.stop(); mirror = null; clearTimers(); stripRestore?.(); });
 document.addEventListener('astro:after-swap', () => { sfx.thud(); });
 document.addEventListener('pointerover', (e) => {
   const img = (e.target as HTMLElement | null)?.closest?.('main img') as HTMLImageElement | null;

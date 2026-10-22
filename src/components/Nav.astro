@@ -58,12 +58,12 @@ const isActive = (href: string) => path.startsWith(base + href);
       };
       requestAnimationFrame(step);
     };
-    const start = () => { audio.volume = 0; audio.play().then(() => { fadeTo(0.6, 4000); show(true); sessionStorage.setItem(key, 'on'); }).catch(() => show(false)); };
-    const stop = () => { fadeTo(0, 1500); show(false); sessionStorage.setItem(key, 'off'); };
+    const start = () => { audio.volume = 0; audio.play().then(() => { fadeTo(0.6, 4000); show(true); try { sessionStorage.setItem(key, 'on'); } catch {}; }).catch(() => show(false)); };
+    const stop = () => { fadeTo(0, 1500); show(false); try { sessionStorage.setItem(key, 'off'); } catch {}; };
     button.addEventListener('click', () => (audio.paused ? start() : stop()));
     if (!audio.paused) {
       show(true);
-    } else if (sessionStorage.getItem(key) === 'on') {
+    } else if ((() => { try { return sessionStorage.getItem(key) === 'on'; } catch { return false; } })()) {
       // Browsers only allow this after an earlier interaction on the site; if refused, stay silent.
       audio.volume = 0.6; audio.play().then(() => show(true)).catch(() => {});
     }

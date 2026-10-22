@@ -96,9 +96,10 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 
-  let ready = false;
+  let ready = false, stopped = false;
   let tw = 1, th = 1;
   const upload = () => {
+    if (stopped) return;
     try {
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
       tw = img.naturalWidth; th = img.naturalHeight;
@@ -146,7 +147,7 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
 
   const dpr = Math.min(devicePixelRatio || 1, 1.5);
   const size = () => {
-    const w = Math.round(host.clientWidth * dpr), h = Math.round(host.clientHeight * dpr);
+    const w = Math.max(1, Math.round(host.clientWidth * dpr)), h = Math.max(1, Math.round(host.clientHeight * dpr));
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
   };
   const ro = new ResizeObserver(size);
@@ -176,6 +177,9 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
 
   return {
     stop() {
+      stopped = true;
+      img.removeEventListener('load', upload);
+      host.classList.remove('live');
       cancelAnimationFrame(raf);
       clearTimeout(burstTimer);
       io.disconnect();
