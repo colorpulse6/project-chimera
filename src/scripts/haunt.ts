@@ -36,11 +36,11 @@ const LOOP = (() => {
   return n;
 })();
 type Anchor = { path: string; t: number; title: string };
-const anchors = (): Anchor[] => { try { return JSON.parse(sessionStorage.getItem('chimera-anchors') || '[]'); } catch { return []; } };
+const anchors = (): Anchor[] => { try { const v = JSON.parse(sessionStorage.getItem('chimera-anchors') || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } };
 function stabilise() {
   const list = anchors();
   const path = location.pathname.replace(base, '/');
-  if (list.at(-1)?.path !== path) list.push({ path, t: Date.now(), title: document.title.replace(/ · Chimera$/, '') });
+  if (list[list.length - 1]?.path !== path) list.push({ path, t: Date.now(), title: document.title.replace(/ · Chimera$/, '') });
   try { sessionStorage.setItem('chimera-anchors', JSON.stringify(list.slice(-40))); } catch { /* full */ }
 }
 
@@ -127,7 +127,7 @@ function flickerWord() {
   const paras = Array.from(document.querySelectorAll('main p, main li, main dd')).filter((p) => (p.textContent ?? '').split(' ').length > 6);
   if (!paras.length) return;
   const p = pick(paras);
-  const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+  const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, { acceptNode: (t) => (t.parentElement?.closest('.correct, .phase') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
   const nodes: Text[] = [];
   let n: Node | null;
   while ((n = walker.nextNode())) if ((n.textContent ?? '').trim().split(' ').length > 3) nodes.push(n as Text);
@@ -411,7 +411,7 @@ function secret() {
     buf = (buf + e.key.toLowerCase()).slice(-8);
     if (buf.endsWith('elara')) { buf = ''; sfx.thud(); location.assign(base + 'echo/'); }
   });
-  document.querySelector('.hum')?.addEventListener('click', () => { try { ac(); } catch { /* none */ } });
+  document.addEventListener('click', (e) => { if ((e.target as HTMLElement | null)?.closest?.('.hum')) { try { ac(); } catch { /* none */ } } });
 }
 
 /* ---------- media parsed in by the router arrives inert */

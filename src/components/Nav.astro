@@ -40,34 +40,57 @@ const isActive = (href: string) => path.startsWith(base + href);
 
 <script>
   // The hum is off by default and only starts on a press. The audio element persists
-  // across page changes (client router), so it keeps playing between pages. The choice
-  // is remembered for the session for the case of a hard reload.
+  // across page changes (client router), so it keeps playing between pages. The button
+  // is re-rendered on every page; the intent ("want") lives on the audio element, and
+  // the pressed state follows the element's own play/pause events.
   const bind = () => {
-  const button = document.querySelector<HTMLButtonElement>('.hum');
-  const audio = document.getElementById('hum-audio') as HTMLAudioElement | null;
-  if (button && audio && !button.dataset.bound) {
-    button.dataset.bound = '1';
+    const button = document.querySelector<HTMLButtonElement>('.hum');
+    const audio = document.getElementById('hum-audio') as HTMLAudioElement | null;
+    if (!button || !audio) return;
     const key = 'chimera-hum';
-    const show = (on: boolean) => { button.setAttribute('aria-pressed', String(on)); document.body.classList.toggle('humming', on); };
-    const fadeTo = (target: number, ms: number) => {
-      const start = audio.volume, t0 = performance.now();
-      const step = (now: number) => {
-        const k = Math.min(1, (now - t0) / ms);
-        audio.volume = start + (target - start) * k;
-        if (k < 1) requestAnimationFrame(step); else if (target === 0) audio.pause();
-      };
-      requestAnimationFrame(step);
+    const show = (on: boolean) => {
+      document.querySelector('.hum')?.setAttribute('aria-pressed', String(on));
+      document.body.classList.toggle('humming', on);
     };
-    const start = () => { audio.volume = 0; audio.play().then(() => { fadeTo(0.6, 4000); show(true); try { sessionStorage.setItem(key, 'on'); } catch {}; }).catch(() => show(false)); };
-    const stop = () => { fadeTo(0, 1500); show(false); try { sessionStorage.setItem(key, 'off'); } catch {}; };
-    button.addEventListener('click', () => (audio.paused ? start() : stop()));
-    if (!audio.paused) {
-      show(true);
-    } else if ((() => { try { return sessionStorage.getItem(key) === 'on'; } catch { return false; } })()) {
-      // Browsers only allow this after an earlier interaction on the site; if refused, stay silent.
-      audio.volume = 0.6; audio.play().then(() => show(true)).catch(() => {});
+    if (!audio.dataset.bound) {
+      audio.dataset.bound = '1';
+      audio.addEventListener('play', () => show(true));
+      audio.addEventListener('pause', () => show(false));
+      let fade = 0;
+      const fadeTo = (target: number, ms: number) => {
+        const from = audio.volume, t0 = performance.now(), id = ++fade;
+        const step = (now: number) => {
+          if (id !== fade) return; // a newer fade took over
+          const k = Math.min(1, (now - t0) / ms);
+          audio.volume = from + (target - from) * k;
+          if (k < 1) requestAnimationFrame(step); else if (target === 0 && audio.dataset.want !== 'on') audio.pause();
+        };
+        requestAnimationFrame(step);
+      };
+      const start = () => {
+        audio.dataset.want = 'on';
+        if (audio.paused) audio.volume = 0;
+        audio.play().then(() => fadeTo(0.6, 4000)).catch(() => { audio.dataset.want = 'off'; show(false); });
+        try { sessionStorage.setItem(key, 'on'); } catch {}
+      };
+      const stop = () => {
+        audio.dataset.want = 'off';
+        fadeTo(0, 1500);
+        try { sessionStorage.setItem(key, 'off'); } catch {}
+      };
+      document.addEventListener('click', (e) => {
+        if (!(e.target as HTMLElement | null)?.closest?.('.hum')) return;
+        audio.dataset.want === 'on' ? stop() : start();
+      });
+      let remembered = false;
+      try { remembered = sessionStorage.getItem(key) === 'on'; } catch {}
+      if (remembered) {
+        // Browsers only allow this after an earlier interaction on the site; if refused, stay silent.
+        audio.dataset.want = 'on'; audio.volume = 0.6;
+        audio.play().catch(() => { audio.dataset.want = 'off'; });
+      }
     }
-  }
+    show(!audio.paused);
   };
   document.addEventListener('astro:page-load', bind);
 </script>

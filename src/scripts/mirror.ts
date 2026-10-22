@@ -128,6 +128,7 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
     const pattern = [1, 0, 1, 1, 0, 0, 1, 0];
     let i = 0;
     const step = () => {
+      if (stopped) return;
       if (i < pattern.length) { inkTarget = pattern[i++]; ink = inkTarget; setTimeout(step, 55 + Math.random() * 40); }
       else { inkTarget = 0; ink = 0; }
     };
@@ -150,15 +151,13 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
     const w = Math.max(1, Math.round(host.clientWidth * dpr)), h = Math.max(1, Math.round(host.clientHeight * dpr));
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
   };
-  const ro = new ResizeObserver(size);
+  const ro = new ResizeObserver(() => { size(); if (reduced) draw(); });
   ro.observe(host);
 
   let raf = 0;
   const t0 = performance.now();
-  const frame = () => {
-    raf = requestAnimationFrame(frame);
-    if (!ready || !visible || document.hidden) return;
-    size();
+  const draw = () => {
+    if (!ready) return;
     const t = (performance.now() - t0) / 1000;
     mx += (tx - mx) * 0.045;
     my += (ty - my) * 0.045;
@@ -173,6 +172,15 @@ export function mountMirror(host: HTMLElement, img: HTMLImageElement, canvas: HT
     gl.uniform1f(U.focus, 0.35);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   };
+  // reduced motion: one still frame once the texture is in, then nothing
+  const frame = () => {
+    if (stopped) return;
+    if (reduced) { if (ready) draw(); else raf = requestAnimationFrame(frame); return; }
+    raf = requestAnimationFrame(frame);
+    if (!visible || document.hidden) return;
+    draw();
+  };
+  size();
   raf = requestAnimationFrame(frame);
 
   return {
