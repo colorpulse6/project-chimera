@@ -62,3 +62,14 @@ Node 22 or newer. To host at a custom domain, set `SITE_BASE=""` and
 `SITE_URL=https://example.com` when building.
 
 The browser game that lived here before is tagged `legacy-browser-game` in git.
+
+## Clips
+
+Gameplay recordings go in `public/media/` as mp4 (H.264, no audio). To trim and cut loops from a screen recording:
+
+```sh
+ffmpeg -ss 2.4 -to 41.0 -i recording.mov -an -vf "fps=30,scale=1280:-2" -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -movflags +faststart public/media/clip.mp4
+ffmpeg -ss 19.5 -to 25.0 -i recording.mov -an -vf "fps=30,scale=960:-2" -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart public/media/loop-street.mp4
+```
+
+Loops autoplay muted through the `Frame` component (`<Frame src="media/loop-street.mp4" poster="media/poster.jpg" />`). Longer clips use a plain `<video controls>` so the reader chooses to play them.

@@ -2,15 +2,16 @@
 /* A labelled frame. Pass an imported image (src/assets) for optimisation, or a
    string path under public/ for GIFs and videos. */
 import { Image } from 'astro:assets';
-const { src, alt = '', label, caption, widths = [480, 800, 1200, 1800], sizes = '(min-width: 70rem) 50vw, 100vw', loading = 'lazy', priority = false } = Astro.props;
+const { src, alt = '', label, caption, poster, widths = [480, 800, 1200, 1800], sizes = '(min-width: 70rem) 50vw, 100vw', loading = 'lazy', priority = false } = Astro.props;
 const isString = typeof src === 'string';
 const isVideo = isString && /\.(mp4|webm)$/i.test(src);
 const base = import.meta.env.BASE_URL;
 const publicSrc = isString ? base + src.replace(/^\//, '') : null;
+const posterSrc = poster ? base + poster.replace(/^\//, '') : undefined;
 ---
 <figure class="frame">
   {isVideo ? (
-    <video src={publicSrc} autoplay muted loop playsinline aria-label={alt}></video>
+    <video src={publicSrc} poster={posterSrc} autoplay muted loop playsinline preload="metadata" aria-label={alt}></video>
   ) : isString ? (
     <img src={publicSrc} alt={alt} loading={loading} />
   ) : (

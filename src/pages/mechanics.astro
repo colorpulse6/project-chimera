@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import kaiInGame from '../assets/media/kai-in-game.jpg';
+const base = import.meta.env.BASE_URL;
+
+const shards = [
+  ['Elemental', 'Ignis, Cryo, Electro, Kineto', 'Fire, cold, lightning, force. The ordinary spells, which in this world are precursor energies with names.'],
+  ['Temporal', 'Celerity, Stasis, Flux', 'Haste, stop, and the unpredictable kind. Kai has a natural affinity for these.'],
+  ['Reality', 'Phase, Distortion, Aegis', 'Short teleports, localised glitches, and barriers made of stabilised reality.'],
+  ['System', 'Override, Nullify, Corruption', 'Rare and dangerous. They talk to the machine directly, and the machine notices.'],
+  ['Attribute', 'Might, Finesse, Resilience, Acuity', 'Passive. A shard that simply makes you more.'],
+];
+
+const spells = [
+  ['Ignis', 'Ember Cascade', 'Plasma Lash', 'Solar Flare'],
+  ['Cryo', 'Frost Snap', 'Glacial Spike', 'Absolute Zero Field'],
+  ['Electro', 'Static Discharge', 'Arc Chain', 'Ion Storm'],
+  ['Kineto', 'Force Push', 'Concussive Blast', 'Gravity Well'],
+  ['Celerity', 'Quick Step', 'Time Dilation Field', 'Paradox Loop'],
+  ['Stasis', 'Temporal Anchor', 'Chronal Stutter', 'Pocket Singularity'],
+  ['Phase', 'Blink Step', 'Ethereal Form', 'Rift Walk'],
+  ['Distortion', 'Glitch Dart', 'Corrupt Data Zone', 'Reality Tear'],
+  ['Aegis', 'Barrier Weave', 'Bastion of Will', 'Fortress of Reality'],
+  ['Override', '—', 'Subvert Construct', 'System Shock'],
+  ['Nullify', '—', 'Dispel Protocol', 'Code Purge'],
+  ['Corruption', '—', 'Degenerate Algorithm', 'Cascade Failure'],
+];
+
+const kaiWeapons = [
+  ['0', 'Rusted Pipe Sword', '—'],
+  ['1', 'Iron Longsword', '—'],
+  ['2', 'Steel Bastard Sword', 'Fleeting Shield'],
+  ['3', 'Alloyed Reckoner, precursor metal', 'Kinetic Burst'],
+  ['4', 'Temporal Edge, a small time-skip on a critical hit', 'Code Spike'],
+  ['5', 'Chimera’s Fang, strikes that distort reality', 'System Override'],
+];
+
+const companions = [
+  ['Rex', 'the scavenger', 'Jury-Rig overloads old tech for a burst or a distraction. Scan Pulse shows weak points and traps. Salvage Master finds more in the wreckage.'],
+  ['Seraph', 'the awakened enforcer', 'System Override makes automated defences hesitate. Directive Analysis predicts an enemy’s pattern. Null Field dampens glitch effects and energy attacks.'],
+  ['Zenith', 'the glitch-witch', 'Read the Static turns the noise of a distortion into paths, weaknesses and lore. Reality Spike throws chaos at an enemy. Phase Step is a short teleport that looks like a personal glitch.'],
+  ['Valerian', 'the archivist', 'Historical Acumen reads precursor script and machines. Expose Weakness finds the flaw in an agent of The System. Counter-Algorithm blinds surveillance in a small area.'],
+  ['Lyra', 'the apostate', 'Code Resonance senses other Lumina code nearby. Genetic Decryption reveals a Lumina or AI enemy’s vulnerability. Signal Mask hides the party from detection. Lumina Surge is a desperate, dangerous burst.'],
+  ['Cog', 'the discarded construct', 'Fragmented archive access gives lore and enemy data. Repurpose Machinery wakes old doors, conveyors and turrets. Observed Patterns predicts a repeated attack. A glitched empathy protocol sometimes calms, confuses, or merely puzzles.'],
+  ['Cora', 'the princess', 'Luminous Charm opens dialogue and defuses rooms. Serendipitous Intuition is luck that is really The System keeping her blessed. Voice of Harmony lifts the party. Eye for Antiquity understands old trinkets by accident.'],
+];
+---
+<Base title="Mechanics" description="How Chimera plays: what the build does today, and the designed systems that follow, from saving at a tear in reality to weaving echo shards into a sword.">
+  <section class="section">
+    <div class="narrow prose">
+      <h1>Mechanics</h1>
+      <p class="lede">A JRPG whose magic is misunderstood machinery, whose save points are tears in reality, and whose battles sometimes change what century they are in.</p>
+      <p class="note"><b>Built versus designed.</b> The build today walks, talks and saves. Combat, shards and spells exist on paper, written in 2025 for an earlier version of the game, and are listed here because they are the plan. Each section says which it is.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-built">In the build today</span></h2>
+        <p>The packaged Mac build of 22 October 2026.</p>
+      </div>
+      <div class="two">
+        <Frame src="media/loop-street.mp4" poster="media/havenwood-walk-poster.jpg" alt="Kai walks down the Havenwood street between a yellow house and a blue one, cape moving, towards an arch." label="Walking." caption="Third-person movement with a following camera, walk and run, captured from the build on 22 October." />
+        <dl class="ledger">
+          <div><dt>Movement</dt><dd>Walk and run through the courtyard and the street, on a one-metre town kit. The camera follows and can be swung.</dd></div>
+          <div><dt>Talking</dt><dd>A prompt appears near a resident. Each of the five has lines. The Fisherman and the Child walk routes and can be caught up with.</dd></div>
+          <div><dt>Saving</dt><dd>A local save from the pause menu. The designed version, where saving is a thing in the world, is below.</dd></div>
+          <div><dt>Menus</dt><dd>Title and pause. Nothing else yet: no inventory, no battle screen, no map.</dd></div>
+          <div><dt>Phasing</dt><dd>Kai’s drawing failing as he moves was built once, read as a glitch, and removed. It comes back when it can be done on purpose.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2><span class="state state-next">Saving at a Temporal Distortion</span></h2>
+      <p>Save points are places where the world is thin: a shimmer in the air like heat haze with the wrong colours in it, and a sound like whispering through static. Touching one shows Kai a single frame of his execution and puts a message on the screen, <em>Temporal Anchor Stabilized</em>, which is how the player learns the game has saved. They cluster near ruins. Later in the story they become unstable, and later still Kai learns to do things with them.</p>
+
+      <h2><span class="state state-next">The loop</span></h2>
+      <p>Explore, confront, manipulate, reflect. Look for the sister and for the seams. Meet what The System puts in the way. Use what Kai can do to the rules to get past it. Then talk, choose, and live with it.</p>
+
+      <h2><span class="state state-next">Combat in three phases</span></h2>
+      <p>The first fights are plain medieval skirmishes: a sword, a bandit, basic skills. Then the Spark: Kai discharges something, and from then on the party has abilities that the world calls magic and the design calls technology. The third phase is Glitch combat, where the arena itself is a variable. Mid-fight the field can skip from a village square to a laboratory, a starship corridor or a landscape that is not from this world, and everyone has to adapt. Some enemies are The System's own and do not stay beaten; they come back adapted.</p>
+      <p>The first enemy written down is the Static Wisp: a spirit that scholars say is drawn to magic, and that Kai notices flickers in and out of existence like a drawing being erased and redrawn.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-next">Echo Weaving</span></h2>
+        <p>The magic and upgrade system. Magic here is reading and bending the code under the world, and the things you bend it with are Echo Shards.</p>
+      </div>
+      <div class="two">
+        <div class="prose">
+          <p>Echo Shards are solid pieces of the world's instability: fragments of The System's control code, precursor data, or a knot of temporal distortion. They are found in ruins, dropped by glitched enemies and agents, left behind when a distortion is stabilised, or given for forbidden knowledge. Zenith can sense them. Valerian can read what they are.</p>
+          <p>Weapons have attunement slots. A shard in a slot gives its ability while it is there. The first time a shard of a given strength is slotted, it <b>weaves</b>: a permanent change to the weapon, a latent property unlocked, sometimes a visible transformation. Compatible shards together make <b>resonance</b>, combined abilities. Too many strong shards, or incompatible ones, in a weak or damaged weapon make <b>dissonance</b>: a surge that may hurt the wielder, or permanently alter the weapon, for better or worse.</p>
+          <p>Kai's own swords have more slots than they should, and shards in his hands do more than they do in anyone else's. Rex can force a dissonant pairing to work once. Seraph can handle System shards safely. Zenith is the only one who can weave Corruption. Valerian unlocks the recipes.</p>
+        </div>
+        <div class="spec-wrap"><table class="spec">
+          <thead><tr><th>Echo</th><th>Shards</th><th>What they do</th></tr></thead>
+          <tbody>{shards.map(([k, s, v]) => <tr><td>{k}</td><td>{s}</td><td>{v}</td></tr>)}</tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-next">Spells</span></h2>
+        <p>Three tiers per shard, learned by use, by finding a purer shard, or by a moment in the story. Casting costs System Strain, the toll of handling the code.</p>
+      </div>
+      <div class="spec-wrap"><table class="spec spells">
+        <thead><tr><th>Shard</th><th>Basic</th><th>Advanced</th><th>Master</th></tr></thead>
+        <tbody>{spells.map(([k, a, b, c]) => <tr><td>{k}</td><td>{a}</td><td>{b}</td><td>{c}</td></tr>)}</tbody>
+      </table></div>
+      <p class="small muted">Master tier is risky by design: Paradox Loop, Reality Tear, System Shock and Cascade Failure can all go wrong, and System spells attract The System's attention.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-next">Kai's sword</span></h2>
+        <p>Six tiers from scrap to legend. Each companion has a similar ladder for two weapons.</p>
+      </div>
+      <div class="two">
+        <div class="spec-wrap"><table class="spec">
+          <thead><tr><th>Tier</th><th>Sword</th><th>Glitch</th></tr></thead>
+          <tbody>{kaiWeapons.map(([t, w, g]) => <tr><td>{t}</td><td>{w}</td><td>{g}</td></tr>)}</tbody>
+        </table></div>
+        <Frame src={kaiInGame} alt="Kai in the game, in his navy cape." caption="Kai as built. The second column is his own glitch, which grows from a brief shield to control of lesser constructs." sizes="(min-width: 60rem) 36rem, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-next">What the companions can do</span></h2>
+        <p>Seven optional party members, each with three or four abilities. None of them are drawn yet.</p>
+      </div>
+      <div class="spec-wrap"><table class="spec">
+        <thead><tr><th>Who</th><th>Abilities</th></tr></thead>
+        <tbody>{companions.map(([n, r, v]) => <tr><td>{n}, <span class="muted">{r}</span></td><td>{v}</td></tr>)}</tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2><span class="state state-next">The world being wrong</span></h2>
+      <p>Small things to find in Havenwood, each with a line of text. The village clock keeps perfect time and no one has ever wound it. A tavern mirror answers a fraction of a second late. Three rows of tulips, each flower identical to the petal. A faded proclamation from the capital whose letters, if you squint, look like something other than letters. Old Man Silas walks a square by the fence and, if you stand in his way, walks in place before sliding around you.</p>
+      <p>None of this is in the build yet. The build has the pale paving and the calm residents, which is the right half to have first.</p>
+      <p><a href={base + 'story/'}>The story</a> explains why the world is like this. <a href={base + 'roadmap/'}>The roadmap</a> says what gets built next.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 38ch; margin-bottom: 1.8rem; }
+  .note { margin-bottom: 1rem; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: start; }
+  @media (max-width: 60rem) { .two { grid-template-columns: 1fr; } }
+  .spells td { white-space: nowrap; }
+  @media (max-width: 40rem) { .spells td { white-space: normal; } }
+</style>

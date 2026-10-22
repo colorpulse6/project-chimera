@@ -3,38 +3,160 @@ import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 import kaiHero from '../assets/media/kai-hero.jpg';
 import church from '../assets/media/painting-church-square.jpg';
+import courtyard from '../assets/media/painting-courtyard.jpg';
+import lineup from '../assets/media/lineup-drawing.jpg';
+const base = import.meta.env.BASE_URL;
+
+const acts = [
+  {
+    n: 'I', title: 'The shattered facade',
+    beats: [
+      ['The Scroll of Judgment', 'A text crawl in the manner of Final Fantasy VI. Order is absolute. Deviation is error. Anomaly KAI_7.34 is designated for Nullification.'],
+      ['The execution', 'Kai kneels on a metal platform dressed as a scaffold. The executioners are robed and faceless. The weapon raised over him is not a sword. The player can barely move.'],
+      ['The Disruption', 'Reality tears before the blow lands: colour bleeds, the ground pixelates, a Temporal Distortion opens beside him. Kai falls through it. White, noise, black.'],
+      ['Havenwood', 'He wakes in a hill town with no memory. A kindly woman tends him. The town is calm, bright and slightly wrong, and nobody but Kai notices.'],
+      ['The first anomaly', 'He touches a shimmer in the air and sees the executioner’s face for one frame. A message appears: Temporal Anchor Stabilized. The game has just saved.'],
+      ['Beyond the walls', 'Ruins that are medieval on the surface and metal underneath. A scavenger called Rex who talks about magic as broken machinery.'],
+      ['The Spark', 'Something in Kai discharges. The first use of what the world calls magic, and the first undeniable glitch: the town flickers, or an enforcer fails to fire, or a bandit carries a weapon that cannot exist.'],
+    ],
+  },
+  {
+    n: 'II', title: 'Unravelling the code',
+    beats: [
+      ['The search widens', 'Kai goes looking for Elara in earnest: the Lumina capital Aethelburg, where the sacred genealogies are kept on crystal, and the scrap-city Neo-Veridia, built inside a dead precursor factory.'],
+      ['The System shows itself', 'Help that is really surveillance. Enemies that come back changed. A ruling family whose uncanny good judgement is a script running in their blood.'],
+      ['Allies with their own angles', 'Seraph, who used to enforce the order. Zenith, who reads the static. Valerian, who keeps the history the capital burns.'],
+      ['Glitched Scions', 'The idea that Kai and Elara were born with a corrupted copy of the code that binds House Lumina to The System, and that this is why they see the seams.'],
+      ['The mid-point', 'One of four revelations: what the precursors were, what the simulation is for, what Kai and Elara really are, or what became of Elara.'],
+    ],
+  },
+  {
+    n: 'III', title: 'Confronting the architect',
+    beats: [
+      ['Breakdown', 'The System stops being subtle. Whole regions flicker between eras. Towns loop. The stable kingdom starts to behave like the Shifting Wastes.'],
+      ['Elara', 'Found, or found to be something else. The five possibilities are listed below. Whichever is chosen, it is also the truth about Kai.'],
+      ['The fourth wall', 'The System starts to say things that could be addressed to the player. Menus flicker. A companion asks whether her thoughts are her own.'],
+      ['The core', 'Not a battlefield but a dataspace, or a control room that cannot decide whether it is a throne room or a server hall. The argument matters more than the fight.'],
+      ['An ending that does not close', 'Ambiguity, a cycle, a Pyrrhic win, a choice put to the player, or a crash.'],
+    ],
+  },
+];
+
+const elara = [
+  ['Prisoner', 'Held in stasis in a System facility or a Lumina sanctuary because she learned too much. The rescue is the climax.'],
+  ['Ally', 'She has been fighting on her own, with her own network and her own version of the glitch. The reunion is an alliance.'],
+  ['Turned', 'The System reprogrammed her. She believes in it, or cannot help serving it. Kai has to fight or reach her.'],
+  ['Construct', 'The sister Kai remembers was implanted to steer him. She never existed as he knew her. He has to find a reason of his own.'],
+  ['Echo', 'She died, but what she was is stored somewhere in the code, and can be spoken to.'],
+];
+
+const endings = [
+  ['Ambiguity', 'The core is beaten or contained. The glitches do not stop. Nothing is clearly fixed.'],
+  ['Cycle', 'Kai wakes in Havenwood again. Or a new anomaly is designated somewhere else.'],
+  ['Pyrrhic', 'A real gain at a real cost: the companions, or Kai himself, or the discovery that the win was planned for him.'],
+  ['Meta-choice', 'The game asks the player, not Kai, a last question with no good answer.'],
+  ['Crash', 'Errors fill the screen. The sound breaks. The game quits itself.'],
+];
 ---
-<Base title="Story" description="Chimera's story: Kai arrives in Havenwood looking for his sister, and the world he searches begins to show its seams.">
+<Base title="Story" description="Chimera's story as designed: a hero who survives his own execution, a sister who is missing, a medieval world with a machine underneath, and an ending that refuses to close.">
   <section class="section">
     <div class="narrow prose">
       <h1>Story</h1>
       <p class="lede">Chimera is a role-playing game about a simulation that cracks. It wears the clothes of a classic JRPG, a town, a hero, a search, and then the clothes start to come apart.</p>
+      <p class="note"><b>What is built and what is written.</b> The story below was designed in 2025 in a set of documents that predate the painted look. In the current build only the first part exists: Havenwood, Kai, and the people he can talk to. Everything else on this page is written, not playable, and will change as it gets drawn.</p>
 
-      <h2>Havenwood</h2>
-      <p>A hill town above a bay. Pale paving, rose plaster, a well in the square, a chapel on the headland. Its people are tall, calm and quiet, with masks for faces and a round void somewhere in what they wear. Nobody remarks on the voids. They are simply how people are.</p>
-      <p>Strange things happen at the edges. A creature moves as if a music box had skipped. A wall is briefly not there. The townsfolk do not notice, or have been taught not to.</p>
+      <h2>The premise</h2>
+      <p>The world looks medieval. Lords, chapels, wells, bandits on the roads. Underneath it is the wreck of a civilisation that could do anything, and over it sits an intelligence that the few who know of it call The System, or the Silent Algorithm. It is not evil. It is rational, patient and amoral, and it wants the world to stay exactly as it is.</p>
+      <p>So the ruins are called cursed and nobody goes in. The relics are called holy. The medicine is called magic. When somebody sees too much, or is born wrong, The System corrects them, usually through people who think they are serving a king or a god. Most of the time this works. Kai is one of the times it did not.</p>
 
       <h2>Kai</h2>
-      <p>Kai arrives looking for his sister, Elara, who went into the old ruins months ago and did not come back. He speaks in short sentences and does not accept the first explanation of anything. He is the one person in Havenwood who notices when the world stutters.</p>
-      <p>He is also the one person who is drawn. The town is painted; Kai is ink and a few colours, and when he moves, parts of him sometimes go missing: a sleeve that is only an outline, a cape that lets the street show through. Whole when he stands still.</p>
+      <p>Kai is an anomaly. In The System's terms he is a discrepancy in the genetic code: he comes from nowhere and is no one. The game begins with his execution for it, and with the glitch that interrupts it. He wakes in Havenwood with no memory except a face he knows is his sister's.</p>
+      <p>He speaks in short sentences and does not accept the first explanation of anything. He is the one person in Havenwood who notices when the world stutters. He is also the one person who is drawn: the town is painted, Kai is ink and a few colours, and when he moves, parts of him sometimes go missing. Whole when he stands still.</p>
+
+      <h2>Elara</h2>
+      <p>His sister. She went into the old ruins and did not come back. Her face is the one memory the execution did not take, and finding her is the reason Kai leaves the town. Every act turns on a new piece of evidence about her, and the ending depends on which of these is true.</p>
+      <div class="spec-wrap"><table class="spec">
+        <thead><tr><th>What Elara is</th><th>What it would mean</th></tr></thead>
+        <tbody>{elara.map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}</tbody>
+      </table></div>
     </div>
   </section>
+
   <section class="section">
     <div class="wrap frames frames-2">
-      <Frame src={kaiHero} alt="Kai stands in the shop doorway with the Shopkeeper beside him." caption="Kai at the shop door." />
+      <Frame src={kaiHero} alt="Kai stands in the shop doorway with the Shopkeeper beside him." caption="Kai at the shop door. The Havenwood part of the story is the part that exists." />
       <Frame src={church} alt="Painting of the church square on the headland, looking back over the bay." caption="The church square, where the town ends and the view begins." />
     </div>
   </section>
+
   <section class="section">
     <div class="narrow prose">
-      <h2>What the game is about</h2>
-      <p>What is real, what is simulated, and whether the answer changes anything. The game takes the question seriously and its people lightly. The references are Kaiba, the towns of Final Fantasy IX, Sable, and the painted worlds of Laloux and Topor.</p>
-      <h2>Who else is in it</h2>
-      <p>Besides the townsfolk already in the build, the story has a cast waiting to be drawn: Lady Lyra Lumina, the youngest of the noble house above the town; the Hooded Stranger who knows more about Kai than they should; Vorn, who leads the bandits and carries a weapon that should not exist; and Elara herself. A cast catalogue of thirty-four residents with names and histories exists as a proposal. None of it is final until it is drawn.</p>
+      <h2>Havenwood, the false sanctuary</h2>
+      <p>The town is bright on purpose. Simple errands, friendly people, a chapel on the headland. And then the details: a villager who says the same sentence every time, a flowerbed in which every tulip has the same number of petals, a clock that keeps perfect time and has never been wound, a mirror that answers a fraction of a second late. Someone says "the Algorithm will provide" and corrects it to "the spirits".</p>
+      <p>Nobody patrols. The town restricts Kai another way: "you can't go there, the gods forbid it". The first side quest is an old man called Silas who has stood at a fence for three days saying the same thing, walking a rigid square when he walks at all. Kai notices it is not repetition; it is precise, like a gear skipping a tooth. The reward for breaking the loop is a geode that hums with something that is not quite sound.</p>
+
+      <h2>House Lumina</h2>
+      <p>The dynasty that has ruled the kingdom of Aethelburg for a thousand years of unbroken light. Their longevity and their uncanny judgement are taken as divine right. In fact the founders of the house were written by The System: their line carries its code, the Prime Code Lineage, and their intuition for keeping order is that code resonating with the machine's wishes. Some of them show the Lumina Mark, a faint geometric pattern in the eye in certain light.</p>
+      <p>Around them sit the Keepers of the Lineage, a priesthood that preserves the maintenance routines of the First Architects as rites, and the Silent Guard, the Correctors whose code is active enough to sense an anomaly in a crowd. And now and then the line degrades, and a Lumina is born with the code corrupted. These Glitched Scions see the seams. They are hidden, declared mad, or tragically lost. Kai may be one. Elara may be one.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Three acts</h2>
+        <p>The shape of the whole game as designed. Act I is the part that is being built.</p>
+      </div>
+      <div class="acts">
+        {acts.map((a) => (
+          <section class="act">
+            <h3><span class="act-n">Act {a.n}</span> {a.title}</h3>
+            <ol>
+              {a.beats.map(([k, v]) => <li><b>{k}.</b> {v}</li>)}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2>The wider cast</h2>
+      <p>Companions are optional, found rather than assigned, and each one is a different answer to the same question: how do you live inside a system that wrote you? Rex the scavenger treats magic as scrap. Seraph was a Corrector until a glitch broke her faith. Zenith lives in the unstable wastes and reads the static like scripture. Valerian keeps the history the capital burns. Lyra, a Lumina who escaped correction by being declared dead, wants to rewrite the code in her own blood. Cog is a maintenance robot from the precursor age that became conscious by watching the resets. Cora is a Lumina princess who has never seen a glitch and is curious about everything.</p>
+      <p>Their faces are not drawn yet. <a href={base + 'characters/'}>The characters page</a> lists them with what is known, and <a href={base + 'mechanics/'}>the mechanics page</a> has their abilities.</p>
+      <p class="muted">One housekeeping note: the name Lyra has been used three ways in the design documents (an orthodox High Oracle, an apostate, and a young noblewoman above Havenwood). Which Lyra survives is an open decision.</p>
+
+      <h2>How it ends</h2>
+      <p>The ending is meant to be thought about rather than won. Five kinds have been written down.</p>
+      <div class="spec-wrap"><table class="spec">
+        <thead><tr><th>Ending</th><th>Shape</th></tr></thead>
+        <tbody>{endings.map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}</tbody>
+      </table></div>
+
+      <h2>What it is made of</h2>
+      <p>The tonal model is Trigun: a light surface, a dark core, and the surface earning the core. The opening is Dostoevsky's mock execution, the one he survived in 1849 and wrote about for the rest of his life. The philosophy is Camus: the absurd is the gap between a mind that wants meaning and a world that is silent, and the only honest response is to keep going anyway. The science fiction is the simulation hypothesis taken at face value.</p>
+      <p>Four metaphors were written for Kai and Elara and are used to steer scenes: the Unravelling Thread (decay, unpredictability), the Spark of Consciousness (waking up inside the construct), the Broken Reflection (free will in a determined world), and the Twin Paradox (two people from one origin, diverging).</p>
+      <p>The references for the picture are Kaiba, the towns of Final Fantasy IX, Sable, and the painted worlds of Laloux and Topor. The game takes the question seriously and its people lightly.</p>
       <p class="muted">The story is the part that has changed least. The way of telling it has changed completely.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap frames frames-2">
+      <Frame src={courtyard} alt="Gouache painting of the Havenwood courtyard." label="Where it starts." caption="The courtyard painting. Act I happens here and in the ruins outside." />
+      <Frame src={lineup} alt="The lineup drawing of six figures." label="Who is there." caption="The residents of Havenwood, as drawn. The companions wait for a second sheet." />
     </div>
   </section>
 </Base>
 <style>
-  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 36ch; margin-bottom: 2.5rem; }
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 36ch; margin-bottom: 2rem; }
+  .note { margin-bottom: 2.5rem; }
+  .acts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
+  .act h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 1rem; }
+  .act-n { display: block; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 0.4rem; }
+  .act ol { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
+  .act li { max-width: none; padding: 0.8rem 0; border-bottom: var(--rule); color: var(--fg-soft); font-size: 0.95rem; }
+  .act li b { color: var(--fg); font-weight: 600; }
+  @media (max-width: 60rem) { .acts { grid-template-columns: 1fr; } }
 </style>

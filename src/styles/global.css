@@ -1,24 +1,24 @@
-/* Chimera status site. Palette and texture come from the game's look contract:
-   paper sand, painted sky, lavender shadow, plum-black ink. */
+/* Chimera status site. The palette is the game's look contract at night:
+   the plum-black ink becomes the ground, the paper becomes the text, and the
+   paintings sit on it like prints on a dark wall. */
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/instrument-sans';
 
 :root {
-  --paper: #f3e2c3;
-  --paper-deep: #e8d0a4;
-  --paper-light: #faefd9;
-  --sky-top: #edc79a;
-  --sky-low: #fce6c0;
-  --ink: #2b1a1c;
-  --ink-soft: #5e484b;
-  --ink-faint: #8f777a;
+  /* Night version of the look contract: plum-black ground, paper text, lavender shadows. */
+  --bg: #1b1720;
+  --bg-raised: #252030;
+  --bg-sunk: #120f16;
+  --fg: #e9dcc3;
+  --fg-soft: #b3a6a6;
+  --fg-faint: #847a86;
   --lavender: #bfb0cf;
   --lavender-deep: #7e6c93;
-  --rose: #b8705e;
-  --ochre: #c9a062;
+  --rose: #c47b67;
+  --ochre: #d2a866;
   --navy: #3e4660;
   --leaf: #2e4248;
-  --kai: #9e2e1e;
+  --kai: #d24a34;
 
   --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
   --font-body: 'Instrument Sans Variable', system-ui, -apple-system, sans-serif;
@@ -26,15 +26,17 @@
   --measure: 64ch;
   --gutter: clamp(1.1rem, 4vw, 3rem);
   --page: 78rem;
-  --rule: 1px solid color-mix(in oklab, var(--ink) 22%, var(--paper));
-  --shadow: 0.6rem 0.6rem 0 var(--lavender);
+  --line: color-mix(in oklab, var(--fg) 16%, var(--bg));
+  --edge: color-mix(in oklab, var(--fg) 40%, var(--bg));
+  --rule: 1px solid var(--line);
+  --shadow: 0.6rem 0.6rem 0 var(--lavender-deep);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.55;
@@ -48,14 +50,15 @@ body::after {
   content: '';
   position: fixed; inset: 0; z-index: 50; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.07;
-  mix-blend-mode: multiply;
+  opacity: 0.14;
+  mix-blend-mode: soft-light;
 }
 
 img, video { max-width: 100%; height: auto; display: block; }
+::selection { background: var(--lavender-deep); color: var(--fg); }
 
-a { color: inherit; text-decoration-color: var(--lavender-deep); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-color: var(--kai); }
+a { color: inherit; text-decoration-color: var(--lavender); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--ochre); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--kai); outline-offset: 3px; }
 
 h1, h2, h3, h4 {
@@ -75,7 +78,7 @@ h4 { font-size: 1.1rem; font-variation-settings: 'SOFT' 60, 'WONK' 0, 'opsz' 24;
 p, ul, ol, dl, blockquote, table, figure { margin: 0 0 1.1em; }
 p, li, dd { max-width: var(--measure); }
 small, .small { font-size: 0.88rem; }
-.muted { color: var(--ink-soft); }
+.muted { color: var(--fg-soft); }
 strong { font-weight: 600; }
 
 .wrap { width: min(100% - 2 * var(--gutter), var(--page)); margin-inline: auto; }
@@ -84,18 +87,18 @@ strong { font-weight: 600; }
 .section { padding-block: clamp(3rem, 7vw, 6rem); }
 .section + .section { border-top: var(--rule); }
 .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
-.section-head p { margin: 0; color: var(--ink-soft); max-width: 48ch; }
+.section-head p { margin: 0; color: var(--fg-soft); max-width: 48ch; }
 
 /* A labelled frame, as on the review sheets */
 .frame { margin: 0; }
 .frame img, .frame video {
   width: 100%;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--edge);
   box-shadow: var(--shadow);
-  background: var(--paper-deep);
+  background: var(--bg-sunk);
 }
-.frame figcaption { margin-top: 1.1rem; font-size: 0.92rem; color: var(--ink-soft); max-width: 60ch; }
-.frame figcaption b { color: var(--ink); font-weight: 600; }
+.frame figcaption { margin-top: 1.1rem; font-size: 0.92rem; color: var(--fg-soft); max-width: 60ch; }
+.frame figcaption b { color: var(--fg); font-weight: 600; }
 
 .frames { display: grid; gap: clamp(1.6rem, 3.5vw, 3rem) clamp(1.4rem, 3vw, 2.4rem); }
 .frames-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
@@ -105,19 +108,19 @@ strong { font-weight: 600; }
 /* Status ledger */
 .ledger { margin: 0; border-top: var(--rule); }
 .ledger > div { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; gap: 1rem; padding: 0.8rem 0; border-bottom: var(--rule); }
-.ledger dt { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.05rem; color: var(--ink-soft); }
+.ledger dt { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.05rem; color: var(--fg-soft); }
 .ledger dd { margin: 0; }
 
 /* Status words appear as a small ring: filled = built, half = in progress, empty = planned */
 .state { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
-.state::before { content: ''; width: 0.8em; height: 0.8em; border-radius: 50%; border: 1.5px solid var(--ink); flex: none; }
-.state-built::before { background: var(--ink); }
+.state::before { content: ''; width: 0.8em; height: 0.8em; border-radius: 50%; border: 1.5px solid var(--fg); flex: none; }
+.state-built::before { background: var(--fg); }
 .state-now::before { background: linear-gradient(90deg, var(--kai) 50%, transparent 50%); border-color: var(--kai); }
-.state-next::before { border-style: dashed; border-color: var(--ink-faint); }
+.state-next::before { border-style: dashed; border-color: var(--fg-faint); }
 
 .button {
-  display: inline-block; padding: 0.7rem 1.2rem; border: 1px solid var(--ink);
-  background: var(--paper-light); color: var(--ink); text-decoration: none;
+  display: inline-block; padding: 0.7rem 1.2rem; border: 1px solid var(--edge);
+  background: var(--bg-raised); color: var(--fg); text-decoration: none;
   font-weight: 500; box-shadow: 0.35rem 0.35rem 0 var(--lavender);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
@@ -128,17 +131,29 @@ strong { font-weight: 600; }
 .prose { max-width: var(--measure); }
 .prose h2 { margin-top: 2.2em; }
 .prose h3 { margin-top: 1.8em; }
-.prose img { border: 1px solid var(--ink); box-shadow: var(--shadow); margin: 1.6rem 0 2rem; }
+.prose img { border: 1px solid var(--edge); box-shadow: var(--shadow); margin: 1.6rem 0 2rem; }
 .prose figure { margin: 1.6rem 0 2rem; }
 .prose figure img { margin: 0; }
-.prose figcaption { margin-top: 1rem; font-size: 0.92rem; color: var(--ink-soft); }
-.prose blockquote { margin: 1.6rem 0; padding-left: 1.2rem; border-left: 3px solid var(--lavender); color: var(--ink-soft); font-family: var(--font-display); font-size: 1.15rem; font-variation-settings: 'SOFT' 100, 'opsz' 20; }
+.prose figcaption { margin-top: 1rem; font-size: 0.92rem; color: var(--fg-soft); }
+.prose blockquote { margin: 1.6rem 0; padding-left: 1.2rem; border-left: 3px solid var(--lavender-deep); color: var(--fg-soft); font-family: var(--font-display); font-size: 1.15rem; font-variation-settings: 'SOFT' 100, 'opsz' 20; }
 .prose table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
 .prose th, .prose td { text-align: left; padding: 0.5rem 0.8rem 0.5rem 0; border-bottom: var(--rule); vertical-align: top; }
 .prose th { font-weight: 600; }
-.prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--paper-light); padding: 0.1em 0.35em; border: 1px solid var(--paper-deep); }
+.prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--bg-raised); padding: 0.1em 0.35em; border: 1px solid var(--line); }
 .prose hr { border: 0; border-top: var(--rule); margin: 2.5rem 0; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* A note set in the margin voice: used where the site describes design that is not yet in the build */
+.note { border: 1px solid var(--line); background: var(--bg-raised); padding: 1rem 1.2rem; max-width: var(--measure); color: var(--fg-soft); font-size: 0.95rem; }
+.note b { color: var(--fg); font-weight: 600; }
+
+/* Definition tables for designed systems */
+.spec { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+.spec th, .spec td { text-align: left; padding: 0.55rem 0.9rem 0.55rem 0; border-bottom: var(--rule); vertical-align: top; }
+.spec th { font-weight: 600; color: var(--fg); }
+.spec td { color: var(--fg-soft); }
+.spec td:first-child { color: var(--fg); }
+.spec-wrap { overflow-x: auto; margin-bottom: 1.5rem; }

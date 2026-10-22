@@ -4,6 +4,20 @@ import Frame from '../components/Frame.astro';
 import { Image } from 'astro:assets';
 import { places, courtyardConcept } from '../data/places';
 const label = { built: 'In the build', now: 'Being built', next: 'Painted, not built' };
+const continents = [
+  ['Aethelgard', 'Temperate forests and plains, feudal kingdoms, a church that reads the machine\u2019s interventions as providence. The Spine of the Ancients runs through it. Aethelburg, the Lumina capital, sits at its centre. Havenwood is here.'],
+  ['Ferrus Magna', 'Scarred by precursor wars and industrial collapse. Scavenger clans, rust, unstable power. Neo-Veridia is a cyberpunk city built inside a dead factory; Rustwater Fishery catches metal-shelled crabs from coolant-stained water.'],
+  ['Sylvandell', 'Jungle that has eaten the ruins. Magic here is biological, a way of talking to a terraforming network nobody remembers building. Krystallos is grown around a crystal lattice; Whisperwind Hermitage hangs in the glowing canopy.'],
+  ['The Shifting Wastes', 'Where The System\u2019s grip is weak and reality is unreliable. Zephyr is a city that moves, a fleet of repurposed precursor vehicles that never stops.'],
+];
+const factions = [
+  ['The Lumina Orthodoxy', 'House Lumina, the Keepers of the Lineage and the Silent Guard. Order above all, because order is what The System wants.'],
+  ['The Reality Weavers', 'Lord Kaelen Lumina and those who want to merge with the machine rather than serve it.'],
+  ['The Thorne Technocracy', 'Duchess Aris Thorne\u2019s engineers on Ferrus Magna, who want the technology without the religion.'],
+  ['The Cult of the Whispering Glitch', 'Followers of Valerius, for whom the glitch is revelation.'],
+  ['The Sylvan Concord', 'The guardians of Krystallos, in what they believe is harmony with living magic.'],
+  ['The Unchained', 'Heretics, Glitched Scions and survivors of correction. Not a house, a network. The ones Kai is most likely to end up among.'],
+];
 const groups = [
   ['built', 'In the build', 'Walkable in the packaged build.'],
   ['now', 'Being laid out', 'On the same map as the courtyard; the kit is growing to fit them.'],
@@ -50,6 +64,25 @@ const groups = [
       </div>
     </section>
   ))}
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="state state-next">Beyond Havenwood</span></h2>
+        <p>The wider world as designed in 2025, before the painted look. Four continents, four cities, three outposts and six factions. None of it is painted yet, and a place is not real here until it is painted.</p>
+      </div>
+      <div class="beyond">
+        <div>
+          <h3>Continents</h3>
+          <dl class="ledger">{continents.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+        </div>
+        <div>
+          <h3>Factions</h3>
+          <dl class="ledger">{factions.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+          <p class="small muted">Stonehearth Post, in the foothills of the Spine, is a devout village warmed by a hearth that never cools because a precursor plant runs under it, and its Keeper of the Flame is an agent of The System in a robe. That is the pattern for every place: a plain surface, a machine underneath, and someone keeping it quiet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
 <style>
   .places { display: grid; gap: clamp(3rem, 6vw, 5rem); }
@@ -57,4 +90,9 @@ const groups = [
   .place-frames { grid-column: 1 / -1; }
   .place h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 0.3rem; }
   @media (max-width: 55rem) { .place { grid-template-columns: 1fr; } }
+  .beyond { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4rem; align-items: start; }
+  .beyond h3 { margin-bottom: 1rem; }
+  .beyond .ledger > div { grid-template-columns: minmax(7rem, 10rem) 1fr; }
+  .beyond .ledger dd { font-size: 0.95rem; color: var(--fg-soft); }
+  @media (max-width: 60rem) { .beyond { grid-template-columns: 1fr; } }
 </style>
