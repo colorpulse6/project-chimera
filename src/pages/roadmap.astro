@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { done, now, next } from '../data/roadmap';
+const groups = [
+  ['built', 'Done', done, 'In the packaged build or decided and written down.'],
+  ['now', 'Now', now, 'The current batch, running as parallel streams: places, figures, game side, polish.'],
+  ['next', 'Next', next, 'In order of likely attention, not promise.'],
+] as const;
+---
+<Base title="Roadmap" description="What is done, what is being built now, and what comes next for Chimera.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Roadmap</h1>
+        <p>The honest version. Dates are when something was accepted in the build, not when it was started.</p>
+      </div>
+      <div class="columns">
+        {groups.map(([status, title, items, note]) => (
+          <section class="col">
+            <h2><span class={`state state-${status}`}>{title}</span></h2>
+            <p class="small muted">{note}</p>
+            <ul>
+              {items.map((it) => (
+                <li>
+                  <strong>{it.text}</strong>
+                  {it.detail && <span>{it.detail}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
+  .col h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+  .col ul { list-style: none; margin: 1.2rem 0 0; padding: 0; border-top: var(--rule); }
+  .col li { display: grid; gap: 0.2rem; padding: 0.9rem 0; border-bottom: var(--rule); max-width: none; }
+  .col li span { color: var(--ink-soft); font-size: 0.95rem; }
+  @media (max-width: 60rem) { .columns { grid-template-columns: 1fr; } }
+</style>

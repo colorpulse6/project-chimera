@@ -1,0 +1,131 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import { places } from '../data/places';
+import { kai, townsfolk } from '../data/characters';
+import hero from '../assets/media/street-arrival.jpg';
+import courtyardKai from '../assets/media/courtyard-kai-cape.jpg';
+import lineup from '../assets/media/lineup-drawing.jpg';
+import browser2025 from '../assets/media/lineage-browser-2025.jpg';
+import godot2026 from '../assets/media/lineage-godot-2026.jpg';
+import streetCentre from '../assets/media/street-centre.jpg';
+
+const base = import.meta.env.BASE_URL;
+const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = updates.slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const built = places.filter((p) => p.status === 'built');
+const inProgress = places.filter((p) => p.status === 'now');
+const asOf = updates[0]?.data.date;
+---
+<Base>
+  <section class="hero">
+    <Image class="hero-img" src={hero} alt="Kai walks into the Havenwood courtyard. Five townsfolk stand around the well and the shop, each a tall figure with a round void somewhere in their clothes." widths={[800, 1200, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="hero-text">
+      <div class="panel">
+      <h1>Chimera</h1>
+      <p class="lede">A role-playing game set in a painted hill town, with a hero who is drawn rather than modelled. Somewhere in the story, the drawing starts to fail.</p>
+      <p class="asof">This page is the running record of where the game stands. Last entry {asOf ? fmt(asOf) : ''}.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap status">
+      <div>
+        <h2>Where it stands</h2>
+        <p class="muted">The build is native, on a Mac, and playable from the courtyard to the street. Everything below is in the packaged build unless it says otherwise.</p>
+      </div>
+      <dl class="ledger">
+        <div><dt>Engine</dt><dd>Unreal Engine 5, since 19 October 2026. Before that the same world was proved in Godot, and before that it was a browser game.</dd></div>
+        <div><dt>Look</dt><dd>Locked on 20 October: ink lines, five value bands, lavender shadows, paper grain, flat painted colour, no global illumination. <a href={base + 'look/'}>How it works</a>.</dd></div>
+        <div><dt>Places</dt><dd>{built.map((p) => p.name).join(' and ')} are built. {inProgress.map((p) => p.name).join(' and ')} are being laid out on the same map. <a href={base + 'world/'}>The world</a>.</dd></div>
+        <div><dt>People</dt><dd>Kai and {townsfolk.length} townsfolk, all made from one lineup drawing. Two of them walk routes. <a href={base + 'characters/'}>The characters</a>.</dd></div>
+        <div><dt>Latest build</dt><dd>Havenwood, 22 October 2026, macOS. Title and pause menus, dialogue with the residents, a local save.</dd></div>
+        <div><dt>Now</dt><dd>A lane down to the sea, a harbour, and six more residents from a second drawing. <a href={base + 'roadmap/'}>The roadmap</a>.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Recent updates</h2>
+        <p><a href={base + 'updates/'}>All updates</a></p>
+      </div>
+      <ol class="update-list">
+        {latest.map((u) => (
+          <li>
+            <a class="update" href={`${base}updates/${u.id}/`}>
+              {u.data.cover && <Image src={u.data.cover} alt={u.data.coverAlt ?? ''} widths={[400, 800, 1200]} sizes="(min-width: 60rem) 33vw, 100vw" />}
+              <time datetime={u.data.date.toISOString()}>{fmt(u.data.date)}</time>
+              <h3>{u.data.title}</h3>
+              <p>{u.data.summary}</p>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>From the build</h2>
+        <p>Frames straight from the in-game review rig, which captures the same views after every change so the look can be checked against the day it was locked.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={courtyardKai} alt="Kai from behind in the courtyard, his cape blowing, the Shopkeeper and Child nearby." label="Courtyard, late afternoon." caption="Kai, the Shopkeeper and the Child under the painted sky." />
+        <Frame src={streetCentre} alt="The street: a tree in a stone planter, an arched door with steps, a lantern." label="The street." caption="Laid out from the town kit on a one-metre grid." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Where the people come from</h2>
+        <p>Every figure in the game starts as this drawing. The body goes through image-to-3D, the drawing is projected back on as its own texture, and the head and hands are built by hand.</p>
+      </div>
+      <Frame src={lineup} alt="Lineup drawing of six figures: Kai in a navy cape, a woman in teal, a shopkeeper in yellow with a cone hat, an old man in violet with a ring head, a child in coral, a fisherman in blue." label="The lineup." caption="Masks and holes: tall faceless or masked figures, one round void each. Kai is the one in red." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1600, 2000]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it got here</h2>
+        <p>Three versions of the same square. The story stayed; the way of making it did not.</p>
+      </div>
+      <div class="frames frames-3 frames-even">
+        <Frame src={browser2025} alt="Pixel-art village square with a fountain and a large tree, from the browser game." label="2025." caption="A browser JRPG in pixel art, with battles and quests. It is still in this repository's history." sizes="(min-width: 60rem) 33vw, 100vw" />
+        <Frame src={godot2026} alt="Three-dimensional village square with half-timbered houses and a fountain, from the Godot build." label="September 2026." caption="A native 3D town in Godot. It played, but it read as toy blocks, and that led to the painted direction." sizes="(min-width: 60rem) 33vw, 100vw" />
+        <Frame src={streetCentre} alt="The painted-look street from the Unreal build." label="October 2026." caption="Unreal Engine, with the look locked and the figures drawn." sizes="(min-width: 60rem) 33vw, 100vw" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; isolation: isolate; min-height: min(88vh, 58rem); display: grid; align-items: end; }
+  .hero :global(.hero-img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 65%; z-index: -1; }
+  .hero-text { width: min(100% - 2 * var(--gutter), var(--page)); margin-inline: auto; padding-block: 0 clamp(1.5rem, 5vw, 4rem); }
+  .panel { background: var(--paper-light); border: 1px solid var(--ink); box-shadow: var(--shadow); padding: clamp(1.4rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.6rem); max-width: 36rem; }
+  .hero h1 { font-size: clamp(3.4rem, 8vw, 6.5rem); margin-bottom: 0.2em; color: var(--ink); }
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.15rem, 1.9vw, 1.4rem); line-height: 1.3; max-width: 32ch; margin-bottom: 0.9rem; }
+  .asof { max-width: 48ch; margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .status { display: grid; gap: 2rem 4rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); align-items: start; }
+  @media (max-width: 60rem) { .status { grid-template-columns: 1fr; } }
+
+  .update-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .update-list li { max-width: none; }
+  .update { display: block; text-decoration: none; }
+  .update :global(img) { border: 1px solid var(--ink); box-shadow: var(--shadow); margin-bottom: 1.2rem; aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .update time { display: block; font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 0.3rem; }
+  .update h3 { margin-bottom: 0.4rem; }
+  .update:hover h3 { text-decoration: underline; text-decoration-color: var(--kai); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+  .update p { margin: 0; color: var(--ink-soft); }
+</style>

@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import kaiHero from '../assets/media/kai-hero.jpg';
+import church from '../assets/media/painting-church-square.jpg';
+---
+<Base title="Story" description="Chimera's story: Kai arrives in Havenwood looking for his sister, and the world he searches begins to show its seams.">
+  <section class="section">
+    <div class="narrow prose">
+      <h1>Story</h1>
+      <p class="lede">Chimera is a role-playing game about a simulation that cracks. It wears the clothes of a classic JRPG, a town, a hero, a search, and then the clothes start to come apart.</p>
+
+      <h2>Havenwood</h2>
+      <p>A hill town above a bay. Pale paving, rose plaster, a well in the square, a chapel on the headland. Its people are tall, calm and quiet, with masks for faces and a round void somewhere in what they wear. Nobody remarks on the voids. They are simply how people are.</p>
+      <p>Strange things happen at the edges. A creature moves as if a music box had skipped. A wall is briefly not there. The townsfolk do not notice, or have been taught not to.</p>
+
+      <h2>Kai</h2>
+      <p>Kai arrives looking for his sister, Elara, who went into the old ruins months ago and did not come back. He speaks in short sentences and does not accept the first explanation of anything. He is the one person in Havenwood who notices when the world stutters.</p>
+      <p>He is also the one person who is drawn. The town is painted; Kai is ink and a few colours, and when he moves, parts of him sometimes go missing: a sleeve that is only an outline, a cape that lets the street show through. Whole when he stands still.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap frames frames-2">
+      <Frame src={kaiHero} alt="Kai stands in the shop doorway with the Shopkeeper beside him." caption="Kai at the shop door." />
+      <Frame src={church} alt="Painting of the church square on the headland, looking back over the bay." caption="The church square, where the town ends and the view begins." />
+    </div>
+  </section>
+  <section class="section">
+    <div class="narrow prose">
+      <h2>What the game is about</h2>
+      <p>What is real, what is simulated, and whether the answer changes anything. The game takes the question seriously and its people lightly. The references are Kaiba, the towns of Final Fantasy IX, Sable, and the painted worlds of Laloux and Topor.</p>
+      <h2>Who else is in it</h2>
+      <p>Besides the townsfolk already in the build, the story has a cast waiting to be drawn: Lady Lyra Lumina, the youngest of the noble house above the town; the Hooded Stranger who knows more about Kai than they should; Vorn, who leads the bandits and carries a weapon that should not exist; and Elara herself. A cast catalogue of thirty-four residents with names and histories exists as a proposal. None of it is final until it is drawn.</p>
+      <p class="muted">The story is the part that has changed least. The way of telling it has changed completely.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 36ch; margin-bottom: 2.5rem; }
+</style>

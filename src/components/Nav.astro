@@ -1,0 +1,41 @@
+---
+import Mark from './Mark.astro';
+const base = import.meta.env.BASE_URL;
+const items = [
+  ['updates/', 'Updates'],
+  ['world/', 'World'],
+  ['characters/', 'Characters'],
+  ['story/', 'Story'],
+  ['look/', 'Look'],
+  ['roadmap/', 'Roadmap'],
+];
+const path = Astro.url.pathname;
+const isActive = (href: string) => path.startsWith(base + href);
+---
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href={base} aria-label="Chimera, home">
+      <Mark size={26} />
+      <span>Chimera</span>
+    </a>
+    <nav aria-label="Site">
+      <ul>
+        {items.map(([href, label]) => (
+          <li><a href={base + href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav { border-bottom: var(--rule); background: color-mix(in oklab, var(--paper) 92%, white); }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.8rem; flex-wrap: wrap; }
+  .brand { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--navy); font-family: var(--font-display); font-size: 1.45rem; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 36; }
+  .brand span { color: var(--ink); }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(0.8rem, 2.4vw, 1.8rem); flex-wrap: wrap; }
+  nav a { text-decoration: none; padding: 0.3rem 0; border-bottom: 1.5px solid transparent; }
+  nav a:hover { border-bottom-color: var(--lavender-deep); }
+  nav a[aria-current='page'] { border-bottom-color: var(--kai); }
+  @media (max-width: 40rem) { .nav-row { justify-content: center; } }
+</style>

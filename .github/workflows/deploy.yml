@@ -1,9 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -12,66 +11,30 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
         with:
-          ruby-version: "3.2"
-          bundler-cache: true
-          working-directory: site
-
-      - name: Build game
-        run: |
-          cd game
-          npm install
-          NODE_ENV=production npm run build
-
-      - name: Build Jekyll site
-        run: |
-          cd site
-          bundle exec jekyll build
-
-      - name: Merge outputs
-        run: |
-          mkdir -p deploy
-
-          # Jekyll site at root
-          cp -r site/_site/* deploy/
-
-          # Game at /play/ subpath — must copy contents, not directory
-          # (deploy/play/ already exists from Jekyll's play.md)
-          mkdir -p deploy/play
-          cp -r game/out/* deploy/play/
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./deploy
+          path: dist
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

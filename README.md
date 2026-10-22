@@ -1,52 +1,64 @@
-# Project Chimera
+# Chimera, where the game stands
 
-An FF6-inspired JRPG built for the browser, where a medieval fantasy slowly reveals itself to be a simulation controlled by an amoral AI.
+The status site for Chimera, a role-playing game being built in Unreal Engine 5.
+Live at https://colorpulse6.github.io/project-chimera/ (deployed from `main` by
+GitHub Actions). Built with Astro; no server, no database.
 
-**[Play the Demo](https://colorpulse6.github.io/project-chimera/play/)** | **[Hub Site](https://colorpulse6.github.io/project-chimera/)** | **[Devlog](https://colorpulse6.github.io/project-chimera/devlog/)**
+## Post an update
 
-## About
+1. Add a markdown file to `src/content/updates/`, named `YYYY-MM-DD-slug.md`.
+2. Front matter:
 
-Project Chimera is a classic JRPG with ATB combat, tile-based exploration, and a story that questions the nature of reality. It runs entirely in the browser — no download required.
+   ```yaml
+   ---
+   title: Five drawn figures, a street, and a packaged build
+   date: 2026-10-22
+   summary: One or two sentences shown in lists.
+   cover: ../../assets/media/street-arrival.jpg   # optional, 16:9 reads best
+   coverAlt: What the cover shows.
+   tags: [build, characters]
+   ---
+   ```
 
-**Tech:** Next.js 15, React, TypeScript, Zustand, Canvas 2D, Tailwind CSS
+3. Write the body in markdown. Images: `![alt](../../assets/media/name.jpg)`.
+   Images under `src/assets/media/` are resized and converted at build time.
+4. Commit and push to `main`. The site rebuilds in about a minute.
 
-## Features
+## Screenshots and clips
 
-- Active Time Battle (ATB) combat system with enemy AI and boss phases
-- Tile-based world exploration with NPCs, shops, and quests
-- Story-driven progression with branching dialogue
-- Medieval apothecary item system (Four Humors lore)
-- Quest tracking with objectives and rewards
+- Stills from the review rig go through `tools/prep_media.py` (run it with the
+  `chimera-ml` venv, which has Pillow). It resizes and crops from
+  `fresh-game/review/...` into `src/assets/media/`. Add a line there for a new
+  frame rather than copying 3 MB PNGs by hand.
+- GIFs and short videos go in `public/media/` and are referenced with a string
+  path, which the `Frame` component plays inline and muted:
 
-## Development
+  ```astro
+  <Frame src="media/kai-run.mp4" alt="Kai running across the courtyard." caption="Run cycle." />
+  ```
 
-```bash
-cd game
+  In markdown, use `<video src="/project-chimera/media/kai-run.mp4" autoplay muted loop playsinline></video>`
+  or a plain `![alt](/project-chimera/media/kai-walk.gif)`. Prefer mp4 or webm
+  over gif: a quarter of the size for the same loop.
+
+## Pages and data
+
+- `src/pages/` has one file per page. The home page's status ledger is written
+  by hand there; update it when the ledger changes.
+- `src/data/characters.ts`, `places.ts`, `roadmap.ts` feed the Characters,
+  World and Roadmap pages. Each entry has a `status` of `built`, `now` or `next`.
+- `src/styles/global.css` holds the palette and type. The colours come from the
+  look contract in `fresh-game/LOOK-CONTRACT.md`.
+
+## Run it
+
+```sh
 npm install
-npm run dev
+npm run dev       # http://localhost:4321/project-chimera/
+npm run build     # writes dist/
 ```
 
-The game runs at `http://localhost:3000`.
+Node 22 or newer. To host at a custom domain, set `SITE_BASE=""` and
+`SITE_URL=https://example.com` when building.
 
-## Contributing
-
-This project is open source but not accepting pull requests at this time. The best way to contribute is through:
-
-- [GitHub Discussions](https://github.com/colorpulse6/project-chimera/discussions) — Feedback, ideas, and discussion
-- [Issues](https://github.com/colorpulse6/project-chimera/issues) — Bug reports
-
-## Project Structure
-
-```
-project-chimera/
-├── game/           # Next.js game application
-├── site/           # Jekyll hub site (GitHub Pages)
-├── docs/           # Internal story and design documentation
-├── drafts/         # Content pipeline staging area
-├── prompts/        # AI art generation prompt templates
-└── CLAUDE.md       # Development guide
-```
-
-## License
-
-All rights reserved. Source code is visible for transparency and learning, but may not be copied, modified, or distributed without permission.
+The browser game that lived here before is tagged `legacy-browser-game` in git.

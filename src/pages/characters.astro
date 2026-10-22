@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import { Image } from 'astro:assets';
+import { kai, townsfolk } from '../data/characters';
+import composite from '../assets/media/townsfolk-today-vs-drawn.jpg';
+import walkerFisherman from '../assets/media/walker-fisherman.jpg';
+import walkerChild from '../assets/media/walker-child.jpg';
+const all = [kai, ...townsfolk];
+---
+<Base title="Characters" description="Kai and the townsfolk of Havenwood: each one drawn first, then carried into the game with the drawing as its own texture.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Characters</h1>
+        <p>Tall figures, calm colour blocks, a mask or no face, and one round void each. They were drawn as a lineup first; the game version keeps the drawing's ink and colour.</p>
+      </div>
+      <div class="people">
+        {all.map((c) => (
+          <article class="person" id={c.slug}>
+            <figure class="portrait">
+              <Image src={c.drawing} alt={`Drawing of ${c.name}.`} widths={[300, 600, 900]} sizes="(min-width: 60rem) 16rem, 40vw" />
+            </figure>
+            <div class="person-text">
+              <h2>{c.name}</h2>
+              <p class="role">{c.role}. {c.place}.</p>
+              <p class="small muted"><span class={`state state-${c.status}`}>{c.statusText}</span></p>
+              {c.body.map((para) => <p>{para}</p>)}
+            </div>
+            <div class="person-frames">
+              <Frame src={c.inGame} alt={`${c.name} in the game.`} caption="In the game." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />
+              {c.face && <Frame src={c.face} alt={`${c.name}, close.`} caption="Close." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />}
+            </div>
+            {c.extra && <div class="person-extra"><Frame src={c.extra.src} alt={c.extra.caption} caption={c.extra.caption} sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1800]} /></div>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Before and after</h2>
+        <p>The left columns are the earlier procedural figures, built from primitives. The right columns are the drawn ones that replaced them on 22 October. Same places, same light.</p>
+      </div>
+      <Frame src={composite} alt="A sheet of five rows, one per resident, comparing the procedural figure and the drawn figure, full and close." label="Today versus drawn." caption="The review sheet that made the decision." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1800, 2400]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Walkers</h2>
+        <p>Two residents walk routes through the town. Short loops of them moving are on the list; for now, two stills from the walk test.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={walkerFisherman} alt="The Fisherman mid-stride in the courtyard." caption="The Fisherman mid-stride." />
+        <Frame src={walkerChild} alt="The Child walking past the shop." caption="The Child on her route past the shop." />
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .people { display: grid; gap: clamp(3.5rem, 7vw, 6rem); }
+  .person { display: grid; grid-template-columns: 14rem minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.5rem 3rem; align-items: start; padding-top: 2.5rem; border-top: var(--rule); }
+  .people .person:first-child { border-top: 0; padding-top: 0; }
+  .portrait { margin: 0; }
+  .portrait :global(img) { width: 100%; height: auto; border: 1px solid var(--ink); box-shadow: var(--shadow); background: #faf6ee; }
+  .person h2 { margin-bottom: 0.2rem; }
+  .role { color: var(--ink-soft); margin-bottom: 0.4rem; }
+  .person-frames { display: grid; gap: 1.6rem; min-width: 0; }
+  .person-text { min-width: 0; }
+  .person-extra { grid-column: 1 / -1; }
+  @media (max-width: 70rem) { .person { grid-template-columns: 12rem minmax(0, 1fr); } .person-frames { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 40rem) { .person { grid-template-columns: minmax(0, 1fr); } .portrait { max-width: 12rem; } .person-frames { grid-template-columns: minmax(0, 1fr); } }
+</style>

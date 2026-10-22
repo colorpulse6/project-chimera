@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title="Updates" description="Development updates for Chimera: what changed in the build, what was decided, and what it looks like.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Updates</h1>
+        <p>What changed, in order. Each entry records a decision or a build, with frames from the review rig.</p>
+      </div>
+      <ol class="list">
+        {updates.map((u) => (
+          <li class="entry">
+            <time datetime={u.data.date.toISOString()}>{fmt(u.data.date)}</time>
+            <div class="body">
+              <h2><a href={`${base}updates/${u.id}/`}>{u.data.title}</a></h2>
+              <p>{u.data.summary}</p>
+            </div>
+            {u.data.cover && (
+              <a class="thumb" href={`${base}updates/${u.id}/`} tabindex="-1" aria-hidden="true">
+                <Image src={u.data.cover} alt="" widths={[400, 800]} sizes="(min-width: 60rem) 20rem, 100vw" />
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
+<style>
+  .list { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
+  .entry { max-width: none; display: grid; grid-template-columns: 9rem minmax(0, 1fr) 18rem; gap: 1.5rem 2.5rem; padding: 2rem 0; border-bottom: var(--rule); align-items: start; }
+  time { color: var(--ink-soft); font-size: 0.92rem; padding-top: 0.5rem; }
+  .entry h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 0.4rem; }
+  .entry h2 a { text-decoration: none; }
+  .entry h2 a:hover { text-decoration: underline; text-decoration-color: var(--kai); }
+  .entry p { margin: 0; color: var(--ink-soft); }
+  .thumb :global(img) { border: 1px solid var(--ink); box-shadow: var(--shadow); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  @media (max-width: 60rem) { .entry { grid-template-columns: 1fr; gap: 0.6rem; } .thumb { order: -1; margin-bottom: 0.6rem; max-width: 28rem; } time { padding-top: 0; } }
+</style>

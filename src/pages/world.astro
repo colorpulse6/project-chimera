@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import { Image } from 'astro:assets';
+import { places, courtyardConcept } from '../data/places';
+const label = { built: 'In the build', now: 'Being built', next: 'Painted, not built' };
+const groups = [
+  ['built', 'In the build', 'Walkable in the packaged build.'],
+  ['now', 'Being laid out', 'On the same map as the courtyard; the kit is growing to fit them.'],
+  ['next', 'Painted first', 'Every place starts as a painting. These exist as paintings and wait for the kit.'],
+] as const;
+---
+<Base title="World" description="The places of Havenwood, Chimera's painted hill town: what is built, what is being laid out, and what exists only as a painting so far.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>The world</h1>
+        <p>Havenwood is a Mediterranean hill town between a harbour and a chapel on the headland. Each place is painted before it is built, and the build is checked against the painting.</p>
+      </div>
+      <Frame src={courtyardConcept} alt="Painting of the courtyard: a round teal tree, a tall pale tower, a rose shop with a blue awning, a well, a yellow arch with a clock, and hills behind." label="The town as a painting." caption="The courtyard concept that set the palette: ochre, coral, plaster, violet shadows." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1600, 2000]} />
+    </div>
+  </section>
+
+  {groups.map(([status, title, note]) => (
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class={`state state-${status}`}>{title}</span></h2>
+          <p>{note}</p>
+        </div>
+        <div class="places">
+          {places.filter((p) => p.status === status).map((p) => (
+            <article class="place" id={p.slug}>
+              <figure class="frame">
+                <Image src={p.image} alt={p.imageAlt} widths={[600, 1000, 1600]} sizes="(min-width: 60rem) 48rem, 100vw" />
+              </figure>
+              <div class="place-text">
+                <h3>{p.name}</h3>
+                <p class="small muted">{p.statusText}</p>
+                <p>{p.body}</p>
+              </div>
+              {p.frames && (
+                <div class="frames frames-3 place-frames">
+                  {p.frames.map((f) => <Frame src={f.src} alt={f.alt} caption={f.caption} sizes="(min-width: 60rem) 25vw, 100vw" widths={[400, 800, 1200]} />)}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>
+<style>
+  .places { display: grid; gap: clamp(3rem, 6vw, 5rem); }
+  .place { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.5rem 3rem; align-items: start; }
+  .place-frames { grid-column: 1 / -1; }
+  .place h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 0.3rem; }
+  @media (max-width: 55rem) { .place { grid-template-columns: 1fr; } }
+</style>

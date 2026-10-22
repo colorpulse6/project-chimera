@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import baseline from '../assets/media/bakeoff-baseline.jpg';
+import ink from '../assets/media/bakeoff-ink.jpg';
+import painted from '../assets/media/bakeoff-painted.jpg';
+import kaiBaseline from '../assets/media/bakeoff-kai-baseline.jpg';
+import kaiPainted from '../assets/media/bakeoff-kai-painted.jpg';
+import lineup from '../assets/media/lineup-drawing.jpg';
+import courtyard from '../assets/media/painting-courtyard.jpg';
+
+// The surface palette from the look contract: flat sRGB colour times a pigment tile.
+const palette = [
+  ['Paving', '#E8C8A0'], ['Rose plaster', '#B8705E'], ['Blue plaster', '#A79AB0'], ['Ochre', '#C9A062'],
+  ['Lime wash', '#D8C2A2'], ['Stone', '#CDB89A'], ['Ivory', '#E6D6B6'], ['Clay', '#B06C55'],
+  ['Navy', '#3E4660'], ['Wood', '#4D4037'], ['Leaf', '#2E4248'], ['Leaf, light', '#4C6358'],
+  ['Leaf, gold', '#7C8560'], ['Earth', '#6A5A48'], ['Mountain', '#A08CA6'], ['Iron', '#3A3C45'],
+  ['Water', '#4F7F80'], ['Glass', '#C5A365'], ['Ink', '#2B1A1C'],
+];
+const rules = [
+  ['Ink lines', 'Drawn in a post-process from steps in depth and creases in the surface normal. One pixel wide at 900 lines, scaling with resolution. Ink colour is a plum-black, not pure black.'],
+  ['Five bands', 'Light is snapped toward five value bands, a little over halfway, so surfaces read as painted planes rather than gradients.'],
+  ['Lavender shadows', 'Values below the middle are pushed toward lavender. The sun is late afternoon, warm, with a hard edge.'],
+  ['Paper grain', 'Two scales of screen-space grain, fine and coarse, laid over everything.'],
+  ['A painted sky', 'Beyond two kilometres the atmosphere is replaced with a gradient from peach to pale sand. Distance haze is lavender.'],
+  ['Flat surfaces', 'Each material is one flat colour multiplied by a greyscale pigment tile sampled in object space. No normal maps, no specular, no emissive. Roughness is one, except glass, iron and water.'],
+  ['No global illumination', 'Lumen is off. It cost frames and added nothing a painting would have.'],
+];
+---
+<Base title="Look" description="How Chimera looks and why: a painted world, a drawn hero, the rules of the locked look, and what was tried and rejected on the way.">
+  <section class="section">
+    <div class="narrow prose">
+      <h1>The look</h1>
+      <p class="lede">A postmodern replica of a JRPG: a painted world, a drawn hero, and the drawing sometimes fails.</p>
+      <p>That sentence took most of a year to arrive at. The world is painted in gouache: ochre, coral, plaster, violet shadows, calm big shapes. The people are drawn, elongated, with masks for faces and one geometric void each. Kai is drawn in ink and is the only thing in red.</p>
+      <p>The references are Kaiba by Masaaki Yuasa, the towns of Final Fantasy IX, Sable, and Fantastic Planet by Laloux and Topor. The anti-references are just as important: anything that reads as toy bricks, anything chibi, anything that looks like a conventional anime clip.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The bake-off that locked it</h2>
+        <p>On 20 October the same shop corner was rendered three ways and compared on one sheet. The third one won, and has been the rule since.</p>
+      </div>
+      <div class="frames frames-3">
+        <Frame src={baseline} alt="The shop corner rendered with standard lighting: glossy, grey, with real shadows." label="Before." caption="Standard lighting with global illumination. Everything reads as plastic." sizes="(min-width: 60rem) 33vw, 100vw" />
+        <Frame src={ink} alt="The same corner with ink lines, value bands and grain, but surfaces still lit." label="Ink and bands." caption="A post-process for ink, bands and grain, with the lighting turned off. The toy read is gone." sizes="(min-width: 60rem) 33vw, 100vw" />
+        <Frame src={painted} alt="The same corner with ink, bands and flat painted surfaces." label="Ink and paint." caption="The same, plus every surface repainted as flat palette colour with a pigment tile. Locked." sizes="(min-width: 60rem) 33vw, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div>
+        <h2>The rules</h2>
+        <p class="muted">Written down as a contract so that any visual change can be checked against the day the look was accepted. In plain words:</p>
+      </div>
+      <dl class="ledger">
+        {rules.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The palette</h2>
+        <p>Every surface in the town is one of these, times a pigment tile. The names are the material names in the build.</p>
+      </div>
+      <ul class="swatches">
+        {palette.map(([name, hex]) => (
+          <li><span class="swatch" style={`background:${hex}`}></span><span>{name}</span><span class="hex">{hex}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Kai, before and after</h2>
+        <p>Kai keeps his own drawn texture; the look only adds the ink, the bands and the grain. The sleeve and the cape are the same mesh in both frames.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={kaiBaseline} alt="Kai in the shop doorway under standard lighting; the cape looks like grey cloth." label="Before." caption="Standard lighting." />
+        <Frame src={kaiPainted} alt="Kai in the shop doorway with the locked look; the cape is navy ink." label="After." caption="The locked look." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Painting first</h2>
+        <p>Each place and each person starts on paper. The build is then checked against the painting from the same camera.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={courtyard} alt="Gouache painting of the courtyard with the well and the shop." label="The courtyard painting." caption="The first asset. For a while it literally was the level: a relief built from its depth, with Kai walking in front." />
+        <Frame src={lineup} alt="The lineup drawing of six figures." label="The lineup drawing." caption="Masks and holes. Each figure in the build is cut from this sheet." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2>What was tried and set aside</h2>
+      <ul>
+        <li>A scripted bevelled-box town in Godot. It read as toy bricks, in three palettes.</li>
+        <li>A cartoon Kai and a chibi Kai. Wrong presence, wrong edge.</li>
+        <li>Conventional anime video clips as reference for movement.</li>
+        <li>Procedural townsfolk built from primitives with a skin modifier. However many tapers and hands they got, they looked like tubs put together. Replaced by drawn figures.</li>
+        <li>A first version of Kai's phasing, where parts of him flickered to outline while he moved. It read as a glitch. The idea stays; the execution waits.</li>
+      </ul>
+      <p class="muted">The lesson from all of it: the engine was never the block. Making the hero and the people was.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 36ch; margin-bottom: 1.8rem; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 2rem 4rem; align-items: start; }
+  @media (max-width: 60rem) { .two { grid-template-columns: 1fr; } }
+  .swatches { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1.2rem 1rem; }
+  .swatches li { display: grid; gap: 0.3rem; font-size: 0.92rem; }
+  .swatch { display: block; aspect-ratio: 4 / 3; border: 1px solid var(--ink); box-shadow: 0.35rem 0.35rem 0 var(--lavender); }
+  .hex { color: var(--ink-faint); font-size: 0.82rem; }
+</style>
