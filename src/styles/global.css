@@ -43,14 +43,25 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html { --drain: 0; background: color-mix(in oklab, var(--bg) calc(100% - var(--drain) * 70%), var(--bg-sunk)); }
 body { margin: 0; min-height: 100vh; overflow-x: hidden; }
+
+/* The echo: past the chapel the palette turns over and the mirror shows the other side. */
+html[data-echo] {
+  --bg: #e9dcc3; --bg-raised: #f2e9d6; --bg-sunk: #d9cbae;
+  --fg: #1b1720; --fg-soft: #4a4052; --fg-faint: #7e7486;
+  --lavender: #7e6c93; --lavender-deep: #bfb0cf; --ochre: #8c6a2c;
+}
+html[data-echo] .scroll p { animation-direction: reverse; }
+html[data-echo] main img, html[data-echo] main video { transform: scaleX(-1); }
+html[data-echo] body::after { mix-blend-mode: multiply; opacity: 0.25; }
 
 /* paper grain, the same idea as the game's post-process */
 body::after {
   content: '';
   position: fixed; inset: 0; z-index: 50; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.14;
+  opacity: calc(0.14 + var(--drain) * 0.16);
   mix-blend-mode: soft-light;
 }
 
@@ -149,6 +160,41 @@ strong { font-weight: 600; }
 @keyframes phase { 0%, 93% { opacity: 0; } 93.5%, 94.5% { opacity: 1; } 95%, 96% { opacity: 0; } 96.3%, 97% { opacity: 1; } 97.2%, 100% { opacity: 0; } }
 @keyframes phase-once { 0% { opacity: 0; } 10%, 30% { opacity: 1; } 32%, 48% { opacity: 0; } 50%, 58% { opacity: 1; } 60%, 100% { opacity: 0; } }
 
+/* The record corrects itself in front of you. */
+.correct del { text-decoration: line-through; text-decoration-color: var(--kai); text-decoration-thickness: 1.5px; color: var(--fg-soft); }
+.correct ins { text-decoration: none; color: var(--lavender); margin-left: 0.35em; font-style: italic; animation: appear 250ms steps(2, end) both; }
+.correct.undo ins { animation: appear 250ms steps(2, end) reverse both; }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+
+/* Frames tear: slices in a fixed layer above the page. */
+#haunt-layer { position: fixed; inset: 0; z-index: 48; pointer-events: none; overflow: hidden; }
+#haunt-layer .slice { position: absolute; background-repeat: no-repeat; mix-blend-mode: lighten; }
+
+/* The other cursor answers from the far side, a fraction late. */
+#cursor-echo { position: fixed; left: -7px; top: -7px; width: 14px; height: 14px; border: 1px solid var(--kai); border-radius: 50%; pointer-events: none; z-index: 60; opacity: 0; transition: opacity 600ms ease; will-change: transform; mix-blend-mode: difference; }
+#cursor-echo.on { opacity: 0.8; }
+#cursor-echo::after { content: ''; position: absolute; inset: 5px; background: var(--kai); border-radius: 50%; opacity: 0.6; }
+@media (pointer: coarse) { #cursor-echo { display: none; } }
+
+/* The clock in the corner. */
+#hud { position: fixed; left: 1rem; bottom: 0.9rem; z-index: 60; pointer-events: none; display: flex; gap: 0.6em; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-faint); mix-blend-mode: difference; }
+#hud .hud-sep { color: var(--lavender-deep); }
+#hud .hud-time { font-variant-numeric: tabular-nums; }
+#hud.slip .hud-time { color: var(--kai); }
+#hud.slip .hud-time::after { content: ' ←'; }
+@media (max-width: 48rem) { #hud { display: none; } }
+
+/* Past the footer, the painting stops. The engine's default checker shows through. */
+.beyond { position: relative; margin-top: 3rem; min-height: 46vh; display: grid; place-content: center; text-align: center; gap: 0.6rem; padding: 3rem var(--gutter);
+  background: repeating-conic-gradient(color-mix(in oklab, var(--bg-sunk) 70%, #000) 0 25%, color-mix(in oklab, var(--bg-raised) 85%, var(--lavender-deep)) 0 50%) 0 0 / 56px 56px;
+  border-top: 2px dashed var(--kai); }
+.beyond::before { content: ''; position: absolute; inset: 0; background: linear-gradient(var(--bg), transparent 40%); pointer-events: none; }
+.beyond > * { position: relative; }
+.beyond-line { margin: 0; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kai); }
+.beyond-text { margin: 0; max-width: 36ch; font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.15rem; line-height: 1.35; color: var(--fg); text-shadow: 0 0 18px var(--bg-sunk), 0 0 4px var(--bg-sunk); }
+.beyond-link { color: var(--fg-soft); font-size: 0.85rem; text-decoration-color: var(--fg-faint); justify-self: center; }
+.beyond-link:hover { color: var(--kai); }
+
 /* Between pages: a cut with a skip in it, not a fade. */
 ::view-transition-old(root) { animation: 110ms steps(2, end) both vt-out; }
 ::view-transition-new(root) { animation: 300ms steps(6, end) both vt-in; }
@@ -169,6 +215,7 @@ body.humming::after { animation: grain-breathe 23s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+  #cursor-echo { display: none; }
 }
 
 /* A note set in the margin voice: used where the site describes design that is not yet in the build */

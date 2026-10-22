@@ -5,11 +5,15 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="wrap footer-row">
     <p>Chimera is a game by <a href="https://nichalasbarnes.com/">Nichalas Barnes</a>, built in Unreal Engine 5. This is its record. Deviation is noted in the updates.</p>
-    <p><a href={base + 'updates/'}>Updates</a> · <a href="https://github.com/colorpulse6/project-chimera">Source</a> · {year} · iteration 3</p>
+    <p><a href={base + 'updates/'}>Updates</a> · <a href="https://github.com/colorpulse6/project-chimera">Source</a> · {year} · <a href={base + 'anchors/'} data-loop title="Your anchors">loop 01</a></p>
   </div>
+  <div class="wrap tulips" aria-hidden="true">{Array.from({ length: 27 }, () => <span>❀</span>)}</div>
 </footer>
 <style>
   .footer { border-top: var(--rule); margin-top: clamp(3rem, 8vw, 7rem); padding-block: 2rem 3rem; color: var(--fg-soft); font-size: 0.92rem; }
   .footer-row { display: flex; justify-content: space-between; gap: 1rem 3rem; flex-wrap: wrap; }
   .footer p { margin: 0; max-width: 48ch; }
+  .tulips { display: grid; grid-template-columns: repeat(9, max-content); gap: 0.1rem 0.9rem; margin-top: 2.2rem; color: var(--lavender-deep); font-size: 0.8rem; line-height: 1; }
+  .tulips :global(span) { display: inline-block; transition: transform 400ms ease, color 400ms ease; }
+  .tulips :global(.wrong) { color: var(--kai); transform: rotate(180deg) translateY(-2px); }
 </style>

@@ -5,15 +5,28 @@ const base = import.meta.env.BASE_URL;
 <Base title="You can’t go there" description="The gods restrict it.">
   <section class="section">
     <div class="narrow prose lost">
-      <p class="code">Subject not found. Anchor not stabilized.</p>
+      <div class="log" data-typewriter>
+        <p>&gt; request: this page</p>
+        <p>&gt; subject: KAI_7.34</p>
+        <p data-pause="600">&gt; anchor: not stabilised</p>
+        <p>&gt; reason: past the chapel</p>
+        <p data-pause="900">&gt; the gods restrict it</p>
+        <p data-pause="1400">&gt; final processing deferred</p>
+      </div>
       <h1>You can’t go there.</h1>
       <p class="lede">The gods restrict it. Or the record has no page by that name yet, which in Havenwood comes to the same thing.</p>
-      <p><a class="button" href={base}>Back to the courtyard</a></p>
+      <p class="row"><a class="button" href={base}>Back to the courtyard</a> <a class="anyway" href={base + 'echo/'}>or say her name</a></p>
     </div>
   </section>
 </Base>
 <style>
-  .lost { min-height: 50vh; }
-  .code { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 1.5rem; }
+  .lost { min-height: 60vh; }
+  .log { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 2rem; min-height: 8.5em; }
+  .log p { margin: 0 0 0.3em; max-width: none; }
+  .log.done p:last-child::after { content: '▮'; margin-left: 0.3em; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
   .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 36ch; margin-bottom: 2rem; }
+  .row { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  .anyway { color: var(--fg-faint); font-size: 0.9rem; text-decoration-color: transparent; transition: color 2s ease 3s, text-decoration-color 2s ease 3s; }
+  .anyway:hover { color: var(--kai); text-decoration-color: var(--kai); transition: none; }
 </style>

@@ -4,14 +4,14 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Scroll from '../components/Scroll.astro';
 import { ClientRouter } from 'astro:transitions';
-const { title, description = 'Chimera is a role-playing game in a painted hill town, with a hero drawn in ink who does not always stay drawn. This is the record of where it stands. The record is kept in order.', ogImage } = Astro.props;
+const { title, echo = false, description = 'Chimera is a role-playing game in a painted hill town, with a hero drawn in ink who does not always stay drawn. This is the record of where it stands. The record is kept in order.', ogImage } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fullTitle = title ? `${title} · Chimera` : 'Chimera · the record';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const og = ogImage ? new URL(ogImage, Astro.site) : new URL(base + 'og.jpg', Astro.site);
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-echo={echo ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,13 +28,23 @@ const og = ogImage ? new URL(ogImage, Astro.site) : new URL(base + 'og.jpg', Ast
     <meta name="theme-color" content="#1b1720" />
     <ClientRouter />
   </head>
-  <body>
+  <body data-base={base}>
     <Nav />
     <Scroll />
     <main>
       <slot />
     </main>
     <Footer />
+    <div class="beyond">
+      <p class="beyond-line">End of the painting.</p>
+      <p class="beyond-text">The paint stops here. Past this line the town is not drawn, only described, and the description is restricted.</p>
+      <a class="beyond-link" href={base + 'past-the-chapel/'}>go anyway</a>
+    </div>
+    <div id="haunt-layer" aria-hidden="true"></div>
+    <div id="cursor-echo" aria-hidden="true" transition:persist="cursor"></div>
+    <div id="hud" aria-hidden="true" transition:persist="hud">
+      <span class="hud-subject">KAI_7.34</span><span class="hud-sep">·</span><span class="hud-loop">LOOP 01</span><span class="hud-sep">·</span><span class="hud-time">00:00:00</span><span class="hud-sep">·</span><span class="hud-state">ANCHORED</span>
+    </div>
     <script>
       import '../scripts/haunt';
     </script>

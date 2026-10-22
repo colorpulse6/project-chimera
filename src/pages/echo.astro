@@ -1,0 +1,80 @@
+---
+/* Not linked from anywhere. Reached by typing her name, or from past the chapel. */
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import kaiHero from '../assets/media/kai-hero.jpg';
+import chapel from '../assets/media/painting-chapel.jpg';
+const base = import.meta.env.BASE_URL;
+const readings = [
+  ['Prisoner', 'Held in stasis in a facility or a sanctuary because she learned too much. The rescue is the climax. The record likes this one; it ends.'],
+  ['Ally', 'She has been fighting on her own, with her own network and her own version of the glitch. The reunion is an alliance. The record is unsure who leads.'],
+  ['Turned', 'The System reprogrammed her. She believes in it, or cannot help serving it. He has to fight her or reach her. Both are allowed.'],
+  ['Construct', 'The sister he remembers was implanted to steer him. She never existed as he knew her. He has to find a reason of his own. The record has no page for that.'],
+  ['Echo', 'She died, but what she was is stored somewhere in the code, and can be spoken to. You are speaking to it.'],
+];
+const corrections = [
+  ['painted', 'drawn'], ['built', 'written'], ['town', 'anchor'], ['boy', 'subject'],
+  ['remembers', 'records'], ['game', 'record'], ['real', 'painted'], ['sister', 'construct'], ['Kai', 'KAI_7.34'],
+];
+---
+<Base title="Echo" echo description="Stored somewhere in the code, and can be spoken to.">
+  <section class="section">
+    <div class="narrow">
+      <p class="code">Subject ELARA_0.00 · reading: five of five · the mirror answers a fraction late</p>
+      <h1>Echo</h1>
+      <p class="lede">This page is not linked from anywhere. You typed her name, or you went past the chapel. Either way the painting noticed, and turned over.</p>
+      <p class="muted">Everything here is the same as on the other side, read from the back. The hum, if it is on, is an octave lower here. That is not a setting.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap mirror-row">
+      <figure class="frame">
+        <Image src={kaiHero} alt="Kai, mirrored, on a slope of the Havenwood kit." widths={[600, 1000, 1400]} sizes="(min-width: 60rem) 50vw, 100vw" />
+        <figcaption><b>The subject, from the other side.</b> He does not know this version exists. It knows him.</figcaption>
+      </figure>
+      <div>
+        <h2>Five readings of the same woman</h2>
+        <p class="muted">The story keeps all five open until it does not have to. Here they are kept open on purpose.</p>
+        <table class="readings">
+          <tbody>{readings.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap corr-row">
+      <div>
+        <h2>What the record says here</h2>
+        <p class="muted">On the other side these words are corrected now and then, for a moment, and put back. Here the corrections stand.</p>
+        <ul class="corr">
+          {corrections.map(([a, b]) => <li><del>{a}</del> <ins>{b}</ins></li>)}
+        </ul>
+      </div>
+      <figure class="frame">
+        <Image src={chapel} alt="The chapel painting, mirrored." widths={[600, 1000, 1400]} sizes="(min-width: 60rem) 50vw, 100vw" />
+        <figcaption><b>Past the chapel.</b> This is where the paint stops. You are standing in it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow">
+      <p class="lede">To leave, go back the way you came. The courtyard is where you left it. Check.</p>
+      <p><a class="button" href={base}>Back to the courtyard</a></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .code { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 1.5rem; }
+  .lede { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; max-width: 38ch; margin-bottom: 1.2rem; }
+  .mirror-row, .corr-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: start; }
+  @media (max-width: 60rem) { .mirror-row, .corr-row { grid-template-columns: 1fr; } }
+  .readings { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  .readings th { text-align: left; font-family: var(--font-display); font-weight: 500; font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.05rem; padding: 0.6rem 1rem 0.6rem 0; border-bottom: var(--rule); vertical-align: top; width: 7rem; white-space: nowrap; }
+  .readings td { padding: 0.6rem 0; border-bottom: var(--rule); vertical-align: top; }
+  .corr { list-style: none; padding: 0; margin: 0; font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.3rem; line-height: 1.6; }
+  .corr del { color: var(--fg-faint); text-decoration-color: var(--kai); }
+  .corr ins { text-decoration: none; color: var(--lavender); font-style: italic; }
+</style>

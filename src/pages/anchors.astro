@@ -1,0 +1,67 @@
+---
+/* The save menu, kept for the record. Fixed anchors from the game, then yours. */
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+const slots = [
+  ['01', 'Havenwood · Courtyard', 'Act I', '19 Oct 2026', 'anchored', 'built'],
+  ['02', 'Havenwood · The street', 'Act I', '20 Oct 2026', 'anchored', 'built'],
+  ['03', 'Havenwood · The arch and the well', 'Act I', '22 Oct 2026', 'anchored', 'built'],
+  ['04', 'Seaside lane', 'Act I', '—', 'weaving', 'now'],
+  ['05', 'The harbour', 'Act I', '—', 'weaving', 'now'],
+  ['06', 'House Lumina', 'Act II', '—', 'unwritten', 'next'],
+  ['07', 'The mirror', 'Act III', '—', 'unwritten', 'next'],
+  ['7.34', '░░░░░░░░ · ░░░░', '—', '—', 'deferred', 'bad'],
+];
+---
+<Base title="Anchors" description="Temporal anchors. The game saves by stabilising a moment. So does the record.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Anchors</h1>
+        <p>The game saves by stabilising a moment and calling it an anchor. The record does the same. These are the fixed ones, then yours.</p>
+      </div>
+      <ol class="slots">
+        {slots.map(([n, where, act, when, st, k]) => (
+          <li class={'slot-' + k}>
+            <span class="slot">{n}</span>
+            <span class="where">{where}</span>
+            <span class="act">{act}</span>
+            <span class="when">{when}</span>
+            <span class="st">{st}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Yours, this loop</h2>
+        <p id="anchor-count">Loop 01. No anchors yet.</p>
+      </div>
+      <ol class="slots mine" id="anchor-list"></ol>
+      <p class="small muted">Kept for this visit only. The loop count is kept longer. The clock in the corner is kept by nobody.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .slots { list-style: none; margin: 0; padding: 0; border-top: var(--rule); font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.82rem; letter-spacing: 0.06em; }
+  .slots :global(li) { display: grid; grid-template-columns: 4rem minmax(0, 1fr) 6rem 8rem 7rem; gap: 1rem; align-items: baseline; padding: 0.85rem 0; border-bottom: var(--rule); max-width: none; }
+  .slots :global(.slot) { color: var(--fg-faint); }
+  .slots :global(.where) { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1.15rem; letter-spacing: 0; }
+  .slots :global(.act), .slots :global(.when) { color: var(--fg-soft); }
+  .slots :global(.st) { text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.16em; justify-self: end; }
+  .slot-built .st { color: var(--fg); }
+  .slot-now .st { color: var(--kai); }
+  .slot-next .st { color: var(--fg-faint); }
+  .slot-bad { color: var(--fg-faint); }
+  .slot-bad .st { color: var(--kai); animation: blink 2.2s steps(1) infinite; }
+  .slot-bad:hover .where::after { content: ' final processing deferred'; color: var(--kai); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .mine :global(.st) { color: var(--lavender); }
+  @keyframes blink { 50% { opacity: 0.3; } }
+  @media (max-width: 48rem) {
+    .slots :global(li) { grid-template-columns: 3rem minmax(0, 1fr) 6rem; }
+    .slots :global(.act), .slots :global(.when) { display: none; }
+  }
+</style>
