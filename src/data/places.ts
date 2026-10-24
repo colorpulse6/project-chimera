@@ -18,6 +18,25 @@ import pChapel from '../assets/media/painting-chapel.jpg';
 import pCog from '../assets/media/painting-rusted-cog.jpg';
 import pDyers from '../assets/media/painting-dyers-steps.jpg';
 import pGarden from '../assets/media/painting-lumina-garden.jpg';
+import fLaneArrival from '../assets/media/lane-arrival.jpg';
+import fLaneLookingBack from '../assets/media/lane-looking-back.jpg';
+import fLaneKai from '../assets/media/lane-kai.jpg';
+import fHarbourQuay from '../assets/media/harbour-quay.jpg';
+import fHarbourBoat from '../assets/media/harbour-boat.jpg';
+import fHarbourKai from '../assets/media/harbour-kai.jpg';
+import fChurchArrival from '../assets/media/church-arrival.jpg';
+import fChurchPainting from '../assets/media/church-painting.jpg';
+import fChurchChapelDoor from '../assets/media/church-chapel-door.jpg';
+import fChurchHeadland from '../assets/media/church-headland.jpg';
+import fChurchKai from '../assets/media/church-kai.jpg';
+import fVillageStairs from '../assets/media/village-stairs.jpg';
+import fVillageAnna from '../assets/media/village-anna.jpg';
+import fVillageDoorstep from '../assets/media/village-doorstep.jpg';
+import fVillageKai from '../assets/media/village-kai.jpg';
+import fSeaQuayPath from '../assets/media/sea-quay-path.jpg';
+import fSeaBay from '../assets/media/sea-bay.jpg';
+import fSeaNorthWall from '../assets/media/sea-north-wall.jpg';
+import fSeaVillage from '../assets/media/sea-village.jpg';
 
 export type Place = {
   slug: string;
@@ -59,34 +78,52 @@ export const places: Place[] = [
       { src: streetLane, alt: 'A lane opening into the street with a tree and shuttered windows.', caption: 'Lane into the street.' },
       { src: streetBack, alt: 'Looking back along the street toward the gate.', caption: 'Looking back toward the gate.' },
     ],
-    body: 'The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit; the lane and harbour will use it next.',
+    body: 'The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit. The lane, the harbour, the church square and the hill village were built the same way.',
   },
   {
     slug: 'seaside-lane',
     name: 'Seaside lane',
-    status: 'now',
-    statusText: 'Being laid out now. The way down from the courtyard to the water.',
-    image: pLane,
-    imageAlt: 'Painting of a lane descending between pale and ochre houses toward the sea.',
-    body: 'A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay visible at the end. It drops about three metres over its length and connects the courtyard to the harbour on one continuous map, no loading.',
+    status: 'built',
+    statusText: 'In the build since 22 October. The way down from the courtyard to the water.',
+    image: fLaneArrival,
+    imageAlt: 'The lane from the courtyard end: pale and ochre house fronts, a blue awning, the sea at the bottom.',
+    painting: pLane,
+    frames: [
+      { src: fLaneKai, alt: 'Kai walking down the lane toward the sea.', caption: 'Kai going down. The sea is always at the end of it.' },
+      { src: fLaneLookingBack, alt: 'Looking back up the lane steps toward the courtyard clock tower.', caption: 'Looking back up the steps to the courtyard.' },
+    ],
+    body: 'A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay at the end. It drops about three metres and joins the courtyard to the harbour on one continuous map, no loading. Innkeeper Rowan stands at the arched door, Frida on a doorstep with her plums, Grandmother Edith on a step.',
   },
   {
     slug: 'harbour',
     name: 'The harbour',
-    status: 'now',
-    statusText: 'Being laid out now, with new kit pieces for the quay, water and a boat.',
-    image: pHarbour,
-    imageAlt: 'Painting of a harbour quay with a small boat and the bay beyond.',
-    body: 'The quay at the bottom of the lane: a sea wall, bollards, a water plane and a small boat. It needs pieces the kit does not have yet, which is why it comes with the lane as one batch.',
+    status: 'built',
+    statusText: 'In the build since 22 October, with quay, water and boat pieces added to the kit.',
+    image: fHarbourQuay,
+    imageAlt: 'The harbour quay with bollards and a lantern, the lavender headland across the bay.',
+    painting: pHarbour,
+    frames: [
+      { src: fHarbourBoat, alt: 'A small dark boat moored against the quay by a brass bollard.', caption: 'The boat. It does not go anywhere yet.' },
+      { src: fHarbourKai, alt: 'Kai on the quay beside the harbour house, the bay behind.', caption: 'Kai on the quay.' },
+      { src: fSeaQuayPath, alt: 'The quay corner with Old Reed by the wall and the coast path climbing to the church terrace.', caption: 'From the quay the coast path climbs to the church square. Old Reed keeps the corner.' },
+    ],
+    body: 'The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat; Sal carries crates between the quay and the foot of the lane. A ramped coast path climbs from here to the church square.',
   },
   {
     slug: 'church-square',
     name: 'Church square',
-    status: 'next',
-    statusText: 'Painted. Built in the earlier engine, to be rebuilt from the kit.',
-    image: pChurch,
-    imageAlt: 'Painting of an open lookout on a headland with a small chapel at right and a round teal tree.',
-    body: 'An open lookout over the bay with a small chapel at the right and a round teal tree. The Old Man sits here. The way up is the harbour\'s arched door, and the climb happens in the fade between places.',
+    status: 'built',
+    statusText: 'In the build since 22 October. Rebuilt from the kit with the sea walls added on 24 October.',
+    image: fChurchPainting,
+    imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
+    painting: pChurch,
+    frames: [
+      { src: fChurchArrival, alt: 'Arriving on the church terrace from the coast path, the chapel ahead and Tom on the paving.', caption: 'Arriving from the coast path. Tom walks the terrace.' },
+      { src: fChurchChapelDoor, alt: 'The chapel front with its bell, arched door and a pot of leaves.', caption: 'The chapel door. Closed, for now.' },
+      { src: fChurchHeadland, alt: 'The lavender headland across the bay, seen over the curved parapet of the lookout.', caption: 'The lookout. Something stands on the headland. Tom has heard about lights.' },
+      { src: fChurchKai, alt: 'Kai on the terrace, cape blowing, the headland and the sea beyond.', caption: 'Kai on the terrace.' },
+    ],
+    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walks here, repeating what he has heard.',
   },
   {
     slug: 'shop',
@@ -100,20 +137,27 @@ export const places: Place[] = [
   {
     slug: 'hill-village',
     name: 'Hill village',
-    status: 'next',
-    statusText: 'Painted. Built in the earlier engine, to be rebuilt.',
-    image: pHill,
-    imageAlt: 'Painting of a hilltop village with narrow houses and stairs.',
-    body: 'Past the chapel, the houses climb the hill. The highest place in the town so far.',
+    status: 'built',
+    statusText: 'In the build since 22 October. The highest place in the town so far.',
+    image: fVillageAnna,
+    imageAlt: 'Anna standing by a stone fountain basin against the end parapet, the sea beyond.',
+    painting: pHill,
+    frames: [
+      { src: fVillageStairs, alt: 'A long stair climbing between pale walls toward the village.', caption: 'The stair up from the church terrace.' },
+      { src: fVillageDoorstep, alt: 'The Old Man with his cane at a dark doorway, a pot beside it.', caption: 'The Old Man has a doorstep now.' },
+      { src: fVillageKai, alt: 'Kai walking toward the basin and Anna, the sea beyond the parapet.', caption: 'Kai in the village.' },
+      { src: fSeaVillage, alt: 'The hill village from the sea: walls on a rocky shore, gable houses and a round tree above.', caption: 'From the sea, 24 October. The walls stand on rock now, not straight out of the water.' },
+    ],
+    body: 'Past the chapel, a stair climbs to a small square of gable houses on a causeway in the sea, with a fountain basin against the end parapet. Anna watches the flowers by the basin. The Old Man moved up here from the courtyard and has a doorstep.',
   },
   {
     slug: 'chapel',
     name: 'The chapel',
-    status: 'next',
-    statusText: 'Painted. Built in the earlier engine, to be rebuilt.',
+    status: 'now',
+    statusText: 'Being built now, with the first door that opens.',
     image: pChapel,
     imageAlt: 'Painting of a small chapel interior with a dim doorway.',
-    body: 'A small dim interior behind a real door, the first door in the game that opens and lets you step through.',
+    body: 'A small dim interior behind the chapel door on the church square, the first door in the game that opens. Kai uses it like a resident: walk up, face it, press E. A short fade to black, and he is inside.',
   },
   {
     slug: 'rusted-cog',
@@ -127,8 +171,8 @@ export const places: Place[] = [
   {
     slug: 'dyers-steps',
     name: 'Dyers\' Steps',
-    status: 'next',
-    statusText: 'Concept painting. A court of borrowed colour.',
+    status: 'now',
+    statusText: 'Being built now, off the seaside lane. A court of borrowed colour.',
     image: pDyers,
     imageAlt: 'Concept painting of a stepped courtyard hung with dyed cloth.',
     body: 'A textile court on the old Market Row, where cloth hangs to dry in the colours the town wears.',

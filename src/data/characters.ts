@@ -16,6 +16,24 @@ import chFace from '../assets/media/child-face.jpg';
 import fiDrawing from '../assets/media/fisherman-drawing.jpg';
 import fiFull from '../assets/media/fisherman-full.jpg';
 import fiFace from '../assets/media/fisherman-face.jpg';
+import salDrawing from '../assets/media/sal-drawing.jpg';
+import salFull from '../assets/media/sal-full.jpg';
+import salFace from '../assets/media/sal-face.jpg';
+import rowanDrawing from '../assets/media/rowan-drawing.jpg';
+import rowanFull from '../assets/media/rowan-full.jpg';
+import rowanFace from '../assets/media/rowan-face.jpg';
+import fridaDrawing from '../assets/media/frida-drawing.jpg';
+import fridaFull from '../assets/media/frida-full.jpg';
+import fridaFace from '../assets/media/frida-face.jpg';
+import tomDrawing from '../assets/media/tom-drawing.jpg';
+import tomFull from '../assets/media/tom-full.jpg';
+import tomFace from '../assets/media/tom-face.jpg';
+import annaDrawing from '../assets/media/anna-drawing.jpg';
+import annaFull from '../assets/media/anna-full.jpg';
+import annaFace from '../assets/media/anna-face.jpg';
+import edithDrawing from '../assets/media/edith-drawing.jpg';
+import edithFull from '../assets/media/edith-full.jpg';
+import edithFace from '../assets/media/edith-face.jpg';
 
 export type Character = {
   slug: string;
@@ -61,8 +79,8 @@ export const townsfolk: Character[] = [
   },
   {
     slug: 'shopkeeper',
-    name: 'Shopkeeper',
-    role: 'Keeps the shop under the blue awning',
+    name: 'Merchant Aldric',
+    role: 'The Shopkeeper. Keeps the shop under the blue awning',
     place: 'Courtyard, shop door',
     status: 'built',
     statusText: 'Rebuilt from the drawing on 22 October',
@@ -74,10 +92,10 @@ export const townsfolk: Character[] = [
   {
     slug: 'old-man',
     name: 'Old Man',
-    role: 'Sits with a cane on the church hill',
-    place: 'Church square',
+    role: 'Stands with a cane at a doorstep',
+    place: 'Hill village',
     status: 'built',
-    statusText: 'Rebuilt from the drawing on 22 October',
+    statusText: 'Rebuilt from the drawing on 22 October; moved up to the hill village the same evening',
     drawing: omDrawing, inGame: omFull, face: omFace,
     body: [
       'A violet robe, a stoop, and a ring where the head should be. The ring is built as a torus so it reads clean from every angle; the cane stayed from the earlier version. He is the figure that shows what the masks-and-holes language can do with the least material.',
@@ -97,14 +115,93 @@ export const townsfolk: Character[] = [
   },
   {
     slug: 'fisherman',
-    name: 'Fisherman',
-    role: 'Walks between the quay and the square',
-    place: 'Street and harbour',
+    name: 'Old Reed',
+    role: 'The Fisherman. Keeps to the quay by the boat',
+    place: 'Harbour',
     status: 'built',
-    statusText: 'Rebuilt from the drawing on 22 October; one of the two walkers',
+    statusText: 'Rebuilt from the drawing on 22 October; given his name and the harbour the same evening',
     drawing: fiDrawing, inGame: fiFull, face: fiFace,
     body: [
-      'Blue tunic, wide trousers, a steep blue cone hat and a void at the shoulder. He walks. His hat is steeper than the drawing wants and will be flattened in the next polish pass.',
+      'Blue tunic, wide trousers, a steep blue cone hat and a void at the shoulder. He walked the courtyard until the harbour was built; now he stands by the boat. His hat is steeper than the drawing wants and is on the polish list.',
+    ],
+  },
+  // From the second lineup drawing, 22 October. Placed in batch 1, moved in batch 2.
+  {
+    slug: 'sal',
+    name: 'Sal',
+    role: 'Dock worker, carries for the estate',
+    place: 'Harbour, walks the quay to the lane foot',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October; a walker',
+    drawing: salDrawing, inGame: salFull, face: salFace,
+    body: [
+      'A slate-blue jacket over navy trousers, a flat cap, and a void through the chest. He walks between the quay and the foot of the lane with crates nobody opens.',
+      '"A pace clear of the cargo, please. I\u2019d rather not learn your name by shouting for you."',
+    ],
+  },
+  {
+    slug: 'rowan',
+    name: 'Innkeeper Rowan',
+    role: 'Keeps The Weary Wanderer, airs every room',
+    place: 'Seaside lane, at the arched door',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October',
+    drawing: rowanDrawing, inGame: rowanFull, face: rowanFace,
+    body: [
+      'A rust dress under a pale apron, a red bun, and a void in the apron. The cast notes had Rowan as a man; the drawing came back a woman, and she was kept.',
+      '"Rowan, from The Weary Wanderer. Forgive me if I look pleased to see an unfamiliar face."',
+    ],
+  },
+  {
+    slug: 'frida',
+    name: 'Frida',
+    role: 'Sells fruit from a doorstep',
+    place: 'Seaside lane, a doorstep',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October',
+    drawing: fridaDrawing, inGame: fridaFull, face: fridaFace,
+    body: [
+      'An ochre pinafore, a teal headscarf, and a round void in the skirt. Plums in one bowl, apples in another, and a reason for the second bowl.',
+      '"Frida. It\u2019s a good day for plums. Not such a good day for keeping them cool."',
+    ],
+  },
+  {
+    slug: 'tom',
+    name: 'Tom',
+    role: 'Carries rumours, mostly secondhand',
+    place: 'Church square, walks the terrace',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October; a walker, moved to the church square in batch 2',
+    drawing: tomDrawing, inGame: tomFull, face: tomFace,
+    body: [
+      'A long olive coat, a flat cap, and a void through the coat. He has heard about lights near the ruins. He did not see them.',
+      '"You\u2019re new here. I was going to tell you what I\u2019ve heard, but perhaps that can wait."',
+    ],
+  },
+  {
+    slug: 'anna',
+    name: 'Anna',
+    role: 'Watches which flowers have opened',
+    place: 'Hill village, at the basin',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October; moved to the hill village in batch 2',
+    drawing: annaDrawing, inGame: annaFull, face: annaFace,
+    body: [
+      'A cream dress with a cape, a swept red ponytail, and a ring through the sleeve. She stands by the fountain basin with her back to the sea.',
+      '"Did you notice the flowers by the fountain? No matter if you didn\u2019t. You can look another time."',
+    ],
+  },
+  {
+    slug: 'edith',
+    name: 'Grandmother Edith',
+    role: 'Sits on a step and does not give advice',
+    place: 'Seaside lane, a seated step',
+    status: 'built',
+    statusText: 'From the second lineup, 22 October',
+    drawing: edithDrawing, inGame: edithFull, face: edithFace,
+    body: [
+      'A lavender cloak, a grey bun, and a crescent void at the hip. The smallest figure in the town and the oldest. She wished at the well once.',
+      '"You may stop a moment. I won\u2019t assume you\u2019ve come for advice."',
     ],
   },
 ];

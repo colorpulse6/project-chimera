@@ -4,6 +4,8 @@ import Frame from '../components/Frame.astro';
 import { Image } from 'astro:assets';
 import { kai, townsfolk } from '../data/characters';
 import composite from '../assets/media/townsfolk-today-vs-drawn.jpg';
+import lineup2 from '../assets/media/lineup-2-drawing.jpg';
+import strip2 from '../assets/media/townsfolk-second-lineup.jpg';
 import walkerFisherman from '../assets/media/walker-fisherman.jpg';
 import walkerChild from '../assets/media/walker-child.jpg';
 const all = [kai, ...townsfolk];
@@ -48,6 +50,19 @@ const cast = [
             {c.extra && <div class="person-extra"><Frame src={c.extra.src} alt={c.extra.caption} caption={c.extra.caption} sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1800]} /></div>}
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The second lineup</h2>
+        <p>Six more, drawn on 22 October in the first lineup's hand and picked from three versions. By the evening all six were standing in the lane, the harbour and the courtyard, with names, lines and two walking routes. Rowan was meant to be a man. The drawing disagreed and was kept.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={lineup2} alt="Drawing of six figures: Sal in slate blue, Rowan in a pale apron, Frida in ochre with a teal scarf, Tom in an olive coat, Anna in cream, Grandmother Edith in lavender." label="Lineup two." caption="Masks and holes again. One void each, and one crescent." sizes="(min-width: 70rem) 39rem, 100vw" />
+        <Frame src={strip2} alt="The six figures in the game, side by side, in the order of the drawing." label="In the game, the same evening." caption="Sal, Rowan, Frida, Tom, Anna, Edith." sizes="(min-width: 70rem) 39rem, 100vw" />
       </div>
     </div>
   </section>

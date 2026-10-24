@@ -9,18 +9,23 @@ export const done: Item[] = [
   { text: 'Packaged Mac build', detail: 'Havenwood, 22 October, with title and pause menus and a local save.' },
   { text: 'First recording and movement clips', detail: 'Forty seconds of the build on the home page; three loops on the characters page. 22 October.' },
   { text: 'Story, world and mechanics written up', detail: 'The 2025 design documents condensed onto this site, marked as designed rather than built. 22 October.' },
+  { text: 'Seaside lane and harbour', detail: 'Two new places on one continuous map, with quay, water and boat pieces added to the kit. 22 October.' },
+  { text: 'Six new townsfolk', detail: 'From a second lineup drawing, with names, lines and two walking routes. Eleven residents in all. 22 October.' },
+  { text: 'Church square, coast path and hill village', detail: 'Rebuilt from the paintings with ten new kit pieces; the town now reaches from the courtyard down to the sea and up to the chapel. 22 October.' },
+  { text: 'Saving where you stand', detail: 'Continue puts Kai back on the spot and in the place he left, not at the courtyard. 22 October.' },
+  { text: 'Sea walls on rock', detail: 'Rock masses and stepped footings so the walls stop rising straight out of the water. 24 October.' },
+  { text: 'Frame rate', detail: 'Every place holds 120 frames a second in a 1280 by 720 window on the M1 Max, measured standing still. 24 October.' },
 ];
 export const now: Item[] = [
-  { text: 'Seaside lane and harbour', detail: 'Two new places on one continuous map, with quay, water and boat pieces added to the kit.' },
-  { text: 'Six new townsfolk', detail: 'From a second lineup drawing, placed in the new places with names from the cast catalogue.' },
-  { text: 'Game side', detail: 'Named talk prompts, walkers that cross between places, the place name on arrival, saving where you stand.' },
+  { text: 'The chapel, inside', detail: 'A dim room behind the chapel door, with benches, a window and the afternoon sun.' },
+  { text: 'Doors that open', detail: 'Walk up, face the door, press E: a short fade and Kai is through. The chapel door is the first.' },
+  { text: 'Dyers\' Steps', detail: 'A stepped court off the seaside lane, with drying cloths, dye vats and a loom.' },
   { text: 'Figure polish', detail: 'The Child\'s bob as hair, the Fisherman\'s hat flatter, the Shopkeeper\'s collar edge.' },
 ];
 export const next: Item[] = [
-  { text: 'Church square, shop, hill village and chapel in the new engine', detail: 'The paintings exist; the places get rebuilt from the kit.' },
-  { text: 'Doors that open', detail: 'Step through a door into a dim interior, as the chapel did in the earlier engine.' },
+  { text: 'Inside the shop', detail: 'The painting exists; the second interior, once doors work.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },
   { text: 'Camera collision on the courtyard tree', detail: 'The camera passes inside the canopy and shows the shard mesh. Seen in the first recording.' },
-  { text: 'Frame rate', detail: 'The packaged build runs around 25 frames a second on the M1 Max with the look on. The bottleneck is not shading. Open.' },
+  { text: 'Frame rate at full size', detail: 'Measured at 1280 by 720 standing still. Full screen at Retina size, and a walk route, are not measured yet.' },
   { text: 'Story beats and Elara', detail: 'Kai\'s search for his sister, the first scenes that are not a town.' },
 ];

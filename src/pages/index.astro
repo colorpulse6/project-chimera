@@ -16,10 +16,11 @@ import paintingCourtyard from '../assets/media/painting-courtyard.jpg';
 const base = import.meta.env.BASE_URL;
 const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const latest = updates.slice(0, 3);
-const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const built = places.filter((p) => p.status === 'built');
 const inProgress = places.filter((p) => p.status === 'now');
 const asOf = updates[0]?.data.date;
+const names = (xs: { name: string }[]) => new Intl.ListFormat('en-GB', { type: 'conjunction' }).format(xs.map((p, i) => (i ? p.name.replace(/^The /, 'the ') : p.name)));
 const paint = await getImage({ src: paintingCourtyard, width: 1400, format: 'webp' });
 ---
 <Base>
@@ -47,11 +48,11 @@ const paint = await getImage({ src: paintingCourtyard, width: 1400, format: 'web
       <dl class="ledger">
         <div><dt>Engine</dt><dd>Unreal Engine 5, since 19 October 2026. Before that the same world was proved in Godot, and before that it was a browser game.</dd></div>
         <div><dt>Look</dt><dd>Locked on 20 October: ink lines, five value bands, lavender shadows, paper grain, flat painted colour, no global illumination. <a href={base + 'look/'}>How it works</a>.</dd></div>
-        <div><dt>Places</dt><dd>{built.map((p) => p.name).join(' and ')} are built. {inProgress.map((p) => p.name).join(' and ')} are being laid out on the same map. <a href={base + 'world/'}>The world</a>.</dd></div>
-        <div><dt>People</dt><dd>Kai and {townsfolk.length} townsfolk, all made from one lineup drawing. Two of them walk routes. <a href={base + 'characters/'}>The characters</a>.</dd></div>
+        <div><dt>Places</dt><dd>{names(built)} are built, on one map with no loading. {names(inProgress)} are being built now. <a href={base + 'world/'}>The world</a>.</dd></div>
+        <div><dt>People</dt><dd>Kai and {townsfolk.length} townsfolk, made from two lineup drawings. Each has a name and something to say. A few of them walk routes. <a href={base + 'characters/'}>The characters</a>.</dd></div>
         <div><dt>Story</dt><dd>Act I is Havenwood, and Havenwood is what is built. The three acts, the cast and the systems are written. <a href={base + 'story/'}>The story</a>, <a href={base + 'mechanics/'}>the mechanics</a>.</dd></div>
-        <div><dt>Latest build</dt><dd>Havenwood, 22 October 2026, macOS. Title and pause menus, dialogue with the residents, a local save.</dd></div>
-        <div><dt>Now</dt><dd>A lane down to the sea, a harbour, and six more residents from a second drawing. <a href={base + 'roadmap/'}>The roadmap</a>.</dd></div>
+        <div><dt>Latest build</dt><dd>Havenwood, 24 October 2026, macOS on Apple Silicon. Six places, eleven residents, title and pause menus, dialogue, and a save that puts you back where you stood.</dd></div>
+        <div><dt>Now</dt><dd>The chapel from the inside, the first door that opens, and Dyers' Steps off the lane. <a href={base + 'roadmap/'}>The roadmap</a>.</dd></div>
       </dl>
     </div>
   </section>

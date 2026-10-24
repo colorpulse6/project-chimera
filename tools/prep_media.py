@@ -3,6 +3,7 @@
 Run with the chimera-ml venv (has Pillow):
   ~/.venvs/chimera-ml/bin/python tools/prep_media.py
 Writes JPEGs into src/assets/media/. Re-run after new review runs.
+One section alone:  ... prep_media.py --batch-2-3
 """
 from pathlib import Path
 from PIL import Image
@@ -56,6 +57,52 @@ def grid_frames(img, dark=60):
     rows = segments(lambda y: row_bright[y] > (w / 4) * 0.5, h, min_len=100)
     return cols, rows
 
+
+def batch_2_3():
+    """Batches 1 to 3 of the scale-up (22 to 24 Oct): lane, harbour, church square,
+    hill village, sea walls, and the six residents from the second lineup drawing."""
+    R = FG / "review"
+    picks = {
+        "20261022-152156-lane2": {"01-arrival-from-courtyard": "lane-arrival", "05-looking-back-up": "lane-looking-back", "06-kai-in-lane": "lane-kai"},
+        "20261022-151724-harbour2": {"02-quay-along": "harbour-quay", "03-boat": "harbour-boat", "06-kai-on-quay": "harbour-kai"},
+        "20261024-043105-church3": {"01-arrival-from-path": "church-arrival", "02-painting": "church-painting", "03-chapel-door": "church-chapel-door", "04-lookout-headland": "church-headland", "06-kai-on-terrace": "church-kai"},
+        "20261024-043149-village3": {"01-arrival-from-terrace": "village-stairs", "03-anna-at-the-basin": "village-anna", "04-doorstep": "village-doorstep", "06-kai-in-village": "village-kai"},
+        "20261024-043023-walls1": {"01-quay-to-coast-path": "sea-quay-path", "02-bay-to-path-and-terrace": "sea-bay", "04-north-wall-from-sea": "sea-north-wall", "06-village-from-sea": "sea-village"},
+    }
+    for run, frames in picks.items():
+        for src, name in frames.items():
+            save(Image.open(R / run / f"{src}.png"), name)
+    save(Image.open(R / "batch3-walls/walls-before-after.png"), "sea-walls-before-after", maxw=2000)
+    save(Image.open(FG / "briefs/2026-10-22-scale-up/lineup-2/lineup-2-c.png"), "lineup-2-drawing", maxw=2000, q=90)
+    # The six new residents side by side, full figure, from the figure run of 22 Oct
+    gen6 = R / "20261022-183648-gen6"
+    figs = [Image.open(next(gen6.glob(f"*-{k}_gen-full.png"))).convert("RGB") for k in ("sal", "rowan", "frida", "tom", "anna", "edith")]
+    # the frames are landscape with the figure in the middle: keep the central 40 %
+    figs = [f.crop((round(f.width * .30), 0, round(f.width * .70), f.height)) for f in figs]
+    h = 900
+    figs = [f.resize((round(f.width * h / f.height), h), Image.LANCZOS) for f in figs]
+    gap = 12
+    row = Image.new("RGB", (sum(f.width for f in figs) + gap * (len(figs) - 1), h), (18, 15, 22))
+    x = 0
+    for f in figs:
+        row.paste(f, (x, 0)); x += f.width + gap
+    save(row, "townsfolk-second-lineup", maxw=2400)
+    # One drawing crop, one in-game figure and one face per new resident
+    li2 = Image.open(FG / "briefs/2026-10-22-scale-up/lineup-2/lineup-2-c.png").convert("RGB")
+    w2, h2 = li2.size
+    boxes2 = {"sal": (0.02, 0.205), "rowan": (0.2, 0.365), "frida": (0.36, 0.515), "tom": (0.52, 0.67),
+              "anna": (0.665, 0.825), "edith": (0.82, 0.985)}
+    for key, (f0, f1) in boxes2.items():
+        save(li2.crop((round(w2 * f0), 0, round(w2 * f1), h2)), f"{key}-drawing", maxw=1200, q=90)
+        full = Image.open(next(gen6.glob(f"*-{key}_gen-full.png")))
+        save(full, f"{key}-full", maxw=1800)
+        save(Image.open(next(gen6.glob(f"*-{key}_gen-face.png"))), f"{key}-face", maxw=1800)
+
+
+import sys
+if "--batch-2-3" in sys.argv:
+    batch_2_3()
+    sys.exit(0)
 
 # 1. Frames from the Unreal build (street run of 22 Oct, figure run of 22 Oct)
 street = FG / "review/20261022-091756-street2"

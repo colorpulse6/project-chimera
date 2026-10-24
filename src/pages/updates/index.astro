@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 const base = import.meta.env.BASE_URL;
 const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 <Base title="Updates" description="Save points. Each one records what changed in the Chimera build, what was decided, and what it looked like from the rig.">
   <section class="section">
