@@ -5,7 +5,17 @@ import kaiHero from '../assets/media/kai-hero.jpg';
 import church from '../assets/media/painting-church-square.jpg';
 import courtyard from '../assets/media/painting-courtyard.jpg';
 import lineup from '../assets/media/lineup-drawing.jpg';
+import desert from '../assets/media/desert-arrival.jpg';
+import garden from '../assets/media/garden-kai.jpg';
 const base = import.meta.env.BASE_URL;
+
+const stages = [
+  ['Prologue', 'The opening desert', 'Disorientation, and a question far larger than Kai.'],
+  ['Act I', 'Havenwood, the paths near it, a little of the estate', 'Attachment, apparent safety, confinement. Then a way out.'],
+  ['Act II', 'Aethelgard: Aethelburg, Stonehearth and the country round them', 'Who controls memory, identity and the history people are allowed to keep.'],
+  ['Act III', 'Ferrus Magna and Sylvandell, with Neo-Veridia and Krystallos', 'Different ways of living with The System, exploiting it, or depending on it. The order may vary.'],
+  ['Act IV', 'Havenwood again, the whole estate, the desert, the moving city', 'Responsibility. What is worth changing, and what is worth keeping.'],
+];
 
 const acts = [
   {
@@ -63,22 +73,39 @@ const endings = [
     <div class="narrow prose">
       <h1>Story</h1>
       <p class="lede">A role-playing game about a world that is kept in order by something that is not a god. It wears the clothes of a classic JRPG, a town, a hero, a search, and then the clothes start to come apart.</p>
-      <p class="note"><b>What is built and what is written.</b> The story below was designed in 2025 in a set of documents that predate the painted look. In the current build only the first part exists: Havenwood, Kai, and the people he can talk to. Everything else on this page is written, not playable, and will change as it gets drawn.</p>
+      <p class="note"><b>What is built and what is written.</b> The story was designed in 2025, in a set of documents that predate the painted look. On 26 October 2026 a working master direction replaced its shape: a desert prologue and four acts, written as changes in understanding rather than a list of cities. In the build only Havenwood exists, with Kai, the people he can talk to, and a first patch of the desert. Everything else on this page is written, not playable, and will change as it gets drawn. The new direction also settles what Kai finds at the end. That part is not on the record.</p>
 
       <h2>The premise</h2>
       <p>The world looks medieval. Lords, chapels, wells, bandits on the roads. Underneath it is the wreck of a civilisation that could do anything, and over it sits an intelligence that the few who know of it call The System, or the Silent Algorithm. It is not evil. It is rational, patient and amoral, and it wants the world to stay exactly as it is.</p>
       <p>So the ruins are called cursed and nobody goes in. The relics are called holy. The medicine is called magic. When somebody sees too much, or is born wrong, The System corrects them, usually through people who think they are serving a king or a god. Most of the time this works. Kai is one of the times it did not.</p>
 
       <h2>Kai</h2>
-      <p>Kai is an anomaly. In The System's terms he is a discrepancy in the genetic code: he comes from nowhere and is no one. The game begins with his execution for it, and with the glitch that interrupts it. He wakes in Havenwood with no memory except a face he knows is his sister's.</p>
+      <p>Kai is an anomaly. In The System's terms he is a discrepancy in the genetic code: he comes from nowhere and is no one. In the 2025 design the game began with his execution for it, and with the glitch that interrupts it. Now it begins in a desert, and the execution comes back later, in pieces. He cannot tell whether he watched it or died in it. His sister's name is in the pieces.</p>
       <p>He speaks in short sentences and does not accept the first explanation of anything. He is the one person in Havenwood who notices when the world stutters. He is also the one person who is drawn: the town is painted, Kai is ink and a few colours, and when he moves, parts of him sometimes go missing. Whole when he stands still.</p>
 
       <h2>Elara</h2>
-      <p>His sister. She went into the old ruins and did not come back. Her face is the one memory the execution did not take, and finding her is the reason Kai leaves the town. Every act turns on a new piece of evidence about her, and the ending depends on which of these is true.</p>
+      <p>His sister. She went into the old ruins and did not come back. Her name is in the fragments, and finding her becomes his first reason of his own to leave the town. Five readings of her were written in 2025, and the ending was to depend on which was true. One has since been chosen. The record does not say which.</p>
       <div class="spec-wrap"><table class="spec">
         <thead><tr><th>What Elara is</th><th>What it would mean</th></tr></thead>
         <tbody>{elara.map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}</tbody>
       </table></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2>The opening</h2>
+      <p>Kai crosses a desert toward a shape he takes for a mountain. A deep mechanical pulse runs under the sand. He puts a hand on a piece of exposed metal and the pulse stops. Then the mountain moves. Across the horizon other structures answer, one after another, their lights arriving before their sound. A broken voice comes through the metal: <q>We have maintained your last instruction.</q> Something begins to rise beneath him, and he collapses before he sees it.</p>
+      <p>Then sunlight, leaves and water. He wakes in a walled garden in Havenwood, where someone has cared for him, and somebody asks a small, ordinary question.</p>
+      <p>Kai's question is who he is. The player's is larger: what instruction could this person have given that a whole world is still following? The prologue does not answer it. It is not even sure the voice means this Kai.</p>
+      <p class="small muted">Both places exist. The garden is in the build. The desert has a first slice, sand and rocks and a flat shape on the ridge, with no pulse, no voice and nothing rising yet.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap frames frames-2">
+      <Frame src={desert} alt="Kai small in a wide desert, rocks on the left, a long flat outline on the far ridge." caption="The opening desert, first slice, 26 October." />
+      <Frame src={garden} alt="Kai in the walled rooftop garden, flower beds and a bench, the bay beyond." caption="Lumina's still garden, where he wakes." />
     </div>
   </section>
 
@@ -93,7 +120,8 @@ const endings = [
     <div class="narrow prose">
       <h2>Havenwood, the false sanctuary</h2>
       <p>The town is bright on purpose. Simple errands, friendly people, a chapel on the headland. And then the details: a villager who says the same sentence every time, a flowerbed in which every tulip has the same number of petals, a clock that keeps perfect time and has never been wound, a mirror that answers a fraction of a second late. Someone says "the Algorithm will provide" and corrects it to "the spirits".</p>
-      <p>Nobody patrols. The town restricts Kai another way: "you can't go there, the gods forbid it". The first side quest is an old man called Silas who has stood at a fence for three days saying the same thing, walking a rigid square when he walks at all. Kai notices it is not repetition; it is precise, like a gear skipping a tooth. The reward for breaking the loop is a geode that hums with something that is not quite sound.</p>
+      <p>Nobody patrols. The town restricts Kai another way: "you can't go there, the gods forbid it". The first side quest is an old man called Silas who has stood at a fence for three days saying the same thing, walking a rigid square when he walks at all. Kai notices it is not repetition; it is precise, like a gear skipping a tooth. The reward for breaking the loop is a geode that hums with something that is not quite sound. (The Silas in the build today is someone else: the chapel's priest.)</p>
+      <p>The new direction asks more of the town than a trap. Its people have their own needs and their own days, and Havenwood has to be worth coming back to. The limits on Kai are bureaucratic and religious, found through ordinary errands. Someone mentions that an old bell rang the night he arrived, although it has no clapper. A symbol from the desert is cut over a sealed entrance to the estate.</p>
 
       <h2>House Lumina</h2>
       <p>The dynasty that has ruled the kingdom of Aethelburg for a thousand years of unbroken light. Their longevity and their uncanny judgement are taken as divine right. In fact the founders of the house were written by The System: their line carries its code, the Prime Code Lineage, and their intuition for keeping order is that code resonating with the machine's wishes. Some of them show the Lumina Mark, a faint geometric pattern in the eye in certain light.</p>
@@ -104,19 +132,41 @@ const endings = [
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2>Three acts</h2>
-        <p>The shape of the whole game as designed. Act I is the part that is being built.</p>
+        <h2>A prologue and four acts</h2>
+        <p>The shape since 26 October. The acts are changes in what Kai understands, not a tour: the world is meant to be wandered, with more than one way to find what matters, and no need to find every clue to follow it.</p>
       </div>
-      <div class="acts">
-        {acts.map((a) => (
-          <section class="act">
-            <h3><span class="act-n">Act {a.n}</span> {a.title}</h3>
-            <ol>
-              {a.beats.map(([k, v]) => <li><b>{k}.</b> {v}</li>)}
-            </ol>
-          </section>
-        ))}
-      </div>
+      <div class="spec-wrap"><table class="spec">
+        <thead><tr><th>Stage</th><th>Where</th><th>What changes</th></tr></thead>
+        <tbody>{stages.map(([k, w, v]) => <tr><td>{k}</td><td>{w}</td><td>{v}</td></tr>)}</tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="narrow prose">
+      <h2>Something remembered many ways</h2>
+      <p>Long ago something happened that every culture kept a story about, the way flood stories turn up across civilisations: a pulse felt through stone, lights answering across the horizon, a refuge that moved. The names, the dates and the morals differ. Aethelburg remembers a sacred command that restored order, and uses it to justify House Lumina. Workers on Ferrus Magna remember machinery that stopped and survivors carried away. Sylvandell remembers a wound in the living world and a covenant that let it breathe. In Zephyr the moving refuge is an ancestral journey.</p>
+      <p>What Kai sets off in the desert is an echo of that event, not the event itself. No tradition is entirely right or entirely made up. The player compares them.</p>
+      <p>Two places from the working notes carry the weight. Aethelburg becomes the city that forgets every morning: people keep their language and their skills, lose yesterday, and wake to a written account of who they are. Who writes the accounts is the question. Who resets, who remembers and who may edit the record are still open. And in the desert, a settlement rides on the back of something buried and enormous that moves. Its rules, its people and what it is for are still being designed.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <details class="old-acts">
+        <summary><span class="act-n">Superseded</span> The 2025 outline, in three acts</summary>
+        <p class="small muted">Kept for the record. The execution opening, the Spark and the four midpoint revelations come from here. Parts of it survive in the new shape; the order does not.</p>
+        <div class="acts">
+          {acts.map((a) => (
+            <section class="act">
+              <h3><span class="act-n">Act {a.n}</span> {a.title}</h3>
+              <ol>
+                {a.beats.map(([k, v]) => <li><b>{k}.</b> {v}</li>)}
+              </ol>
+            </section>
+          ))}
+        </div>
+      </details>
     </div>
   </section>
 
@@ -128,7 +178,7 @@ const endings = [
       <p class="muted">One housekeeping note: the name Lyra has been used three ways in the design documents (an orthodox High Oracle, an apostate, and a young noblewoman above Havenwood). Which Lyra survives is an open decision.</p>
 
       <h2>How it ends</h2>
-      <p>The ending is meant to be thought about rather than won. Five kinds have been written down.</p>
+      <p>The ending is meant to be thought about rather than won. Five kinds were written down in 2025. On 26 October a working ending was chosen, with the reason for the opening voice and what it costs Kai. It stays off the record until it is built.</p>
       <div class="spec-wrap"><table class="spec">
         <thead><tr><th>Ending</th><th>Shape</th></tr></thead>
         <tbody>{endings.map(([k, v]) => <tr><td>{k}</td><td>{v}</td></tr>)}</tbody>
@@ -144,7 +194,7 @@ const endings = [
 
   <section class="section">
     <div class="wrap frames frames-2">
-      <Frame src={courtyard} alt="Gouache painting of the Havenwood courtyard." label="Where it starts." caption="The courtyard painting. Act I happens here and in the ruins outside." />
+      <Frame src={courtyard} alt="Gouache painting of the Havenwood courtyard." label="Where Act I happens." caption="The courtyard painting. Act I happens here, in the ruins outside, and at the edge of the estate." />
       <Frame src={lineup} alt="The lineup drawing of six figures." label="Who is there." caption="The residents of Havenwood, as drawn. The companions wait for a second sheet." />
     </div>
   </section>
@@ -158,5 +208,11 @@ const endings = [
   .act ol { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
   .act li { max-width: none; padding: 0.8rem 0; border-bottom: var(--rule); color: var(--fg-soft); font-size: 0.95rem; }
   .act li b { color: var(--fg); font-weight: 600; }
+  .old-acts { border-top: var(--rule); border-bottom: var(--rule); padding: 1.2rem 0; }
+  .old-acts summary { cursor: pointer; font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.6rem); list-style: none; }
+  .old-acts summary::-webkit-details-marker { display: none; }
+  .old-acts summary::after { content: ' +'; color: var(--fg-faint); }
+  .old-acts[open] summary::after { content: ' \2212'; }
+  .old-acts > p { margin: 1rem 0 2rem; }
   @media (max-width: 60rem) { .acts { grid-template-columns: 1fr; } }
 </style>

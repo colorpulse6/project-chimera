@@ -23,7 +23,7 @@ and corrected itself.
 | Updates | Dated entries, one per build or decision, with frames from the rig |
 | World | Havenwood and the places beyond it, grouped as anchored / weaving / unwritten |
 | Characters | Kai and the townsfolk, from drawing to game, and the cast still to draw |
-| Story | Premise, Kai, Elara's five readings, the three acts, the endings |
+| Story | Premise, Kai, Elara, the desert opening, the prologue and four acts (the 2025 outline kept folded), the endings. The chosen ending is not on the site |
 | Mechanics | Temporal anchors, the loop, combat phases, echo weaving, spells, companions |
 | Look | How the painted look works and how it is checked |
 | Roadmap | What is anchored, what is being woven, what is still unwritten |

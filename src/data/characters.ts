@@ -34,6 +34,19 @@ import annaFace from '../assets/media/anna-face.jpg';
 import edithDrawing from '../assets/media/edith-drawing.jpg';
 import edithFull from '../assets/media/edith-full.jpg';
 import edithFace from '../assets/media/edith-face.jpg';
+import gretaDrawing from '../assets/media/greta-drawing.jpg';
+import gretaFull from '../assets/media/cog-greta.jpg';
+import gretaFace from '../assets/media/greta-face.jpg';
+import silasDrawing from '../assets/media/silas-drawing.jpg';
+import silasFull from '../assets/media/silas-full.jpg';
+import silasFace from '../assets/media/silas-face.jpg';
+import ferrisDrawing from '../assets/media/ferris-drawing.jpg';
+import ferrisFull from '../assets/media/ferris-full.jpg';
+import ferrisFace from '../assets/media/ferris-face.jpg';
+import strangerDrawing from '../assets/media/stranger-drawing.jpg';
+import strangerFull from '../assets/media/stranger-full.jpg';
+import strangerFace from '../assets/media/stranger-face.jpg';
+import kaiWalk from '../assets/media/kai-walk-strip.jpg';
 
 export type Character = {
   slug: string;
@@ -60,8 +73,10 @@ export const kai: Character = {
   inGame: kaiHero,
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
-    'He walks and runs with planted feet and a real stride with flight, solved from his own leg geometry. At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
+    'Since 25 October he moves on motion-capture clips retargeted to his own skeleton: a breathing idle, a walk, a run and a jump, with his feet set on the steps and his cape on a simulation. Nic\'s first look, on 26 October: the cape flickers at rest instead of hanging, the arms swing too much, and the jump is too acrobatic. That pass is being made now. One arm is always under the cloak; from the next build it stays there on purpose.',
+    'At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
   ],
+  extra: { src: kaiWalk, caption: 'The walk, eight frames 0.43 seconds apart, from the batch 9 build of 25 October. Before the next pass.' },
 };
 
 export const townsfolk: Character[] = [
@@ -202,6 +217,58 @@ export const townsfolk: Character[] = [
     body: [
       'A lavender cloak, a grey bun, and a crescent void at the hip. The smallest figure in the town and the oldest. She wished at the well once.',
       '"You may stop a moment. I won\u2019t assume you\u2019ve come for advice."',
+    ],
+  },
+  {
+    slug: 'greta',
+    name: 'Greta',
+    role: 'Keeps the Rusted Cog',
+    place: 'The Rusted Cog, behind the bar',
+    status: 'built',
+    statusText: 'Drawn 24 October, in the build since 25 October',
+    drawing: gretaDrawing, inGame: gretaFull, face: gretaFace,
+    body: [
+      'A navy dress, a coral apron with an arched void in it, a violet bun, and a cup held in both hands. Her drawing was a draft, made for Nic to correct. Nic accepted it as drawn, with no notes, so the bun, the apron and the cup stayed.',
+      '"Welcome to the Rusted Cog. Greta. There\u2019s room for you, and no obligation to be interesting."',
+    ],
+  },
+  {
+    slug: 'silas',
+    name: 'Father Silas',
+    role: 'Keeps the chapel and its books',
+    place: 'The chapel, inside',
+    status: 'built',
+    statusText: 'From the third lineup, in the build since 25 October',
+    drawing: silasDrawing, inGame: silasFull, face: silasFace,
+    body: [
+      'A red robe, a cream stole in two bands, a round void at the chest, hands folded. The 2025 documents had a Silas who stood at a fence for three days saying the same thing. This one keeps the chapel, and the books, which have lasted through a good deal of mending.',
+      '"Welcome. Silas. You needn\u2019t have a question to spend a little time here."',
+    ],
+  },
+  {
+    slug: 'ferris',
+    name: 'Old Ferris',
+    role: 'Saw lights near the ruins',
+    place: 'The Rusted Cog',
+    status: 'built',
+    statusText: 'From the third lineup, in the build since 25 October',
+    drawing: ferrisDrawing, inGame: ferrisFull, face: ferrisFace,
+    body: [
+      'An ochre coat with a crescent void, a grey-green shirt, a hat in one hand and a cane in the other, swept white hair. He saw lights moving near the ruins, like festival lanterns, when there was no festival. He does not mind the story being repeated. Improving it is another matter.',
+      '"Before you ask, I said lights. The rest seems to have been added over drinks."',
+    ],
+  },
+  {
+    slug: 'stranger',
+    name: 'Hooded Stranger',
+    role: 'Does not speak',
+    place: 'The Rusted Cog, at a corner table',
+    status: 'now',
+    statusText: 'From the third lineup, in the build since 25 October. Being made darker now',
+    drawing: strangerDrawing, inGame: strangerFull, face: strangerFace,
+    body: [
+      'A taupe cloak, and a hood whose opening is the void, where a face would be. Every line the Stranger has is a stage direction. Nic, on 26 October: not correct yet; darker, more ominous. That pass is under way.',
+      '"[The hood turns towards Kai. The figure waits without speaking.]"',
     ],
   },
 ];

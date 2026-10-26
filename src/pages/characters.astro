@@ -6,6 +6,8 @@ import { kai, townsfolk } from '../data/characters';
 import composite from '../assets/media/townsfolk-today-vs-drawn.jpg';
 import lineup2 from '../assets/media/lineup-2-drawing.jpg';
 import strip2 from '../assets/media/townsfolk-second-lineup.jpg';
+import lineup3 from '../assets/media/lineup-3-drawing.jpg';
+import strip3 from '../assets/media/townsfolk-third-lineup.jpg';
 import walkerFisherman from '../assets/media/walker-fisherman.jpg';
 import walkerChild from '../assets/media/walker-child.jpg';
 const all = [kai, ...townsfolk];
@@ -21,7 +23,6 @@ const cast = [
   ['Kaelen Lumina', 'The reality weaver', 'A lord who understands The System as a machine and wants to become its source code. The nearest thing the story has to a villain who is not the architect.'],
   ['Aris Thorne', 'The technocrat', 'A Lumina by birth, married into an engineering house on Ferrus Magna. Rejects the mysticism and wants the technology.'],
   ['Valerius Lumina', 'The whispering glitch', 'A Glitched Scion in unstable symbiosis with a fragment of precursor AI at a Whispering Ruin. A cult has grown around him.'],
-  ['Silas', 'The glitched villager', 'An old man in Havenwood who has stood at a fence for three days saying the same thing. The first side quest, and the first sign.'],
 ];
 ---
 <Base title="Characters" description="Kai, who is drawn, and the townsfolk of Havenwood, who are painted and do not remark on the voids in their clothes. Then the cast still to draw.">
@@ -63,6 +64,19 @@ const cast = [
       <div class="frames frames-2">
         <Frame src={lineup2} alt="Drawing of six figures: Sal in slate blue, Rowan in a pale apron, Frida in ochre with a teal scarf, Tom in an olive coat, Anna in cream, Grandmother Edith in lavender." label="Lineup two." caption="Masks and holes again. One void each, and one crescent." sizes="(min-width: 70rem) 39rem, 100vw" />
         <Frame src={strip2} alt="The six figures in the game, side by side, in the order of the drawing." label="In the game, the same evening." caption="Sal, Rowan, Frida, Tom, Anna, Edith." sizes="(min-width: 70rem) 39rem, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The third lineup, and Greta</h2>
+        <p>Three more for the chapel and the Rusted Cog, drawn on 25 October and accepted as drawn. In the game they first came out a little off: long dark necks, paler cloth, hair like a white cap. They were reworked against the drawing, two or three rounds each, before Nic passed them. Greta came a day earlier, on her own sheet.</p>
+      </div>
+      <div class="frames frames-2">
+        <Frame src={lineup3} alt="Drawing of three figures: Father Silas in a red robe with a cream stole, Old Ferris in an ochre coat with a cane, the Hooded Stranger in a taupe cloak." label="Lineup three." caption="Silas, Ferris, the Stranger. The Stranger's void is the hood." sizes="(min-width: 70rem) 39rem, 100vw" />
+        <Frame src={strip3} alt="The same three in the game, side by side." label="In the game, 25 October." caption="Silas in the chapel, Ferris and the Stranger in the Cog. The Stranger is being made darker." sizes="(min-width: 70rem) 39rem, 100vw" />
       </div>
     </div>
   </section>
@@ -124,6 +138,8 @@ const cast = [
   .person-frames { display: grid; gap: 1.6rem; min-width: 0; }
   .person-text { min-width: 0; }
   .person-extra { grid-column: 1 / -1; }
+  .person-text .state { white-space: normal; align-items: flex-start; }
+  .person-text .state::before { margin-top: 0.3em; }
   @media (max-width: 70rem) { .person { grid-template-columns: 12rem minmax(0, 1fr); } .person-frames { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } }
   @media (max-width: 40rem) { .person { grid-template-columns: minmax(0, 1fr); } .portrait { max-width: 12rem; } .person-frames { grid-template-columns: minmax(0, 1fr); } }
   .walkers { margin-top: clamp(1.6rem, 3.5vw, 3rem); }

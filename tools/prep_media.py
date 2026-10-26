@@ -3,7 +3,7 @@
 Run with the chimera-ml venv (has Pillow):
   ~/.venvs/chimera-ml/bin/python tools/prep_media.py
 Writes JPEGs into src/assets/media/. Re-run after new review runs.
-One section alone:  ... prep_media.py --batch-2-3
+One section alone:  ... prep_media.py --batch-2-3  (or --batch-4-10)
 """
 from pathlib import Path
 from PIL import Image
@@ -99,9 +99,64 @@ def batch_2_3():
         save(Image.open(next(gen6.glob(f"*-{key}_gen-face.png"))), f"{key}-face", maxw=1800)
 
 
+def batch_4_10():
+    """Batches 4 to 10b (24 to 26 Oct): the chapel and its door, Dyers' Steps, the shop,
+    Swaps, the garden, the Rusted Cog, the estate approach, lineup 3 and Greta, Kai's
+    movement, and the Opening Desert slice."""
+    R = FG / "review"
+    B = FG / "briefs/2026-10-22-scale-up"
+    picks = {
+        "20261024-185310-chapel11": {"01-painting": "chapel-room", "04-benches-side": "chapel-benches", "06-kai-inside": "chapel-kai"},
+        "20261024-185641-door8": {"01-outside-prompt": "chapel-door-prompt", "02-mid-fade": "chapel-door-fade", "03-inside": "chapel-door-inside"},
+        "20261024-185818-dyers6": {"01-concept-framing": "dyers-court", "04-vats-and-loom": "dyers-vats", "07-from-the-church-terrace": "dyers-from-terrace", "08-kai-in-the-court": "dyers-kai"},
+        "20261024-185345-shop8": {"01-painting": "shop-room", "05-outside-door": "shop-door", "06-kai-inside": "shop-kai"},
+        "20261024-185435-barter4": {"02-aldric-panel": "swaps-aldric", "04-frida-gift": "swaps-frida", "08-harbour-bottle-prompt": "swaps-bottle"},
+        "20261025-092240-garden11": {"01-concept-framing": "garden-fountain", "03-view-out": "garden-view", "06-rooftops": "garden-ladder", "07-street-to-the-rose-door": "garden-rose-door", "08-kai-in-the-garden": "garden-kai"},
+        "20261024-223041-cog5greta": {"01-painting": "cog-room", "03-hearth-cog": "cog-hearth", "04-bar": "cog-greta", "07-kai-inside": "cog-kai"},
+        "20261025-140251-pkg8-estate": {"01-painting-A": "estate-road", "02-from-the-foot": "estate-foot", "03-painting-B": "estate-view-back", "05-kai-at-the-gate": "estate-gate-kai"},
+        "20261025-093606-shut2": {"02-gate-line": "estate-gate-line"},
+        "20261025-140158-pkg8-silas": {"01-silas_gen-full": "silas-full", "02-silas_gen-face": "silas-face", "03-silas_gen-with-kai": "silas-with-kai"},
+        "20261025-140125-pkg8-figs": {"01-ferris_gen-full": "ferris-full", "02-ferris_gen-face": "ferris-face", "04-stranger_gen-full": "stranger-full", "05-stranger_gen-face": "stranger-face"},
+        "20261025-121259-residents-r3": {"23-greta_gen-full": "greta-full", "24-greta_gen-face": "greta-face"},
+        "20261026-002154-pkg-batch10b-desert": {"01-painting-view": "desert-arrival", "02b-kai-at-arrival": "desert-kai", "03-rocks": "desert-rocks"},
+    }
+    for run, frames in picks.items():
+        for src, name in frames.items():
+            save(Image.open(R / run / f"{src}.png"), name)
+    # Paintings and drawings Nic picked or accepted
+    save(Image.open(B / "estate/estate-approach-a.png"), "painting-estate-approach", maxw=2000, q=90)
+    li3 = Image.open(B / "lineup-3/lineup-3-a.png").convert("RGB")
+    save(li3, "lineup-3-drawing", maxw=2000, q=90)
+    w3, h3 = li3.size
+    for key, (f0, f1) in {"silas": (0.06, 0.34), "ferris": (0.35, 0.665), "stranger": (0.67, 0.95)}.items():
+        save(li3.crop((round(w3 * f0), 0, round(w3 * f1), h3)), f"{key}-drawing", maxw=1200, q=90)
+    greta = Image.open(B / "greta/greta-draft-a.png").convert("RGB")
+    save(greta.crop((round(greta.width * 0.3), 0, round(greta.width * 0.65), greta.height)), "greta-drawing", maxw=1200, q=90)
+    # Lineup 3 in the game, side by side, as for the second lineup
+    figs = [Image.open(R / run / f"{src}.png").convert("RGB") for run, src in (
+        ("20261025-140158-pkg8-silas", "01-silas_gen-full"), ("20261025-140125-pkg8-figs", "01-ferris_gen-full"),
+        ("20261025-140125-pkg8-figs", "04-stranger_gen-full"))]
+    figs = [f.crop((round(f.width * .30), 0, round(f.width * .70), f.height)) for f in figs]
+    h = 900
+    figs = [f.resize((round(f.width * h / f.height), h), Image.LANCZOS) for f in figs]
+    gap = 12
+    row = Image.new("RGB", (sum(f.width for f in figs) + gap * (len(figs) - 1), h), (18, 15, 22))
+    x = 0
+    for f in figs:
+        row.paste(f, (x, 0)); x += f.width + gap
+    save(row, "townsfolk-third-lineup", maxw=2400)
+    # Kai's movement, batch 9: the walk row and the jump row of the strip board
+    board = Image.open(R / "batch9/pkg9-motion.png")
+    save(board.crop((0, 473, 1863, 893)), "kai-walk-strip", maxw=2400)
+    save(board.crop((0, 2256, 2330, 2676)), "kai-jump-strip", maxw=2400)
+
+
 import sys
 if "--batch-2-3" in sys.argv:
     batch_2_3()
+    sys.exit(0)
+if "--batch-4-10" in sys.argv:
+    batch_4_10()
     sys.exit(0)
 
 # 1. Frames from the Unreal build (street run of 22 Oct, figure run of 22 Oct)

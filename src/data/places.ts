@@ -37,6 +37,34 @@ import fSeaQuayPath from '../assets/media/sea-quay-path.jpg';
 import fSeaBay from '../assets/media/sea-bay.jpg';
 import fSeaNorthWall from '../assets/media/sea-north-wall.jpg';
 import fSeaVillage from '../assets/media/sea-village.jpg';
+import fChapelRoom from '../assets/media/chapel-room.jpg';
+import fChapelBenches from '../assets/media/chapel-benches.jpg';
+import fChapelKai from '../assets/media/chapel-kai.jpg';
+import fDoorPrompt from '../assets/media/chapel-door-prompt.jpg';
+import fDyersCourt from '../assets/media/dyers-court.jpg';
+import fDyersVats from '../assets/media/dyers-vats.jpg';
+import fDyersTerrace from '../assets/media/dyers-from-terrace.jpg';
+import fDyersKai from '../assets/media/dyers-kai.jpg';
+import fShopRoom from '../assets/media/shop-room.jpg';
+import fShopDoor from '../assets/media/shop-door.jpg';
+import fShopKai from '../assets/media/shop-kai.jpg';
+import fGardenFountain from '../assets/media/garden-fountain.jpg';
+import fGardenView from '../assets/media/garden-view.jpg';
+import fGardenLadder from '../assets/media/garden-ladder.jpg';
+import fGardenRoseDoor from '../assets/media/garden-rose-door.jpg';
+import fGardenKai from '../assets/media/garden-kai.jpg';
+import fCogRoom from '../assets/media/cog-room.jpg';
+import fCogHearth from '../assets/media/cog-hearth.jpg';
+import fCogGreta from '../assets/media/cog-greta.jpg';
+import fCogKai from '../assets/media/cog-kai.jpg';
+import fEstateRoad from '../assets/media/estate-road.jpg';
+import fEstateFoot from '../assets/media/estate-foot.jpg';
+import fEstateViewBack from '../assets/media/estate-view-back.jpg';
+import fEstateGateLine from '../assets/media/estate-gate-line.jpg';
+import pEstate from '../assets/media/painting-estate-approach.jpg';
+import fDesertArrival from '../assets/media/desert-arrival.jpg';
+import fDesertKai from '../assets/media/desert-kai.jpg';
+import fDesertRocks from '../assets/media/desert-rocks.jpg';
 
 export type Place = {
   slug: string;
@@ -126,15 +154,6 @@ export const places: Place[] = [
     body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walks here, repeating what he has heard.',
   },
   {
-    slug: 'shop',
-    name: 'Inside the shop',
-    status: 'next',
-    statusText: 'Painted. Built in the earlier engine, to be rebuilt.',
-    image: pShop,
-    imageAlt: 'Painting of a shop interior with shelves of pots and a lit doorway.',
-    body: 'Through the lit door under the awning. Shelves of pots and a counter, the first interior.',
-  },
-  {
     slug: 'hill-village',
     name: 'Hill village',
     status: 'built',
@@ -153,38 +172,104 @@ export const places: Place[] = [
   {
     slug: 'chapel',
     name: 'The chapel',
-    status: 'now',
-    statusText: 'Being built now, with the first door that opens.',
-    image: pChapel,
-    imageAlt: 'Painting of a small chapel interior with a dim doorway.',
-    body: 'A small dim interior behind the chapel door on the church square, the first door in the game that opens. Kai uses it like a resident: walk up, face it, press E. A short fade to black, and he is inside.',
+    status: 'built',
+    statusText: 'In the build since 24 October. Passed at its second look.',
+    image: fChapelKai,
+    imageAlt: 'Kai from behind in the chapel aisle, benches either side, the arched window at the end.',
+    painting: pChapel,
+    frames: [
+      { src: fDoorPrompt, alt: 'Kai at the chapel\'s navy door, a small prompt to enter at his feet.', caption: 'The first door that opens. Walk up, face it, press E.' },
+      { src: fChapelRoom, alt: 'The chapel from the door: an aisle of warm light, benches, lavender floor, the window over the altar block.', caption: 'From the door, the way the painting sees it.' },
+      { src: fChapelBenches, alt: 'Benches from the side, the sun patch on the floor, the altar block under the window.', caption: 'The sun comes in through the one window.' },
+    ],
+    body: 'A small dim room behind the chapel door on the church square, with benches, an altar block and one tall window facing the late sun. It was the first door in the game that opens: a short fade to black and Kai is inside. Its walls first came out cream; the polish round warmed them toward the painting. Father Silas stands in here now.',
   },
   {
     slug: 'rusted-cog',
     name: 'The Rusted Cog',
-    status: 'next',
-    statusText: 'Concept painting. A tavern with a retired mill wheel over the hearth.',
-    image: pCog,
-    imageAlt: 'Concept painting of a tavern interior with a coral hearth and a round cog above it.',
-    body: 'A cooper\'s store that kept its hearth and its habit of receiving anyone who needed to sit down. Greta keeps one table free until the evening boats are accounted for.',
+    status: 'built',
+    statusText: 'In the build since 24 October. Nic: fine for now.',
+    image: fCogRoom,
+    imageAlt: 'The tavern: a coral hearth with a cog wheel above it, teal beams, a bar with stools, an arch to the sunlit yard.',
+    painting: pCog,
+    frames: [
+      { src: fCogGreta, alt: 'Greta behind the bar with a bowl, a niche of bottles and jars behind her.', caption: 'Greta behind the bar.' },
+      { src: fCogHearth, alt: 'The hearth with a pot hanging in it and the retired mill wheel above.', caption: 'The mill wheel retired over the hearth.' },
+      { src: fCogKai, alt: 'Kai from behind inside the tavern, tables and the bar ahead.', caption: 'Kai inside. Old Ferris and the Hooded Stranger are here too.' },
+    ],
+    body: 'A cooper\'s store that kept its hearth and its habit of receiving anyone who needed to sit down. The third interior: a coral hearth with the old mill wheel above it, dark teal beams, a bar with stools and a barrel, a niche of vessels, side tables. Greta keeps it. Old Ferris and the Hooded Stranger sit in it.',
   },
   {
     slug: 'dyers-steps',
     name: 'Dyers\' Steps',
-    status: 'now',
-    statusText: 'Being built now, off the seaside lane. A court of borrowed colour.',
-    image: pDyers,
-    imageAlt: 'Concept painting of a stepped courtyard hung with dyed cloth.',
-    body: 'A textile court on the old Market Row, where cloth hangs to dry in the colours the town wears.',
+    status: 'built',
+    statusText: 'In the build since 24 October. Passed at its second look.',
+    image: fDyersCourt,
+    imageAlt: 'The stepped court in sun: a drying frame with indigo and coral cloths, a clay vat, a clipped tree, an arch.',
+    painting: pDyers,
+    frames: [
+      { src: fDyersKai, alt: 'Kai from behind in the court, cloths hanging on the left.', caption: 'Kai in the court.' },
+      { src: fDyersVats, alt: 'Two dye vats, terracotta and ochre, under hanging indigo, coral and cream cloths and a loom.', caption: 'The vats, the cloths and the loom.' },
+      { src: fDyersTerrace, alt: 'The court\'s buildings from the church terrace across the water, a stair down to the quay.', caption: 'From the church terrace across the water.' },
+    ],
+    body: 'A textile court off the seaside lane, on the old Market Row, where cloth hangs to dry in the colours the town wears. Steps, a drying frame, dye vats, a loom, pots and plants. The second look added the plants, more cloth and a deeper indigo. The arch still looks onto rocks and a wall instead of down to the town.',
+  },
+  {
+    slug: 'shop',
+    name: 'Inside the shop',
+    status: 'built',
+    statusText: 'In the build since 24 October. Built and packaged; not accepted until Nic has played it.',
+    image: fShopKai,
+    imageAlt: 'Kai from behind inside the shop: coral walls, a pale counter, shelves of pots, a window on the right.',
+    painting: pShop,
+    frames: [
+      { src: fShopDoor, alt: 'The shop door open under its stone arch, shelves of jars inside.', caption: 'Through the door under the awning.' },
+      { src: fShopRoom, alt: 'The shop interior from the door: the counter, the bell, shelves of jars and a bottle.', caption: 'The bell on the counter has no clapper.' },
+    ],
+    body: 'Through the door under the awning. Coral walls, a pale counter with a bell, two shelves of jars and bottles, and one bright window. The second interior, built the way the chapel was.',
   },
   {
     slug: 'lumina-garden',
     name: 'Lumina\'s still garden',
-    status: 'next',
-    statusText: 'Concept painting. A private retreat.',
-    image: pGarden,
-    imageAlt: 'Concept painting of a walled garden with a still pool.',
-    body: 'A walled garden belonging to the Lumina estate, the quiet place the story will need later.',
+    status: 'built',
+    statusText: 'In the build since 24 October. Built and packaged; not accepted until Nic has played it.',
+    image: fGardenKai,
+    imageAlt: 'Kai from behind in the walled rooftop garden: flower beds, a bench, a potted plant, the headland across the bay.',
+    painting: pGarden,
+    frames: [
+      { src: fGardenRoseDoor, alt: 'A rose-coloured door in an arched wall at the end of the street.', caption: 'The way in: the rose door on the street, an alley of steps, a ladder.' },
+      { src: fGardenFountain, alt: 'The garden from the ladder: a dry stone fountain, flower beds, a bench by the far wall.', caption: 'The dry fountain.' },
+      { src: fGardenView, alt: 'Rooftops below the garden wall and the lavender headland across the blue bay.', caption: 'The view out, over the town.' },
+    ],
+    body: 'The walled rooftop garden where Kai wakes in the story: a stone bench, a dry fountain, beds of blue flowers, potted plants, and the bay over the wall. It is reached from the street, through a rose-coloured door, up an alley of steps and a ladder. It belongs to the Lumina estate, and the estate is still shut.',
+  },
+  {
+    slug: 'estate-approach',
+    name: 'The estate approach',
+    status: 'built',
+    statusText: 'In the build since 25 October. Nic accepted it.',
+    image: fEstateFoot,
+    imageAlt: 'The road from below: tiers of retaining walls with lamps, cypresses and the estate house at the top.',
+    painting: pEstate,
+    frames: [
+      { src: fEstateRoad, alt: 'The road climbing along a high wall to a shut iron gate, a parapet over the sea on the right.', caption: 'The road to the gate, as painting A framed it.' },
+      { src: fEstateViewBack, alt: 'From the gate, the parapet and the town and sea beyond.', caption: 'The view back from the gate.' },
+      { src: fEstateGateLine, alt: 'Kai at the shut gate. A line reads: The Lumina Estate is home to the region\'s nobility. You have no business here... yet.', caption: 'The gate stays shut.' },
+    ],
+    body: 'A road from the top of the town up to the Lumina gate, between retaining walls and formal stonework, with lamps, a statue in an alcove, cypresses and a view back over the bay. It was built from one of three paintings. The gate stays shut. Try it and a line says you have no business here, yet. It is the first thing in the game Kai cannot do.',
+  },
+  {
+    slug: 'opening-desert',
+    name: 'The opening desert',
+    status: 'now',
+    statusText: 'A first slice, built 26 October. Reached only from a development menu. Nobody has played it yet.',
+    image: fDesertArrival,
+    imageAlt: 'Kai small in a wide desert, terracotta rocks on the left, a long flat shape on the far ridge.',
+    frames: [
+      { src: fDesertKai, alt: 'Kai from behind on the sand, facing the shape on the ridge.', caption: 'Where Kai arrives, facing it.' },
+      { src: fDesertRocks, alt: 'Tall terracotta rocks, Kai small beside them.', caption: 'The rocks.' },
+    ],
+    body: 'Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from the town on the same map and hidden from it by distance. On the far ridge is a flat outline, a proposed detail and nothing more. No tremors, no footprints, no story yet.',
   },
 ];
 

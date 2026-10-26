@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
-import { places } from '../data/places';
 import { kai, townsfolk } from '../data/characters';
 import hero from '../assets/media/street-arrival.jpg';
 import courtyardKai from '../assets/media/courtyard-kai-cape.jpg';
@@ -17,10 +16,7 @@ const base = import.meta.env.BASE_URL;
 const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const latest = updates.slice(0, 3);
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-const built = places.filter((p) => p.status === 'built');
-const inProgress = places.filter((p) => p.status === 'now');
 const asOf = updates[0]?.data.date;
-const names = (xs: { name: string }[]) => new Intl.ListFormat('en-GB', { type: 'conjunction' }).format(xs.map((p, i) => (i ? p.name.replace(/^The /, 'the ') : p.name)));
 const paint = await getImage({ src: paintingCourtyard, width: 1400, format: 'webp' });
 ---
 <Base>
@@ -43,16 +39,16 @@ const paint = await getImage({ src: paintingCourtyard, width: 1400, format: 'web
     <div class="wrap status">
       <div>
         <h2>Where it stands</h2>
-        <p class="muted">What is anchored in the packaged build, as far as the record knows. The build is native, on a Mac, and playable from the courtyard to the street. The record has been wrong before and corrected itself.</p>
+        <p class="muted">What is anchored in the packaged build, as far as the record knows. The build is native, on a Mac, and playable from the courtyard to the estate gate. The record has been wrong before and corrected itself.</p>
       </div>
       <dl class="ledger">
         <div><dt>Engine</dt><dd>Unreal Engine 5, since 19 October 2026. Before that the same world was proved in Godot, and before that it was a browser game.</dd></div>
         <div><dt>Look</dt><dd>Locked on 20 October: ink lines, five value bands, lavender shadows, paper grain, flat painted colour, no global illumination. <a href={base + 'look/'}>How it works</a>.</dd></div>
-        <div><dt>Places</dt><dd>{names(built)} are built, on one map with no loading. {names(inProgress)} are being built now. <a href={base + 'world/'}>The world</a>.</dd></div>
-        <div><dt>People</dt><dd>Kai and {townsfolk.length} townsfolk, made from two lineup drawings. Each has a name and something to say. A few of them walk routes. <a href={base + 'characters/'}>The characters</a>.</dd></div>
-        <div><dt>Story</dt><dd>Act I is Havenwood, and Havenwood is what is built. The three acts, the cast and the systems are written. <a href={base + 'story/'}>The story</a>, <a href={base + 'mechanics/'}>the mechanics</a>.</dd></div>
-        <div><dt>Latest build</dt><dd>Havenwood, 24 October 2026, macOS on Apple Silicon. Six places, eleven residents, title and pause menus, dialogue, and a save that puts you back where you stood.</dd></div>
-        <div><dt>Now</dt><dd>The chapel from the inside, the first door that opens, and Dyers' Steps off the lane. <a href={base + 'roadmap/'}>The roadmap</a>.</dd></div>
+        <div><dt>Places</dt><dd>Twelve are built, on one map with no loading: the courtyard and the street, the lane down to the harbour, the church square and the hill village, Dyers' Steps, the chapel, the shop and the Rusted Cog from the inside, a rooftop garden, and the road to the estate gate. A first patch of the opening desert lies 7.4 kilometres off. <a href={base + 'world/'}>The world</a>.</dd></div>
+        <div><dt>People</dt><dd>Kai and {townsfolk.length} townsfolk, made from three lineup drawings and one of Greta alone. Each has a name and something to say. Four will trade with you. A few walk routes. <a href={base + 'characters/'}>The characters</a>.</dd></div>
+        <div><dt>Story</dt><dd>A desert prologue and four acts, since 26 October. Act I is Havenwood, and Havenwood is what is built. The cast and the systems are written. <a href={base + 'story/'}>The story</a>, <a href={base + 'mechanics/'}>the mechanics</a>.</dd></div>
+        <div><dt>Latest build</dt><dd>Havenwood, the night of 25 October 2026, macOS on Apple Silicon. Twelve places and a desert, fifteen residents, doors, a first barter, Kai's new movement, and a save that puts you back where you stood.</dd></div>
+        <div><dt>Now</dt><dd>Kai's second pass at moving, a darker Hooded Stranger, and the desert closer to its painting. Then Nic plays. <a href={base + 'roadmap/'}>The roadmap</a>.</dd></div>
       </dl>
     </div>
   </section>
