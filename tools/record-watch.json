@@ -1,8 +1,21 @@
 {
-  "posted_through": "2026-10-26T00:23",
-  "note": "Posted through batch 10b (desert slice + area picker, review run 20261026-002300-pkg-batch10b-motion) and the 26 Oct master story direction. Batch 11 (Kai polish 2, darker Hooded Stranger) opened 26 Oct 05:40 with no gate yet: roadmap Weaving only. Held back: the style-aligned desert concept paintings (marked no publication, Nic's review pending), the region paintings and world map Nic set aside, and the story's chosen ending.",
+  "posted_through": "2026-10-26T17:40",
+  "note": "Posted Batch 11b (Coordinator 06:53, packaged Stranger and movement) and the accepted Long Road first blockout, including the 17:40 performance sample in MILESTONE-2.md. Stranger look still awaits Nic; Long Road movement/layout accepted as a base, not final art. Milestone 2 scenery/discovery increments remain unposted until Nic accepts them or a new package passes launch. No-publication concepts, set-aside region/world paintings and story spoilers remain held back.",
   "log": [
-    {"date": "2026-10-24", "slug": "2026-10-24-the-town-reaches-the-sea", "covers": "batches 1 to 3 of the 2026-10-22 scale-up"},
-    {"date": "2026-10-26", "slug": "2026-10-26-four-doors-open-one-gate-stays-shut", "covers": "batches 4 to 10b, lineup 3 and Greta, the desert slice, and the 26 Oct master story direction (no spoilers)"}
+    {
+      "date": "2026-10-24",
+      "slug": "2026-10-24-the-town-reaches-the-sea",
+      "covers": "batches 1 to 3 of the 2026-10-22 scale-up"
+    },
+    {
+      "date": "2026-10-26",
+      "slug": "2026-10-26-four-doors-open-one-gate-stays-shut",
+      "covers": "batches 4 to 10b, lineup 3 and Greta, the desert slice, and the 26 Oct master story direction (no spoilers)"
+    },
+    {
+      "date": "2026-10-26",
+      "slug": "2026-10-26-the-cape-is-still-the-road-is-open",
+      "covers": "batch 11b, Long Road first packaged blockout and its bounded frame-time sample"
+    }
   ]
 }

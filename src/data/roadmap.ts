@@ -30,12 +30,14 @@ export const done: Item[] = [
   { text: 'A story spine', detail: 'A working master direction: a desert prologue and four acts. On the story page, without the spoilers. 26 October.' },
 ];
 export const now: Item[] = [
-  { text: 'Kai, second pass', detail: 'A cape that hangs at rest instead of flickering, a smaller arm swing, a less acrobatic jump. The arm under the cloak stays there on purpose.' },
-  { text: 'The Hooded Stranger, darker', detail: 'Nic: not correct yet. Darker, more ominous.' },
+  { text: 'Kai, second pass', detail: 'Packaged 26 October: still cape at rest, smaller arm swing, upright jump and a held arm under the cloak. Nic accepted movement in the Long Road prototype; the deep landing crouch remains for review.' },
+  { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
+  { text: 'The Long Road', detail: 'A packaged exploration blockout. Nic accepted movement and layout as a base, 26 October. The shaped scenery and discovery pass is in progress.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [
-  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, Kai\'s movement and the desert are built and waiting for a playtest. Acceptance follows.' },
+  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. Movement was accepted in the Long Road prototype.' },
+  { text: 'The Long Road joins the campaign', detail: 'Its state is session-only. Persistence and a normal campaign entry and return still need design.' },
   { text: 'The desert, closer to its painting', detail: 'The far ridge reads as a flat band, the sky is paler than the painting, the sand has no ripples. Then the tremors.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },
   { text: 'Camera collision on the courtyard tree', detail: 'The camera passes inside the canopy and shows the shard mesh. Seen in the first recording.' },

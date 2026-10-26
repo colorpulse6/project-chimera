@@ -3,7 +3,7 @@
 Run with the chimera-ml venv (has Pillow):
   ~/.venvs/chimera-ml/bin/python tools/prep_media.py
 Writes JPEGs into src/assets/media/. Re-run after new review runs.
-One section alone:  ... prep_media.py --batch-2-3  (or --batch-4-10)
+One section alone:  ... prep_media.py --batch-2-3  (or --batch-4-10, --batch-11-longroad)
 """
 from pathlib import Path
 from PIL import Image
@@ -151,7 +151,37 @@ def batch_4_10():
     save(board.crop((0, 2256, 2330, 2676)), "kai-jump-strip", maxw=2400)
 
 
+def batch_11_longroad():
+    """26 Oct: packaged batch 11b and the accepted Long Road blockout.
+
+    Gates: BATCH-11-REPORT.md 06:53; Long Road MILESTONE-2.md accepted
+    baseline and 17:40 performance sample. No milestone 2 scenery frames.
+    """
+    import os
+    R = FG / "review"
+    picks = {
+        "20261026-065217-pkg-batch11b-stranger": {
+            "04-stranger_gen-full": "stranger-b11-full",
+            "05-stranger_gen-face": "stranger-b11-face",
+            "06-stranger_gen-with-kai": "stranger-b11-kai",
+        },
+        "20261026-065053-pkg-batch11b-motion": {
+            "06-kai-in-street": "kai-b11-street",
+        },
+    }
+    # The first Long Road package review is retained with its handoff evidence,
+    # outside the timestamped review tree. Require that source explicitly.
+    longroad = Path(os.environ["LONGROAD_REVIEW_SOURCE"])
+    for run, frames in picks.items():
+        for src, name in frames.items():
+            save(Image.open(R / run / f"{src}.png"), name)
+    save(Image.open(longroad / "01-arrival-road-and-arc.png"), "longroad1-arrival")
+
+
 import sys
+if "--batch-11-longroad" in sys.argv:
+    batch_11_longroad()
+    sys.exit(0)
 if "--batch-2-3" in sys.argv:
     batch_2_3()
     sys.exit(0)

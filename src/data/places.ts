@@ -66,6 +66,8 @@ import fDesertArrival from '../assets/media/desert-arrival.jpg';
 import fDesertKai from '../assets/media/desert-kai.jpg';
 import fDesertRocks from '../assets/media/desert-rocks.jpg';
 
+import fLongRoad from '../assets/media/longroad1-arrival.jpg';
+
 export type Place = {
   slug: string;
   name: string;
@@ -270,6 +272,19 @@ export const places: Place[] = [
       { src: fDesertRocks, alt: 'Tall terracotta rocks, Kai small beside them.', caption: 'The rocks.' },
     ],
     body: 'Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from the town on the same map and hidden from it by distance. On the far ridge is a flat outline, a proposed detail and nothing more. No tremors, no footprints, no story yet.',
+  },
+
+  {
+    slug: 'long-road',
+    name: 'The Long Road',
+    status: 'now',
+    statusText: 'A separate packaged prototype, 26 October. Movement and layout accepted as a base; scenery is a blockout.',
+    image: fLongRoad,
+    imageAlt: 'Kai on a pale road through flat green ground, box-shaped trees and the tall Arc ahead. The first packaged blockout.',
+    frames: [
+      { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'The first package: movement and layout accepted as a base, with blockout scenery.' },
+    ],
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. Nic accepted the movement and layout as a base to build on. These are stretched boxes with flat colour, not finished scenery. The route keeps its changes only for the session; a normal way in and out of the campaign is still to come.',
   },
 ];
 
