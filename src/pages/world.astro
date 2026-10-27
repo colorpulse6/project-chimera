@@ -3,7 +3,45 @@ import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 import { Image } from 'astro:assets';
 import { places, courtyardConcept } from '../data/places';
+import pHavenwood from '../assets/media/painting-havenwood-v3.jpg';
+import pLongRoad from '../assets/media/painting-long-road-v3.jpg';
+import pHighPass from '../assets/media/painting-high-pass-v3.jpg';
+import pShadow from '../assets/media/painting-shadow-country-v3.jpg';
+import pSaltRoad from '../assets/media/painting-salt-road-v3.jpg';
+import pArchive from '../assets/media/painting-archive-forest-v3.jpg';
+import pHangingSea from '../assets/media/painting-hanging-sea-v3.jpg';
+import pColossus from '../assets/media/painting-weeping-colossus-v3.jpg';
+const base = import.meta.env.BASE_URL;
 const label = { built: 'In the build', now: 'Being built', next: 'Painted, not built' };
+// The canon regions (canon/INDEX.md). "painted" says what the v3 painting shows, not the concept text;
+// "world1" says what the open-world blockout of 27 October has of it.
+const regionLabel = { built: 'In the build', now: 'Walkable prototype', next: 'On the horizon' };
+const regions = [
+  { id: 'havenwood', name: 'Havenwood', state: 'built', image: pHavenwood, alt: 'Painting of Havenwood: a square with a well, coloured houses and a bell tower.',
+    painted: 'A square with a well and four flower beds, plaster houses in coral, lavender and ochre, and a bell tower. The walls of the Lumina estate stand on the hill above, and a lone peak to the right.',
+    world1: 'The town of the sections above. In world1 the walls and the peak stand where the painting puts them, and the Colossus is on the eastern horizon, over the sea.' },
+  { id: 'long-road', name: 'The Long Road', state: 'now', image: pLongRoad, alt: 'Painting of the Long Road: a dirt road through golden hills down to a river and the bay.',
+    painted: 'A dirt road through golden hills, down to a river, a stone bridge and a village by the water, and out to the bay. On the ridge stand the broken arches of the Arc and a ring of stone.',
+    world1: 'Walkable as its own prototype, not yet accepted (see Weaving, above). In world1, from the arrival, the amber grove of the Archive Forest is on the left and the Colossus stands in the haze.' },
+  { id: 'high-pass', name: 'The High Pass', state: 'next', image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
+    painted: 'A plaster refuge with a terracotta roof on a cliff path, a dead tree beside it and a blue glacial lake below. Across the water, a great stone arch stands in the snow with a warm light inside.',
+    world1: 'Its massif, lake and ranges stand as rough shapes. No path leads up yet, and seen from the pass they are still flat blocks.' },
+  { id: 'shadow-country', name: 'The Shadow Country', state: 'next', image: pShadow, alt: 'Painting of the Shadow Country: sunlit channels, willows and an aqueduct with waterfalls.',
+    painted: 'Braided channels under willows, a ferry, sluice gates and an aqueduct that spills into waterfalls. High in the clouds, a vast shape lets a turquoise fall drop. The name is darker than the painting, and the painting wins.',
+    world1: 'The arcade shelf and its falls stand far out. From the Long Road, the road’s own hills hide them for now.' },
+  { id: 'salt-road', name: 'The Salt Road', state: 'next', image: pSaltRoad, alt: 'Painting of the Salt Road: steps above a salt basin, white ribs in the sand and a far city.',
+    painted: 'Sandstone steps by a house with a blue cloth in the door, then a salt basin between dunes, great white ribs half buried in the sand, a caravan, an oasis town in palms, and a city on the far horizon.',
+    world1: 'The salt flats and the far city are in place. From the High Pass, looking back, the city is a low dark shape on the horizon. The foothills hide the flats.' },
+  { id: 'archive-forest', name: 'The Great Archive Forest', state: 'next', image: pArchive, alt: 'Painting of the Archive Forest: giant amber trunks with turquoise veins over a stone house.',
+    painted: 'Trunks as wide as towers, amber and quartz with turquoise veins, and the shapes of people inside them. A stone house and a small waterfall at their feet.',
+    world1: 'A band of amber trees under the foothills. From the Long Road it is the amber grove left of the lone peak.' },
+  { id: 'hanging-sea', name: 'The Hanging Sea', state: 'next', image: pHangingSea, alt: 'Painting of the Hanging Sea: a sea overhead with ships and sharks, above a canyon harbour.',
+    painted: 'A sea overhead, with wrecks, sharks and shoals of fish, above a canyon town and its harbour. One column of water falls from it. A terrace of arches with a red awning in front, a round opening in the cliff behind.',
+    world1: 'The sea hangs 650 metres up between canyon walls. It shows from the High Pass, looking back.' },
+  { id: 'weeping-colossus', name: 'The Weeping Colossus', state: 'next', image: pColossus, alt: 'Painting of the Weeping Colossus: travellers on a hill path, and a vast tilted shape in the clouds.',
+    painted: 'Travellers on a hillside path past a villa, lakes and valleys below, and in the clouds a vast tilted shape with water pouring from it.',
+    world1: 'It stands on its own range, 50 kilometres from the town square and 9.6 kilometres tall, its shoulders in the cloud. It is in sight from the town, the road and the pass.' },
+] as const;
 const continents = [
   ['Aethelgard', 'Temperate forests and plains, feudal kingdoms, a church that reads the machine\u2019s interventions as providence. The Spine of the Ancients runs through it. Aethelburg, the Lumina capital, sits at its centre. Havenwood is here.'],
   ['Ferrus Magna', 'Scarred by precursor wars and industrial collapse. Scavenger clans, rust, unstable power. Neo-Veridia is a cyberpunk city built inside a dead factory; Rustwater Fishery catches metal-shelled crabs from coolant-stained water.'],
@@ -31,12 +69,12 @@ const groups = [
   ['next', 'Unwritten, but painted', 'Every place starts as a painting. These exist as paintings and wait for the kit. They are not less real for it, only less walkable.'],
 ] as const;
 ---
-<Base title="World" description="The places of Havenwood, painted before they were built, and the wider world beyond the chapel, which is written and not yet painted.">
+<Base title="World" description="The places of Havenwood, painted before they were built; the regions of the open world on its horizon; and the wider world as written in 2025, not yet painted.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h1>The world</h1>
-        <p>Havenwood is a hill town between a harbour and a chapel on the headland. Each place is painted before it is built, and the build is checked against the painting. Where they differ, the painting is right.</p>
+        <p>Havenwood is a hill town between a harbour and a chapel on the headland. Each place is painted before it is built, and the build is checked against the painting. Where they differ, the painting is right. Around the town lie seven more regions and the Weeping Colossus: <a href="#open-world">the open world</a>.</p>
       </div>
       <Frame src={courtyardConcept} alt="Painting of the courtyard: a round teal tree, a tall pale tower, a rose shop with a blue awning, a well, a yellow arch with a clock, and hills behind." label="The town as a painting." caption="The courtyard concept that set the palette: ochre, coral, plaster, violet shadows." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1600, 2000]} />
     </div>
@@ -71,11 +109,32 @@ const groups = [
       </div>
     </section>
   ))}
+  <section class="section" id="open-world">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The open world</h2>
+        <p>Every region is painted first, and the painting is the target. The town and the Long Road can be walked. The other six can only be seen: since <a href={`${base}updates/2026-10-27-fifty-kilometres-to-the-colossus/`}>world1</a> on 27 October they stand on the horizon as painted silhouettes. None can be reached yet, and where each one stands is a first guess that Nic has not reviewed.</p>
+      </div>
+      <div class="regions">
+        {regions.map((r) => (
+          <article class="region" id={`region-${r.id}`}>
+            <figure class="frame">
+              <Image src={r.image} alt={r.alt} widths={[600, 900, 1280]} sizes="(min-width: 50rem) 50vw, 100vw" />
+            </figure>
+            <h3>{r.name}</h3>
+            <p class="small"><span class={`state state-${r.state}`}>{regionLabel[r.state]}</span></p>
+            <p>{r.painted}</p>
+            <p class="small muted">{r.world1}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2><span class="state state-next">Beyond Havenwood</span></h2>
-        <p>The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of it is painted for keeps, and a place is not real here until it is painted.</p>
+        <h2><span class="state state-next">Written, not painted</span></h2>
+        <p>The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of the places below is painted yet, and a place is not real here until it is painted.</p>
       </div>
       <div class="beyond">
         <div>
@@ -99,6 +158,10 @@ const groups = [
   .place-frames { grid-column: 1 / -1; }
   .place h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 0.3rem; }
   @media (max-width: 55rem) { .place { grid-template-columns: 1fr; } }
+  .regions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 5vw, 4rem) clamp(1.6rem, 3.5vw, 3rem); }
+  @media (max-width: 50rem) { .regions { grid-template-columns: 1fr; } }
+  .region h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 1.2rem 0 0.2rem; }
+  .region p { margin: 0.6rem 0 0; max-width: 60ch; }
   .beyond { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4rem; align-items: start; }
   .beyond h3 { margin-bottom: 1rem; }
   .beyond h3.changed { margin-top: 2.5rem; }

@@ -234,7 +234,17 @@ def world1():
     save(Image.open(canon / "havenwood-town/art/havenwood-town-v3.png"), "painting-havenwood-v3", maxw=1280, q=88)
 
 
+def regions():
+    # World page: the v3 paintings of the six far regions (town and Long Road come from world1()).
+    canon = ROOT / "canon"
+    for rid in ("high-pass", "shadow-country", "salt-road", "archive-forest", "hanging-sea", "weeping-colossus"):
+        save(Image.open(canon / rid / "art" / f"{rid}-v3.png"), f"painting-{rid}-v3", maxw=1280, q=88)
+
+
 import sys
+if "--regions" in sys.argv:
+    regions()
+    sys.exit(0)
 if "--longroad-2-6" in sys.argv:
     longroad_2_6()
     sys.exit(0)

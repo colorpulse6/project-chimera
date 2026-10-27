@@ -21,7 +21,7 @@ and corrected itself.
 | --- | --- |
 | Home | The hero, the status ledger, the latest updates, the first recording |
 | Updates | Dated entries, one per build or decision, with frames from the rig |
-| World | Havenwood and the places beyond it, grouped as anchored / weaving / unwritten |
+| World | Havenwood's places (anchored / weaving / unwritten), the open-world regions with their v3 paintings (`regions` in `world.astro`, media from `prep_media.py --regions`), and the 2025 written world |
 | Characters | Kai and the townsfolk, from drawing to game, and the cast still to draw |
 | Story | Premise, Kai, Elara, the desert opening, the prologue and four acts (the 2025 outline kept folded), the endings. The chosen ending is not on the site |
 | Mechanics | Temporal anchors, the loop, combat phases, echo weaving, spells, companions |
