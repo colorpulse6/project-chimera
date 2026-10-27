@@ -8,7 +8,7 @@ import kaiIll from '../assets/media/orig-kai-illustration.jpg';
 import kaiTpose from '../assets/media/orig-kai-t-pose.jpg';
 import kaiBrowser from '../assets/media/orig-browser-kai.jpg';
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
-import kaiGame from '../assets/media/kai-in-game.jpg';
+import kaiEngine from '../assets/media/kai-engine.jpg';
 import worldMap from '../assets/media/orig-world-map.jpg';
 import browserSquare from '../assets/media/lineage-browser-2025.jpg';
 import browserFainted from '../assets/media/orig-browser-kai-fainted.jpg';
@@ -23,12 +23,12 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
 const posts = (await getCollection('updates')).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 
 const kai = [
-  { src: kaiSprite, tick: 'Sprite', when: '27 May 2025', what: 'A pixel sprite, a day before the portrait. The sword is already coming apart into symbols.', pixel: true },
-  { src: kaiIll, tick: 'Portrait', when: '28 May 2025', what: 'The first portrait. A blue coat, a sword, a city in ruins behind him.' },
-  { src: kaiTpose, tick: '3D', when: '30 May 2025', what: 'A reference in a T-pose, red and navy, for the first Kai in three dimensions.' },
-  { src: kaiBrowser, tick: 'Browser', when: 'February 2026', what: 'The browser game. The same blue coat, at a size a screen of tiles can hold.', pixel: true },
-  { src: kaiDrawing, tick: 'Ink', when: 'October 2026', what: 'Drawn again, in ink, with the lineup. The coat became a cape. The red hair stayed.' },
-  { src: kaiGame, tick: 'Engine', when: 'October 2026', what: 'In the engine, made from that drawing.' },
+  { src: kaiSprite, tick: 'Sprite', when: '27 May 2025', what: 'A pixel sprite, a day before the portrait. The sword is already coming apart into symbols.', pixel: true, bg: '#4a5070' },
+  { src: kaiIll, tick: 'Portrait', when: '28 May 2025', what: 'The first portrait. A blue coat, a sword, a city in ruins behind him.', bg: '#ffffff' },
+  { src: kaiTpose, tick: '3D', when: '30 May 2025', what: 'A reference in a T-pose, red and navy, for the first Kai in three dimensions.', bg: '#b6b6b6' },
+  { src: kaiBrowser, tick: 'Browser', when: 'February 2026', what: 'The browser game. The same blue coat, at a size a screen of tiles can hold.', pixel: true, bg: '#ffffff' },
+  { src: kaiDrawing, tick: 'Ink', when: 'October 2026', what: 'Drawn again, in ink, with the lineup. The coat became a cape. The red hair stayed.', bg: '#fdf9ed' },
+  { src: kaiEngine, tick: 'Engine', when: '26 October 2026', what: 'In the engine, in the build of 26 October, made from that drawing. The camera stays behind him.', bg: '#2a2733' },
 ];
 
 const cast = [
@@ -58,7 +58,7 @@ const img = (key: string, kind: 'illustration' | 'sprite') => castImages[`../ass
       <div class="scrub" data-scrub>
         <div class="stage" aria-hidden="true">
           {kai.map((k, i) => (
-            <div class:list={['still', { pixel: k.pixel, on: i === 0 }]} data-i={i}>
+            <div class:list={['still', { pixel: k.pixel, on: i === 0 }]} data-i={i} style={`background:${k.bg}`}>
               <Image src={k.src} alt="" widths={[400, 700]} sizes="(min-width: 60rem) 26rem, 80vw" loading={i < 2 ? 'eager' : 'lazy'} />
             </div>
           ))}
@@ -239,8 +239,8 @@ const img = (key: string, kind: 'illustration' | 'sprite') => castImages[`../ass
   .stage { position: relative; aspect-ratio: 4 / 5; background: var(--bg-sunk); border: 1px solid var(--edge); box-shadow: var(--shadow); overflow: hidden; }
   .still { position: absolute; inset: 0; opacity: 0; transition: opacity 120ms steps(2, end); }
   .still.on { opacity: 1; }
-  .still :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
-  .still.pixel :global(img) { object-fit: contain; image-rendering: pixelated; background: #f4efe6; }
+  .still :global(img) { width: 100%; height: 100%; object-fit: contain; }
+  .still.pixel :global(img) { image-rendering: pixelated; }
   .stage.tear { animation: tear 260ms steps(4, end); }
   @keyframes tear {
     0% { clip-path: inset(0 0 62% 0); transform: translateX(-6px); }

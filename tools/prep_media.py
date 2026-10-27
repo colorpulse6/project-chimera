@@ -219,6 +219,12 @@ def originals():
     save(Image.open(ch / "hooded_stranger_walk.png"), "orig-browser-strangers", maxw=900, q=84)
 
 
+def timeline_kai():
+    # Kai in the engine for the timeline scrubber: batch 11b packaged build, cropped 4:5 to the stage.
+    im = Image.open(FG / "review/20261026-065053-pkg-batch11b-motion/06-kai-in-street.png")
+    save(im.crop((948, 550, 1948, 1800)), "kai-engine", maxw=1000, q=88)
+
+
 import sys
 if "--longroad-2-6" in sys.argv:
     longroad_2_6()
@@ -228,6 +234,9 @@ if "--batch-11-longroad" in sys.argv:
     sys.exit(0)
 if "--batch-2-3" in sys.argv:
     batch_2_3()
+    sys.exit(0)
+if "--timeline-kai" in sys.argv:
+    timeline_kai()
     sys.exit(0)
 if "--originals" in sys.argv:
     originals()
