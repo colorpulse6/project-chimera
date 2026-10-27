@@ -33,7 +33,7 @@ export const now: Item[] = [
   { text: 'Kai, after the playtest', detail: 'The still cape and smaller arm swing remain. Following Nic’s feedback, the running jump leans forward and tucks a knee; a short landing dip replaces the deep crouch. Packaged in Long Road 3 and retained in 6.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
   { text: 'The Long Road', detail: 'Build 6 packaged 27 October: shaped ground, painted surfaces, river bends, olives, cypresses and longer shadows. The earlier playtest led to jump, village-ground and passage fixes. Human acceptance and a clean performance sample for build 6 remain open.' },
-  { text: 'World vistas', detail: 'Distant region silhouettes are being blocked in; the first views have not passed their gate.' },
+  { text: 'The far regions', detail: 'Packaged in world1, 27 October: seven regions and the Weeping Colossus as painted silhouettes on the horizon, with haze. Where each one stands is provisional until Nic reviews it. Nothing out there is walkable yet.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [

@@ -225,6 +225,15 @@ def timeline_kai():
     save(im.crop((948, 550, 1948, 1800)), "kai-engine", maxw=1000, q=88)
 
 
+def world1():
+    # Open-world blockout (package world1, 27 Oct): two vista frames and the v3 paintings they aim at.
+    canon = ROOT / "canon"
+    save(Image.open(canon / "long-road/ingame/world1-V2-road-valley.png"), "world1-road-valley", maxw=1672, q=88)
+    save(Image.open(canon / "havenwood-town/ingame/world1-V1-town-east.png"), "world1-town-east", maxw=1672, q=88)
+    save(Image.open(canon / "long-road/art/long-road-v3.png"), "painting-long-road-v3", maxw=1280, q=88)
+    save(Image.open(canon / "havenwood-town/art/havenwood-town-v3.png"), "painting-havenwood-v3", maxw=1280, q=88)
+
+
 import sys
 if "--longroad-2-6" in sys.argv:
     longroad_2_6()
@@ -234,6 +243,9 @@ if "--batch-11-longroad" in sys.argv:
     sys.exit(0)
 if "--batch-2-3" in sys.argv:
     batch_2_3()
+    sys.exit(0)
+if "--world1" in sys.argv:
+    world1()
     sys.exit(0)
 if "--timeline-kai" in sys.argv:
     timeline_kai()

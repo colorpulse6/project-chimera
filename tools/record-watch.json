@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-27T04:50",
-  "note": "Posted Long Road packages 2 through 6: milestone 2 scenery and reactions, Nic’s playtest feedback and subsequent jump/village/passage fixes, and the packaged design-parity pass. Latest gate: Coordinator 02:16 in design-parity REPORT.md, performance updated 04:42, milestone closed 04:50 in MILESTONE-3.md. Human acceptance and clean-window performance acceptance for build 6 remain open. World-blockout vistas lack a qualifying gate and remain unposted except one roadmap line. No-publication concepts, set-aside paintings and story spoilers remain held back.",
+  "posted_through": "2026-10-27T08:36",
+  "note": "Posted world1 (world blockout, Coordinator 08:36 in 2026-10-27-world-blockout REPORT.md): V1 and V2 vista frames with their v3 paintings, at Nic’s request in chat; V3/V3b held back as unfinished blockout (Nic’s choice). Bearings are provisional pending Nic’s review. Earlier: Long Road 2–6 posted; human acceptance and clean-window performance acceptance for build 6 remain open. No-publication concepts, set-aside paintings and story spoilers remain held back.",
   "log": [
     {
       "date": "2026-10-24",
@@ -21,6 +21,11 @@
       "date": "2026-10-27",
       "slug": "2026-10-27-the-road-has-learned-the-colour-of-grass",
       "covers": "Long Road 2–6: packaged scenery, playtest corrections, design parity and bounded performance status"
+    },
+    {
+      "date": "2026-10-27",
+      "slug": "2026-10-27-fifty-kilometres-to-the-colossus",
+      "covers": "world1: far-layer vista of seven regions and the Weeping Colossus, V1 and V2 with paintings, frame-time result"
     }
   ]
 }
