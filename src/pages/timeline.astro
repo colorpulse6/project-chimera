@@ -1,0 +1,301 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import kaiSprite from '../assets/media/orig-kai-sprite.jpg';
+import kaiIll from '../assets/media/orig-kai-illustration.jpg';
+import kaiTpose from '../assets/media/orig-kai-t-pose.jpg';
+import kaiBrowser from '../assets/media/orig-browser-kai.jpg';
+import kaiDrawing from '../assets/media/kai-drawing.jpg';
+import kaiGame from '../assets/media/kai-in-game.jpg';
+import worldMap from '../assets/media/orig-world-map.jpg';
+import browserSquare from '../assets/media/lineage-browser-2025.jpg';
+import browserFainted from '../assets/media/orig-browser-kai-fainted.jpg';
+import browserDesert from '../assets/media/orig-browser-desert.jpg';
+import browserStrangers from '../assets/media/orig-browser-strangers.jpg';
+import godot from '../assets/media/lineage-godot-2026.jpg';
+import desertNow from '../assets/media/desert-arrival.jpg';
+import strangerNow from '../assets/media/stranger-full.jpg';
+
+const base = import.meta.env.BASE_URL;
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const posts = (await getCollection('updates')).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const kai = [
+  { src: kaiSprite, tick: 'Sprite', when: '27 May 2025', what: 'A pixel sprite, a day before the portrait. The sword is already coming apart into symbols.', pixel: true },
+  { src: kaiIll, tick: 'Portrait', when: '28 May 2025', what: 'The first portrait. A blue coat, a sword, a city in ruins behind him.' },
+  { src: kaiTpose, tick: '3D', when: '30 May 2025', what: 'A reference in a T-pose, red and navy, for the first Kai in three dimensions.' },
+  { src: kaiBrowser, tick: 'Browser', when: 'February 2026', what: 'The browser game. The same blue coat, at a size a screen of tiles can hold.', pixel: true },
+  { src: kaiDrawing, tick: 'Ink', when: 'October 2026', what: 'Drawn again, in ink, with the lineup. The coat became a cape. The red hair stayed.' },
+  { src: kaiGame, tick: 'Engine', when: 'October 2026', what: 'In the engine, made from that drawing.' },
+];
+
+const cast = [
+  ['kai', 'Kai', 'The hero. The only one drawn again since.'],
+  ['rex', 'Rex', 'The pragmatic scavenger.'],
+  ['seraph', 'Seraph', 'The awakened enforcer.'],
+  ['zenith', 'Zenith', 'The glitch-witch.'],
+  ['valerian', 'Valerian', 'The archivist.'],
+  ['lyra', 'Lyra', 'The apostate, or one of the three Lyras.'],
+  ['cora', 'Cora', 'The princess.'],
+  ['kaelen', 'Kaelen Lumina', 'The reality weaver.'],
+  ['aris', 'Aris Thorne', 'The technocrat.'],
+  ['valerius', 'Valerius Lumina', 'The whispering glitch.'],
+  ['king-greyon', 'King Greyon', 'Drawn, never written down. The robe says Lumina.'],
+] as const;
+const castImages = import.meta.glob<{ default: ImageMetadata }>('../assets/media/orig-*-{illustration,sprite}.jpg', { eager: true });
+const img = (key: string, kind: 'illustration' | 'sprite') => castImages[`../assets/media/orig-${key}-${kind}.jpg`].default;
+---
+<Base title="Timeline" description="How Chimera got here: the first documents and portraits of May 2025, the browser game, Godot, and the painted Unreal build, in the order the record keeps them.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Timeline</h1>
+        <p>The same boy, the same town, the same machine underneath, made five ways in a year and a half. Very little was thrown away. Most of it was moved somewhere else, and waited.</p>
+      </div>
+
+      <div class="scrub" data-scrub>
+        <div class="stage" aria-hidden="true">
+          {kai.map((k, i) => (
+            <div class:list={['still', { pixel: k.pixel, on: i === 0 }]} data-i={i}>
+              <Image src={k.src} alt="" widths={[400, 700]} sizes="(min-width: 60rem) 26rem, 80vw" loading={i < 2 ? 'eager' : 'lazy'} />
+            </div>
+          ))}
+        </div>
+        <div class="scrub-text">
+          <h2>Kai, six times</h2>
+          <p class="when" data-when>{kai[0].when}</p>
+          <p class="what" data-what aria-live="polite">{kai[0].what}</p>
+          <label class="sr" for="kai-scrub">Which Kai</label>
+          <input id="kai-scrub" type="range" min="0" max={kai.length - 1} step="1" value="0" data-range />
+          <ol class="ticks">
+            {kai.map((k, i) => <li><button type="button" data-go={i} aria-label={`${k.when}: ${k.what}`}>{k.tick}</button></li>)}
+          </ol>
+          <script type="application/json" data-kai set:html={JSON.stringify(kai.map(({ when, what }) => ({ when, what })))} />
+          <p class="small muted">Drag, or use the arrow keys. Left alone, he ages by himself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <ol class="line">
+        <li class="era" data-year="2025">
+          <time>2 May 2025</time>
+          <div class="body">
+            <h3>Five documents in one day</h3>
+            <p>Before there were pictures there were documents. On one day in May: story and world ideas, a story outline, a philosophical narrative, the game's medieval facade, and Kai's execution, modelled on the one Dostoevsky survived. Most of what the <a href={base + 'story/'}>story page</a> calls the 2025 design starts here.</p>
+          </div>
+          <ul class="files" aria-label="The documents">
+            <li>RPG Story and World Ideas 1</li>
+            <li>Story Outline I</li>
+            <li>Philosophical Game Narrative Development</li>
+            <li>Game Start: Chimera's Medieval Facade</li>
+            <li>Kai's Imminent Execution, Dostoevsky</li>
+          </ul>
+        </li>
+
+        <li class="era">
+          <time>26 to 28 May 2025</time>
+          <div class="body">
+            <h3>A world, a family, eleven faces</h3>
+            <p>Three days at the end of May. House Lumina and its history, the great houses, a princess, the settlements, how the city maps would be made, spells and weapons, an outline for a game in the manner of the Super Nintendo. On the 27th, a map of the world. Then a portrait for each of eleven people, each with a pixel sprite beside it. They are <a href="#cast">further down</a>.</p>
+            <p class="small muted">None of this is the look now. It is where the people and the places started.</p>
+          </div>
+          <div class="media media-wide">
+            <Frame src={worldMap} alt="A painted fantasy map of island continents: the Shifting Wastes, Aethelgard, Ferrus Magna, Sylvandell, with sea creatures in the water." label="The first map, 27 May 2025." caption="Its labels do not quite spell. North-Centhweral. Sryschllo Doivers. Aethelgard three times, Ferrus Magna three times. It is kept as it was." sizes="(min-width: 70rem) 46rem, 100vw" widths={[700, 1200, 1800]} />
+          </div>
+        </li>
+
+        <li class="era">
+          <time>30 May to 1 June 2025</time>
+          <div class="body">
+            <h3>A first Kai in three dimensions</h3>
+            <p>A reference of Kai in a T-pose, red and navy, and from it a textured 3D model and an animated one. The same day, a medieval village in 3D. On the 31st and the 1st, tile maps: a town square and a test town. The pixel game and the 3D game were both started in the same week, and both came back.</p>
+          </div>
+          <div class="media media-narrow">
+            <Frame src={kaiTpose} alt="Kai in a T-pose: spiky red hair, a navy and red coat with straps and pockets, black trousers and boots." label="30 May 2025." caption="The T-pose." sizes="(min-width: 60rem) 18rem, 70vw" widths={[400, 700]} />
+          </div>
+        </li>
+
+        <li class="era" data-year="2026">
+          <time>February 2026</time>
+          <div class="body">
+            <h3>The browser game</h3>
+            <p>On 13 February the first scenes were outlined again. On the 17th there was a JRPG for the browser, in pixel art: battles on a time gauge, a bandit camp with its prisoners, shops, quests, the village of Havenwood.</p>
+            <p>It opened in a desert. Kai walks until his knees give out. <q>The horizon is a liar. It moves as I move.</q> He wakes in a tent, and three hooded figures stand in the shadows, faceless and completely still. Both came back in October: the game begins with that walk again, and a Hooded Stranger sits in the Rusted Cog and does not speak.</p>
+            <p class="small muted">The home page had this as <span class="correct"><del>2025</del><ins>2026</ins></span>. The files say February 2026.</p>
+          </div>
+          <div class="media media-grid">
+            <Frame src={browserSquare} alt="Pixel-art village square with a fountain and a large tree." caption="The square." sizes="(min-width: 60rem) 22rem, 100vw" widths={[400, 800]} />
+            <Frame src={browserFainted} alt="A pixel sprite of Kai face down, asleep, a small cloud above his head." caption="Kai, out cold." sizes="(min-width: 60rem) 22rem, 100vw" widths={[400, 800]} />
+            <Frame src={browserDesert} alt="A painted desert canyon at dusk, a path between rock walls." caption="The desert plateau." sizes="(min-width: 60rem) 14rem, 50vw" widths={[300, 600]} />
+            <Frame src={browserStrangers} alt="A sheet of small hooded figures in brown cloaks, walking, from four sides." caption="The strangers, walking." sizes="(min-width: 60rem) 14rem, 50vw" widths={[300, 600]} />
+          </div>
+          <div class="media media-pair">
+            <Frame src={desertNow} alt="Kai small in the opening desert of the current build, rocks on the left." label="October 2026." caption="The desert again." sizes="(min-width: 60rem) 22rem, 100vw" widths={[400, 800]} />
+            <Frame src={strangerNow} alt="The Hooded Stranger in the Rusted Cog, a taupe cloak and an empty hood." label="October 2026." caption="One stranger, still not speaking." sizes="(min-width: 60rem) 22rem, 100vw" widths={[400, 800]} />
+          </div>
+        </li>
+
+        <li class="era">
+          <time>6 September 2026</time>
+          <div class="body">
+            <h3>Godot</h3>
+            <p>The same town in native 3D, in Godot. It played. It read as toy blocks, and that is what sent the work to paint.</p>
+          </div>
+          <div class="media">
+            <Frame src={godot} alt="A three-dimensional village square with half-timbered houses and a fountain." caption="The Godot square." sizes="(min-width: 60rem) 30rem, 100vw" widths={[500, 900]} />
+          </div>
+        </li>
+
+        <li class="divider" aria-hidden="true"><span>From here the record keeps itself</span></li>
+
+        {posts.map((u) => (
+          <li class="post">
+            <time datetime={u.data.date.toISOString()}>{fmt(u.data.date)}</time>
+            <div class="body">
+              <h3><a href={`${base}updates/${u.id}/`}>{u.data.title}</a></h3>
+              <p>{u.data.summary}</p>
+            </div>
+            {u.data.cover && (
+              <a class="thumb" href={`${base}updates/${u.id}/`} tabindex="-1" aria-hidden="true">
+                <Image src={u.data.cover} alt="" widths={[300, 600]} sizes="(min-width: 60rem) 14rem, 100vw" />
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="cast">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The cast, as first drawn</h2>
+        <p>Eleven portraits and eleven sprites, 27 and 28 May 2025. Only Kai has been drawn again since. The rest wait on <a href={base + 'characters/'}>the characters page</a> for a lineup in the town's hand. Hover, or tap, for the sprite.</p>
+      </div>
+      <ul class="cast">
+        {cast.map(([key, name, role]) => (
+          <li>
+            <button type="button" class="flip" aria-pressed="false" aria-label={`${name}: show the sprite`}>
+              <Image class="ill" src={img(key, 'illustration')} alt={`${name}, the May 2025 portrait.`} widths={[300, 500]} sizes="(min-width: 60rem) 14rem, 45vw" />
+              <Image class="spr" src={img(key, 'sprite')} alt="" widths={[300, 500]} sizes="(min-width: 60rem) 14rem, 45vw" />
+            </button>
+            <p class="name">{name}</p>
+            <p class="role">{role}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = 0;
+  function init() {
+    clearInterval(timer);
+    const root = document.querySelector<HTMLElement>('[data-scrub]');
+    document.querySelectorAll<HTMLButtonElement>('.cast .flip').forEach((b) => {
+      b.onclick = () => b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+    if (!root) return;
+    const stills = [...root.querySelectorAll<HTMLElement>('.still')];
+    const range = root.querySelector<HTMLInputElement>('[data-range]')!;
+    const when = root.querySelector<HTMLElement>('[data-when]')!;
+    const what = root.querySelector<HTMLElement>('[data-what]')!;
+    const data: { when: string; what: string }[] = JSON.parse(root.querySelector('[data-kai]')!.textContent || '[]');
+    const stage = root.querySelector<HTMLElement>('.stage')!;
+    const show = (i: number) => {
+      range.value = String(i);
+      stills.forEach((s, j) => s.classList.toggle('on', j === i));
+      root.querySelectorAll('[data-go]').forEach((b, j) => b.toggleAttribute('aria-current', j === i));
+      when.textContent = data[i].when;
+      what.textContent = data[i].what;
+      if (!reduced) { stage.classList.remove('tear'); void stage.offsetWidth; stage.classList.add('tear'); }
+    };
+    const stop = () => clearInterval(timer);
+    range.oninput = () => { stop(); show(+range.value); };
+    root.querySelectorAll<HTMLButtonElement>('[data-go]').forEach((b) => { b.onclick = () => { stop(); show(+b.dataset.go!); }; });
+    show(0);
+    if (!reduced) {
+      timer = window.setInterval(() => {
+        if (document.hidden || stage.getBoundingClientRect().bottom < 0) return;
+        show((+range.value + 1) % stills.length);
+      }, 3200);
+    }
+  }
+  document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:before-swap', () => clearInterval(timer));
+</script>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .scrub { display: grid; grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); gap: 2rem 4rem; align-items: center; margin-top: 1rem; }
+  .stage { position: relative; aspect-ratio: 4 / 5; background: var(--bg-sunk); border: 1px solid var(--edge); box-shadow: var(--shadow); overflow: hidden; }
+  .still { position: absolute; inset: 0; opacity: 0; transition: opacity 120ms steps(2, end); }
+  .still.on { opacity: 1; }
+  .still :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+  .still.pixel :global(img) { object-fit: contain; image-rendering: pixelated; background: #f4efe6; }
+  .stage.tear { animation: tear 260ms steps(4, end); }
+  @keyframes tear {
+    0% { clip-path: inset(0 0 62% 0); transform: translateX(-6px); }
+    25% { clip-path: inset(38% 0 20% 0); transform: translateX(5px); }
+    50% { clip-path: inset(70% 0 0 0); transform: translateX(-3px); }
+    75% { clip-path: inset(0 0 0 0); transform: translateX(2px); filter: saturate(0) contrast(1.4); }
+    100% { clip-path: inset(0 0 0 0); transform: none; filter: none; }
+  }
+  .scrub-text h2 { margin-bottom: 1.2rem; }
+  .when { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--fg); margin: 0 0 0.3rem; }
+  .what { color: var(--fg-soft); min-height: 3.2em; max-width: 36ch; }
+  input[type='range'] { width: 100%; max-width: 32rem; accent-color: var(--kai); margin: 1.2rem 0 0.4rem; }
+  .ticks { list-style: none; display: flex; justify-content: space-between; max-width: 32rem; margin: 0 0 1rem; padding: 0; }
+  .ticks li { max-width: none; }
+  .ticks button { all: unset; cursor: pointer; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--fg-faint); }
+  .ticks button[aria-current] { color: var(--kai); }
+  .ticks button:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+  @media (max-width: 55rem) { .scrub { grid-template-columns: 1fr; } .stage { max-width: 24rem; } }
+
+  .line { list-style: none; margin: 0; padding: 0; border-top: var(--rule); }
+  .line > li { max-width: none; display: grid; grid-template-columns: 10rem minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 2.5rem; padding: 2.4rem 0; border-bottom: var(--rule); align-items: start; position: relative; }
+  .line time { color: var(--fg-soft); font-size: 0.92rem; padding-top: 0.35rem; }
+  .era[data-year]::before { content: attr(data-year); position: absolute; top: 1.6rem; left: 0; font-family: var(--font-display); font-size: clamp(2.6rem, 4.2vw, 3.5rem); line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--line); pointer-events: none; z-index: -1; transform: translateY(1.8rem); }
+  .line h3 { font-size: clamp(1.35rem, 2.3vw, 1.8rem); margin-bottom: 0.5rem; }
+  .line h3 a { text-decoration: none; }
+  .line h3 a:hover { text-decoration: underline; text-decoration-color: var(--ochre); text-underline-offset: 0.15em; }
+  .body p { color: var(--fg-soft); }
+  .media { grid-column: 3; display: grid; gap: 1rem; }
+  .media-wide { grid-column: 2 / -1; max-width: 46rem; }
+  .media-narrow { max-width: 18rem; }
+  .media-grid { grid-template-columns: 1fr 1fr; }
+  .media-pair { grid-column: 2 / -1; grid-template-columns: 1fr 1fr; max-width: 46rem; }
+  .files { grid-column: 3; list-style: none; margin: 0; padding: 0.9rem 1.1rem; border: 1px dashed var(--line); font-size: 0.85rem; color: var(--fg-soft); font-variant-numeric: tabular-nums; }
+  .files li { max-width: none; padding: 0.25rem 0; }
+  .files li::before { content: '\25A1  '; color: var(--fg-faint); }
+  .divider { display: block !important; padding: 1.4rem 0 !important; text-align: center; }
+  .divider span { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-faint); }
+  .post .thumb { grid-column: 3; max-width: 14rem; }
+  .post .thumb :global(img) { border: 1px solid var(--edge); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .post .body p { margin: 0; }
+  @media (max-width: 60rem) {
+    .line > li { grid-template-columns: 1fr; }
+    .era[data-year]::before { display: none; }
+    .media, .media-wide, .media-pair, .files, .post .thumb { grid-column: 1; }
+  }
+
+  .cast { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr)); gap: 2rem 1.4rem; }
+  .cast li { max-width: none; }
+  @media (max-width: 30rem) { .cast { grid-template-columns: 1fr 1fr; gap: 1.6rem 1rem; } .cast .role { font-size: 0.8rem; } }
+  .flip { all: unset; display: block; position: relative; aspect-ratio: 1; width: 100%; cursor: pointer; border: 1px solid var(--edge); box-shadow: 0.4rem 0.4rem 0 var(--lavender-deep); overflow: hidden; background: var(--bg-sunk); }
+  .flip :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .flip :global(.spr) { opacity: 0; image-rendering: pixelated; transition: opacity 160ms steps(3, end); }
+  .flip:hover :global(.spr), .flip:focus-visible :global(.spr), .flip[aria-pressed='true'] :global(.spr) { opacity: 1; }
+  .flip:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  .cast .name { font-family: var(--font-display); font-size: 1.15rem; margin: 0.9rem 0 0.1rem; color: var(--fg); }
+  .cast .role { margin: 0; font-size: 0.88rem; color: var(--fg-faint); }
+  @media (prefers-reduced-motion: reduce) { .still, .flip :global(.spr) { transition: none; } }
+</style>

@@ -26,6 +26,7 @@ and corrected itself.
 | Story | Premise, Kai, Elara, the desert opening, the prologue and four acts (the 2025 outline kept folded), the endings. The chosen ending is not on the site |
 | Mechanics | Temporal anchors, the loop, combat phases, echo weaving, spells, companions |
 | Look | How the painted look works and how it is checked |
+| Timeline | From the first documents and portraits of May 2025, through the browser game and Godot, to every update; Kai six times; the cast as first drawn |
 | Roadmap | What is anchored, what is being woven, what is still unwritten |
 | Anchors | The save menu: the game's fixed anchors, then the pages you stabilised this visit |
 
@@ -132,7 +133,7 @@ first eight.
 
 ## History
 
-The same story has been built three times. A browser JRPG in pixel art (2025,
+The same story has been built three times. A browser JRPG in pixel art (February 2026,
 tagged `legacy-browser-game` in this repository), a native 3D town in Godot
 (September 2026), and the painted Unreal build (October 2026). The record calls
 this iteration.

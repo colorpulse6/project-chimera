@@ -196,6 +196,29 @@ def longroad_2_6():
         save(Image.open(run / f"{src}.png"), name)
 
 
+def originals():
+    """The first concepts, from Nic's Drive (May 2025), the first 3D Kai (30 May 2025)
+    and the browser game's art (February 2026), for the timeline page."""
+    drive = next(Path.home().glob("Library/CloudStorage/GoogleDrive-*/My Drive/Chimera/Visuals & Assets"))
+    cast = {"kai": ("kai-illustration", "kai-sprite"), "rex": ("rex-illustration", "rex-sprite"),
+            "seraph": ("seraph-illustration", "seraph-sprite-2"), "zenith": ("zenith-illustration", "zenith-sprite"),
+            "valerian": ("valarien-illustration", "valarien-sprite-2"), "lyra": ("lyra-illustration", "lyra-sprite"),
+            "cora": ("cora-illustration", "cora-sprite"), "kaelen": ("kaelen-illustration", "kaelen-sprite"),
+            "aris": ("Aris-illustration", "aris-sprite"), "valerius": ("valerius-illustration", "valerius-sprite"),
+            "king-greyon": ("king-greyon-illustration", "king-greyon-sprite")}
+    for key, (ill, spr) in cast.items():
+        save(Image.open(drive / f"{ill}.jpeg"), f"orig-{key}-illustration", maxw=900, q=84)
+        save(Image.open(drive / f"{spr}.jpeg"), f"orig-{key}-sprite", maxw=900, q=84)
+    save(Image.open(drive / "chimera-world-map.jpeg"), "orig-world-map", maxw=2000, q=88)
+    tpose = Image.open(ROOT / "source-assets (from Documents)/Kai-t-pose.jpeg")
+    save(tpose.crop((round(tpose.width * .18), 0, round(tpose.width * .82), tpose.height)), "orig-kai-t-pose", maxw=900, q=86)
+    ch = ROOT / "characters"
+    save(Image.open(ch / "kai_sprite_sheet.png").crop((190, 190, 540, 670)), "orig-browser-kai", maxw=900, q=90)
+    save(Image.open(ch / "kai_passed_out.png"), "orig-browser-kai-fainted", maxw=1200, q=86)
+    save(Image.open(ch / "desert_plateau.png"), "orig-browser-desert", maxw=900, q=84)
+    save(Image.open(ch / "hooded_stranger_walk.png"), "orig-browser-strangers", maxw=900, q=84)
+
+
 import sys
 if "--longroad-2-6" in sys.argv:
     longroad_2_6()
@@ -205,6 +228,9 @@ if "--batch-11-longroad" in sys.argv:
     sys.exit(0)
 if "--batch-2-3" in sys.argv:
     batch_2_3()
+    sys.exit(0)
+if "--originals" in sys.argv:
+    originals()
     sys.exit(0)
 if "--batch-4-10" in sys.argv:
     batch_4_10()
