@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-27T08:36",
-  "note": "Posted world1 (world blockout, Coordinator 08:36 in 2026-10-27-world-blockout REPORT.md): V1 and V2 vista frames with their v3 paintings, at Nic’s request in chat; V3/V3b held back as unfinished blockout (Nic’s choice). Bearings are provisional pending Nic’s review. Earlier: Long Road 2–6 posted; human acceptance and clean-window performance acceptance for build 6 remain open. No-publication concepts, set-aside paintings and story spoilers remain held back.",
+  "posted_through": "2026-10-27T12:58",
+  "note": "Posted B1 normal-play loading and packaged proofs (Coordinator 12:58 in public-demo REPORT.md), the signed Shipping launch test with its limits, and Nic’s world1 play recorded at 10:32. B1 human acceptance remains open; no demo binaries or download links published. Coast-road L1 frames and D2 near-range changes remain held pending their publication gate, with only roadmap mentions. V3/V3b remain held at Nic’s request; no-publication concepts, set-aside paintings and story spoilers remain off the site.",
   "log": [
     {
       "date": "2026-10-24",
@@ -26,6 +26,11 @@
       "date": "2026-10-27",
       "slug": "2026-10-27-fifty-kilometres-to-the-colossus",
       "covers": "world1: far-layer vista of seven regions and the Weeping Colossus, V1 and V2 with paintings, frame-time result"
+    },
+    {
+      "date": "2026-10-27",
+      "slug": "2026-10-27-the-road-is-there-when-the-town-wakes",
+      "covers": "B1 normal-play loading, packaged launch and Continue proofs, bounded frame-time samples and signed Mac test status"
     }
   ]
 }

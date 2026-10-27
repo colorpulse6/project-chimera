@@ -241,7 +241,20 @@ def regions():
         save(Image.open(canon / rid / "art" / f"{rid}-v3.png"), f"painting-{rid}-v3", maxw=1280, q=88)
 
 
+def b1_normal_play():
+    """27 Oct: B1 packaged proof, public-demo REPORT.md Coordinator 12:58.
+
+    A Development launch capture, not a public demo or a coast-road frame.
+    The signed Shipping test has no matching gameplay capture here.
+    """
+    run = FG / "review/longroad/package-check-b1dev"
+    save(Image.open(run / "launch-longroad.png"), "b1-longroad-arrival")
+
+
 import sys
+if "--b1-normal-play" in sys.argv:
+    b1_normal_play()
+    sys.exit(0)
 if "--regions" in sys.argv:
     regions()
     sys.exit(0)

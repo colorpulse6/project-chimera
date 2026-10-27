@@ -68,6 +68,7 @@ import fDesertRocks from '../assets/media/desert-rocks.jpg';
 
 import fLongRoad from '../assets/media/longroad1-arrival.jpg';
 import fLongRoadArrival from '../assets/media/longroad6-arrival.jpg';
+import fB1LongRoad from '../assets/media/b1-longroad-arrival.jpg';
 import fLongRoadRiver from '../assets/media/longroad6-river.jpg';
 import fLongRoadHollow from '../assets/media/longroad6-hollow.jpg';
 import fLongRoadRepair from '../assets/media/longroad6-repair.jpg';
@@ -282,16 +283,17 @@ export const places: Place[] = [
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'Long Road 6, packaged 27 October. Launch checks passed; not accepted until Nic has played it.',
+    statusText: 'B1 packaged 27 October: the route loads with normal play. Launch checks passed; the walkable connection and human acceptance remain open.',
     image: fLongRoadArrival,
     imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
+      { src: fB1LongRoad, alt: 'Kai at the Long Road arrival, between low stone walls with cypresses and a red-roofed house ahead.', caption: 'B1 Development package, 27 October. The review jumps Kai here; this does not show a walk from the town.' },
       { src: fLongRoadRepair, alt: 'Kai approaches three figures and a broken cart beneath an olive tree.', caption: 'The repair stop, under an olive. Long Road 6, from the packaged game.' },
       { src: fLongRoadRiver, alt: 'Turquoise water and reeds beneath pale river arches, with the Arc rising beyond.', caption: 'The river has bends, reeds and glints. The straight banks still show in places.' },
       { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
       { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. Nic played the second and third builds; the later scenery in Long Road 6 still needs his acceptance. The route keeps its changes only for the session; a normal way in and out of the campaign is still to come.',
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. Nic played world1 through the river crossing to the village. B1 now loads the route with the town in normal play, but that does not provide a way to walk between them. The B1 package passed its launch checks; Nic has not accepted it yet. The route keeps its changes only for the session, and the campaign connection is still to come.',
   },
 ];
 

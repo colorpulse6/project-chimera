@@ -32,16 +32,17 @@ export const done: Item[] = [
 export const now: Item[] = [
   { text: 'Kai, after the playtest', detail: 'The still cape and smaller arm swing remain. Following Nic’s feedback, the running jump leans forward and tucks a knee; a short landing dip replaces the deep crouch. Packaged in Long Road 3 and retained in 6.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
-  { text: 'The Long Road', detail: 'Build 6 packaged 27 October: shaped ground, painted surfaces, river bends, olives, cypresses and longer shadows. The earlier playtest led to jump, village-ground and passage fixes. Human acceptance and a clean performance sample for build 6 remain open.' },
+  { text: 'The Long Road', detail: 'B1 packaged 27 October: the route loads in normal play and its far scenery stays out of the town view. Launch and Continue checks passed, with bounded frame-time samples. Human acceptance remains open.' },
+  { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Further shape, near-range colour and painted-surface work awaits its next accepted package.' },
+  { text: 'A coast road', detail: 'Nic chose a walkable link from the harbour; its frames remain in review.' },
   { text: 'The far regions', detail: 'Packaged in world1, 27 October: seven regions and the Weeping Colossus as painted silhouettes on the horizon, with haze. Where each one stands is provisional until Nic reviews it. Nothing out there is walkable yet.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [
   { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. The latest Long Road scenery still needs his playtest.' },
-  { text: 'The Long Road joins the campaign', detail: 'Its state is session-only. Persistence and a normal campaign entry and return still need design.' },
+  { text: 'The Long Road remembers', detail: 'The route loads with normal play, but its changes are still session-only. Persistence remains to be designed.' },
   { text: 'The desert, closer to its painting', detail: 'The far ridge reads as a flat band, the sky is paler than the painting, the sand has no ripples. Then the tremors.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },
   { text: 'Camera collision on the courtyard tree', detail: 'The camera passes inside the canopy and shows the shard mesh. Seen in the first recording.' },
   { text: 'Frame rate at full size', detail: 'Measured at 1280 by 720 standing still. Full screen at Retina size, and a walk route, are not measured yet.' },
-  { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Their shape, the sea colour and the painted surface detail are decisions parked for Nic.' },
 ];
