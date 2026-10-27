@@ -3,7 +3,7 @@
 Run with the chimera-ml venv (has Pillow):
   ~/.venvs/chimera-ml/bin/python tools/prep_media.py
 Writes JPEGs into src/assets/media/. Re-run after new review runs.
-One section alone:  ... prep_media.py --batch-2-3  (or --batch-4-10, --batch-11-longroad)
+One section alone:  ... prep_media.py --batch-2-3  (or --batch-4-10, --batch-11-longroad, --longroad-2-6)
 """
 from pathlib import Path
 from PIL import Image
@@ -178,7 +178,28 @@ def batch_11_longroad():
     save(Image.open(longroad / "01-arrival-road-and-arc.png"), "longroad1-arrival")
 
 
+def longroad_2_6():
+    """27 Oct: Long Road 2–6, using only the final packaged game frames.
+
+    Gate: design-parity REPORT.md, Coordinator 02:16 on 27 Oct, with clean
+    launch and complete packaged sheets. Human acceptance remains pending.
+    These named package-check runs are game captures, not Blender mock-ups.
+    """
+    run = FG / "review/longroad/package-check-longroad6/parity"
+    picks = {
+        "P1-arrival-master": "longroad6-arrival",
+        "P2-river-crossing": "longroad6-river",
+        "P3-hidden-hollow": "longroad6-hollow",
+        "P5-roadside-repair": "longroad6-repair",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / f"{src}.png"), name)
+
+
 import sys
+if "--longroad-2-6" in sys.argv:
+    longroad_2_6()
+    sys.exit(0)
 if "--batch-11-longroad" in sys.argv:
     batch_11_longroad()
     sys.exit(0)

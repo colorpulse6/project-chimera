@@ -30,17 +30,18 @@ export const done: Item[] = [
   { text: 'A story spine', detail: 'A working master direction: a desert prologue and four acts. On the story page, without the spoilers. 26 October.' },
 ];
 export const now: Item[] = [
-  { text: 'Kai, second pass', detail: 'Packaged 26 October: still cape at rest, smaller arm swing, upright jump and a held arm under the cloak. Nic accepted movement in the Long Road prototype; the deep landing crouch remains for review.' },
+  { text: 'Kai, after the playtest', detail: 'The still cape and smaller arm swing remain. Following Nic’s feedback, the running jump leans forward and tucks a knee; a short landing dip replaces the deep crouch. Packaged in Long Road 3 and retained in 6.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
-  { text: 'The Long Road', detail: 'A packaged exploration blockout. Nic accepted movement and layout as a base, 26 October. The shaped scenery and discovery pass is in progress.' },
+  { text: 'The Long Road', detail: 'Build 6 packaged 27 October: shaped ground, painted surfaces, river bends, olives, cypresses and longer shadows. The earlier playtest led to jump, village-ground and passage fixes. Human acceptance and a clean performance sample for build 6 remain open.' },
+  { text: 'World vistas', detail: 'Distant region silhouettes are being blocked in; the first views have not passed their gate.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [
-  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. Movement was accepted in the Long Road prototype.' },
+  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. The latest Long Road scenery still needs his playtest.' },
   { text: 'The Long Road joins the campaign', detail: 'Its state is session-only. Persistence and a normal campaign entry and return still need design.' },
   { text: 'The desert, closer to its painting', detail: 'The far ridge reads as a flat band, the sky is paler than the painting, the sand has no ripples. Then the tremors.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },
   { text: 'Camera collision on the courtyard tree', detail: 'The camera passes inside the canopy and shows the shard mesh. Seen in the first recording.' },
   { text: 'Frame rate at full size', detail: 'Measured at 1280 by 720 standing still. Full screen at Retina size, and a walk route, are not measured yet.' },
-  { text: 'A map of the world', detail: 'Regions, paths and loops, and which discovery leads where. The first proposal was too generic and was not kept.' },
+  { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Their shape, the sea colour and the painted surface detail are decisions parked for Nic.' },
 ];

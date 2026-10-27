@@ -67,6 +67,10 @@ import fDesertKai from '../assets/media/desert-kai.jpg';
 import fDesertRocks from '../assets/media/desert-rocks.jpg';
 
 import fLongRoad from '../assets/media/longroad1-arrival.jpg';
+import fLongRoadArrival from '../assets/media/longroad6-arrival.jpg';
+import fLongRoadRiver from '../assets/media/longroad6-river.jpg';
+import fLongRoadHollow from '../assets/media/longroad6-hollow.jpg';
+import fLongRoadRepair from '../assets/media/longroad6-repair.jpg';
 
 export type Place = {
   slug: string;
@@ -278,13 +282,16 @@ export const places: Place[] = [
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'A separate packaged prototype, 26 October. Movement and layout accepted as a base; scenery is a blockout.',
-    image: fLongRoad,
-    imageAlt: 'Kai on a pale road through flat green ground, box-shaped trees and the tall Arc ahead. The first packaged blockout.',
+    statusText: 'Long Road 6, packaged 27 October. Launch checks passed; not accepted until Nic has played it.',
+    image: fLongRoadArrival,
+    imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
-      { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'The first package: movement and layout accepted as a base, with blockout scenery.' },
+      { src: fLongRoadRepair, alt: 'Kai approaches three figures and a broken cart beneath an olive tree.', caption: 'The repair stop, under an olive. Long Road 6, from the packaged game.' },
+      { src: fLongRoadRiver, alt: 'Turquoise water and reeds beneath pale river arches, with the Arc rising beyond.', caption: 'The river has bends, reeds and glints. The straight banks still show in places.' },
+      { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
+      { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. Nic accepted the movement and layout as a base to build on. These are stretched boxes with flat colour, not finished scenery. The route keeps its changes only for the session; a normal way in and out of the campaign is still to come.',
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. Nic played the second and third builds; the later scenery in Long Road 6 still needs his acceptance. The route keeps its changes only for the session; a normal way in and out of the campaign is still to come.',
   },
 ];
 
