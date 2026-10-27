@@ -19,6 +19,15 @@ The arrival on the Long Road, after its painting. The lone peak is ahead, the am
 
 ![The same arrival in world1: Kai small on the road, cypresses and a red-roofed house, the Arc’s spans on the right, a lone peak ahead and a tall pale shape in the clouds.](../../assets/media/world1-road-valley.jpg)
 
+## Walking it
+
+Sixteen seconds on the road in world1, in four cuts: standing at the arrival, walking toward the peak, the low path at a run, and the bridge. In the last cut the Colossus is the tall shape in the cloud, left of the peak. It was recorded from the packaged build at a fixed step, fifteen frames a second, so it says nothing about frame rate.
+
+<figure class="frame">
+  <video src="/media/world1-walk-2026-10-27.mp4" poster="/media/world1-walk-poster.jpg" controls muted playsinline preload="metadata"></video>
+  <figcaption><b>The Long Road, world1, 27 October.</b> The arrival, the walk toward the peak, the low path, the bridge under the Arc.</figcaption>
+</figure>
+
 ## From the town
 
 The painting of Havenwood puts a ruin on the hill above the town and a peak to the right of it. From the top of the town, looking east across the harbour, the game now has both, in the same places. The Colossus is far off on the right, over the town's own sea.

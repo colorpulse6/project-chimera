@@ -113,6 +113,10 @@ roadmap) are written by hand. Each entry has a `status` of `built`, `now` or
   ffmpeg -ss 19.5 -to 25.0 -i recording.mov -an -vf "fps=30,scale=960:-2" -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart public/media/loop-street.mp4
   ```
 
+- Clips from a packaged build: `tools/video/spec-world1-walk.json` is a review-sheet spec
+  (strips of at most 60 frames), captured with the game project's `run_pkg_sheet.py` inside its
+  Unreal lock and save guard; `tools/video/encode_clip.py` joins the strips into one mp4 with no
+  burned-in labels (`--shots`, `--crop` for the DEV tag, `--crf`).
 - Loops autoplay muted through the `Frame` component:
   `<Frame src="media/loop-street.mp4" poster="media/poster.jpg" />`. In
   markdown, use a plain `<video>` tag with the `/media/...`

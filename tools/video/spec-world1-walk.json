@@ -1,0 +1,16 @@
+{
+  "_comment": "Site clip of the world1 package (27 Oct 2026): 4 s strips facing the far layer (lone peak, Arc, the Weeping Colossus in the cloud), camera tilted up so the horizon is in frame; the site clip cuts four of them together. Places from the longroad preview2 strips. A strip takes at most 60 frames (ReviewSheetSubsystem), so 60 frames over 4 s = 15 fps. fixed_step keeps it deterministic (not an FPS claim). Run with fresh-game/tools/diag/longroad/run_pkg_sheet.py inside the Unreal lock and the save guard. The area picker's DEV tag (top right) is cropped out at encode time.",
+  "output": "REPLACED_PER_RUN",
+  "settle_frames": 120,
+  "fixed_step": 0.016666666666666666,
+  "width": 1280,
+  "height": 720,
+  "shots": [
+    {"name": "01-look-p4", "kind": "strip", "location": [250000, -700000, 105.0], "rotation": [4, -4, 0], "input": "walk", "seconds": 4, "input_seconds": 0, "frames": 60, "areas": "travel:Long Road"},
+    {"name": "02-look-p10", "kind": "strip", "location": [250000, -700000, 105.0], "rotation": [10, -4, 0], "input": "walk", "seconds": 4, "input_seconds": 0, "frames": 60},
+    {"name": "03-look-left-p6", "kind": "strip", "location": [250000, -700000, 105.0], "rotation": [6, -15, 0], "input": "walk", "seconds": 4, "input_seconds": 0, "frames": 60},
+    {"name": "04-walk-p6", "kind": "strip", "location": [250000, -700000, 105.0], "rotation": [6, -4, 0], "input": "walk", "seconds": 4, "frames": 60},
+    {"name": "05-low-path-run-p6", "kind": "strip", "location": [254200, -700200, 105.0], "rotation": [6, -27.2, 0], "input": "run", "seconds": 4, "frames": 60},
+    {"name": "06-bridge-p6", "kind": "strip", "location": [262600, -696400, 502], "rotation": [6, 0, 0], "input": "walk", "seconds": 4, "frames": 60}
+  ]
+}
