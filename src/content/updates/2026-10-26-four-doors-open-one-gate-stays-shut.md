@@ -83,7 +83,7 @@ Kai's movement was rebuilt on motion-capture clips retargeted to his skeleton: a
 
 ## Where it begins now
 
-On the 26th a working master direction rewrote the shape of the story: a desert prologue and four acts. The game now begins with Kai walking across a desert until he collapses, and then waking in the garden. [The story page](/project-chimera/story/) has the new shape and the opening. It does not have the ending. That was chosen too, and stays off the record until it is built.
+On the 26th a working master direction rewrote the shape of the story: a desert prologue and four acts. The game now begins with Kai walking across a desert until he collapses, and then waking in the garden. [The story page](/story/) has the new shape and the opening. It does not have the ending. That was chosen too, and stays off the record until it is built.
 
 The desert has a first slice: a walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from the town and cut off by distance, so neither can see the other. A flat outline stands on the far ridge, a proposed detail and nothing more. The slice is reached only from a new development menu that jumps Kai to any place with saving off. Nobody has played it. Its frame time is not measured: the run could not bring the game window into focus.
 

@@ -1,6 +1,6 @@
 # Chimera · the record
 
-**Live: https://colorpulse6.github.io/project-chimera/**
+**Live: https://projectchimera.dev/**
 
 Chimera is a role-playing game set in a hill town that was painted before it was
 built, with a hero drawn in ink who does not always stay drawn. It is being made
@@ -69,7 +69,7 @@ Deployed from `main` to GitHub Pages by the workflow in `.github/workflows/`.
 
 ```sh
 npm install
-npm run dev       # http://localhost:4321/project-chimera/
+npm run dev       # http://localhost:4321/
 npm run build     # writes dist/
 npm run preview   # serves dist/
 ```
@@ -115,7 +115,7 @@ roadmap) are written by hand. Each entry has a `status` of `built`, `now` or
 
 - Loops autoplay muted through the `Frame` component:
   `<Frame src="media/loop-street.mp4" poster="media/poster.jpg" />`. In
-  markdown, use a plain `<video>` tag with the `/project-chimera/media/...`
+  markdown, use a plain `<video>` tag with the `/media/...`
   path.
 
 ## The hum

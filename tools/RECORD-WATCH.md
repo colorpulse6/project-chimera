@@ -74,7 +74,7 @@ git fetch -q origin main && git fetch -q ../../chimera/site +main:site-source
 C=$(git commit-tree $(git rev-parse site-source^{tree}) -p origin/main -m "Site: <what changed>")
 git update-ref refs/heads/site-rebuild $C && git push -q origin site-rebuild:main
 gh run list --branch main --limit 1            # wait for success
-curl -s -o /dev/null -w '%{http_code}' https://colorpulse6.github.io/project-chimera/updates/<slug>/
+curl -s -o /dev/null -w '%{http_code}' https://projectchimera.dev/updates/<slug>/
 ```
 
 Then set `posted_through` in `tools/record-watch.json` to the newest report
