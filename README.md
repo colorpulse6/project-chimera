@@ -28,6 +28,7 @@ and corrected itself.
 | Look | How the painted look works and how it is checked |
 | Timeline | From the first documents and portraits of May 2025, through the browser game and Godot, to every update; Kai six times; the cast as first drawn |
 | Roadmap | What is anchored, what is being woven, what is still unwritten |
+| Download | The public demo: button to the GitHub Release dmg, size, what is playable, SHA-256. Data in `src/data/demo.ts` (first entry is shown); for a new release add an entry with the stapled dmg's byte size and `shasum -a 256` |
 | Anchors | The save menu: the game's fixed anchors, then the pages you stabilised this visit |
 
 There is also a page that is not linked from anywhere. Type her name.

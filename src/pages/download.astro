@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import roadValley from '../assets/media/world1-road-valley.jpg';
+import { demos } from '../data/demo';
+const base = import.meta.env.BASE_URL;
+const demo = demos[0];
+const mb = Math.round(demo.bytes / 1e6);
+const playable = [
+  ['Havenwood', 'The hill town, on one map with no loading: the courtyard and the street, the seaside lane down to the harbour, the church square, the hill village, Dyers’ Steps, the chapel, the rooftop garden and the road to the estate gate. The chapel, the shop and the Rusted Cog can be walked into.'],
+  ['The coast road', 'From the arch at the east edge of the harbour quay, a causeway runs out over the water and through a gate to the Long Road.'],
+  ['The Long Road', 'The whole exploration loop: two branches, three river crossings, a cart to repair, a hidden hollow and a way back to the village.'],
+];
+---
+<Base title="Download" description={`Chimera Demo ${demo.version}: an early demo for Macs with Apple silicon. Havenwood, the coast road and the Long Road.`}>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Play the demo</h1>
+        <p>Chimera Demo {demo.version} is an early build of the game, released on {demo.date}. Everything in it is work in progress.</p>
+      </div>
+      <div class="get">
+        <div>
+          <p class="cta"><a class="button" href={demo.url}>Download for Mac ({mb} MB)</a></p>
+          <p class="small muted">macOS {demo.minMacOS} or newer, on a Mac with Apple silicon (M1 or later). There is no build for Intel Macs or Windows. The app is signed and notarized by Apple. <a href={demo.releaseUrl}>Release page on GitHub</a>.</p>
+          <dl class="ledger facts">
+            <div><dt>Version</dt><dd>{demo.version}, {demo.date}</dd></div>
+            <div><dt>File</dt><dd>{demo.file}, {mb} MB disk image</dd></div>
+            <div><dt>Install</dt><dd>Open the disk image and drag Chimera Demo to Applications, or run it from the disk image.</dd></div>
+            <div><dt>Controls</dt><dd>WASD to move, Shift to run, E to talk or use, Esc for the menu and back. Quit from the title or pause menu, or with Cmd+Q.</dd></div>
+            <div><dt>Saves</dt><dd>The demo keeps its own save in its own app container.</dd></div>
+          </dl>
+        </div>
+        <Frame src={roadValley} alt="Kai small on the Long Road through golden hills, broken stone spans on the right, a lone peak ahead and a tall pale shape in the clouds." caption="The Long Road in a development build, 27 October." sizes="(min-width: 60rem) 45vw, 100vw" widths={[600, 1000, 1600]} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What you can play</h2>
+        <p>To reach the road, leave the square north along the seaside lane to the harbour. The arch at the quay&rsquo;s east edge opens onto the causeway.</p>
+      </div>
+      <dl class="ledger">{playable.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      <p class="small muted note">This is an early demo. Shapes on the horizon are rough silhouettes, nothing past the Long Road can be reached, and the frame rate has only been measured on the M1 Max the game is made on. For what changed since, see <a href={base + 'updates/'}>the updates</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Check the file</h2>
+        <p>The SHA-256 checksum of {demo.file}. To compare, run the command in Terminal after the download.</p>
+      </div>
+      <p><code class="hash">{demo.sha256}</code></p>
+      <p><code>shasum -a 256 ~/Downloads/{demo.file}</code></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .get { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 2rem 4rem; align-items: start; }
+  @media (max-width: 60rem) { .get { grid-template-columns: 1fr; } }
+  .cta { margin: 0 0 1rem; }
+  .cta .button { font-size: 1.1rem; padding: 0.9rem 1.5rem; }
+  .facts { margin-top: 2rem; }
+  .note { margin-top: 1.5rem; max-width: 70ch; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9rem; background: var(--bg-raised); padding: 0.2em 0.45em; border: 1px solid var(--line); }
+  .hash { word-break: break-all; }
+</style>

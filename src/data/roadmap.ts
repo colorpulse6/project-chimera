@@ -28,13 +28,14 @@ export const done: Item[] = [
   { text: 'Kai\'s movement', detail: 'Motion-capture clips retargeted to Kai: idle, walk, run and jump, feet on the steps, a simulated cape. Packaged 25 October.' },
   { text: 'An area picker', detail: 'A development menu that jumps Kai to any built place, with saving off. For testing, not for players. 26 October.' },
   { text: 'A story spine', detail: 'A working master direction: a desert prologue and four acts. On the story page, without the spoilers. 26 October.' },
+  { text: 'The coast road', detail: 'A causeway from the harbour quay, through a gate, out to the Long Road. Walkable in the public demo, 27 October.' },
+  { text: 'The first public demo', detail: 'Chimera Demo 0.1.0 for Macs with Apple silicon: Havenwood, the coast road and the Long Road. Signed and notarized, released 27 October.' },
 ];
 export const now: Item[] = [
   { text: 'Kai, after the playtest', detail: 'The still cape and smaller arm swing remain. Following Nic’s feedback, the running jump leans forward and tucks a knee; a short landing dip replaces the deep crouch. Packaged in Long Road 3 and retained in 6.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
   { text: 'The Long Road', detail: 'B1 packaged 27 October: the route loads in normal play and its far scenery stays out of the town view. Launch and Continue checks passed, with bounded frame-time samples. Human acceptance remains open.' },
   { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Further shape, near-range colour and painted-surface work awaits its next accepted package.' },
-  { text: 'A coast road', detail: 'Nic chose a walkable link from the harbour; its frames remain in review.' },
   { text: 'The far regions', detail: 'Packaged in world1, 27 October: seven regions and the Weeping Colossus as painted silhouettes on the horizon, with haze. Where each one stands is provisional until Nic reviews it. Nothing out there is walkable yet.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
