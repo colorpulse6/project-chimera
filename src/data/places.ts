@@ -69,6 +69,8 @@ import fDesertRocks from '../assets/media/desert-rocks.jpg';
 import fLongRoad from '../assets/media/longroad1-arrival.jpg';
 import fLongRoadArrival from '../assets/media/longroad6-arrival.jpg';
 import fB1LongRoad from '../assets/media/b1-longroad-arrival.jpg';
+import fPar2Causeway from '../assets/media/par2-causeway.jpg';
+import fPar2Settlement from '../assets/media/par2-settlement-jetty.jpg';
 import fLongRoadRiver from '../assets/media/longroad6-river.jpg';
 import fLongRoadHollow from '../assets/media/longroad6-hollow.jpg';
 import fLongRoadRepair from '../assets/media/longroad6-repair.jpg';
@@ -283,7 +285,7 @@ export const places: Place[] = [
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'B1 packaged 27 October: the route loads with normal play. Launch checks passed; the walkable connection and human acceptance remain open.',
+    statusText: 'Walkable from the harbour in Demo 0.1.0. Par2 adds internal development work, packaged 28 October; Nic’s acceptance remains open.',
     image: fLongRoadArrival,
     imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
@@ -293,7 +295,25 @@ export const places: Place[] = [
       { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
       { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. Nic played world1 through the river crossing to the village. B1 now loads the route with the town in normal play, but that does not provide a way to walk between them. The B1 package passed its launch checks; Nic has not accepted it yet. The route keeps its changes only for the session, and the campaign connection is still to come.',
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par2 carries some of that work, with terrain bands and a settlement blockout; it is an internal package awaiting his acceptance. Continue restores position along the route, while the exploration changes remain session-only.',
+  },
+  {
+    slug: 'coast-road',
+    name: 'The coast road',
+    status: 'built',
+    statusText: 'In Demo 0.1.0, released 27 October. The frame below is from the later par2 Development package.',
+    image: fPar2Causeway,
+    imageAlt: 'Kai on a long pale causeway over blue water, with golden hills and a small settlement ahead.',
+    body: 'A 1.16 kilometre causeway from the east edge of the harbour quay, through a gate and out to the Long Road. The packaged walk goes from the quay to the road and back without a fade, door or menu. Nic found the journey long in the demo candidate; a pass through the route is not the same as a settled travel design.',
+  },
+  {
+    slug: 'cove-settlement',
+    name: 'A settlement in the cove',
+    status: 'now',
+    statusText: 'An unnamed blockout in par2, 28 October. Packaged launch checks passed; Nic has not accepted it. Not in Demo 0.1.0.',
+    image: fPar2Settlement,
+    imageAlt: 'Kai at the jetty, facing pale houses with red roofs across the water and lavender mountains beyond.',
+    body: 'A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. The packaged check reaches the jetty and shows the settlement across the water. Its figures and lines are stand-ins, not a settled cast. The par2 gate does not prove a hand-played visit or travel through its doors.',
   },
 ];
 

@@ -251,7 +251,26 @@ def b1_normal_play():
     save(Image.open(run / "launch-longroad.png"), "b1-longroad-arrival")
 
 
+def coast_par2():
+    """28 Oct: packaged par2 walk and jetty frames, Coordinator gate 04:09.
+
+    These are package proof captures, not the later editor sea/door candidates.
+    L1 coast-road gate: public-demo REPORT.md, 27 Oct 18:40.
+    """
+    run = FG / "tools/diag/coordinator/par2/package"
+    picks = {
+        "proofs/walk/W02-leg1-end-to-leg2-end.png": "par2-causeway",
+        "proofs/walk/W07-landing-to-the.png": "par2-road-stance",
+        "gapwalk/GAP-walk-east-through-the-gap-05.png": "par2-settlement-jetty",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--coast-par2" in sys.argv:
+    coast_par2()
+    sys.exit(0)
 if "--b1-normal-play" in sys.argv:
     b1_normal_play()
     sys.exit(0)

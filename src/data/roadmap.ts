@@ -32,16 +32,19 @@ export const done: Item[] = [
   { text: 'The first public demo', detail: 'Chimera Demo 0.1.0 for Macs with Apple silicon: Havenwood, the coast road and the Long Road. Signed and notarized, released 27 October.' },
 ];
 export const now: Item[] = [
-  { text: 'Kai, after the playtest', detail: 'The still cape and smaller arm swing remain. Following Nic’s feedback, the running jump leans forward and tucks a knee; a short landing dip replaces the deep crouch. Packaged in Long Road 3 and retained in 6.' },
+  { text: 'Kai, after the playtest', detail: 'Par2, 28 October: foot and stance corrections, a modest forward jump-arm reach, and residents whose idles no longer run in step. Residents turn toward nearby Kai. Packaged; Nic’s acceptance remains open.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
-  { text: 'The Long Road', detail: 'B1 packaged 27 October: the route loads in normal play and its far scenery stays out of the town view. Launch and Continue checks passed, with bounded frame-time samples. Human acceptance remains open.' },
-  { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Further shape, near-range colour and painted-surface work awaits its next accepted package.' },
+  { text: 'The Long Road', detail: 'Joined to the harbour by the coast road in the public demo. Internal par2 adds terrain bands and regional climate blending; the packaged round trip and Continue checks passed. A clean performance sample remains open.' },
+  { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Warmer near ranges are packaged; further shape and painted-surface work remains open.' },
+  { text: 'A settlement in the cove', detail: 'An unnamed blockout with placeholder residents, in par2. The packaged jetty check passed; a hand-played visit remains open.' },
+  { text: 'A battle prototype', detail: 'Three patrolling enemies and an optional development battle system are in par2. The packaged smoke test loads the data; hand-played combat remains unproven.' },
+  { text: 'The next integration', detail: 'Sea treatment, settlement door refinements, shore dressing and further battle changes await a qualifying package or Nic’s acceptance.' },
   { text: 'The far regions', detail: 'Packaged in world1, 27 October: seven regions and the Weeping Colossus as painted silhouettes on the horizon, with haze. Where each one stands is provisional until Nic reviews it. Nothing out there is walkable yet.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [
-  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. The latest Long Road scenery still needs his playtest.' },
-  { text: 'The Long Road remembers', detail: 'The route loads with normal play, but its changes are still session-only. Persistence remains to be designed.' },
+  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. Nic played the demo candidate; the newer par2 changes still need their own acceptance.' },
+  { text: 'The Long Road remembers', detail: 'Continue restores position on the quay, causeway and Long Road. The route’s exploration changes remain session-only; their persistence still needs design.' },
   { text: 'The desert, closer to its painting', detail: 'The far ridge reads as a flat band, the sky is paler than the painting, the sand has no ripples. Then the tremors.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },
   { text: 'Camera collision on the courtyard tree', detail: 'The camera passes inside the canopy and shows the shard mesh. Seen in the first recording.' },
