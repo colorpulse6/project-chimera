@@ -71,6 +71,9 @@ import fLongRoadArrival from '../assets/media/longroad6-arrival.jpg';
 import fB1LongRoad from '../assets/media/b1-longroad-arrival.jpg';
 import fPar2Causeway from '../assets/media/par2-causeway.jpg';
 import fPar2Settlement from '../assets/media/par2-settlement-jetty.jpg';
+import fPar7Sea from '../assets/media/par7-harbour-sea.jpg';
+import fPar7Road from '../assets/media/par7-longroad-trees.jpg';
+import fPar7Settlement from '../assets/media/par7-settlement-shore.jpg';
 import fLongRoadRiver from '../assets/media/longroad6-river.jpg';
 import fLongRoadHollow from '../assets/media/longroad6-hollow.jpg';
 import fLongRoadRepair from '../assets/media/longroad6-repair.jpg';
@@ -140,6 +143,7 @@ export const places: Place[] = [
     imageAlt: 'The harbour quay with bollards and a lantern, the lavender headland across the bay.',
     painting: pHarbour,
     frames: [
+      { src: fPar7Sea, alt: 'Kai on the harbour quay facing deep blue water, the causeway gate and lavender hills.', caption: 'Par7 internal package, 28 October. The painted sea is a candidate for Nic; its look and performance are not accepted yet.' },
       { src: fHarbourBoat, alt: 'A small dark boat moored against the quay by a brass bollard.', caption: 'The boat. It does not go anywhere yet.' },
       { src: fHarbourKai, alt: 'Kai on the quay beside the harbour house, the bay behind.', caption: 'Kai on the quay.' },
       { src: fSeaQuayPath, alt: 'The quay corner with Old Reed by the wall and the coast path climbing to the church terrace.', caption: 'From the quay the coast path climbs to the church square. Old Reed keeps the corner.' },
@@ -285,17 +289,18 @@ export const places: Place[] = [
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'Walkable from the harbour in Demo 0.1.0. Par2 adds internal development work, packaged 28 October; Nic’s acceptance remains open.',
+    statusText: 'Walkable from the harbour in Demo 0.1.0. Par7, packaged 28 October, adds wind and later internal work. Nic approved wind sway; acceptance of the build remains open.',
     image: fLongRoadArrival,
     imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
+      { src: fPar7Road, alt: 'Kai beside pale roadside blocks, with golden grass and olive trees on the hill.', caption: 'Par7 packaged walk, 28 October. Wind is enabled on the Long Road; this still frame does not show its motion.' },
       { src: fB1LongRoad, alt: 'Kai at the Long Road arrival, between low stone walls with cypresses and a red-roofed house ahead.', caption: 'B1 Development package, 27 October. The review jumps Kai here; this does not show a walk from the town.' },
       { src: fLongRoadRepair, alt: 'Kai approaches three figures and a broken cart beneath an olive tree.', caption: 'The repair stop, under an olive. Long Road 6, from the packaged game.' },
       { src: fLongRoadRiver, alt: 'Turquoise water and reeds beneath pale river arches, with the Arc rising beyond.', caption: 'The river has bends, reeds and glints. The straight banks still show in places.' },
       { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
       { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par2 carries some of that work, with terrain bands and a settlement blockout; it is an internal package awaiting his acceptance. Continue restores position along the route, while the exploration changes remain session-only.',
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. The internal par7 package carries wind in the grass, reeds and trees, shore wrack and regional weather blending. The town stays calm; overcast is a development option. Nic approved the wind direction, but this build still awaits his acceptance. Continue restores saved campaign positions along the route; the development area picker deliberately keeps its travel out of that save. Route changes remain session-only.',
   },
   {
     slug: 'coast-road',
@@ -310,10 +315,13 @@ export const places: Place[] = [
     slug: 'cove-settlement',
     name: 'A settlement in the cove',
     status: 'now',
-    statusText: 'An unnamed blockout in par2, 28 October. Packaged launch checks passed; Nic has not accepted it. Not in Demo 0.1.0.',
-    image: fPar2Settlement,
+    statusText: 'An unnamed blockout in par7, 28 October. Packaged launch checks passed; the look still needs Nic’s verdict. Not in Demo 0.1.0.',
+    image: fPar7Settlement,
+    frames: [
+      { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
+    ],
     imageAlt: 'Kai at the jetty, facing pale houses with red roofs across the water and lavender mountains beyond.',
-    body: 'A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. The packaged check reaches the jetty and shows the settlement across the water. Its figures and lines are stand-ins, not a settled cast. The par2 gate does not prove a hand-played visit or travel through its doors.',
+    body: 'A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Par3–par7 carry clearer door landings, a hall-door camera fix, ledgers, and two repositioned residents by the hall and gate. Both doors were exercised in both directions in the development game; the later packages include those changes. The figures and lines remain stand-ins. The pale ground wash reads more as sand than worn earth in review, and the two residents share a body and idle. These are open look decisions, not a finished place.',
   },
 ];
 

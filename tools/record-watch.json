@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-28T04:09",
-  "note": "Posted L1 coast-road package gate (public-demo REPORT.md 27 Oct 18:40), rc1 playtest feedback, the existing public Demo 0.1.0 release, and par1/par2 through Coordinator window closed 28 Oct 04:09 in parallel-world REPORT.md. Frames only from par2 packaged walk and jetty proofs. Par2 human acceptance, door play and clean performance remain open; newer sea, shore dressing, door refinements and battle changes are held pending their gate. Public demo download unchanged. V3/V3b, no-publication concepts, set-aside paintings and story spoilers remain held.",
+  "posted_through": "2026-10-28T14:46",
+  "note": "Posted internal par3–par7 package gates through Coordinator 28 Oct 14:41 and Reviewer par7 review 14:46 in parallel-world REPORT.md; Nic’s 09:34 wind/overcast direction and testing status included. Three frames only from par7 packaged proofs. Sea and settlement look, build acceptance and quiet performance remain open. Later path surfaces, revised ground wash, indoor climate and climate HUD held pending a package or Nic acceptance. Public Demo 0.1.0 unchanged. V3/V3b, no-publication concepts, set-aside paintings and story spoilers remain excluded.",
   "log": [
     {
       "date": "2026-10-24",
@@ -36,6 +36,11 @@
       "date": "2026-10-28",
       "slug": "2026-10-28-a-road-to-walk-a-place-across-the-water",
       "covers": "L1 coast road, public Demo 0.1.0 and internal par1/par2 settlement, movement, terrain, climate and battle-prototype status"
+    },
+    {
+      "date": "2026-10-28",
+      "slug": "2026-10-28-the-grass-moves-the-sea-is-still-a-question",
+      "covers": "Par3–par7: candidate sea, shore wrack, settlement door/camera work, wind and overcast, weather blend, placeholder residents, review limits and improved Continue captures"
     }
   ]
 }

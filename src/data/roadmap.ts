@@ -34,16 +34,17 @@ export const done: Item[] = [
 export const now: Item[] = [
   { text: 'Kai, after the playtest', detail: 'Par2, 28 October: foot and stance corrections, a modest forward jump-arm reach, and residents whose idles no longer run in step. Residents turn toward nearby Kai. Packaged; Nic’s acceptance remains open.' },
   { text: 'The Hooded Stranger, darker', detail: 'Charcoal-violet with the folds kept. Packaged 26 October; Nic has not accepted this look yet.' },
-  { text: 'The Long Road', detail: 'Joined to the harbour by the coast road in the public demo. Internal par2 adds terrain bands and regional climate blending; the packaged round trip and Continue checks passed. A clean performance sample remains open.' },
+  { text: 'The Long Road', detail: 'Joined to the harbour by the coast road in the public demo. Internal par7 carries wind in the grass, reeds and trees, with the town calm and a 30-second blend ready for weather-entry changes. The packaged round trip and Continue checks passed. A clean performance sample remains open.' },
   { text: 'The Long Road, closer to its paintings', detail: 'The hollow and ring still show stacked blocks. Warmer near ranges are packaged; further shape and painted-surface work remains open.' },
-  { text: 'A settlement in the cove', detail: 'An unnamed blockout with placeholder residents, in par2. The packaged jetty check passed; a hand-played visit remains open.' },
-  { text: 'A battle prototype', detail: 'Three patrolling enemies and an optional development battle system are in par2. The packaged smoke test loads the data; hand-played combat remains unproven.' },
-  { text: 'The next integration', detail: 'Sea treatment, settlement door refinements, shore dressing and further battle changes await a qualifying package or Nic’s acceptance.' },
+  { text: 'A settlement in the cove', detail: 'Par7 carries clearer door landings, a hall-door camera fix, two repositioned placeholder residents and a pale ground wash. Door travel was exercised in the development game; the look still needs Nic’s verdict.' },
+  { text: 'A battle prototype', detail: 'The optional development battle system and three enemies remain packaged through par7. Nic tested par4, whose log records a ford victory; that is not an acceptance verdict. Further battle work is parked for his playtest.' },
+  { text: 'Sea and sky', detail: 'The painted sea is packaged from par3, still a candidate for Nic. Grey overcast follows his chosen direction from par5, available through a development switch; its shadows remain hard. Performance is unmeasured.' },
+  { text: 'The next integration', detail: 'Settlement path surfaces, a revised ground wash, indoor climate and a climate readout await a qualifying package or Nic’s acceptance.' },
   { text: 'The far regions', detail: 'Packaged in world1, 27 October: seven regions and the Weeping Colossus as painted silhouettes on the horizon, with haze. Where each one stands is provisional until Nic reviews it. Nothing out there is walkable yet.' },
   { text: 'The opening desert', detail: 'A first slice of sand, rocks and dunes, 7.4 kilometres from the town. Packaged 26 October; nobody has played it yet.' },
 ];
 export const next: Item[] = [
-  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. Nic played the demo candidate; the newer par2 changes still need their own acceptance.' },
+  { text: 'Nic plays', detail: 'The shop, the garden, Swaps, the darker Stranger and the desert still need their own acceptance. Nic tested par4 and approved wind sway and the grey overcast direction. Par7 and the settlement look still need their own acceptance.' },
   { text: 'The Long Road remembers', detail: 'Continue restores position on the quay, causeway and Long Road. The route’s exploration changes remain session-only; their persistence still needs design.' },
   { text: 'The desert, closer to its painting', detail: 'The far ridge reads as a flat band, the sky is paler than the painting, the sand has no ripples. Then the tremors.' },
   { text: 'The seam', detail: 'The moment the drawing of Kai fails. Designed on paper, removed once as a glitch, to be done properly.' },

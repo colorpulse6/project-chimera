@@ -267,7 +267,26 @@ def coast_par2():
         save(Image.open(run / src), name)
 
 
+def weather_par7():
+    """28 Oct: par7 packaged proof frames; Coordinator gate 14:41.
+
+    Sea and settlement look remain candidates for Nic, as the post states.
+    No later par8 project candidates are included.
+    """
+    run = FG / "tools/diag/coordinator/par7/package"
+    picks = {
+        "proofs/continue-quay.png": "par7-harbour-sea",
+        "proofs/walk/W08-the-to-upper-03.png": "par7-longroad-trees",
+        "gapwalk/GAP-walk-east-through-the-gap-05.png": "par7-settlement-shore",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--weather-par7" in sys.argv:
+    weather_par7()
+    sys.exit(0)
 if "--coast-par2" in sys.argv:
     coast_par2()
     sys.exit(0)
