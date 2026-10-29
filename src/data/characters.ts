@@ -73,14 +73,15 @@ export const kai: Character = {
   inGame: kaiHero,
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
-    'Since 25 October he moves on motion-capture clips retargeted to his own skeleton. The still cape and smaller walking arm swing were packaged on 26 October. Nic then played the dressed Long Road and found the upright jump worse. The next package gives a running jump forward lean and a raised knee, with a short landing dip in place of the deep crouch. Jump height and air control are unchanged. The covered arm is held across his body, though the lifted cape can show the forearm at a run. Nic later reported hovering, shivering and a stiff stance in the demo candidate. The internal par2 build added foot and stance corrections and a modest forward reach of the visible arm in the jump, retained through par7. Sleeve and cloak stretching still limits the pose; these changes await Nic’s acceptance.',
+    'Since 25 October he moves on motion-capture clips retargeted to his own skeleton. The still cape and smaller walking arm swing were packaged on 26 October. Nic then played the dressed Long Road and found the upright jump worse. The next package gives a running jump forward lean and a raised knee, with a short landing dip in place of the deep crouch. Jump height and air control are unchanged. The covered arm is held across his body, though the lifted cape can show the forearm at a run. Nic later reported hovering, shivering and a stiff stance in the demo candidate. The internal par2 build added foot and stance corrections and a modest forward reach of the visible arm in the jump, retained through par9. Sleeve and cloak stretching still limits the pose. Nic tested par7 on 28 October and said it looked good; that verdict does not accept the later build.',
     'At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
   ],
   extra: { src: kaiWalk, caption: 'The walk, eight frames 0.43 seconds apart, from the batch 9 build of 25 October. Before the second pass of 26 October.' },
 };
 
-// Par7 repositions two of the settlement’s five placeholders. They reuse an
-// existing body and idle; no new drawing, portrait or settled dialogue to list.
+// Nic kept par7’s two repositioned settlement placeholders; par9 retains them.
+// They reuse an existing body and idle; no new drawing, portrait or settled
+// dialogue to list.
 export const townsfolk: Character[] = [
   {
     slug: 'well-woman',

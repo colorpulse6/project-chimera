@@ -283,7 +283,26 @@ def weather_par7():
         save(Image.open(run / src), name)
 
 
+def hall_par9():
+    """29 Oct: par8/par9 gates; par9 close 03:45, reviewer 03:42.
+
+    Hall and river are package captures. S2 is the integrated par9 review
+    suite, manually checked by the reviewer; no par10 candidates included.
+    """
+    run = FG / "tools/diag/coordinator/par9"
+    picks = {
+        "package/inside/E-enter-12.png": "par9-hall-inside",
+        "package/water/P2-strip-08.png": "par9-river-wind",
+        "suites/parity-fixed/S2-ridge-over-town.png": "par9-settlement-paths",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--hall-par9" in sys.argv:
+    hall_par9()
+    sys.exit(0)
 if "--weather-par7" in sys.argv:
     weather_par7()
     sys.exit(0)
