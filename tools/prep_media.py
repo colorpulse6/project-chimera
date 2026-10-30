@@ -314,7 +314,28 @@ def household_par10():
         save(Image.open(run / src), name)
 
 
+def regions_par12():
+    """30 Oct par11/par12 gates, including the 23:46 CET picker follow-up.
+
+    All four picks are par12 packaged captures. High Pass and desert sheets
+    are complete with exit 0; picker PASS 6/6. Nic's acceptance remains open.
+    No later editor work or concept art is included.
+    """
+    run = FG / "tools/diag/coordinator/par12/package"
+    picks = {
+        "highpass/C0-painting.png": "par12-highpass-terrace",
+        "highpass/D2-the-room.png": "par12-highpass-refuge",
+        "desert/02b-kai-at-arrival.png": "par12-desert-arrival",
+        "picker/shots/HighresScreenshot03780.png": "par12-highpass-picker",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--regions-par12" in sys.argv:
+    regions_par12()
+    sys.exit(0)
 if "--household-par10" in sys.argv:
     household_par10()
     sys.exit(0)

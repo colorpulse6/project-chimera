@@ -23,9 +23,9 @@ const regions = [
   { id: 'long-road', name: 'The Long Road', state: 'now', image: pLongRoad, alt: 'Painting of the Long Road: a dirt road through golden hills down to a river and the bay.',
     painted: 'A dirt road through golden hills, down to a river, a stone bridge and a village by the water, and out to the bay. On the ridge stand the broken arches of the Arc and a ring of stone.',
     world1: 'Walkable as its own prototype, not yet accepted (see Weaving, above). In world1, from the arrival, the amber grove of the Archive Forest is on the left and the Colossus stands in the haze.' },
-  { id: 'high-pass', name: 'The High Pass', state: 'next', image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
+  { id: 'high-pass', name: 'The High Pass', state: 'now', image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
     painted: 'A plaster refuge with a terracotta roof on a cliff path, a dead tree beside it and a blue glacial lake below. Across the water, a great stone arch stands in the snow with a warm light inside.',
-    world1: 'Its massif, lake and ranges stand as rough shapes. No path leads up yet, and seen from the pass they are still flat blocks.' },
+    world1: 'Par12, 30 October: a terrace, refuge, stair, switchback and lookout are packaged as an internal prototype. The development picker reaches it, and the refuge door works in both directions. The lake and massif remain visibly faceted. No public route leads here; Nic’s acceptance and performance remain open. Game frames are in Weaving, above.' },
   { id: 'shadow-country', name: 'The Shadow Country', state: 'next', image: pShadow, alt: 'Painting of the Shadow Country: sunlit channels, willows and an aqueduct with waterfalls.',
     painted: 'Braided channels under willows, a ferry, sluice gates and an aqueduct that spills into waterfalls. High in the clouds, a vast shape lets a turquoise fall drop. The name is darker than the painting, and the painting wins.',
     world1: 'The arcade shelf and its falls stand far out. From the Long Road, the road’s own hills hide them for now.' },
@@ -113,7 +113,7 @@ const groups = [
     <div class="wrap">
       <div class="section-head">
         <h2>The open world</h2>
-        <p>Every region is painted first, and the painting is the target. The town and the Long Road can be walked. The other six can only be seen: since <a href={`${base}updates/2026-10-27-fifty-kilometres-to-the-colossus/`}>world1</a> on 27 October they stand on the horizon as painted silhouettes. None can be reached yet, and where each one stands is a first guess that Nic has not reviewed.</p>
+        <p>Every region is painted first, and the painting is the target. The town and the Long Road can be walked in the public demo. Internal par12 adds a High Pass prototype through the development picker. The remaining far regions can only be seen: since <a href={`${base}updates/2026-10-27-fifty-kilometres-to-the-colossus/`}>world1</a> on 27 October they stand on the horizon as painted silhouettes. Those remaining silhouettes cannot be reached, and their positions are provisional until Nic reviews them.</p>
       </div>
       <div class="regions">
         {regions.map((r) => (

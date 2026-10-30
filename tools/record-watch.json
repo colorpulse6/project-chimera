@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-30T17:08:00+01:00",
-  "note": "Posted par10 Coordinator close 29 Oct 06:54 CDT (posted 07:05), Reviewer 06:57 and Coordinator 07:20 check repairs; Nic’s Keepers’ Cove naming and explicit not-played-par10 status from 30 Oct 16:15 CET, rename confirmation 17:08 CET. Two par10 packaged household frames only. No claim that the rename is in the package or that final exposure logging repair is packaged. Desert round 2, High Pass proposal, weather/save work and darker path trials held without a qualifying gate; alternate ground wash remains held. Public Demo 0.1.0 unchanged. Restricted concepts, set-aside art and spoilers excluded. Performance and Nic’s par10 verdict remain open.",
+  "posted_through": "2026-10-30T23:46:00+01:00",
+  "note": "Posted par11 close 30 Oct 21:50 CET and par12 close 23:36, with Reviewer 23:41 limits and Coordinator 23:46 packaged picker follow-up. Four par12 package captures only: High Pass terrace, refuge, picker arrival and revised desert. Route flags and ford breeze survive Continue; enemies still respawn. Keepers’ Cove name is packaged; stale place card fixed. Human acceptance, hand walk and quiet performance remain open. Unknown small frame shifts are below the pass limit; no claim that desert frames prove cull or draw cost. Template fixes are not treated as run. High Pass refinements, desert haze/tremors, revised ford rule and darker paths held pending gates. Public Demo 0.1.0 unchanged; restricted concepts and spoilers excluded.",
   "log": [
     {
       "date": "2026-10-24",
@@ -51,6 +51,11 @@
       "date": "2026-10-30",
       "slug": "2026-10-30-a-name-and-a-household",
       "covers": "Par10 household furnishings, per-door interior setting, path joins, verification repairs, and Nic’s Keepers’ Cove name and current acceptance state"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "2026-10-30-a-doorstep-above-the-lake",
+      "covers": "Par11/par12: revised desert, persistent route flags and ford weather, packaged Keepers’ Cove name, High Pass refuge and picker proof, stale-card fix and reviewer limits"
     }
   ]
 }
