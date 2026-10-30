@@ -299,7 +299,25 @@ def hall_par9():
         save(Image.open(run / src), name)
 
 
+def household_par10():
+    """29 Oct par10 package, clean launch gate 06:54 CDT; reviewer 06:57.
+
+    Both frames come from the packaged household proof, exit 0. Nic has not
+    accepted par10. Keepers' Cove is Nic's 30 Oct name, not this build's label.
+    """
+    run = FG / "tools/diag/coordinator/par10/package/household"
+    picks = {
+        "E-enter-facing-in.png": "par10-household-inside",
+        "K-back-at-the-door.png": "par10-household-door",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--household-par10" in sys.argv:
+    household_par10()
+    sys.exit(0)
 if "--hall-par9" in sys.argv:
     hall_par9()
     sys.exit(0)

@@ -74,6 +74,8 @@ import fPar2Settlement from '../assets/media/par2-settlement-jetty.jpg';
 import fPar7Sea from '../assets/media/par7-harbour-sea.jpg';
 import fPar7Road from '../assets/media/par7-longroad-trees.jpg';
 import fPar7Settlement from '../assets/media/par7-settlement-shore.jpg';
+import fPar10Household from '../assets/media/par10-household-inside.jpg';
+import fPar10Door from '../assets/media/par10-household-door.jpg';
 import fPar9Hall from '../assets/media/par9-hall-inside.jpg';
 import fPar9River from '../assets/media/par9-river-wind.jpg';
 import fPar9Settlement from '../assets/media/par9-settlement-paths.jpg';
@@ -292,7 +294,7 @@ export const places: Place[] = [
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'Walkable from the harbour in Demo 0.1.0. Nic said par7 looked good on 28 October. Par9 adds river motion driven by wind; packaged checks passed, but Nic has not accepted the newer build.',
+    statusText: 'Walkable from the harbour in Demo 0.1.0. Nic said par7 looked good on 28 October. Par9 introduced wind-driven river motion, measured again in par10. Packaged checks passed; Nic has not played par10.',
     image: fLongRoadArrival,
     imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
@@ -304,7 +306,7 @@ export const places: Place[] = [
       { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
       { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par7 brought wind in the grass, reeds and trees, shore wrack and regional weather blending. Nic tested it and said it looked good. Par9 adds river bands that drift and break with the wind; their motion is visible in packaged captures. The town stays calm and overcast is a development option. Par9 still needs his acceptance. Continue restores saved campaign positions along the route; the development area picker deliberately keeps its travel out of that save. Route changes remain session-only.',
+    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par7 brought wind in the grass, reeds and trees, shore wrack and regional weather blending. Nic tested it and said it looked good. Par9 adds river bands that drift and break with the wind; their motion is visible in packaged captures. The town stays calm and overcast is a development option. The par10 packaged sequence confirms that motion; Nic has not played par10. Continue restores saved campaign positions along the route; the development area picker deliberately keeps its travel out of that save. Route changes remain session-only.',
   },
   {
     slug: 'coast-road',
@@ -317,17 +319,19 @@ export const places: Place[] = [
   },
   {
     slug: 'cove-settlement',
-    name: 'A settlement in the cove',
+    name: 'Keepers’ Cove',
     status: 'now',
-    statusText: 'Nic approved the par7 ground wash, resident positions and hall-door framing. Par9 adds a furnished hall and revised path surfaces; packaged checks passed, acceptance remains open. Not in Demo 0.1.0.',
+    statusText: 'Named by Nic on 30 October. Par10 adds a furnished household, lighter interior settings and revised path joins. Built and packaged with clean checks; Nic has not played it. Not in Demo 0.1.0.',
     image: fPar9Settlement,
     frames: [
+      { src: fPar10Household, alt: 'Kai faces shelves, folded cloth, a work table and a stool in a terracotta room.', caption: 'The household, par10 packaged check, 29 October. The room is furnished; Nic has not played this package.' },
+      { src: fPar10Door, alt: 'Kai faces the household door, with drying cloth to the left and a loom to the right.', caption: 'Looking back at the door in par10. The table hides Kai’s feet and the pale patch around the arch remains. This build predates the Keepers’ Cove name.' },
       { src: fPar9Hall, alt: 'Kai in the hall, with ledger tables, benches, a lectern and stools on a violet tiled floor.', caption: 'Inside the hall, par9 packaged door check. The furnishings are in; the grey patch high on the back wall remains unresolved.' },
       { src: fPar7Settlement, alt: 'Kai on the jetty facing the par7 settlement.', caption: 'Par7, 28 October. Nic said the look was good and kept the ground wash and resident positions.' },
       { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
     ],
     imageAlt: 'The settlement from the ridge: pale houses, red roofs, terraces and a long jetty across blue water.',
-    body: 'A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The path outlines are gone, but the paths now read faintly from the ridge. A grey patch on the hall wall remains unresolved. Its figures and dialogue are still stand-ins; par9 awaits Nic’s verdict.',
+    body: 'Nic named the settlement Keepers’ Cove on 30 October. The par10 package still carries its old label. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The path outlines are gone, but the paths now read faintly from the ridge. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The packaged checks passed; Nic has not played par10.',
   },
 ];
 

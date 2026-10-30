@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-29T03:45",
-  "note": "Posted Nic’s par7 look verdict (28 Oct 19:00) and par8/par9 through Coordinator close 29 Oct 03:45, with Reviewer par9 03:42 corrections. Two par9 package frames (hall, river) and the gated par9 S2 integrated review frame. The reviewer manually confirmed all six comparison results; automatic verdict parsing remains faulty. Par9 human acceptance and quiet performance remain open. Household furnishings, per-door exposure and path overlaps are held for par10; alternate g1b ground wash and story-beat weather/save changes remain held at Nic’s request. Public Demo 0.1.0 unchanged. Restricted concepts, set-aside art and spoilers excluded.",
+  "posted_through": "2026-10-30T17:08:00+01:00",
+  "note": "Posted par10 Coordinator close 29 Oct 06:54 CDT (posted 07:05), Reviewer 06:57 and Coordinator 07:20 check repairs; Nic’s Keepers’ Cove naming and explicit not-played-par10 status from 30 Oct 16:15 CET, rename confirmation 17:08 CET. Two par10 packaged household frames only. No claim that the rename is in the package or that final exposure logging repair is packaged. Desert round 2, High Pass proposal, weather/save work and darker path trials held without a qualifying gate; alternate ground wash remains held. Public Demo 0.1.0 unchanged. Restricted concepts, set-aside art and spoilers excluded. Performance and Nic’s par10 verdict remain open.",
   "log": [
     {
       "date": "2026-10-24",
@@ -46,6 +46,11 @@
       "date": "2026-10-29",
       "slug": "2026-10-29-a-room-behind-the-door",
       "covers": "Nic’s par7 verdict; par8/par9 furnished hall, indoor climate, revised paths, river motion, climate readout and manual verification limits"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "2026-10-30-a-name-and-a-household",
+      "covers": "Par10 household furnishings, per-door interior setting, path joins, verification repairs, and Nic’s Keepers’ Cove name and current acceptance state"
     }
   ]
 }
