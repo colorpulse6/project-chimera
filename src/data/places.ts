@@ -77,7 +77,9 @@ import fPar7Settlement from '../assets/media/par7-settlement-shore.jpg';
 import fPar12Terrace from '../assets/media/par12-highpass-terrace.jpg';
 import fPar12Refuge from '../assets/media/par12-highpass-refuge.jpg';
 import fPar12Desert from '../assets/media/par12-desert-arrival.jpg';
-import fPar12Picker from '../assets/media/par12-highpass-picker.jpg';
+import fPar13Flowers from '../assets/media/par13-highpass-flowers.jpg';
+import fPar13Terrace from '../assets/media/par13-highpass-terrace.jpg';
+import fPar13Arrival from '../assets/media/par13-highpass-arrival.jpg';
 import fPar10Household from '../assets/media/par10-household-inside.jpg';
 import fPar10Door from '../assets/media/par10-household-door.jpg';
 import fPar9Hall from '../assets/media/par9-hall-inside.jpg';
@@ -342,14 +344,16 @@ export const places: Place[] = [
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: 'Internal par12, 30 October. Packaged sheet and area-picker entry passed. Nic has not accepted this prototype; no public walking route leads here.',
-    image: fPar12Terrace,
-    imageAlt: 'A refuge and bare tree on a terrace above a blue lake, with a faceted mountain arch beyond. Par12 packaged capture.',
+    statusText: 'Internal par13, 31 October. Flowers, surface revisions and an arrival facing the lake are packaged and checked. Nic has not played par11–par13; no public walking route leads here.',
+    image: fPar13Terrace,
+    imageAlt: 'The High Pass terrace with small rust-coloured flowers, a bare tree and refuge above a faceted lake and mountain arch. Par13 package.',
     frames: [
+      { src: fPar13Flowers, alt: 'Kai at the head of the stair, with gold and orange flowers along the rocks.', caption: 'Par13 packaged stair view, 31 October. The flowers read as a bank here; their frame-time cost is unmeasured.' },
+      { src: fPar13Arrival, alt: 'Kai arrives facing the lake, with the arch to the left and a flat lavender wall to the right.', caption: 'Par13 packaged picker check. The new arrival direction is proven; Nic has not judged it yet.' },
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
-      { src: fPar12Picker, alt: 'Kai on the High Pass terrace with the development exploring card visible.', caption: 'The follow-up packaged picker check, 30 October at 23:45 CET. Kai reached the terrace through the menu; this is not a hand walk of the whole region.' },
+      { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: 'A terrace, refuge, stair and switchback above a blue lake, with a lookout toward the stone gateway and snow peaks. The refuge has a hearth and a door; the package check enters, settles inside and leaves. The development picker reaches the terrace, but the region has not had a hand playtest. The lake and massif break into hard facets, a bright orange shape in the arch looks detached, and lavender facets cross the refuge wall. Those marks remain. Nothing of the pass appears in the checked desert frames, which does not prove its rendering cost or distance cut-off. Performance is unmeasured and Nic’s confirmation of the region remains open.',
+    body: 'A terrace, refuge, stair and switchback above a blue lake, with a lookout toward the stone gateway and snow peaks. The refuge has a hearth and a door; the package check enters, settles inside and leaves. Par13 adds flowers along the stair and switchback, adjusts the cliff and lake surfaces, and turns the picker arrival toward the lake. The lavender wedge is reduced, not gone. The lake and massif still break into hard facets, the orange shape in the arch looks detached, and the arrival keeps a flat lavender wall on the right. The chime structure was already present. The packaged door and picker checks passed; a hand playtest remains open. Separate editor checks found no visible High Pass leak in the sampled town views, but those checks have not run on the package. Performance and Nic’s confirmation remain open.',
   },
 ];
 

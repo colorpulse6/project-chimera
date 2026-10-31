@@ -332,7 +332,26 @@ def regions_par12():
         save(Image.open(run / src), name)
 
 
+def highpass_par13():
+    """31 Oct par13 gate 04:58 CET, reviewer 05:13 and corrections 05:20.
+
+    All picks are package captures: High Pass sheet exit 0 and picker PASS
+    6/6. Wedge reduced, not removed; human acceptance remains open.
+    """
+    run = FG / "tools/diag/coordinator/par13/package"
+    picks = {
+        "highpass/W1-stair-and-arm.png": "par13-highpass-flowers",
+        "highpass/C0-painting.png": "par13-highpass-terrace",
+        "picker/shots/HighresScreenshot03974.png": "par13-highpass-arrival",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--highpass-par13" in sys.argv:
+    highpass_par13()
+    sys.exit(0)
 if "--regions-par12" in sys.argv:
     regions_par12()
     sys.exit(0)
