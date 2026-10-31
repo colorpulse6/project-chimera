@@ -7,6 +7,8 @@ coverAlt: Kai at the head of the High Pass stair, with gold and orange flowers a
 tags: [build, places, look]
 ---
 
+> Later on 31 October: Nic played par13. His [playtest notes](/updates/2026-10-31-the-flowers-are-still-chips/) keep the arrival direction and call for changes to the flowers, cliff and vista. The account below records the earlier package review.
+
 There are flowers beside the stair. They look softer from here than from the terrace.
 
 Par13 is built and packaged. Its launch, route, interior and picker checks passed. **Nic has not played par11–par13.** This is the next internal look, not an accepted one. The [public demo](/download/) remains 0.1.0.

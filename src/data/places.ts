@@ -80,6 +80,8 @@ import fPar12Desert from '../assets/media/par12-desert-arrival.jpg';
 import fPar13Flowers from '../assets/media/par13-highpass-flowers.jpg';
 import fPar13Terrace from '../assets/media/par13-highpass-terrace.jpg';
 import fPar13Arrival from '../assets/media/par13-highpass-arrival.jpg';
+import fPar13PlayCliff from '../assets/media/par13-playtest-cliff.jpg';
+import fPar13PlayFlowers from '../assets/media/par13-playtest-flowers.jpg';
 import fPar10Household from '../assets/media/par10-household-inside.jpg';
 import fPar10Door from '../assets/media/par10-household-door.jpg';
 import fPar9Hall from '../assets/media/par9-hall-inside.jpg';
@@ -338,22 +340,24 @@ export const places: Place[] = [
       { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
     ],
     imageAlt: 'The settlement from the ridge: pale houses, red roofs, terraces and a long jetty across blue water.',
-    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The path outlines are gone, but the paths now read faintly from the ridge. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed; Nic’s acceptance remains open.',
+    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The path outlines are gone, but the paths now read faintly from the ridge. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside; that choice does not accept every furnishing or surface.',
   },
   {
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: 'Internal par13, 31 October. Flowers, surface revisions and an arrival facing the lake are packaged and checked. Nic has not played par11–par13; no public walking route leads here.',
+    statusText: 'Internal par13, played by Nic on 31 October. Keep the arrival direction; rework the flower shapes, lavender cliff and lake vista. No public walking route leads here.',
     image: fPar13Terrace,
     imageAlt: 'The High Pass terrace with small rust-coloured flowers, a bare tree and refuge above a faceted lake and mountain arch. Par13 package.',
     frames: [
+      { src: fPar13PlayCliff, alt: 'Kai on the High Pass stair beside a large flat lavender cliff, with firs and the lake below.', caption: 'Nic’s par13 playtest, 31 October. From his camera the cliff reads as cardboard and blocks the refuge door.' },
+      { src: fPar13PlayFlowers, alt: 'Kai beside pointed yellow and orange shapes among the rocks on the bank.', caption: 'Nic’s par13 playtest. Keep the near-bank density; the shapes read as chips, not small yellow flowers.' },
       { src: fPar13Flowers, alt: 'Kai at the head of the stair, with gold and orange flowers along the rocks.', caption: 'Par13 packaged stair view, 31 October. The flowers read as a bank here; their frame-time cost is unmeasured.' },
-      { src: fPar13Arrival, alt: 'Kai arrives facing the lake, with the arch to the left and a flat lavender wall to the right.', caption: 'Par13 packaged picker check. The new arrival direction is proven; Nic has not judged it yet.' },
+      { src: fPar13Arrival, alt: 'Kai arrives facing the lake, with the arch to the left and a flat lavender wall to the right.', caption: 'Par13 packaged picker check. Nic later played it and chose to keep this arrival direction.' },
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
       { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: 'A terrace, refuge, stair and switchback above a blue lake, with a lookout toward the stone gateway and snow peaks. The refuge has a hearth and a door; the package check enters, settles inside and leaves. Par13 adds flowers along the stair and switchback, adjusts the cliff and lake surfaces, and turns the picker arrival toward the lake. The lavender wedge is reduced, not gone. The lake and massif still break into hard facets, the orange shape in the arch looks detached, and the arrival keeps a flat lavender wall on the right. The chime structure was already present. The packaged door and picker checks passed; a hand playtest remains open. Separate editor checks found no visible High Pass leak in the sampled town views, but those checks have not run on the package. Performance and Nic’s confirmation remain open.',
+    body: 'A terrace, refuge, stair and switchback above a blue lake, with a lookout toward the stone gateway and snow peaks. The refuge has a hearth and a door; the package check enters, settles inside and leaves. Par13 adds flowers along the stair and switchback, adjusts the cliff and lake surfaces, and turns the picker arrival toward the lake. The lavender wedge is reduced, not gone. The lake and massif still break into hard facets, the orange shape in the arch looks detached, and the arrival keeps a flat lavender wall on the right. The chime structure was already present. The packaged door and picker checks passed. Nic played par13 on 31 October and kept the arrival direction. From his camera the lavender cliff reads as cardboard and blocks the refuge door. The flowers read as chips: keep their near-bank density, change their shape. He calls the vista a good start, but hard to read. The lake, massif and amber seam still need work. Separate editor checks found no visible High Pass leak in the sampled town views, but those checks have not run on the package. Performance remains unmeasured; the whole vista is not accepted.',
   },
 ];
 

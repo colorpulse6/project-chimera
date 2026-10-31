@@ -348,7 +348,25 @@ def highpass_par13():
         save(Image.open(run / src), name)
 
 
+def par13_playtest():
+    """Nic's 31 Oct par13 playtest, adopted by Coordinator at 16:43 CET.
+
+    These are Nic's screenshots of the already gated par13 package, not
+    par14 candidate frames. Preserve their framing and show the defects.
+    """
+    run = FG / "briefs/2026-10-27-parallel-world/nic-par13-picks"
+    picks = {
+        "01-highpass-arrival-lavender-slab.jpg": "par13-playtest-cliff",
+        "03-highpass-flowers-chips.jpg": "par13-playtest-flowers",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--par13-playtest" in sys.argv:
+    par13_playtest()
+    sys.exit(0)
 if "--highpass-par13" in sys.argv:
     highpass_par13()
     sys.exit(0)

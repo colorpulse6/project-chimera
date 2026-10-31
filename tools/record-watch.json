@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-31T05:20:00+01:00",
-  "note": "Posted par13 close 31 Oct 04:58 CET, Reviewer 05:13 and Coordinator corrections 05:20. Three par13 package frames: flowered stair, terrace and picker arrival. Flowers, cliff/lake revisions and arrival yaw packaged; wedge reduced, not gone; chime structure pre-existing. Nic has not played par11–par13. Far watch controls verified in editor game mode only; desert dome hides drawn peaks; small pixel scatter tracks High Pass construction but mechanism remains unknown. Performance and hand playtest open. Further terrain/lake material, desert haze/tremors, revised ford rule and darker paths held. Demo 0.1.0 unchanged; restricted art and spoilers excluded.",
+  "posted_through": "2026-10-31T16:43:00+01:00",
+  "note": "Posted Nic’s par13 playtest picks, adopted in Coordinator report 31 Oct 16:43 CET. Two screenshots from Nic’s par13 playtest: lavender cliff/arrival and chip-like flowers. Arrival 230, near-bank density and indoor exposure settle kept; flower shapes, cliff/door approach and lake vista need work. Town flattening cause unproven. Par14 implementation checked through 23:52 but held: integration-only acceptance, no new Development archive or clean packaged launch. No par14 frames posted. Demo 0.1.0 unchanged; performance unmeasured; restricted art and spoilers excluded.",
   "log": [
     {
       "date": "2026-10-24",
@@ -61,6 +61,11 @@
       "date": "2026-10-31",
       "slug": "2026-10-31-flowers-beside-the-stair",
       "covers": "Par13 High Pass flowers, cliff/lake revisions, lake-facing picker arrival, distant-scenery controls and corrected review claims"
+    },
+    {
+      "date": "2026-10-31",
+      "slug": "2026-10-31-the-flowers-are-still-chips",
+      "covers": "Nic’s par13 playtest verdicts and two screenshots; current acceptance corrected, par14 implementation held pending a qualifying gate"
     }
   ]
 }
