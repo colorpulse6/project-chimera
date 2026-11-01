@@ -1,0 +1,28 @@
+<aside class="creator-credit" aria-label="Creator and support" transition:persist="creator-credit">
+  <a class="creator" href="https://nichalasbarnes.com/" target="_blank" rel="noopener noreferrer" aria-label="Nichalas Barnes, personal website (opens in a new tab)">
+    <span class="by">by</span> Nichalas Barnes
+  </a>
+  <a class="coffee" href="https://buymeacoffee.com/nicbarnes" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee (opens in a new tab)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 8h12v7a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V8Z" />
+      <path d="M17 9h1a3 3 0 0 1 0 6h-1M8 3v2m4-2v2m4-2v2M3 21h16" />
+    </svg>
+    <span>Buy me a coffee</span>
+  </a>
+</aside>
+
+<style>
+  .creator-credit { position: fixed; right: calc(0.9rem + env(safe-area-inset-right, 0px)); bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)); z-index: 61; display: flex; align-items: center; gap: 0.75rem; max-width: calc(100% - 1.8rem); padding-inline: 0.7rem; border: var(--rule); background: var(--bg-sunk); box-shadow: 0.2rem 0.2rem 0 var(--lavender-deep); color: var(--fg); font-size: 0.8rem; line-height: 1.2; }
+  .creator-credit a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; text-decoration: none; }
+  .creator-credit a:hover { color: var(--ochre); }
+  .creator { gap: 0.3rem; font-family: var(--font-display); font-size: 0.95rem; }
+  .by { color: var(--fg-soft); font-family: var(--font-body); font-size: 0.7rem; }
+  .coffee { gap: 0.4rem; padding-left: 0.75rem; border-left: var(--rule); }
+  .coffee svg { flex: none; color: var(--ochre); }
+  @media (max-width: 30rem) {
+    .creator-credit { right: calc(0.65rem + env(safe-area-inset-right, 0px)); gap: 0.5rem; max-width: calc(100% - 1.3rem); padding-inline: 0.5rem; font-size: 0.72rem; }
+    .creator { font-size: 0.85rem; }
+    .coffee { gap: 0.3rem; padding-left: 0.5rem; }
+    .coffee svg { width: 14px; height: 14px; }
+  }
+</style>

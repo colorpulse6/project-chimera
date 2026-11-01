@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CreatorCredit from '../components/CreatorCredit.astro';
 import Scroll from '../components/Scroll.astro';
 import { ClientRouter } from 'astro:transitions';
 const { title, echo = false, description = 'Chimera is a role-playing game in a painted hill town, with a hero drawn in ink who does not always stay drawn. This is the record of where it stands. The record is kept in order.', ogImage } = Astro.props;
@@ -35,6 +36,7 @@ const og = ogImage ? new URL(ogImage, Astro.site) : new URL(base + 'og.jpg', Ast
       <slot />
     </main>
     <Footer />
+    <CreatorCredit />
     <div class="beyond">
       <p class="beyond-line">End of the painting.</p>
       <p class="beyond-text">The paint stops here. Past this line the town is not drawn, only described, and the description is restricted.</p>
