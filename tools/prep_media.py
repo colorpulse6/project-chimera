@@ -363,7 +363,28 @@ def par13_playtest():
         save(Image.open(run / src), name)
 
 
+def par14_package():
+    """1 Nov: exact par14 Development package, clean launches/exits reviewed.
+
+    Combined verdict at 02:33 CET retains the 1280 timing exception. Nic's
+    later notes keep the flowers, not the whole vista. No par15 media.
+    """
+    run = FG / "tools/diag/coordinator/par14/package"
+    picks = {
+        "highpass/N1-walk-to-refuge.png": "par14-refuge-approach",
+        "highpass/C0-painting.png": "par14-highpass-lake",
+        "highpass/F2-petal-player-close.png": "par14-highpass-flowers",
+        "systems-a1/lantern-on/H-inside-warm-pool.png": "par14-household-lantern",
+        "par14-pkg-town-fixed-a1/C1-painting4.png": "par14-church-square",
+    }
+    for src, name in picks.items():
+        save(Image.open(run / src), name)
+
+
 import sys
+if "--par14-package" in sys.argv:
+    par14_package()
+    sys.exit(0)
 if "--par13-playtest" in sys.argv:
     par13_playtest()
     sys.exit(0)

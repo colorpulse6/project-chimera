@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-10-31T16:43:00+01:00",
-  "note": "Posted Nic’s par13 playtest picks, adopted in Coordinator report 31 Oct 16:43 CET. Two screenshots from Nic’s par13 playtest: lavender cliff/arrival and chip-like flowers. Arrival 230, near-bank density and indoor exposure settle kept; flower shapes, cliff/door approach and lake vista need work. Town flattening cause unproven. Par14 implementation checked through 23:52 but held: integration-only acceptance, no new Development archive or clean packaged launch. No par14 frames posted. Demo 0.1.0 unchanged; performance unmeasured; restricted art and spoilers excluded.",
+  "posted_through": "2026-11-01T07:06:00+01:00",
+  "note": "Posted par14 Development handoff 1 Nov 02:33 CET, Nic’s later flower/vista/shake/mouse notes in par15 PLAN, and Battle 06:06 UTC input findings. Five verified par14 package frames: refuge approach, lake, flowers, household lantern, church square. Package executable matches reviewed fc6e2197 identity. Flowers good for now; whole vista/input not accepted. B3 1280 spacing failure retained, B4 960 timing only; default-renderer instability, frozen water timestamp-test RED, bounded town coverage and quiet performance limits disclosed. Par15 descent, Rex and input work remain ungated; no par15 frames. Storage return is not a new build. Demo 0.1.0, site design and creator credit unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -66,6 +66,11 @@
       "date": "2026-10-31",
       "slug": "2026-10-31-the-flowers-are-still-chips",
       "covers": "Nic’s par13 playtest verdicts and two screenshots; current acceptance corrected, par14 implementation held pending a qualifying gate"
+    },
+    {
+      "date": "2026-11-01",
+      "slug": "2026-11-01-the-flowers-can-stay",
+      "covers": "Par14 packaged High Pass, lake, lantern, town surfaces and desert feedback; Nic’s subsequent flower/vista/input notes and explicit timing/review limits"
     }
   ]
 }

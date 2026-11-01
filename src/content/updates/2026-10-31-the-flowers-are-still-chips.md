@@ -7,6 +7,8 @@ coverAlt: Kai beside the flat lavender cliff on the High Pass, with firs and the
 tags: [places, look, playtest]
 ---
 
+> 1 November: par14 is packaged, and Nic says the new flowers can stay for now. See [the next record](/updates/2026-11-01-the-flowers-can-stay/) for the changes and remaining limits.
+
 The door passed its check. From another camera, the cliff was in the way.
 
 Nic has now played par13. That changes the acceptance note in [this morning’s record](/updates/2026-10-31-flowers-beside-the-stair/). The build is packaged and checked, and it has been walked by its maker. The High Pass is not accepted as finished.

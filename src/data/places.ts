@@ -82,6 +82,11 @@ import fPar13Terrace from '../assets/media/par13-highpass-terrace.jpg';
 import fPar13Arrival from '../assets/media/par13-highpass-arrival.jpg';
 import fPar13PlayCliff from '../assets/media/par13-playtest-cliff.jpg';
 import fPar13PlayFlowers from '../assets/media/par13-playtest-flowers.jpg';
+import fPar14Refuge from '../assets/media/par14-refuge-approach.jpg';
+import fPar14Lake from '../assets/media/par14-highpass-lake.jpg';
+import fPar14Flowers from '../assets/media/par14-highpass-flowers.jpg';
+import fPar14Lantern from '../assets/media/par14-household-lantern.jpg';
+import fPar14Church from '../assets/media/par14-church-square.jpg';
 import fPar10Household from '../assets/media/par10-household-inside.jpg';
 import fPar10Door from '../assets/media/par10-household-door.jpg';
 import fPar9Hall from '../assets/media/par9-hall-inside.jpg';
@@ -167,11 +172,12 @@ export const places: Place[] = [
     slug: 'church-square',
     name: 'Church square',
     status: 'built',
-    statusText: 'In the build since 22 October. Rebuilt from the kit with the sea walls added on 24 October.',
+    statusText: 'In the build since 22 October. Internal par14 adds surface detail, checked in the package on 1 November. Demo 0.1.0 is unchanged.',
     image: fChurchPainting,
     imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
     painting: pChurch,
     frames: [
+      { src: fPar14Church, alt: 'Paving joints and mottled pale walls around the chapel, with the bay beyond.', caption: 'Par14 package, 1 November. Town surface detail is in; the chapel upper face remains restrained. Long-session flattening is not proved fixed.' },
       { src: fChurchArrival, alt: 'Arriving on the church terrace from the coast path, the chapel ahead and Tom on the paving.', caption: 'Arriving from the coast path. Tom walks the terrace.' },
       { src: fChurchChapelDoor, alt: 'The chapel front with its bell, arched door and a pot of leaves.', caption: 'The chapel door. Closed, for now.' },
       { src: fChurchHeadland, alt: 'The lavender headland across the bay, seen over the curved parapet of the lookout.', caption: 'The lookout. Something stands on the headland. Tom has heard about lights.' },
@@ -288,7 +294,7 @@ export const places: Place[] = [
     slug: 'opening-desert',
     name: 'The opening desert',
     status: 'now',
-    statusText: 'Revised in internal par11 and retained in par12, 30 October. Packaged checks passed; Nic’s acceptance and performance remain open. Reached only through the development area picker.',
+    statusText: 'Internal par14, 1 November: crest dust, camera tremors and Reduce motion are packaged. Nic reports missing shake; mouse input remains unresolved. Development only.',
     image: fPar12Desert,
     imageAlt: 'Kai on sand marked with pale strokes, facing broken dunes and a flat city silhouette under an amber sky. Par12 package.',
     frames: [
@@ -296,7 +302,7 @@ export const places: Place[] = [
       { src: fDesertKai, alt: 'Kai from behind on the sand, facing the shape on the ridge.', caption: 'The earlier arrival with Kai, 26 October.' },
       { src: fDesertRocks, alt: 'Tall terracotta rocks, Kai small beside them.', caption: 'The rocks in the first desert package, 26 October.' },
     ],
-    body: 'Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from the town on the same map and hidden from it by distance. Par11 replaces the flat ridge with a broken crest, gives the dune banks a light and a shadow face, and adds an amber sky, still sand strokes and sixteen stones. Par12 retains these changes. The distant city remains a flat outline; near rock shadows are very dark and the sand strokes read chiefly close to the camera. No tremors, no footprints, no story yet. The packaged captures passed; a hand playtest and a quiet performance sample remain open.',
+    body: 'Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from town on the same map. The broken ridge, amber sky and sand strokes remain. Par14 adds three crest-dust pulses after a quiet interval of forty to seventy seconds, with subtle camera shake. Reduce motion suppresses the shake while keeping the dust. Package checks show the effect and preference persistence, but Nic later reported missing shake. Current logs show dust pulses after the setting was turned off; they do not prove what his camera displayed. A measured pulse gap at 1280 by 720 exceeded its limit; the passing timing test at 960 by 540 does not fix that failure. Mouse input and quiet performance remain open. No footprints or story sequence yet.',
   },
 
   {
@@ -330,9 +336,10 @@ export const places: Place[] = [
     slug: 'cove-settlement',
     name: 'Keepers’ Cove',
     status: 'now',
-    statusText: 'Named by Nic on 30 October; the name is now packaged in par11 and par12. Hall, household, indoor climate and path joins are built and checked. Nic’s acceptance remains open. Not in Demo 0.1.0.',
+    statusText: 'Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.',
     image: fPar9Settlement,
     frames: [
+      { src: fPar14Lantern, alt: 'Kai in the household, with a lantern lighting a small patch of wall and floor beside the shelves.', caption: 'Par14 package. The household lantern now casts a local warm pool; the existing indoor exposure settle is retained.' },
       { src: fPar10Household, alt: 'Kai faces shelves, folded cloth, a work table and a stool in a terracotta room.', caption: 'The household, par10 packaged check, 29 October. The room is furnished; Nic has not played this package.' },
       { src: fPar10Door, alt: 'Kai faces the household door, with drying cloth to the left and a loom to the right.', caption: 'Looking back at the door in par10. The table hides Kai’s feet and the pale patch around the arch remains. This build predates the Keepers’ Cove name.' },
       { src: fPar9Hall, alt: 'Kai in the hall, with ledger tables, benches, a lectern and stools on a violet tiled floor.', caption: 'Inside the hall, par9 packaged door check. The furnishings are in; the grey patch high on the back wall remains unresolved.' },
@@ -340,16 +347,19 @@ export const places: Place[] = [
       { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
     ],
     imageAlt: 'The settlement from the ridge: pale houses, red roofs, terraces and a long jetty across blue water.',
-    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The path outlines are gone, but the paths now read faintly from the ridge. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside; that choice does not accept every furnishing or surface.',
+    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside. Par14 adds a real warm light pool from the household lantern, verified in matched on/off package views. That does not accept every furnishing or surface.',
   },
   {
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: 'Internal par13, played by Nic on 31 October. Keep the arrival direction; rework the flower shapes, lavender cliff and lake vista. No public walking route leads here.',
-    image: fPar13Terrace,
-    imageAlt: 'The High Pass terrace with small rust-coloured flowers, a bare tree and refuge above a faceted lake and mountain arch. Par13 package.',
+    statusText: 'Internal par14, packaged and played, 1 November. Nic says the small yellow flowers are good for now. The dark cliffs, near obstructions and limited descent still need work; no public walking route leads here.',
+    image: fPar14Lake,
+    imageAlt: 'The refuge terrace above blue lake water, with a dark formed mountain arch and a graphic gold seam. Par14 package.',
     frames: [
+      { src: fPar14Refuge, alt: 'Kai reaches the refuge porch beside stacked logs, a planter and a dark mountain wall.', caption: 'Par14 package. The approach, entry and exit passed a continuous door check; that is not acceptance of every player view.' },
+      { src: fPar14Flowers, alt: 'Small yellow flower heads on stems among angular rocks above the blue lake.', caption: 'Par14 packaged flowers. Nic’s 1 November verdict: good for now; keep them unchanged.' },
+      { src: fPar13Terrace, alt: 'The earlier faceted lake and mountain arch above the par13 terrace.', caption: 'Before: par13, 31 October. The lake and flowers still needed another approach.' },
       { src: fPar13PlayCliff, alt: 'Kai on the High Pass stair beside a large flat lavender cliff, with firs and the lake below.', caption: 'Nic’s par13 playtest, 31 October. From his camera the cliff reads as cardboard and blocks the refuge door.' },
       { src: fPar13PlayFlowers, alt: 'Kai beside pointed yellow and orange shapes among the rocks on the bank.', caption: 'Nic’s par13 playtest. Keep the near-bank density; the shapes read as chips, not small yellow flowers.' },
       { src: fPar13Flowers, alt: 'Kai at the head of the stair, with gold and orange flowers along the rocks.', caption: 'Par13 packaged stair view, 31 October. The flowers read as a bank here; their frame-time cost is unmeasured.' },
@@ -357,7 +367,7 @@ export const places: Place[] = [
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
       { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: 'A terrace, refuge, stair and switchback above a blue lake, with a lookout toward the stone gateway and snow peaks. The refuge has a hearth and a door; the package check enters, settles inside and leaves. Par13 adds flowers along the stair and switchback, adjusts the cliff and lake surfaces, and turns the picker arrival toward the lake. The lavender wedge is reduced, not gone. The lake and massif still break into hard facets, the orange shape in the arch looks detached, and the arrival keeps a flat lavender wall on the right. The chime structure was already present. The packaged door and picker checks passed. Nic played par13 on 31 October and kept the arrival direction. From his camera the lavender cliff reads as cardboard and blocks the refuge door. The flowers read as chips: keep their near-bank density, change their shape. He calls the vista a good start, but hard to read. The lake, massif and amber seam still need work. Separate editor checks found no visible High Pass leak in the sampled town views, but those checks have not run on the package. Performance remains unmeasured; the whole vista is not accepted.',
+    body: 'A terrace, refuge, stair and switchback above a blue lake. Par14 gives the rocks more form, opens the refuge approach, replaces the chip-like flowers with small yellow heads on stems, and adds visibly moving lake water. The arrival direction and indoor exposure settle are retained. The package check walks to the refuge, enters, leaves and returns; the lake motion is supported by a separately reviewed visual-pattern check, not by the failed acquisition-timestamp test. The amber seam remains graphic rather than luminous, with broad dark rock faces and regular scallops in the water. Nic has played it: the flowers are good for now, but his views still show dark cliffs, near trees and walls blocking the vista, and little walkable descent. The pass is not accepted as finished. Distant-scenery checks passed only under a bounded measuring protocol; default-renderer instability and quiet performance remain unresolved.',
   },
 ];
 
