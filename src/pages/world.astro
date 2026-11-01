@@ -136,7 +136,7 @@ const groups = [
         <h2><span class="state state-next">Written, not painted</span></h2>
         <p>The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of the places below is painted yet, and a place is not real here until it is painted.</p>
       </div>
-      <div class="beyond">
+      <div class="world-notes">
         <div>
           <h3>Continents</h3>
           <dl class="ledger">{continents.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
@@ -162,10 +162,11 @@ const groups = [
   @media (max-width: 50rem) { .regions { grid-template-columns: 1fr; } }
   .region h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 1.2rem 0 0.2rem; }
   .region p { margin: 0.6rem 0 0; max-width: 60ch; }
-  .beyond { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4rem; align-items: start; }
-  .beyond h3 { margin-bottom: 1rem; }
-  .beyond h3.changed { margin-top: 2.5rem; }
-  .beyond .ledger > div { grid-template-columns: minmax(7rem, 10rem) 1fr; }
-  .beyond .ledger dd { font-size: 0.95rem; color: var(--fg-soft); }
-  @media (max-width: 60rem) { .beyond { grid-template-columns: 1fr; } }
+  .world-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4rem; align-items: start; }
+  .world-notes h3 { margin-bottom: 1rem; }
+  .world-notes h3.changed { margin-top: 2.5rem; }
+  .world-notes .ledger > div { grid-template-columns: minmax(7rem, 10rem) 1fr; }
+  .world-notes .ledger dd { font-size: 0.95rem; color: var(--fg-soft); }
+  @media (max-width: 60rem) { .world-notes { grid-template-columns: 1fr; } }
+  @media (max-width: 38rem) { .world-notes .ledger > div { grid-template-columns: 1fr; gap: 0.35rem; } }
 </style>
