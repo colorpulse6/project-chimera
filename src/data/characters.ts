@@ -1,4 +1,7 @@
 import type { ImageMetadata } from 'astro';
+import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
+import rexNear from '../assets/media/par15-rex-near.jpg';
+
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
 import kaiHero from '../assets/media/kai-b11-street.jpg';
 import wwDrawing from '../assets/media/well-woman-drawing.jpg';
@@ -275,3 +278,13 @@ export const townsfolk: Character[] = [
     ],
   },
 ];
+
+export const rexCheckpoint = {
+  name: 'Rex, a first checkpoint',
+  statusText: 'Packaged Development checkpoint, 1 November. Full companion acceptance remains open.',
+  body: 'Rex loads beside Kai and walks in the par15 package. An independently reviewed diagnostic check also shows him approaching and settling after Kai is moved. That relocation disables Kai’s collision, so it does not prove ordinary door, stair or slope travel. Recruitment, battle, recovery after leaving view, finished art and performance are not accepted by this checkpoint.',
+  frames: [
+    { src: rexSpawn, alt: 'Kai and Rex in the courtyard after normal startup, Rex in a pale apron and layered sleeves.', caption: 'Normal startup. Rex beside Kai, with the courtyard residents behind.' },
+    { src: rexNear, alt: 'Rex nearer Kai at the end of the selected diagnostic approach frames.', caption: 'After diagnostic relocation of Kai. Rex approaches; ordinary traversal remains to be checked.' },
+  ],
+};

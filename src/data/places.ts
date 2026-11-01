@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
 import streetArrival from '../assets/media/street-arrival.jpg';
 import streetCentre from '../assets/media/street-centre.jpg';
 import streetGate from '../assets/media/street-gate.jpg';
@@ -118,6 +119,7 @@ export const places: Place[] = [
     imageAlt: 'Kai walks into the courtyard with the five townsfolk standing around the well and the shop.',
     painting: pCourtyard,
     frames: [
+      { src: rexSpawn, alt: 'Rex beside Kai in the courtyard after normal startup.', caption: 'Rex at normal startup in the par15 Development package, 1 November. A bounded companion checkpoint; not a new public demo or final art acceptance.' },
       { src: courtyardKai, alt: 'Kai from behind, cape blowing, with the Shopkeeper and Child in the courtyard.', caption: 'Late afternoon in the courtyard. The painted sky replaces the atmosphere beyond two kilometres.' },
       { src: shopCorner, alt: 'Kai and the Shopkeeper at the shop corner under the blue awning.', caption: 'The shop corner, where the look was decided.' },
       { src: shopWide, alt: 'Wide view of the shop front and the arched gate.', caption: 'Shop front and the gate to the street.' },

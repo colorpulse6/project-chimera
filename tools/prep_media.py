@@ -381,7 +381,29 @@ def par14_package():
         save(Image.open(run / src), name)
 
 
+def rex_par15():
+    """Par15 A1 package, A2 independent review and bounded Root acceptance.
+
+    Default spawn is ordinary startup. Catch-up follows diagnostic Kai relocation
+    with Kai Ghost mode; these frames do not establish normal traversal or final art.
+    Only remove the 32px OS title bar from the inspected 1280x752 captures.
+    """
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex/package-runtime-a2")
+    picks = {
+        "default-spawn/frame-0020.jpg": "par15-rex-spawn",
+        "clear-run-catch-up/frame-0020.jpg": "par15-rex-approach",
+        "clear-run-catch-up/frame-0055.jpg": "par15-rex-near",
+    }
+    for src, name in picks.items():
+        img = Image.open(run / src)
+        assert img.size == (1280, 752), (src, img.size)
+        save(img.crop((0, 32, img.width, img.height)), name)
+
+
 import sys
+if "--rex-par15" in sys.argv:
+    rex_par15()
+    sys.exit(0)
 if "--par14-package" in sys.argv:
     par14_package()
     sys.exit(0)

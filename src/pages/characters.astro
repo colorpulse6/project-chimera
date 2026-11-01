@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 import { Image } from 'astro:assets';
-import { kai, townsfolk } from '../data/characters';
+import { kai, townsfolk, rexCheckpoint } from '../data/characters';
 import composite from '../assets/media/townsfolk-today-vs-drawn.jpg';
 import lineup2 from '../assets/media/lineup-2-drawing.jpg';
 import strip2 from '../assets/media/townsfolk-second-lineup.jpg';
@@ -25,7 +25,7 @@ const cast = [
   ['Valerius Lumina', 'The whispering glitch', 'A Glitched Scion in unstable symbiosis with a fragment of precursor AI at a Whispering Ruin. A cult has grown around him.'],
 ];
 ---
-<Base title="Characters" description="Kai, who is drawn, and the townsfolk of Havenwood, who are painted and do not remark on the voids in their clothes. Then the cast still to draw.">
+<Base title="Characters" description="Kai, who is drawn, and the townsfolk of Havenwood, who are painted and do not remark on the voids in their clothes. Rex’s first Development checkpoint, and the wider written cast.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
@@ -109,11 +109,24 @@ const cast = [
     </div>
   </section>
 
+  <section class="section" id="rex">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{rexCheckpoint.name}</h2>
+        <p>{rexCheckpoint.statusText}</p>
+        <p>{rexCheckpoint.body}</p>
+      </div>
+      <div class="frames frames-2">
+        {rexCheckpoint.frames.map((frame) => <Frame {...frame} />)}
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2><span class="state state-next">Still to draw</span></h2>
-        <p>The companions and the people of the wider story, as written in 2025. They were drawn once, in May 2025, as portraits and pixel sprites; those are on <a href={import.meta.env.BASE_URL + 'timeline/#cast'}>the timeline</a>. None of them has a drawing in the town's hand yet, and that drawing is where each one really starts.</p>
+        <h2><span class="state state-next">From the written cast</span></h2>
+        <p>The companions and the people of the wider story, as written in 2025. They were drawn once, in May 2025, as portraits and pixel sprites; those are on <a href={import.meta.env.BASE_URL + 'timeline/#cast'}>the timeline</a>. These descriptions remain story designs. Rex now has the separate Development checkpoint above; that does not establish his recruitment or finished appearance.</p>
       </div>
       <div class="cast">
         {cast.map(([name, role, body]) => (

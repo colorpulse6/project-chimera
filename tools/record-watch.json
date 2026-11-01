@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-11-01T07:06:00+01:00",
-  "note": "Posted par14 Development handoff 1 Nov 02:33 CET, Nic’s later flower/vista/shake/mouse notes in par15 PLAN, and Battle 06:06 UTC input findings. Five verified par14 package frames: refuge approach, lake, flowers, household lantern, church square. Package executable matches reviewed fc6e2197 identity. Flowers good for now; whole vista/input not accepted. B3 1280 spacing failure retained, B4 960 timing only; default-renderer instability, frozen water timestamp-test RED, bounded town coverage and quiet performance limits disclosed. Par15 descent, Rex and input work remain ungated; no par15 frames. Storage return is not a new build. Demo 0.1.0, site design and creator credit unchanged.",
+  "posted_through": "2026-11-01T20:54:49+01:00",
+  "note": "Posted par15 Rex A1 package / A2 runtime review and Root bounded Development disposition at 19:54:49 UTC. Executable SHA256 17c4400646c4750ff36ec0da5d89ca3c776e2e11544b1b78cb719eabe3950786 verified. Three inspected frames: normal default spawn 0020, diagnostic clear-run approach 0020 and 0055, OS title bar cropped. Clean launch/exit; accepted spawn, ordinary walk, diagnostic grounded catch-up and settle only. Kai Ghost relocation disclosed; no full run-cycle/continuous run-to-walk film, ordinary traversal/recovery/battle, final art or performance acceptance. Remaining par15 integration held pending gate; par14 limits retained, Demo 0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -71,6 +71,11 @@
       "date": "2026-11-01",
       "slug": "2026-11-01-the-flowers-can-stay",
       "covers": "Par14 packaged High Pass, lake, lantern, town surfaces and desert feedback; Nic’s subsequent flower/vista/input notes and explicit timing/review limits"
+    },
+    {
+      "date": "2026-11-01",
+      "slug": "2026-11-01-someone-crosses-the-courtyard",
+      "covers": "Rex par15 A1 Development package and A2 independent review: normal spawn/walk, diagnostic catch-up and settle, with collision, art, traversal and performance limits"
     }
   ]
 }
