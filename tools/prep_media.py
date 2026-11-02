@@ -420,7 +420,29 @@ def rex_returns_par15():
         save(img.crop((0, 32, img.width, img.height)), name)
 
 
+def rex_wake_v22():
+    """2 Nov Game22 package: mechanical wake passes, visual blackout stays open.
+
+    Battle22 A2 review supports returned pair and flat-road resumption only.
+    Retain the visible transition and failed town stairs; crop OS title bar only.
+    No private face trials or prospective Source23 material is included.
+    """
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex")
+    picks = {
+        "rexcheck-battle-v22-a2/ops-0420-battle-waking.jpg": "par15-v22-wake-return",
+        "rexcheck-battle-v22-a2/ops-0417-battle-waking.jpg": "par15-v22-wake-transition",
+        "rexcheck-town-v22-a1/20-upper-lookback.jpg": "par15-v22-stairs-lookback",
+    }
+    for src, name in picks.items():
+        img = Image.open(run / src)
+        assert img.size == (1280, 752), (src, img.size)
+        save(img.crop((0, 32, img.width, img.height)), name)
+
+
 import sys
+if "--rex-wake-v22" in sys.argv:
+    rex_wake_v22()
+    sys.exit(0)
 if "--rex-returns-par15" in sys.argv:
     rex_returns_par15()
     sys.exit(0)

@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import rexChurch from '../assets/media/par15-rex-church.jpg';
-import rexBattleReturn from '../assets/media/par15-rex-battle-return.jpg';
+import rexWake from '../assets/media/par15-v22-wake-return.jpg';
+import rexStairs from '../assets/media/par15-v22-stairs-lookback.jpg';
 
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
 import kaiHero from '../assets/media/kai-b11-street.jpg';
@@ -280,11 +280,11 @@ export const townsfolk: Character[] = [
 ];
 
 export const rexCheckpoint = {
-  name: 'Rex, coming back',
-  statusText: 'Packaged Development checks, 2 November. Nic says the overall look is okay; the face is hard to read.',
-  body: 'The earlier par15 A2 package has reviewed refuge-door reunions and resumed following after victory and escape in Development battle mode. That is bounded return evidence, not complete combat or companion acceptance. The later A4-v21-a2 package has clean launch and exit checks, but ordinary stairs, slopes, full defeat return and the High Pass round trip remain open. Its latest pictured session was interrupted and fully restored. Nic’s visual feedback does not close those route checks. Performance is unmeasured.',
+  name: 'Rex, after waking',
+  statusText: 'Game22 Development package, 2 November. Defeat/wake behavior and a short flat-road follow passed; visual blackout remains open.',
+  body: 'After defeat in Development battle mode, Kai and Rex now reach the wake point together, control returns and Rex follows on flat ground. Independent review accepts that bounded behavior. The transition capture is dark but still visible and cannot prove that relocation stayed hidden. Town stairs still fail, and the High Pass descent and return are incomplete. Earlier door, victory and escape checks remain separate evidence. Nic’s overall-look verdict still leaves a hard-to-read face; no new face or performance acceptance is claimed.',
   frames: [
-    { src: rexChurch, alt: 'Kai and Rex on the lower church terrace above the sea.', caption: 'A4-v21-a2 package, 2 November. From the later interrupted check; this is not a completed stair route.' },
-    { src: rexBattleReturn, alt: 'Kai and Rex back on the Long Road after victory.', caption: 'Earlier A2 package, after victory in Development battle mode. Following resumes; battle staging remains incomplete.' },
+    { src: rexWake, alt: 'Kai and Rex back on the Long Road after defeat and wake-up.', caption: 'Game22, after the accepted mechanical wake. This returned view does not establish what the transition displayed.' },
+    { src: rexStairs, alt: 'Kai on the upper steps, with Rex still on the lower church terrace.', caption: 'Game22 town check. Kai reached the upper level; Rex did not. The stair route remains failed.' },
   ],
 };

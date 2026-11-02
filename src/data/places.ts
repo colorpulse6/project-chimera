@@ -1,6 +1,7 @@
 import type { ImageMetadata } from 'astro';
 import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
 import rexRefugeReturn from '../assets/media/par15-rex-refuge-return.jpg';
+import rexStairs from '../assets/media/par15-v22-stairs-lookback.jpg';
 import streetArrival from '../assets/media/street-arrival.jpg';
 import streetCentre from '../assets/media/street-centre.jpg';
 import streetGate from '../assets/media/street-gate.jpg';
@@ -180,6 +181,7 @@ export const places: Place[] = [
     imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
     painting: pChurch,
     frames: [
+      { src: rexStairs, alt: 'Kai above the stairs while Rex remains on the lower church terrace.', caption: 'Par15 Game22, 2 November. A failed companion stair check: Kai reaching the upper level does not mean Rex followed.' },
       { src: fPar14Church, alt: 'Paving joints and mottled pale walls around the chapel, with the bay beyond.', caption: 'Par14 package, 1 November. Town surface detail is in; the chapel upper face remains restrained. Long-session flattening is not proved fixed.' },
       { src: fChurchArrival, alt: 'Arriving on the church terrace from the coast path, the chapel ahead and Tom on the paving.', caption: 'Arriving from the coast path. Tom walks the terrace.' },
       { src: fChurchChapelDoor, alt: 'The chapel front with its bell, arched door and a pot of leaves.', caption: 'The chapel door. Closed, for now.' },

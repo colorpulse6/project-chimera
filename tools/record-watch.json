@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-11-02T11:56:42+01:00",
-  "note": "Posted par15 continuation through 2 Nov 11:56:42 CET: independently reviewed A2 refuge transit/four-view-mask recovery and victory/escape following, A2/A3 stairs/defeat/camera failures, A4-v21-a2 clean launch/exit checks and later a6 interrupted/restored limits, Nic broad look acceptance with face-readability gap and bounded physical keyboard baseline. Three inspected originals cropped only for OS title bar: A4 a6 09-south-approach, A2 battle 08-post-victory-rex, A2 leave-refuge frame0036. Exact A2 dd68f4... and A4 8a8c42... executable identities verified. No new face correction, full route, complete defeat, final art/performance or release acceptance. Failed A4-v21-a1 excluded. Demo 0.1.0 and design unchanged.",
+  "posted_through": "2026-11-02T23:45:49+01:00",
+  "note": "Posted Game22 inputtrace-v22-a2 package and 2 Nov evening reviews through continuation 23:45:49 CET. Exact executable e5eacd5faa5f1826773d4d1e01c5488a07252be739f092e0c2588abaff4db451 checked. Battle22 A2 mechanical defeat/wake and bounded grounded flat-road resumption accepted; blackout/no-visible-relocation visual gate explicitly open. Input A2 one recorded menu chain passed, not cause/fix/mouse proof. Town stairs failed, HP descent/return incomplete; later transition collector not qualified. Three inspected originals: battle ops0420 returned pair, ops0417 visible dark transition, town20 upper lookback, OS title bar only cropped. Private face trials and prospective Source23 diagnostics excluded. Earlier failures preserved; no full companion/final art/performance or public release acceptance.",
   "log": [
     {
       "date": "2026-10-24",
@@ -81,6 +81,11 @@
       "date": "2026-11-02",
       "slug": "2026-11-02-rex-comes-back",
       "covers": "Par15 bounded door and victory/escape return checks, later package/control limits, and Nic’s Rex look/face feedback; incomplete traversal, defeat return and performance retained"
+    },
+    {
+      "date": "2026-11-02",
+      "slug": "2026-11-02-both-wake-on-the-road",
+      "covers": "Game22 mechanical defeat/wake and flat-road resumption; explicit visual blackout gap, failed stairs, incomplete High Pass and bounded input diagnostic"
     }
   ]
 }
