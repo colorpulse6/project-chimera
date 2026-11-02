@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
+import rexRefugeReturn from '../assets/media/par15-rex-refuge-return.jpg';
 import streetArrival from '../assets/media/street-arrival.jpg';
 import streetCentre from '../assets/media/street-centre.jpg';
 import streetGate from '../assets/media/street-gate.jpg';
@@ -359,6 +360,7 @@ export const places: Place[] = [
     image: fPar14Lake,
     imageAlt: 'The refuge terrace above blue lake water, with a dark formed mountain arch and a graphic gold seam. Par14 package.',
     frames: [
+      { src: rexRefugeReturn, alt: 'Rex behind Kai on the refuge porch after leaving through the door.', caption: 'Par15 A2 package, 2 November. A reviewed door return with Rex; not proof of a complete descent or unrestricted following.' },
       { src: fPar14Refuge, alt: 'Kai reaches the refuge porch beside stacked logs, a planter and a dark mountain wall.', caption: 'Par14 package. The approach, entry and exit passed a continuous door check; that is not acceptance of every player view.' },
       { src: fPar14Flowers, alt: 'Small yellow flower heads on stems among angular rocks above the blue lake.', caption: 'Par14 packaged flowers. Nic’s 1 November verdict: good for now; keep them unchanged.' },
       { src: fPar13Terrace, alt: 'The earlier faceted lake and mountain arch above the par13 terrace.', caption: 'Before: par13, 31 October. The lake and flowers still needed another approach.' },

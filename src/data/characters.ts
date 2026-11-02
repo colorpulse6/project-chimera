@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
-import rexNear from '../assets/media/par15-rex-near.jpg';
+import rexChurch from '../assets/media/par15-rex-church.jpg';
+import rexBattleReturn from '../assets/media/par15-rex-battle-return.jpg';
 
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
 import kaiHero from '../assets/media/kai-b11-street.jpg';
@@ -280,11 +280,11 @@ export const townsfolk: Character[] = [
 ];
 
 export const rexCheckpoint = {
-  name: 'Rex, a first checkpoint',
-  statusText: 'Packaged Development checkpoint, 1 November. Full companion acceptance remains open.',
-  body: 'Rex loads beside Kai and walks in the par15 package. An independently reviewed diagnostic check also shows him approaching and settling after Kai is moved. That relocation disables Kai’s collision, so it does not prove ordinary door, stair or slope travel. Recruitment, battle, recovery after leaving view, finished art and performance are not accepted by this checkpoint.',
+  name: 'Rex, coming back',
+  statusText: 'Packaged Development checks, 2 November. Nic says the overall look is okay; the face is hard to read.',
+  body: 'The earlier par15 A2 package has reviewed refuge-door reunions and resumed following after victory and escape in Development battle mode. That is bounded return evidence, not complete combat or companion acceptance. The later A4-v21-a2 package has clean launch and exit checks, but ordinary stairs, slopes, full defeat return and the High Pass round trip remain open. Its latest pictured session was interrupted and fully restored. Nic’s visual feedback does not close those route checks. Performance is unmeasured.',
   frames: [
-    { src: rexSpawn, alt: 'Kai and Rex in the courtyard after normal startup, Rex in a pale apron and layered sleeves.', caption: 'Normal startup. Rex beside Kai, with the courtyard residents behind.' },
-    { src: rexNear, alt: 'Rex nearer Kai at the end of the selected diagnostic approach frames.', caption: 'After diagnostic relocation of Kai. Rex approaches; ordinary traversal remains to be checked.' },
+    { src: rexChurch, alt: 'Kai and Rex on the lower church terrace above the sea.', caption: 'A4-v21-a2 package, 2 November. From the later interrupted check; this is not a completed stair route.' },
+    { src: rexBattleReturn, alt: 'Kai and Rex back on the Long Road after victory.', caption: 'Earlier A2 package, after victory in Development battle mode. Following resumes; battle staging remains incomplete.' },
   ],
 };

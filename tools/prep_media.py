@@ -400,7 +400,30 @@ def rex_par15():
         save(img.crop((0, 32, img.width, img.height)), name)
 
 
+def rex_returns_par15():
+    """2 Nov packaged Rex checkpoints, reviewed A2 and Nic's later look verdict.
+
+    A4-v21-a2 has separate clean launch/exit evidence; the a6 picture belongs
+    to an interrupted, fully restored session, not a passed traversal case.
+    A2 door and battle returns have their own bounded independent reviews.
+    Crop only the OS title bar from each inspected original.
+    """
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex")
+    picks = {
+        "rexcheck-town-stairs-slopes-a2-a6/09-south-approach.png": "par15-rex-church",
+        "rexcheck-battle-a1/08-post-victory-rex.png": "par15-rex-battle-return",
+        "rexcheck-camera-town-a1/leave-refuge/frame-0036.jpg": "par15-rex-refuge-return",
+    }
+    for src, name in picks.items():
+        img = Image.open(run / src)
+        assert img.size == (1280, 752), (src, img.size)
+        save(img.crop((0, 32, img.width, img.height)), name)
+
+
 import sys
+if "--rex-returns-par15" in sys.argv:
+    rex_returns_par15()
+    sys.exit(0)
 if "--rex-par15" in sys.argv:
     rex_par15()
     sys.exit(0)
