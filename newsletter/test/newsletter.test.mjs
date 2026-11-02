@@ -18,7 +18,7 @@ function fixture() {
     TOKEN_SECRET: 'test-token-secret-not-a-production-secret-123',
     ADMIN_KEY: 'test-admin-secret-not-a-production-secret-123',
     RESEND_API_KEY: 'fake-test-key', FROM_EMAIL: 'Chimera <updates@example.com>',
-    RESEND_WEBHOOK_SECRET: 'whsec_dGVzdC1vbmx5LW5vdC1wcm9kdWN0aW9u',
+    RESEND_WEBHOOK_SECRET: 'whsec_test_fake',
     MAIL_FOOTER: 'Chimera test sender identity',
   };
   const mails = [];
@@ -193,6 +193,8 @@ test('unsupported or malformed requests do not expose application data', async (
 
 test('only signed current provider feedback suppresses the matching Chimera subscriber', async () => {
   const f = fixture(); const reader = await f.activate();
+  // Svix expects base64 key bytes. Derive them from the obvious dummy fixture.
+  f.env.RESEND_WEBHOOK_SECRET = 'whsec_' + Buffer.from(f.env.RESEND_WEBHOOK_SECRET.slice(6)).toString('base64');
   const payload = JSON.stringify({ type: 'email.complained', data: { to: [reader.email], tags: { product: 'chimera', subscriber: reader.id } } });
   const id = 'msg_fixture', timestamp = String(Math.floor(Date.now() / 1000));
   const signature = createHmac('sha256', Buffer.from(f.env.RESEND_WEBHOOK_SECRET.slice(6), 'base64')).update(`${id}.${timestamp}.${payload}`).digest('base64');

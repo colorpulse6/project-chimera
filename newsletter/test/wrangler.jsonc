@@ -9,7 +9,7 @@
     "ADMIN_KEY": "local-proof-admin-not-for-production-12345678",
     "TOKEN_SECRET": "local-proof-signing-not-for-production-12345678",
     "RESEND_API_KEY": "fake-local-proof-never-sends",
-    "RESEND_WEBHOOK_SECRET": "whsec_dGVzdC1vbmx5LW5vdC1wcm9kdWN0aW9u",
+    "RESEND_WEBHOOK_SECRET": "whsec_test_fake",
     "FROM_EMAIL": "Chimera local proof <proof@example.com>",
     "MAIL_FOOTER": "Local test only"
   },
