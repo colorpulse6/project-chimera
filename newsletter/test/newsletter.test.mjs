@@ -1,13 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { createHmac } from 'node:crypto';
 import { handle } from '../src/worker.mjs';
+import { sampleIssue, sources as issueSources } from './email-fixture.mjs';
 
 function fixture() {
   const db = new DatabaseSync(':memory:');
-  db.exec(readFileSync(new URL('../migrations/0001_newsletter.sql', import.meta.url), 'utf8'));
+  for (const file of readdirSync(new URL('../migrations/', import.meta.url)).filter(f => f.endsWith('.sql')).sort()) db.exec(readFileSync(new URL('../migrations/' + file, import.meta.url), 'utf8'));
   const env = {
     DB: { prepare(sql) { return { bind(...values) { return {
       async first() { return db.prepare(sql).get(...values) || null; },
@@ -210,4 +211,22 @@ test('only signed current provider feedback suppresses the matching Chimera subs
   const count = f.mails.length;
   await f.signup();
   assert.equal(f.mails.length, count, 'complaints cannot be bypassed by another public signup');
+});
+
+
+test('structured issue approval freezes images and captions; changed visuals need a new hash', async () => {
+  const f=fixture();await f.activate();const issue=sampleIssue();
+  const staged=await f.request('/admin/campaigns',{subject:'Painted issue',sources:issueSources,issue},{admin:true});
+  assert.equal(staged.status,200);const c=await staged.json();const before=f.mails.length;
+  const changed=structuredClone(issue);changed.features[0].image.caption='A changed caption';
+  const changedCampaign=await (await f.request('/admin/campaigns',{subject:'Painted issue',sources:issueSources,issue:changed},{admin:true})).json();
+  assert.notEqual(c.content_hash,changedCampaign.content_hash);
+  assert.equal((await f.send(c,changedCampaign.content_hash)).status,409);assert.equal(f.mails.length,before);
+  issue.hero.src='https://other.example/replaced.jpg';
+  assert.equal((await f.send(c)).status,200);const mail=f.mails.at(-1).payload;
+  assert.match(mail.html,/media\/newsletter\/hero.jpg/);assert.doesNotMatch(mail.html,/other.example/);
+  assert.match(mail.html,/Rex reviewed caption/);assert.match(mail.text,/Flowers reviewed caption/);
+  const unsub=new URL(mail.headers['List-Unsubscribe'].slice(1,-1));assert.ok(mail.html.includes(unsub.href.replaceAll('&','&amp;')));
+  assert.equal((await f.request(unsub.pathname+unsub.search,{'List-Unsubscribe':'One-Click'})).status,200);
+  assert.equal(f.db.prepare('SELECT state FROM subscribers').get().state,'unsubscribed');
 });

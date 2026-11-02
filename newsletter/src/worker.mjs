@@ -1,3 +1,4 @@
+import { normalizeIssue, issueText, renderIssue, renderConfirmation, renderPlainNewsletter } from './email.mjs';
 const CONSENT = 'chimera-updates-v1';
 const EMAIL = /^[^\s@<>\r\n]+@[^\s@<>\r\n]+\.[^\s@<>\r\n]+$/;
 const enc = new TextEncoder();
@@ -116,9 +117,8 @@ async function subscribe(request, env, transport) {
   const result = await sendMail(env, transport, {
     to: [email], subject: 'Confirm your Chimera email updates',
     tags: [{ name: 'product', value: 'chimera' }, { name: 'subscriber', value: row.id }],
-    text: `You asked for occasional Chimera development updates and demo news.\n\nConfirm your subscription:\n${url}\n\nThis link expires in 24 hours. If you did not sign up, ignore this email.`,
-    html: `<p>You asked for occasional Chimera development updates and demo news.</p><p><a href="${escape(url)}">Confirm your subscription</a></p><p>This link expires in 24 hours. If you did not sign up, ignore this email.</p>`,
-  }, `chimera-confirm/${row.id}/${row.confirmation_nonce}`);
+    ...renderConfirmation(url),
+  }, `chimera-confirm-v2/${row.id}/${row.confirmation_nonce}`);
   if (result.state !== 'sent') return page(env, 'We could not confirm delivery', 'Please wait ten minutes and try again. You have not been added to the active mailing list.', '', 503);
   return accepted();
 }
@@ -178,10 +178,15 @@ async function admin(request, env, transport) {
   }
   if (path === '/admin/campaigns' && request.method === 'POST') {
     const data = await body(request);
+    let issue = null;
+    if (data.issue !== undefined) {
+      try { issue = normalizeIssue(data.issue, data.sources || []); data.text = issueText(issue); }
+      catch { return json({ error: 'invalid_issue' }, 400); }
+    }
     if (typeof data.subject !== 'string' || !data.subject.trim() || data.subject.length > 160 || /[\r\n]/.test(data.subject) || typeof data.text !== 'string' || !data.text.trim() || data.text.length > 16000 || !Array.isArray(data.sources) || !data.sources.length || data.sources.length > 30 || data.sources.some((s) => !/^https:\/\/projectchimera\.dev\/updates\/[a-z0-9-]+\/$/.test(s))) return json({ error: 'invalid_campaign' }, 400);
-    const canonical = JSON.stringify({ subject: data.subject, text: data.text, sources: data.sources });
+    const canonical = JSON.stringify({ subject: data.subject, text: data.text, sources: data.sources, ...(issue ? { issue } : {}) });
     const hash = await digest(canonical), id = crypto.randomUUID();
-    await stmt(env, 'INSERT OR IGNORE INTO campaigns(id,content_hash,subject,body,sources,created_at) VALUES(?,?,?,?,?,?)', id, hash, data.subject, data.text, JSON.stringify(data.sources), now()).run();
+    await stmt(env, 'INSERT OR IGNORE INTO campaigns(id,content_hash,subject,body,sources,created_at,issue_json) VALUES(?,?,?,?,?,?,?)', id, hash, data.subject, data.text, JSON.stringify(data.sources), now(), issue ? JSON.stringify(issue) : null).run();
     const campaign = await stmt(env, 'SELECT * FROM campaigns WHERE content_hash=?', hash).first();
     // Snapshot the opted-in audience only on first creation, never on a repeat.
     if (campaign.id === id) await stmt(env, "INSERT INTO deliveries(campaign_id,subscriber_id,state) SELECT ?,id,'pending' FROM subscribers WHERE state='active'", id).run();
@@ -192,7 +197,7 @@ async function admin(request, env, transport) {
   const campaign = await stmt(env, 'SELECT * FROM campaigns WHERE id=?', match[1]).first();
   if (!campaign) return json({ error: 'not_found' }, 404);
   const counts = async () => (await stmt(env, 'SELECT state,COUNT(*) AS count FROM deliveries WHERE campaign_id=? GROUP BY state', campaign.id).all()).results;
-  if (request.method === 'GET' && !match[2]) return json({ id: campaign.id, content_hash: campaign.content_hash, subject: campaign.subject, text: campaign.body, sources: JSON.parse(campaign.sources), deliveries: await counts() });
+  if (request.method === 'GET' && !match[2]) return json({ id: campaign.id, content_hash: campaign.content_hash, subject: campaign.subject, text: campaign.body, sources: JSON.parse(campaign.sources), issue: campaign.issue_json ? JSON.parse(campaign.issue_json) : null, deliveries: await counts() });
   if (request.method !== 'POST' || !match[2]) return json({ error: 'method_not_allowed' }, 405);
   const approval = await body(request);
   if (approval.approved_content_hash !== campaign.content_hash) return json({ error: 'exact_content_approval_required' }, 409);
@@ -204,9 +209,9 @@ async function admin(request, env, transport) {
     if (!claimed) continue;
     const token = await sign(env, `unsubscribe:${row.subscriber_id}`);
     const unsub = new URL('/unsubscribe', env.API_URL); unsub.searchParams.set('id', row.subscriber_id); unsub.searchParams.set('token', token);
-    const footer = `${env.MAIL_FOOTER}\nYou subscribed to Chimera updates.\nUnsubscribe: ${unsub}`;
-    const htmlBody = escape(campaign.body).replace(/https:\/\/projectchimera\.dev\/[a-zA-Z0-9/_-]*/g, (url) => `<a href="${url}">${url}</a>`).replace(/\n/g, '<br>');
-    const result = await sendMail(env, transport, { to: [row.email], subject: campaign.subject, text: `${campaign.body}\n\n${footer}`, html: `<div style="font:16px/1.6 Georgia,serif;max-width:640px">${htmlBody}<hr><p>${escape(env.MAIL_FOOTER)}<br>You subscribed to Chimera updates. <a href="${escape(unsub)}">Unsubscribe</a></p></div>`, tags: [{ name: 'product', value: 'chimera' }, { name: 'subscriber', value: row.subscriber_id }], headers: { 'List-Unsubscribe': `<${unsub}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } }, `chimera-update/${campaign.id}/${row.subscriber_id}`);
+    const presentation = { unsubscribeURL: unsub.href, senderFooter: env.MAIL_FOOTER };
+    const rendered = campaign.issue_json ? renderIssue(JSON.parse(campaign.issue_json), presentation) : renderPlainNewsletter(campaign.subject, campaign.body, presentation);
+    const result = await sendMail(env, transport, { to: [row.email], subject: campaign.subject, ...rendered, tags: [{ name: 'product', value: 'chimera' }, { name: 'subscriber', value: row.subscriber_id }], headers: { 'List-Unsubscribe': `<${unsub}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' } }, `chimera-update/${campaign.id}/${row.subscriber_id}`);
     await stmt(env, 'UPDATE deliveries SET state=?,provider_id=?,error_code=? WHERE campaign_id=? AND subscriber_id=?', result.state, result.id || null, result.code || null, campaign.id, row.subscriber_id).run();
   }
   return json({ id: campaign.id, deliveries: await counts(), note: 'Unknown or interrupted sends are held for manual reconciliation; they are never automatically retried.' });

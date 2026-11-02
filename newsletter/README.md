@@ -90,6 +90,27 @@ operator API, not through the static site.
 
 ## Prepare, review and send
 
+Illustrated issues use `src/email.mjs`: a branded, fluid 680px table layout with
+inline styles, mobile padding/type rules, JPEG screenshots hosted on the site,
+alt text, captions, a short next-work section, signed unsubscribe and plain-text
+fallback. Confirmation mail shares the branding and keeps the existing opt-in
+link, expiry and scanner-safe behavior. Confirmation idempotency keys are
+versioned for this presentation change. No tracking pixels are added.
+
+`0002_campaign_issue.sql` adds nullable structured issue content. Existing text
+campaigns and their hashes stay valid. For illustrated issues, the hash freezes
+the normalized issue, including image URLs/captions and the generated text.
+The audience snapshot, exact approval hash, delivery claims and unsubscribe
+recheck are unchanged. See `AGENT-BRIEF.md` for the draft schema.
+
+`node cli.mjs render PRIVATE_DRAFT.json` writes private HTML/text previews with
+a nonfunctional example unsubscribe link, and sends nothing. The operator-only
+`node preview.mjs PRIVATE_DRAFT.json --to colorpulse@gmail.com` requires private
+sender variables and `CHIMERA_NEWSLETTER_PREVIEW_UNSUBSCRIBE_URL` for the owner's
+existing record. The recipient is hard-coded to Nic, with no CC/BCC or list/API
+lookup. It uses a durable no-repeat claim plus provider idempotency and holds
+unknown outcomes. A preview needs explicit authorization; it is never a campaign.
+
 Keep these environment variables in the private operator environment:
 
 ```text

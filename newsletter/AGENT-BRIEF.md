@@ -10,6 +10,9 @@ create an agent, schedule a run or authorize a send.
    updates, their linked site pages and already-published images. Do not read
    internal game reports, story spoilers, subscriber records or credentials.
 3. Rewrite the private `draft.json` subject and text. Keep its source URLs.
+   For an illustrated issue, add `issue` using the schema below; the renderer
+   generates its plain-text fallback. Choose 2–4 feature sections, each with an
+   already-public, reviewed screenshot, alt text, short caption and source link.
    Use short, concrete sentences. Group changes into a few useful developments.
    Preserve the difference between an internal build and a public downloadable
    demo; between a packaged feature and Nic's acceptance; between measured and
@@ -27,3 +30,19 @@ create an agent, schedule a run or authorize a send.
 Report prepared/staged/accepted-by-provider/confirmed-delivered separately. Do
 not claim successful exits, a provider ID or a database row prove inbox delivery.
 Retain the last covered timestamp only after the intended send is resolved.
+
+## Illustrated issue v1
+
+`issue` has `version: 1`, `number`, `date`, `title`, `preheader`, `intro`, `hero`,
+`features`, `next` and `buildNote`. A `hero` or feature `image` has `src`, `alt`,
+`caption`, `href`. Each feature also has `title`, `label`, `body`. Image URLs must
+be HTTPS assets on projectchimera.dev; each image's `href` must be one of the
+draft's public update `sources`. Use short, factual copy and preserve review
+qualifications. Never include raw HTML or private image paths.
+
+Run `node newsletter/cli.mjs render PRIVATE_DRAFT.json` for HTML/text artifacts.
+It sends nothing. The operator-only `newsletter/preview.mjs` can send solely to
+Nic's fixed preview address, after an explicit preview request. It has no list
+send or campaign staging route. The writing agent still does not need secrets.
+Subscriber sends continue through the existing immutable campaign hash and
+explicit approval. A changed screenshot or caption requires a new approval hash.

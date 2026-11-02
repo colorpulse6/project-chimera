@@ -1,6 +1,7 @@
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { normalizeIssue, renderIssue } from './src/email.mjs';
 
 const [command, ...args] = process.argv.slice(2);
 const flag = (name) => { const i = args.indexOf(name); return i < 0 ? undefined : args[i + 1]; };
@@ -51,7 +52,17 @@ async function prepare() {
 try {
   if (command === 'prepare') await prepare();
   else if (command === 'stats') console.log(JSON.stringify(await api('/admin/stats'), null, 2));
-  else if (command === 'stage') {
+  else if (command === 'render') {
+    if (!positional) fail('Use render /private/path/to/draft.json. Nothing is sent.');
+    const draft = JSON.parse(await readFile(positional, 'utf8'));
+    const issue = normalizeIssue(draft.issue, draft.sources);
+    const out = join(homedir(), 'Library', 'Application Support', 'ChimeraNewsletter', 'renders', new Date().toISOString().replace(/[:.]/g, '-'));
+    await mkdir(out, { recursive: true, mode: 0o700 });
+    const rendered = renderIssue(issue, { unsubscribeURL: 'https://newsletter.example/unsubscribe', senderFooter: 'Nichalas Barnes · Project Chimera', preview: true });
+    await writeFile(join(out, 'issue.html'), rendered.html, { mode: 0o600 });
+    await writeFile(join(out, 'issue.txt'), rendered.text, { mode: 0o600 });
+    console.log('Rendered HTML and text locally in ' + out + '. No mail was sent.');
+  } else if (command === 'stage') {
     if (!positional) fail('Use stage /private/path/to/draft.json.');
     const draft = JSON.parse(await readFile(positional, 'utf8'));
     if (/\/Users\/|file:\/\/|(?:API_KEY|Bearer\s+[A-Za-z0-9])/.test(draft.text || '')) fail('The draft contains a private path or credential-like text. Review it before staging.');
@@ -69,5 +80,5 @@ try {
       if (result.deliveries.some((d) => ['unknown', 'sending', 'failed'].includes(d.state))) fail('Delivery needs review. No further batch or retry was attempted.');
       if (!result.deliveries.some((d) => d.state === 'pending')) break;
     }
-  } else fail('Commands: prepare --since DATE | stats | stage FILE | show ID | send ID --approve HASH [--max-batches N].');
+  } else fail('Commands: prepare --since DATE | stats | render FILE | stage FILE | show ID | send ID --approve HASH [--max-batches N].');
 } catch (error) { console.error(error.message); process.exitCode = 1; }
