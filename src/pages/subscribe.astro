@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import havenwood from '../assets/media/painting-havenwood-v3.jpg';
+import { newsletter } from '../data/newsletter';
+const base = import.meta.env.BASE_URL;
+const connected = Boolean(newsletter.formAction);
+---
+<Base title="Email updates" description="Occasional email updates from Chimera: new places, screenshots, and public demo releases as the painted world takes shape.">
+  <section class="section signup-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Keep a thread</p>
+          <h1>Letters from Chimera</h1>
+        </div>
+        <p>Occasional notes as the painted world takes shape. New places, screenshots, and public demo releases, sent to your inbox.</p>
+      </div>
+      <div class="signup-layout">
+        <div class="signup-panel">
+          <p class="small muted">A little closer to the build.</p>
+          <h2>Stay in the loop.</h2>
+          <p>Leave your email and hear when there is something new to see or play.</p>
+          <form action={newsletter.formAction} method="post" aria-label="Chimera email updates" aria-describedby="signup-note">
+            <fieldset disabled={!connected}>
+              <label for="signup-email">Your email address</label>
+              <input id="signup-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required />
+              <input type="hidden" name="consent" value="chimera-updates-v1" />
+              <div class="signup-trap" aria-hidden="true">
+                <label for="signup-website">Leave this field empty</label>
+                <input id="signup-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <button class="button" type="submit">Send me updates <span aria-hidden="true">↗</span></button>
+            </fieldset>
+            <p id="signup-note" class="small muted">Chimera updates only. No fixed schedule. Confirm your subscription by email, and unsubscribe from any message.</p>
+            <p class="small muted">Your email is kept privately for Chimera updates. Cloudflare hosts the signup service; Resend delivers the emails. For access or removal, <a href="mailto:updates@projectchimera.dev">contact Nichalas</a>.</p>
+          </form>
+          {!connected && <p class="signup-pending" role="status">Signups open soon. Until then, <a href={base + 'updates/'}>the latest updates are here</a>.</p>}
+          <div class="signup-details">
+            <h3>What arrives</h3>
+            <ul>
+              <li>Notes from the game as places and characters take shape.</li>
+              <li>Screenshots, movement clips, and the paintings behind them.</li>
+              <li>A heads-up when a new public demo is ready to play.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="signup-art">
+          <Frame src={havenwood} alt="A painting of Havenwood: warm plaster houses around a square, a well, flower beds, and a bell tower below the hill." label="Havenwood, as painted." caption="The painting comes first. The game follows it." widths={[600, 1000, 1600]} sizes="(min-width: 60rem) 50vw, 100vw" />
+          <p class="small muted">Prefer to wander? <a href={base + 'updates/'}>Read the record</a> or <a href={base + 'download/'}>play the current demo</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .signup-section { padding-bottom: clamp(5rem, 9vw, 8rem); }
+  .eyebrow { margin-bottom: 0.9rem; color: var(--ochre); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .section-head h1 { max-width: 10ch; margin-bottom: 0; }
+  .signup-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .signup-panel { padding: clamp(1.3rem, 3vw, 2.3rem); border: 1px solid var(--edge); background: var(--bg-raised); box-shadow: var(--shadow); }
+  .signup-panel > .small { margin-bottom: 0.8rem; }
+  .signup-panel h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); }
+  fieldset { min-width: 0; margin: 1.6rem 0 1rem; padding: 0; border: 0; }
+  label { display: block; margin-bottom: 0.6rem; font-size: 0.9rem; }
+  input[type="email"] { width: 100%; min-height: 3.2rem; padding: 0.8rem 0.9rem; border: 1px solid var(--edge); border-radius: 0; background: var(--bg-sunk); color: var(--fg); font: inherit; }
+  input::placeholder { color: var(--fg-faint); }
+  input:focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
+  button { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%; min-height: 3.1rem; margin-top: 0.8rem; font: inherit; cursor: pointer; }
+  fieldset:disabled { opacity: 0.65; }
+  fieldset:disabled button { cursor: default; }
+  #signup-note { margin-bottom: 0; }
+  .signup-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .signup-pending { margin-top: 1.2rem; padding-left: 0.8rem; border-left: 2px solid var(--ochre); font-size: 0.9rem; }
+  .signup-details { margin-top: 1.8rem; padding-top: 1.4rem; border-top: var(--rule); }
+  .signup-details h3 { margin-bottom: 0.8rem; font-size: 1.15rem; }
+  .signup-details ul { margin-bottom: 0; padding-left: 1.1rem; color: var(--fg-soft); font-size: 0.9rem; }
+  .signup-details li + li { margin-top: 0.55rem; }
+  .signup-art > p { margin-top: 1.8rem; }
+  @media (max-width: 60rem) {
+    .signup-layout { grid-template-columns: 1fr; }
+    .section-head h1 { max-width: 14ch; }
+  }
+</style>

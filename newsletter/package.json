@@ -1,0 +1,11 @@
+{
+  "name": "chimera-newsletter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-sqlite --test test/*.test.mjs",
+    "dev": "wrangler dev",
+    "check": "wrangler deploy --dry-run"
+  },
+  "devDependencies": { "wrangler": "4.156.1" }
+}

@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+const base = 'http://127.0.0.1:8794';
+const admin = { authorization: 'Bearer local-proof-admin-not-for-production-12345678' };
+const email = `runtime-proof-${Date.now()}@example.com`;
+async function api(path, data) {
+  const r = await fetch(new URL(path, base), { headers: { ...admin, ...(data ? { 'content-type': 'application/json' } : {}) }, method: data ? 'POST' : 'GET', ...(data ? { body: JSON.stringify(data) } : {}) });
+  assert.equal(r.status, 200, `${path} HTTP status`);
+  return r.json();
+}
+const before = (await api('/__test/outbox')).length;
+const signup = await fetch(`${base}/subscribe`, { method: 'POST', headers: { origin: 'http://127.0.0.1:4323', 'content-type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ email, consent: 'chimera-updates-v1', website: '' }) });
+assert.equal(signup.status, 200);
+assert.match(await signup.text(), /Check your inbox/);
+let mails = await api('/__test/outbox');
+assert.equal(mails.length, before + 1);
+const confirmation = new URL(mails.at(-1).text.match(/http:\/\/\S+/)[0]);
+assert.equal((await fetch(confirmation)).status, 200);
+const id = confirmation.searchParams.get('id');
+let rows = await api('/admin/subscribers');
+assert.equal(rows.results.find((r) => r.id === id).state, 'pending');
+assert.equal((await fetch(confirmation, { method: 'POST', body: new URLSearchParams(confirmation.searchParams) })).status, 200);
+rows = await api('/admin/subscribers');
+assert.equal(rows.results.find((r) => r.id === id).state, 'active');
+const campaign = await api('/admin/campaigns', { subject: `Local proof ${Date.now()}`, text: 'Local runtime proof. No real email is sent.', sources: ['https://projectchimera.dev/updates/local-proof/'] });
+await api(`/admin/campaigns/${campaign.id}/send`, { approved_content_hash: campaign.content_hash });
+await api(`/admin/campaigns/${campaign.id}/send`, { approved_content_hash: campaign.content_hash });
+mails = await api('/__test/outbox');
+assert.equal(mails.length, before + 2);
+const unsub = new URL(mails.at(-1).headers['List-Unsubscribe'].slice(1, -1));
+assert.equal((await fetch(unsub)).status, 200);
+rows = await api('/admin/subscribers');
+assert.equal(rows.results.find((r) => r.id === id).state, 'active');
+assert.equal((await fetch(unsub, { method: 'POST', body: new URLSearchParams({ 'List-Unsubscribe': 'One-Click' }) })).status, 200);
+rows = await api('/admin/subscribers');
+assert.equal(rows.results.find((r) => r.id === id).state, 'unsubscribed');
+console.log('PASS: real local Worker + D1: native form POST, pending/confirmation, private lookup, approved single send, duplicate prevention, scanner-safe links and one-click unsubscribe. Mail transport is a local stub; no real email was sent.');

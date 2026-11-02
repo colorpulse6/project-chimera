@@ -1,0 +1,8 @@
+# Local development only. Set real production secrets through wrangler secret put.
+ADMIN_KEY=
+TOKEN_SECRET=
+RESEND_API_KEY=
+RESEND_WEBHOOK_SECRET=
+FROM_EMAIL=
+REPLY_TO=
+MAIL_FOOTER=

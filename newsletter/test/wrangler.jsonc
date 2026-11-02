@@ -1,0 +1,22 @@
+{
+  "name": "chimera-newsletter-local-proof",
+  "main": "runtime-worker.mjs",
+  "compatibility_date": "2026-11-02",
+  "observability": { "enabled": false },
+  "vars": {
+    "SITE_URL": "http://127.0.0.1:4323",
+    "API_URL": "http://127.0.0.1:8794",
+    "ADMIN_KEY": "local-proof-admin-not-for-production-12345678",
+    "TOKEN_SECRET": "local-proof-signing-not-for-production-12345678",
+    "RESEND_API_KEY": "fake-local-proof-never-sends",
+    "RESEND_WEBHOOK_SECRET": "whsec_dGVzdC1vbmx5LW5vdC1wcm9kdWN0aW9u",
+    "FROM_EMAIL": "Chimera local proof <proof@example.com>",
+    "MAIL_FOOTER": "Local test only"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "chimera-newsletter-local-proof",
+    "database_id": "00000000-0000-0000-0000-000000000001",
+    "migrations_dir": "../migrations"
+  }]
+}

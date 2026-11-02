@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chimera-newsletter",
+  "account_id": "4bbf31cb4d1471c118edee7ea6c5f7e1",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-11-02",
+  "workers_dev": true,
+  "observability": { "enabled": false },
+  "vars": { "SITE_URL": "https://projectchimera.dev", "API_URL": "https://chimera-newsletter.colorpulse.workers.dev" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "chimera-newsletter",
+    "database_id": "eadbedae-be65-466a-97ce-dbf550fa3301",
+    "migrations_dir": "migrations"
+  }]
+}
