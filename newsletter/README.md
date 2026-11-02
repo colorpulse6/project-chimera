@@ -10,8 +10,10 @@ The separate Worker and D1 database are deployed. The Chimera sending domain,
 domain-restricted sending key, reply forwarding and signed feedback endpoint are
 configured. An owner-only live test reached Gmail, activated only after explicit
 confirmation, and unsubscribed successfully. Forwarding also reached Gmail.
-The site form is enabled locally, pending public site publication approval.
-No newsletter campaign or scheduled agent run has been sent or installed.
+The site form is live at `https://projectchimera.dev/subscribe/`. Its native form
+submission, received confirmation, activation and unsubscribe were verified.
+Three owner-only technical test messages were sent. No newsletter campaign or
+scheduled agent run has been sent or installed.
 
 The live feedback endpoint rejected a forged signature and accepted a controlled
 signed event and its replay. A genuine provider bounce/complaint has not yet been
