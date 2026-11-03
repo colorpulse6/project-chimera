@@ -439,7 +439,27 @@ def rex_wake_v22():
         save(img.crop((0, 32, img.width, img.height)), name)
 
 
+def rex_high_pass_v23():
+    """3 Nov clean Game23 High Pass pilot; no full-route acceptance.
+
+    Two inspected originals from the independently reviewed A3 pilot.
+    Remove only the 32px OS title bar; preserve the Development label.
+    """
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex/rexcheck-high-pass-v23-a3")
+    picks = {
+        "ops-0032-hp-approach-00.jpg": "par15-v23-high-pass-approach",
+        "ops-0101-hp-approach-02-lookback.jpg": "par15-v23-high-pass-lookback",
+    }
+    for src, name in picks.items():
+        img = Image.open(run / src)
+        assert img.size == (1280, 752), (src, img.size)
+        save(img.crop((0, 32, img.width, img.height)), name)
+
+
 import sys
+if "--rex-high-pass-v23" in sys.argv:
+    rex_high_pass_v23()
+    sys.exit(0)
 if "--rex-wake-v22" in sys.argv:
     rex_wake_v22()
     sys.exit(0)

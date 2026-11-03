@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-11-02T23:45:49+01:00",
-  "note": "Posted Game22 inputtrace-v22-a2 package and 2 Nov evening reviews through continuation 23:45:49 CET. Exact executable e5eacd5faa5f1826773d4d1e01c5488a07252be739f092e0c2588abaff4db451 checked. Battle22 A2 mechanical defeat/wake and bounded grounded flat-road resumption accepted; blackout/no-visible-relocation visual gate explicitly open. Input A2 one recorded menu chain passed, not cause/fix/mouse proof. Town stairs failed, HP descent/return incomplete; later transition collector not qualified. Three inspected originals: battle ops0420 returned pair, ops0417 visible dark transition, town20 upper lookback, OS title bar only cropped. Private face trials and prospective Source23 diagnostics excluded. Earlier failures preserved; no full companion/final art/performance or public release acceptance.",
+  "posted_through": "2026-11-03T09:42:00+01:00",
+  "note": "Posted Game23 combinedobs-v23-a2 package with later clean launch/exit and independently accepted High Pass A3 short diagnostic collection; continuation through 3 Nov 09:42 Record23 A2 closure. Initial startup crash and Town23 A2 stairs failure/recovery RED retained; restoration later accepted, no route acceptance. HP Rex moved from arrival then later samples unchanged, not full descent/ascent. Two recording setups failed; wake visual gate open. Two inspected A3 originals ops0032 and ops0101 cropped only OS title bar. Source24/editor-only and prospective movement fixes held outside post; one roadmap work line only. No new Nic face/full companion/performance/public release acceptance.",
   "log": [
     {
       "date": "2026-10-24",
@@ -86,6 +86,11 @@
       "date": "2026-11-02",
       "slug": "2026-11-02-both-wake-on-the-road",
       "covers": "Game22 mechanical defeat/wake and flat-road resumption; explicit visual blackout gap, failed stairs, incomplete High Pass and bounded input diagnostic"
+    },
+    {
+      "date": "2026-11-03",
+      "slug": "2026-11-03-the-first-step-is-still-a-step",
+      "covers": "Game23 later clean launches, bounded High Pass diagnostic pilot, failed town stairs and recording setup limits; original startup/recovery failures preserved"
     }
   ]
 }

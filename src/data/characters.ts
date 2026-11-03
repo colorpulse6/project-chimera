@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import rexWake from '../assets/media/par15-v22-wake-return.jpg';
-import rexStairs from '../assets/media/par15-v22-stairs-lookback.jpg';
+import rexHighPass from '../assets/media/par15-v23-high-pass-lookback.jpg';
 
 import kaiDrawing from '../assets/media/kai-drawing.jpg';
 import kaiHero from '../assets/media/kai-b11-street.jpg';
@@ -280,11 +280,11 @@ export const townsfolk: Character[] = [
 ];
 
 export const rexCheckpoint = {
-  name: 'Rex, after waking',
-  statusText: 'Game22 Development package, 2 November. Defeat/wake behavior and a short flat-road follow passed; visual blackout remains open.',
-  body: 'After defeat in Development battle mode, Kai and Rex now reach the wake point together, control returns and Rex follows on flat ground. Independent review accepts that bounded behavior. The transition capture is dark but still visible and cannot prove that relocation stayed hidden. Town stairs still fail, and the High Pass descent and return are incomplete. Earlier door, victory and escape checks remain separate evidence. Nic’s overall-look verdict still leaves a hard-to-read face; no new face or performance acceptance is claimed.',
+  name: 'Rex, at the first step',
+  statusText: 'Game23 Development package, 3 November. Later launches and exits passed; the short High Pass pilot is diagnostic, with full companion acceptance still open.',
+  body: 'Rex moved from arrival during the short High Pass check, then the later samples showed no further progress. The full descent and climb back remain unproved. Town stairs still fail. The first Game23 launch crashed; later clean runs do not establish a startup fix. Game22’s bounded mechanical defeat/wake result stands separately, with hidden-relocation visuals still open after two failed recording setups. Nic’s overall-look verdict still leaves a hard-to-read face. Performance is unmeasured.',
   frames: [
-    { src: rexWake, alt: 'Kai and Rex back on the Long Road after defeat and wake-up.', caption: 'Game22, after the accepted mechanical wake. This returned view does not establish what the transition displayed.' },
-    { src: rexStairs, alt: 'Kai on the upper steps, with Rex still on the lower church terrace.', caption: 'Game22 town check. Kai reached the upper level; Rex did not. The stair route remains failed.' },
+    { src: rexHighPass, alt: 'Kai and Rex at the first High Pass steps, looking back towards the refuge.', caption: 'Game23, 3 November. Rex moved from arrival during this short pilot. This view does not prove a complete descent or climb back.' },
+    { src: rexWake, alt: 'Kai and Rex back on the Long Road after defeat and wake-up.', caption: 'Earlier Game22 mechanical wake check. Its bounded result stands; the transition still needs visual proof.' },
   ],
 };
