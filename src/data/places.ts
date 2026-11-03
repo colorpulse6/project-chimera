@@ -1,3 +1,4 @@
+import par16Residents from '../assets/media/par16-b2-edith-and-tom.jpg';
 import rexHighPass from '../assets/media/par15-v23-high-pass-lookback.jpg';
 import type { ImageMetadata } from 'astro';
 import rexSpawn from '../assets/media/par15-rex-spawn.jpg';
@@ -155,7 +156,7 @@ export const places: Place[] = [
       { src: fLaneKai, alt: 'Kai walking down the lane toward the sea.', caption: 'Kai going down. The sea is always at the end of it.' },
       { src: fLaneLookingBack, alt: 'Looking back up the lane steps toward the courtyard clock tower.', caption: 'Looking back up the steps to the courtyard.' },
     ],
-    body: 'A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay at the end. It drops about three metres and joins the courtyard to the harbour on one continuous map, no loading. Innkeeper Rowan stands at the arched door, Frida on a doorstep with her plums, Grandmother Edith on a step.',
+    body: 'A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay at the end. It drops about three metres and joins the courtyard to the harbour on one continuous map, no loading. Innkeeper Rowan stands at the arched door, Frida on a doorstep with her plums, Grandmother Edith on a step in the earlier build. The internal par16 B2 preview moves Edith to the church terrace.',
   },
   {
     slug: 'harbour',
@@ -177,11 +178,12 @@ export const places: Place[] = [
     slug: 'church-square',
     name: 'Church square',
     status: 'built',
-    statusText: 'In the build since 22 October. Internal par14 adds surface detail, checked in the package on 1 November. Demo 0.1.0 is unchanged.',
+    statusText: 'In the build since 22 October. Internal par16 B2 adds a small resident-activity preview, checked on 3 November. Clear visible cleaning and wider routines remain open. Demo 0.1.0 is unchanged.',
     image: fChurchPainting,
     imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
     painting: pChurch,
     frames: [
+      { src: par16Residents, alt: 'Kai beside Edith with her broom, Tom and Rex on the church terrace.', caption: 'Par16 B2, 3 November. Edith’s broom activity and Tom’s short walk were observed. Talking interrupts and resumes Edith’s activity; this frame does not prove a clearly cleaned patch.' },
       { src: rexStairs, alt: 'Kai above the stairs while Rex remains on the lower church terrace.', caption: 'Par15 Game22, 2 November. A failed companion stair check: Kai reaching the upper level does not mean Rex followed.' },
       { src: fPar14Church, alt: 'Paving joints and mottled pale walls around the chapel, with the bay beyond.', caption: 'Par14 package, 1 November. Town surface detail is in; the chapel upper face remains restrained. Long-session flattening is not proved fixed.' },
       { src: fChurchArrival, alt: 'Arriving on the church terrace from the coast path, the chapel ahead and Tom on the paving.', caption: 'Arriving from the coast path. Tom walks the terrace.' },
@@ -189,7 +191,7 @@ export const places: Place[] = [
       { src: fChurchHeadland, alt: 'The lavender headland across the bay, seen over the curved parapet of the lookout.', caption: 'The lookout. Something stands on the headland. Tom has heard about lights.' },
       { src: fChurchKai, alt: 'Kai on the terrace, cape blowing, the headland and the sea beyond.', caption: 'Kai on the terrace.' },
     ],
-    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walks here, repeating what he has heard.',
+    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walks here, repeating what he has heard. The internal par16 B2 preview brings Edith onto the terrace with a broom and checks Tom’s short walk. The same residents have a little more to do; their full daily routines are unfinished.',
   },
   {
     slug: 'hill-village',

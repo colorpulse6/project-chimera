@@ -456,7 +456,33 @@ def rex_high_pass_v23():
         save(img.crop((0, 32, img.width, img.height)), name)
 
 
+def par16_battle_life_b2():
+    """3 Nov packaged par16: B1 battle and B2 resident preview.
+
+    Original PNG hashes match combined-screenshot-manifest.json.
+    Both source sessions have reviewed normal exits and restored user state.
+    Preserve the full game image and HUD; do not imply visible cleaning.
+    """
+    import hashlib
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex/Par16")
+    picks = [
+        ("combined-b1-runtime-a1/evidence/ScreenShot00005.png",
+         "par16-b1-battle-ready", "266a673a63a8303f71fe9e618aee6b6c09fb7cd0b874fc1b3539ee9f50ff20cd"),
+        ("combined-b2-runtime-a1/evidence/ScreenShot00014.png",
+         "par16-b2-edith-and-tom", "8f1d2e76ecd6fb74433649b9dfd312d9a0faff516ebe908bc96ece83fa0636b8"),
+    ]
+    for src, name, digest in picks:
+        original = run / src
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == digest
+        img = Image.open(original)
+        assert img.size == (1280, 720), (src, img.size)
+        save(img, name)
+
+
 import sys
+if "--par16-battle-life-b2" in sys.argv:
+    par16_battle_life_b2()
+    sys.exit(0)
 if "--rex-high-pass-v23" in sys.argv:
     rex_high_pass_v23()
     sys.exit(0)

@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import par16Residents from '../assets/media/par16-b2-edith-and-tom.jpg';
 import rexWake from '../assets/media/par15-v22-wake-return.jpg';
 import rexHighPass from '../assets/media/par15-v23-high-pass-lookback.jpg';
 
@@ -77,6 +78,7 @@ export const kai: Character = {
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
     'Since 25 October he moves on motion-capture clips retargeted to his own skeleton. The still cape and smaller walking arm swing were packaged on 26 October. Nic then played the dressed Long Road and found the upright jump worse. The next package gives a running jump forward lean and a raised knee, with a short landing dip in place of the deep crouch. Jump height and air control are unchanged. The covered arm is held across his body, though the lifted cape can show the forearm at a run. Nic later reported hovering, shivering and a stiff stance in the demo candidate. The internal par2 build added foot and stance corrections and a modest forward reach of the visible arm in the jump, retained through par14. Sleeve and cloak stretching still limits the pose. Nic tested par7 on 28 October and said it looked good. The par14 package adds a persistent Reduce motion option for desert camera tremors. Keyboard preference checks passed; Nic’s later mouse and missing-shake reports remain unresolved. There is no new pose acceptance from those checks.',
+    'The internal par16 B2 package adds sword-ready, slash, low guard and hit actions for the first keyboard battle slice. Victory was checked in B1; Escape and defeat-return in B2. Full collapse and mouse commands remain unaccepted. His shared walking skeleton and locomotion were not replaced.',
     'At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
   ],
   extra: { src: kaiWalk, caption: 'The walk, eight frames 0.43 seconds apart, from the batch 9 build of 25 October. Before the second pass of 26 October.' },
@@ -195,6 +197,7 @@ export const townsfolk: Character[] = [
     statusText: 'From the second lineup, 22 October; a walker, moved to the church square in batch 2',
     drawing: tomDrawing, inGame: tomFull, face: tomFace,
     body: [
+      'A short ordinary walk was observed in the internal par16 B2 preview on 3 November. That small route is checked; his wider daily routine remains unfinished.',
       'A long olive coat, a flat cap, and a void through the coat. He has heard about lights near the ruins. He did not see them.',
       '"You\u2019re new here. I was going to tell you what I\u2019ve heard, but perhaps that can wait."',
     ],
@@ -215,12 +218,14 @@ export const townsfolk: Character[] = [
   {
     slug: 'edith',
     name: 'Grandmother Edith',
-    role: 'Sits on a step and does not give advice',
-    place: 'Seaside lane, a seated step',
+    role: 'Does not give advice',
+    place: 'Church square in the internal B2 preview; seaside lane in the earlier build',
     status: 'built',
     statusText: 'From the second lineup, 22 October',
     drawing: edithDrawing, inGame: edithFull, face: edithFace,
+    extra: { src: par16Residents, caption: 'Par16 B2, 3 November. Edith with her broom beside Kai and Tom on the church terrace. The activity works; a clearly visible swept patch remains unaccepted.' },
     body: [
+      'The internal B2 preview gives her small broom strokes on the church terrace. Talking interrupts the activity, which resumes after Kai leaves. Reduce motion keeps her quietly idle. Fingers and bristle contact still need polish; the dust change is too faint to call clearly visible cleaning.',
       'A lavender cloak, a grey bun, and a crescent void at the hip. The smallest figure in the town and the oldest. She wished at the well once.',
       '"You may stop a moment. I won\u2019t assume you\u2019ve come for advice."',
     ],
@@ -280,9 +285,9 @@ export const townsfolk: Character[] = [
 ];
 
 export const rexCheckpoint = {
-  name: 'Rex, at the first step',
-  statusText: 'Game23 Development package, 3 November. Later launches and exits passed; the short High Pass pilot is diagnostic, with full companion acceptance still open.',
-  body: 'Rex moved from arrival during the short High Pass check, then the later samples showed no further progress. The full descent and climb back remain unproved. Town stairs still fail. The first Game23 launch crashed; later clean runs do not establish a startup fix. Game22’s bounded mechanical defeat/wake result stands separately, with hidden-relocation visuals still open after two failed recording setups. Nic’s overall-look verdict still leaves a hard-to-read face. Performance is unmeasured.',
+  name: 'Rex, work parked',
+  statusText: 'Par15 closed on the accepted v21-a2 predecessor, 3 November. Body and face work are parked; the earlier route and visual limits remain.',
+  body: 'Par16 starts from the accepted v21-a2 predecessor. The later Game22 and Game23 checks below remain historical evidence, with their failures and limits retained. They do not establish a full High Pass round trip, reliable stairs or hidden relocation. In par16 B2, Rex rejoined after the mechanical defeat-return, but this slice adds no Rex combat kit. Nic’s face-readability concern remains, and performance is unmeasured.',
   frames: [
     { src: rexHighPass, alt: 'Kai and Rex at the first High Pass steps, looking back towards the refuge.', caption: 'Game23, 3 November. Rex moved from arrival during this short pilot. This view does not prove a complete descent or climb back.' },
     { src: rexWake, alt: 'Kai and Rex back on the Long Road after defeat and wake-up.', caption: 'Earlier Game22 mechanical wake check. Its bounded result stands; the transition still needs visual proof.' },

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
+import par16Battle from '../assets/media/par16-b1-battle-ready.jpg';
 import kaiInGame from '../assets/media/kai-hero.jpg';
 const base = import.meta.env.BASE_URL;
 
@@ -51,14 +52,14 @@ const companions = [
     <div class="narrow prose">
       <h1>Mechanics</h1>
       <p class="lede">A JRPG whose magic is machinery nobody remembers, whose save points are tears in the world, and whose battles sometimes change what century they are in.</p>
-      <p class="note"><b>Built versus designed.</b> The build today walks, talks and saves. Combat, shards and spells exist on paper, written in 2025 for an earlier version of the game, and are listed here because they are the plan. Each section says which it is.</p>
+      <p class="note"><b>Built versus designed.</b> The public demo walks, talks and saves. Internal par16 B2 now has a small keyboard-playable battle checkpoint. The broader combat phases, shards and spells below remain designs from 2025. Each section says which it is.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h2><span class="state state-built">In the build today</span></h2>
+        <h2><span class="state state-built">The first playable slice</span></h2>
         <p>The packaged Mac build of 22 October 2026.</p>
       </div>
       <div class="two">
@@ -67,7 +68,7 @@ const companions = [
           <div><dt>Movement</dt><dd>Walk and run through the courtyard and the street, on a one-metre town kit. The camera follows and can be swung.</dd></div>
           <div><dt>Talking</dt><dd>A prompt appears near a resident. Each of the five has lines. The Fisherman and the Child walk routes and can be caught up with.</dd></div>
           <div><dt>Saving</dt><dd>A local save from the pause menu. The designed version, where saving is a thing in the world, is below.</dd></div>
-          <div><dt>Menus</dt><dd>Title and pause. Nothing else yet: no inventory, no battle screen, no map.</dd></div>
+          <div><dt>Menus</dt><dd>Title and pause in that October build. The newer internal battle checkpoint is below.</dd></div>
           <div><dt>Phasing</dt><dd>Kai’s drawing failing as he moves was built once, read as a glitch, and removed. It comes back when it can be done on purpose.</dd></div>
         </dl>
       </div>
@@ -76,6 +77,11 @@ const companions = [
 
   <section class="section">
     <div class="narrow prose">
+      <h2><span class="state state-now">The first battle checkpoint</span></h2>
+      <p>Par16 B2, 3 November: an internal Development package reviewed for early keyboard play. Kai has sword-ready, slash, low guard and hit actions. Attack, Defend, Item and Escape are available. B1 recorded victory and a return to exploration; B2 checked Escape and defeat-return, with Rex rejoining afterward.</p>
+      <Frame src={par16Battle} alt="Kai holds the Rusted Pipe Sword opposite a Stray, with turn order and battle commands visible." caption="Par16 B1 battle frame. B2 retains this battle code and data; the B2 checks separately cover Escape and defeat-return." />
+      <p>Mouse commands remain unaccepted. Defeat is a short stagger followed by a fade; a full collapse and hidden-relocation visuals are still unproved. This slice adds no Rex combat kit or new public demo. <a href={base + 'updates/2026-11-03-a-sword-and-a-broom/'}>The current checkpoint</a>.</p>
+
       <h2><span class="state state-next">Saving at a Temporal Distortion</span></h2>
       <p>Save points are places where the world is thin: a shimmer in the air like heat haze with the wrong colours in it, and a sound like whispering through static. Touching one shows Kai a single frame of his execution and puts a message on the screen, <em>Temporal Anchor Stabilized</em>, which is how the player learns the game has saved. They cluster near ruins. Later in the story they become unstable, and later still Kai learns to do things with them.</p>
 
