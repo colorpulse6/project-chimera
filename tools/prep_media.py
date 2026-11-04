@@ -508,7 +508,39 @@ def par16_evening_b5():
         save(img, name)
 
 
+
+def par16_close_b8():
+    """Reviewed B6-B8 originals, complete frames and HUD retained.
+
+    B6 A1 pictures remain valid visual evidence despite its isolation failure;
+    clean exit/save checks belong to the separate A3 run. B7 A1 watchdog exit
+    is not a normal menu quit. The post preserves both limits.
+    """
+    import hashlib
+    import json
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex/Par16")
+    picks = [
+        ("b6-life-a4-packaged-runtime-a1", "evidence", "screenshot-manifest.json", None, "ScreenShot00024.png", "par16-b6-remaining-dirt", (1600, 900)),
+        ("b6-life-a4-packaged-runtime-a1", "evidence", "screenshot-manifest.json", None, "ScreenShot00025.png", "par16-b6-swept", (1600, 900)),
+        ("b7-life-a5-packaged-runtime-a1", "screenshots", "ROOT-CHECKS.json", "screenshots", "ScreenShot00011.png", "par16-b7-reed-net", (1280, 720)),
+        ("b8-life-a5-packaged-runtime-a3", "screenshots", "ROOT-CHECKS.json", "native_screenshots", "ScreenShot00001.png", "par16-b8-charge", (1280, 720)),
+        ("b8-life-a5-packaged-runtime-a3", "screenshots", "ROOT-CHECKS.json", "native_screenshots", "ScreenShot00002.png", "par16-b8-heavy-strike", (1280, 720)),
+    ]
+    for folder, subdir, manifest_name, key, filename, name, size in picks:
+        manifest = json.loads((run / folder / manifest_name).read_text())
+        rows = manifest[key] if key else manifest
+        records = {Path(row.get("name", row.get("file", ""))).name: row for row in rows}
+        original = run / folder / subdir / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == records[filename]["sha256"]
+        img = Image.open(original)
+        assert img.size == size, (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--par16-close-b8" in sys.argv:
+    par16_close_b8()
+    sys.exit(0)
 if "--par16-evening-b5" in sys.argv:
     par16_evening_b5()
     sys.exit(0)

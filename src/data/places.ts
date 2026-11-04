@@ -1,3 +1,5 @@
+import par16Swept from '../assets/media/par16-b6-swept.jpg';
+import par16Reed from '../assets/media/par16-b7-reed-net.jpg';
 import par16Mending from '../assets/media/par16-b5-evening-mending.jpg';
 import par16Street from '../assets/media/par16-b4-street-conversation.jpg';
 import par16Residents from '../assets/media/par16-b2-edith-and-tom.jpg';
@@ -145,7 +147,7 @@ export const places: Place[] = [
       { src: streetLane, alt: 'A lane opening into the street with a tree and shuttered windows.', caption: 'Lane into the street.' },
       { src: streetBack, alt: 'Looking back along the street toward the gate.', caption: 'Looking back toward the gate.' },
     ],
-    body: 'The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit. The lane, the harbour, the church square and the hill village were built the same way. Internal par16 B3 adds Tom and Anna’s street exchange and the Child’s short walk between Rowan and Aldric, retained in B4 and B5.',
+    body: 'The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit. The lane, the harbour, the church square and the hill village were built the same way. Internal par16 B3 adds Tom and Anna’s street exchange and the Child’s short walk between Rowan and Aldric, retained in later checkpoints. B6 adds eight shutter leaves to four existing window frames: open by day and closed at dusk. The original frames and collision stay unchanged; next-day behavior still needs an audit.',
   },
   {
     slug: 'seaside-lane',
@@ -175,17 +177,18 @@ export const places: Place[] = [
       { src: fHarbourKai, alt: 'Kai on the quay beside the harbour house, the bay behind.', caption: 'Kai on the quay.' },
       { src: fSeaQuayPath, alt: 'The quay corner with Old Reed by the wall and the coast path climbing to the church terrace.', caption: 'From the quay the coast path climbs to the church square. Old Reed keeps the corner.' },
     ],
-    body: 'The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat; Sal carries crates between the quay and the foot of the lane. A ramped coast path climbs from here to the church square.',
+    body: 'The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat in the earlier build; internal B7 moves the same actor to a short net-carry route on the Cove jetty. Sal carries crates between the quay and the foot of the lane. A ramped coast path climbs from here to the church square.',
   },
   {
     slug: 'church-square',
     name: 'Church square',
     status: 'built',
-    statusText: 'In the build since 22 October. Internal par16 B2 adds a small resident-activity preview, checked on 3 November. Clear visible cleaning and wider routines remain open. Demo 0.1.0 is unchanged.',
+    statusText: 'In the build since 22 October. Internal B6 adds visible local cleaning; B7 seats the Old Man on the original bench. Reviewed limited Development checkpoints, 4 November. Wider routines remain open. Demo 0.1.0 is unchanged.',
     image: fChurchPainting,
     imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
     painting: pChurch,
     frames: [
+      { src: par16Swept, alt: 'Kai beside Edith and the cleared patch beneath her broom.', caption: 'Par16 B6, 4 November. The small patch clears during supported sweeping. Physical bristle contact and whole-square cleaning are not claimed.' },
       { src: par16Residents, alt: 'Kai beside Edith with her broom, Tom and Rex on the church terrace.', caption: 'Par16 B2, 3 November. Edith’s broom activity and Tom’s short walk were observed. Talking interrupts and resumes Edith’s activity; this frame does not prove a clearly cleaned patch.' },
       { src: rexStairs, alt: 'Kai above the stairs while Rex remains on the lower church terrace.', caption: 'Par15 Game22, 2 November. A failed companion stair check: Kai reaching the upper level does not mean Rex followed.' },
       { src: fPar14Church, alt: 'Paving joints and mottled pale walls around the chapel, with the bay beyond.', caption: 'Par14 package, 1 November. Town surface detail is in; the chapel upper face remains restrained. Long-session flattening is not proved fixed.' },
@@ -194,7 +197,7 @@ export const places: Place[] = [
       { src: fChurchHeadland, alt: 'The lavender headland across the bay, seen over the curved parapet of the lookout.', caption: 'The lookout. Something stands on the headland. Tom has heard about lights.' },
       { src: fChurchKai, alt: 'Kai on the terrace, cape blowing, the headland and the sea beyond.', caption: 'Kai on the terrace.' },
     ],
-    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walked here in the earlier build, repeating what he had heard. The internal par16 B2 preview brings Edith onto the terrace with a broom and checks Tom’s short walk. The same residents have a little more to do; their full daily routines are unfinished. B3 later moves Tom to the street conversation preview.',
+    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walked here in the earlier build, repeating what he had heard. The internal par16 B2 preview brings Edith onto the terrace with a broom and checks Tom’s short walk. The same residents have a little more to do; their full daily routines are unfinished. B3 later moves Tom to the street conversation preview. B6 makes Edith’s local dirt patch visibly clear. B7 seats the Old Man on the original bench, with a response to the genuine cart repair and move. Later approach checks cover only the travelled player corridors, with view assistance and failed attempts disclosed.',
   },
   {
     slug: 'hill-village',
@@ -210,7 +213,7 @@ export const places: Place[] = [
       { src: fVillageKai, alt: 'Kai walking toward the basin and Anna, the sea beyond the parapet.', caption: 'Kai in the village.' },
       { src: fSeaVillage, alt: 'The hill village from the sea: walls on a rocky shore, gable houses and a round tree above.', caption: 'From the sea, 24 October. The walls stand on rock now, not straight out of the water.' },
     ],
-    body: 'Past the chapel, a stair climbs to a small square of gable houses on a causeway in the sea, with a fountain basin against the end parapet. Anna watched the flowers by the basin in the earlier build; internal B3 moves her into the street conversation preview. The Old Man moved up here from the courtyard and has a doorstep.',
+    body: 'Past the chapel, a stair climbs to a small square of gable houses on a causeway in the sea, with a fountain basin against the end parapet. Anna watched the flowers by the basin in the earlier build; internal B3 moves her into the street conversation preview. The Old Man moved up here from the courtyard and had a doorstep in that earlier build. Internal B7 seats him on the church square bench.',
   },
   {
     slug: 'chapel',
@@ -225,7 +228,7 @@ export const places: Place[] = [
       { src: fChapelRoom, alt: 'The chapel from the door: an aisle of warm light, benches, lavender floor, the window over the altar block.', caption: 'From the door, the way the painting sees it.' },
       { src: fChapelBenches, alt: 'Benches from the side, the sun patch on the floor, the altar block under the window.', caption: 'The sun comes in through the one window.' },
     ],
-    body: 'A small dim room behind the chapel door on the church square, with benches, an altar block and one tall window facing the late sun. It was the first door in the game that opens: a short fade to black and Kai is inside. Its walls first came out cream; the polish round warmed them toward the painting. Father Silas stands in here now.',
+    body: 'A small dim room behind the chapel door on the church square, with benches, an altar block and one tall window facing the late sun. It was the first door in the game that opens: a short fade to black and Kai is inside. Its walls first came out cream; the polish round warmed them toward the painting. Father Silas stands in here now. Internal B7 adds a quiet bell gesture with pause and Reduce motion checks. It does not establish rope grip or complete bystander reactions.',
   },
   {
     slug: 'rusted-cog',
@@ -352,6 +355,7 @@ export const places: Place[] = [
     frames: [
       { src: fPar14Lantern, alt: 'Kai in the household, with a lantern lighting a small patch of wall and floor beside the shelves.', caption: 'Par14 package. The household lantern now casts a local warm pool; the existing indoor exposure settle is retained.' },
       { src: fPar10Household, alt: 'Kai faces shelves, folded cloth, a work table and a stool in a terracotta room.', caption: 'The household, par10 packaged check, 29 October. The room is furnished; Nic has not played this package.' },
+      { src: par16Reed, alt: 'Kai talks to Old Reed, who holds a net sling on the Cove jetty.', caption: 'Par16 B7, 4 November. Same actor, short jetty route. The net stays through walking, turns and dialogue; full contact clearance and the longer route remain open.' },
       { src: par16Mending, alt: 'The Well Woman holding ivory cloth beside the household lantern, with Kai and Rex in the room.', caption: 'Par16 B5, 4 November. Ordinary player view of the evening mending preview. Door entry, interior exposure, interruption and concealed return passed. Cloth and hand fit remain provisional.' },
       { src: fPar10Door, alt: 'Kai faces the household door, with drying cloth to the left and a loom to the right.', caption: 'Looking back at the door in par10. The table hides Kai’s feet and the pale patch around the arch remains. This build predates the Keepers’ Cove name.' },
       { src: fPar9Hall, alt: 'Kai in the hall, with ledger tables, benches, a lectern and stools on a violet tiled floor.', caption: 'Inside the hall, par9 packaged door check. The furnishings are in; the grey patch high on the back wall remains unresolved.' },
@@ -359,7 +363,7 @@ export const places: Place[] = [
       { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
     ],
     imageAlt: 'The settlement from the ridge: pale houses, red roofs, terraces and a long jetty across blue water.',
-    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside. Par14 adds a real warm light pool from the household lantern, verified in matched on/off package views. That does not accept every furnishing or surface. Internal par16 B5 adds the courtyard Well Woman’s evening mending in this household. The same actor changes location out of view and returns to the well; ordinary door entry and the selected exposure settle passed. This is a limited routine, with prototype hand and cloth fit.',
+    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside. Par14 adds a real warm light pool from the household lantern, verified in matched on/off package views. That does not accept every furnishing or surface. Internal par16 B5 adds the courtyard Well Woman’s evening mending in this household. The same actor changes location out of view and returns to the well; ordinary door entry and the selected exposure settle passed. This is a limited routine, with prototype hand and cloth fit. B7 brings the existing Old Reed to the jetty with a small net sling. The reviewed short carry route retains his body and walking clips; the proposed longer route is not in B8.',
   },
   {
     slug: 'high-pass-refuge',
@@ -381,7 +385,7 @@ export const places: Place[] = [
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
       { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: 'A terrace, refuge, stair and switchback above a blue lake. Par14 gives the rocks more form, opens the refuge approach, replaces the chip-like flowers with small yellow heads on stems, and adds visibly moving lake water. The arrival direction and indoor exposure settle are retained. The package check walks to the refuge, enters, leaves and returns; the lake motion is supported by a separately reviewed visual-pattern check, not by the failed acquisition-timestamp test. The amber seam remains graphic rather than luminous, with broad dark rock faces and regular scallops in the water. Nic has played it: the flowers are good for now, but his views still show dark cliffs, near trees and walls blocking the vista, and little walkable descent. The pass is not accepted as finished. Distant-scenery checks passed only under a bounded measuring protocol; default-renderer instability and quiet performance remain unresolved.',
+    body: 'A terrace, refuge, stair and switchback above a blue lake. Par14 gives the rocks more form, opens the refuge approach, replaces the chip-like flowers with small yellow heads on stems, and adds visibly moving lake water. The arrival direction and indoor exposure settle are retained. The package check walks to the refuge, enters, leaves and returns; the lake motion is supported by a separately reviewed visual-pattern check, not by the failed acquisition-timestamp test. The amber seam remains graphic rather than luminous, with broad dark rock faces and regular scallops in the water. Nic has played it: the flowers are good for now, but his views still show dark cliffs, near trees and walls blocking the vista, and little walkable descent. B6 adds an anonymous logbook on the existing refuge table. Ordinary E reads a short request to leave room for the next traveller; it gives no item, flag or quest. Reading and leaving have separate checks, including assisted approaches, not proof of an unassisted whole-room route. The pass is not accepted as finished. Distant-scenery checks passed only under a bounded measuring protocol; default-renderer instability and quiet performance remain unresolved.',
   },
 ];
 

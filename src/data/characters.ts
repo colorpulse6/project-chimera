@@ -1,7 +1,8 @@
+import par16Swept from '../assets/media/par16-b6-swept.jpg';
+import par16Reed from '../assets/media/par16-b7-reed-net.jpg';
 import type { ImageMetadata } from 'astro';
 import par16Mending from '../assets/media/par16-b5-evening-mending.jpg';
 import par16Street from '../assets/media/par16-b4-street-conversation.jpg';
-import par16Residents from '../assets/media/par16-b2-edith-and-tom.jpg';
 import rexWake from '../assets/media/par15-v22-wake-return.jpg';
 import rexHighPass from '../assets/media/par15-v23-high-pass-lookback.jpg';
 
@@ -80,7 +81,7 @@ export const kai: Character = {
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
     'Since 25 October he moves on motion-capture clips retargeted to his own skeleton. The still cape and smaller walking arm swing were packaged on 26 October. Nic then played the dressed Long Road and found the upright jump worse. The next package gives a running jump forward lean and a raised knee, with a short landing dip in place of the deep crouch. Jump height and air control are unchanged. The covered arm is held across his body, though the lifted cape can show the forearm at a run. Nic later reported hovering, shivering and a stiff stance in the demo candidate. The internal par2 build added foot and stance corrections and a modest forward reach of the visible arm in the jump, retained through par14. Sleeve and cloak stretching still limits the pose. Nic tested par7 on 28 October and said it looked good. The par14 package adds a persistent Reduce motion option for desert camera tremors. Keyboard preference checks passed; Nic’s later mouse and missing-shake reports remain unresolved. There is no new pose acceptance from those checks.',
-    'The internal par16 checkpoints add sword-ready, slash, guard and hit actions. B3 replaces the short defeat stagger with a held kneel, with normal and Enter-skip returns checked separately. B4 checks guard, Tonic, victory and the enemy’s visible dissolution. The cape obscures lower-leg contact in game captures, and physical mouse commands remain unproved. B5 retains that battle work.',
+    'The internal par16 checkpoints add sword-ready, slash, guard and hit actions. B3 replaces the short defeat stagger with a held kneel, with normal and Enter-skip returns checked separately. B4 checks guard, Tonic, victory and the enemy’s visible dissolution. The cape obscures lower-leg contact in game captures, and physical mouse commands remain unproved. B7 adds the visible Item count and healing amount. B8 makes the next enemy intent readable, with separate preparing and Heavy Strike labels. These remain reviewed Development checkpoints.',
     'At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
   ],
   extra: { src: kaiWalk, caption: 'The walk, eight frames 0.43 seconds apart, from the batch 9 build of 25 October. Before the second pass of 26 October.' },
@@ -119,12 +120,13 @@ export const townsfolk: Character[] = [
   {
     slug: 'old-man',
     name: 'Old Man',
-    role: 'Stands with a cane at a doorstep',
-    place: 'Hill village',
+    role: 'Sits with his cane on the church square bench',
+    place: 'Church square in internal B7 onward; hill village in the earlier build',
     status: 'built',
     statusText: 'Rebuilt from the drawing on 22 October; moved up to the hill village the same evening',
     drawing: omDrawing, inGame: omFull, face: omFace,
     body: [
+      'Internal B7 seats the same Old Man on the original church square bench, with cane and feet supported. His line changes from “One thing at a time.” to “The cart has rolled clear, then.” after the genuine cart repair and move. Wider milestone lines are not in B8; full contact and navigation remain unproved.',
       'A violet robe, a stoop, and a ring where the head should be. The ring is built as a torus so it reads clean from every angle; the cane stayed from the earlier version. He is the figure that shows what the masks-and-holes language can do with the least material.',
     ],
   },
@@ -144,13 +146,15 @@ export const townsfolk: Character[] = [
   {
     slug: 'fisherman',
     name: 'Old Reed',
-    role: 'The Fisherman. Keeps to the quay by the boat',
-    place: 'Harbour',
+    role: 'The Fisherman. Carries a small net on the jetty',
+    place: 'Keepers’ Cove in internal B7 onward; harbour in the earlier build',
     status: 'built',
     statusText: 'Rebuilt from the drawing on 22 October; given his name and the harbour the same evening',
     drawing: fiDrawing, inGame: fiFull, face: fiFace,
+    extra: { src: par16Reed, caption: 'Par16 B7, 4 November. Old Reed keeps his net during dialogue on the Cove jetty. The short route is reviewed; the longer route and complete hand/net clearance are not.' },
     body: [
-      'Blue tunic, wide trousers, a steep blue cone hat and a void at the shoulder. He walked the courtyard until the harbour was built; now he stands by the boat. His hat is steeper than the drawing wants and is on the polish list.',
+      'Internal B7 gives the same actor a small net sling and a short Cove jetty route. Walking, turns, nearby dialogue and resumed walking retain the net. Relaxed fingers and known contact crossings remain; this is not the proposed longer route or a hauling task.',
+      'Blue tunic, wide trousers, a steep blue cone hat and a void at the shoulder. He walked the courtyard until the harbour was built, then stood by the boat. His hat is steeper than the drawing wants and is on the polish list.',
     ],
   },
   // From the second lineup drawing, 22 October. Placed in batch 1, moved in batch 2.
@@ -229,9 +233,9 @@ export const townsfolk: Character[] = [
     status: 'built',
     statusText: 'From the second lineup, 22 October',
     drawing: edithDrawing, inGame: edithFull, face: edithFace,
-    extra: { src: par16Residents, caption: 'Par16 B2, 3 November. Edith with her broom beside Kai and Tom on the church terrace. The activity works; a clearly visible swept patch remains unaccepted.' },
+    extra: { src: par16Swept, caption: 'Par16 B6, 4 November. Edith beside the completed small patch. The paired progress frames are in the update; this is not a claim that the whole square is clean.' },
     body: [
-      'The internal B2 preview gives her small broom strokes on the church terrace. Talking interrupts the activity, which resumes after Kai leaves. Reduce motion keeps her quietly idle. Fingers and bristle contact still need polish; the dust change is too faint to call clearly visible cleaning.',
+      'B6 makes the small dirt patch beneath her broom visibly clear in ten increments. Pause holds progress; Reduce motion shows a quiet clear patch without awarding cleaning progress. Normal sweeping resumes with the remaining film. Fingers and physical bristle contact still need polish.',
       'A lavender cloak, a grey bun, and a crescent void at the hip. The smallest figure in the town and the oldest. She wished at the well once.',
       '"You may stop a moment. I won\u2019t assume you\u2019ve come for advice."',
     ],
@@ -258,6 +262,7 @@ export const townsfolk: Character[] = [
     statusText: 'From the third lineup, in the build since 25 October',
     drawing: silasDrawing, inGame: silasFull, face: silasFace,
     body: [
+      'Internal B7 adds a quiet hand and forearm bell gesture here in the chapel. Natural tolls, idle return, an active-pull pause and Reduce motion cancellation passed. Rope grip and wider bystander reactions are not established.',
       'A red robe, a cream stole in two bands, a round void at the chest, hands folded. The 2025 documents had a Silas who stood at a fence for three days saying the same thing. This one keeps the chapel, and the books, which have lasted through a good deal of mending.',
       '"Welcome. Silas. You needn\u2019t have a question to spend a little time here."',
     ],
@@ -293,7 +298,7 @@ export const townsfolk: Character[] = [
 export const rexCheckpoint = {
   name: 'Rex, work parked',
   statusText: 'Par15 closed on the accepted v21-a2 predecessor, 3 November. Body and face work are parked; the earlier route and visual limits remain.',
-  body: 'Par16 starts from the accepted v21-a2 predecessor. The later Game22 and Game23 checks below remain historical evidence, with their failures and limits retained. They do not establish a full High Pass round trip, reliable stairs or hidden relocation. In par16 B2, Rex rejoined after the mechanical defeat-return, but this slice adds no Rex combat kit. Nic’s face-readability concern remains, and performance is unmeasured.',
+  body: 'Par16 starts from the accepted v21-a2 predecessor. The later Game22 and Game23 checks below remain historical evidence, with their failures and limits retained. They do not establish a full High Pass round trip, reliable stairs or hidden relocation. In par16 B2, Rex rejoined after the mechanical defeat-return, but this slice adds no Rex combat kit. B7 adds only a restrained upper-body response to natural desert tremors, returning to neutral and suppressed by Reduce motion. It does not reopen body, face or following work. Nic’s face-readability concern remains, and performance is unmeasured.',
   frames: [
     { src: rexHighPass, alt: 'Kai and Rex at the first High Pass steps, looking back towards the refuge.', caption: 'Game23, 3 November. Rex moved from arrival during this short pilot. This view does not prove a complete descent or climb back.' },
     { src: rexWake, alt: 'Kai and Rex back on the Long Road after defeat and wake-up.', caption: 'Earlier Game22 mechanical wake check. Its bounded result stands; the transition still needs visual proof.' },
