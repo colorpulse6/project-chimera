@@ -1,4 +1,6 @@
 import type { ImageMetadata } from 'astro';
+import par16Mending from '../assets/media/par16-b5-evening-mending.jpg';
+import par16Street from '../assets/media/par16-b4-street-conversation.jpg';
 import par16Residents from '../assets/media/par16-b2-edith-and-tom.jpg';
 import rexWake from '../assets/media/par15-v22-wake-return.jpg';
 import rexHighPass from '../assets/media/par15-v23-high-pass-lookback.jpg';
@@ -78,7 +80,7 @@ export const kai: Character = {
   body: [
     'Kai is drawn, not modelled. His body came out of a single illustration through image-to-3D, then the drawing itself was projected back onto the mesh so the ink and colour are the artist\'s, not a texture painter\'s. He is a dark silhouette with a long navy cape, a ring collar, one pale bare arm, heavy pointed boots and a crown of red hair. Red is his mark; nobody else in the town wears it.',
     'Since 25 October he moves on motion-capture clips retargeted to his own skeleton. The still cape and smaller walking arm swing were packaged on 26 October. Nic then played the dressed Long Road and found the upright jump worse. The next package gives a running jump forward lean and a raised knee, with a short landing dip in place of the deep crouch. Jump height and air control are unchanged. The covered arm is held across his body, though the lifted cape can show the forearm at a run. Nic later reported hovering, shivering and a stiff stance in the demo candidate. The internal par2 build added foot and stance corrections and a modest forward reach of the visible arm in the jump, retained through par14. Sleeve and cloak stretching still limits the pose. Nic tested par7 on 28 October and said it looked good. The par14 package adds a persistent Reduce motion option for desert camera tremors. Keyboard preference checks passed; Nic’s later mouse and missing-shake reports remain unresolved. There is no new pose acceptance from those checks.',
-    'The internal par16 B2 package adds sword-ready, slash, low guard and hit actions for the first keyboard battle slice. Victory was checked in B1; Escape and defeat-return in B2. Full collapse and mouse commands remain unaccepted. His shared walking skeleton and locomotion were not replaced.',
+    'The internal par16 checkpoints add sword-ready, slash, guard and hit actions. B3 replaces the short defeat stagger with a held kneel, with normal and Enter-skip returns checked separately. B4 checks guard, Tonic, victory and the enemy’s visible dissolution. The cape obscures lower-leg contact in game captures, and physical mouse commands remain unproved. B5 retains that battle work.',
     'At rest he is whole. The brief says the drawing of him sometimes fails; that part is designed but not yet in the game.',
   ],
   extra: { src: kaiWalk, caption: 'The walk, eight frames 0.43 seconds apart, from the batch 9 build of 25 October. Before the second pass of 26 October.' },
@@ -92,11 +94,13 @@ export const townsfolk: Character[] = [
     slug: 'well-woman',
     name: 'Well Woman',
     role: 'Draws water in the courtyard',
-    place: 'Courtyard, by the well',
+    place: 'Courtyard well; evening mending in Keepers’ Cove in internal B5',
     status: 'built',
     statusText: 'First figure through the drawing-to-game route, 21 October',
     drawing: wwDrawing, inGame: wwFull, face: wwFace,
+    extra: { src: par16Mending, caption: 'Par16 B5, 4 November. The same Woman supports ivory cloth in the Cove household. Evening work, interruption and concealed return passed; cuffs, fingers and rigid cloth remain prototype limits.' },
     body: [
+      'In internal B5 she mends in the Cove household between 18:00 and 22:00 on the game clock. She changes location only when the endpoints are out of view and clear of interaction; no walked commute is claimed. Approaching or talking holds her work pose, and the activity resumes afterward. Pause and Reduce motion also hold it. Her evening line is “Mind your cuffs.” The return to the well was checked.',
       'A tall woman in a teal dress with a swept bun and a round void in her hem. She was the test case for the townsfolk pipeline: generated body, built oval mask head with two eyes, built hands clasped in front. Her face was the hardest part; generated heads came out lumpy, so the head is modelled by hand and only the body carries the drawing.',
     ],
   },
@@ -104,7 +108,7 @@ export const townsfolk: Character[] = [
     slug: 'shopkeeper',
     name: 'Merchant Aldric',
     role: 'The Shopkeeper. Keeps the shop under the blue awning',
-    place: 'Courtyard, shop door',
+    place: 'Street preview in internal B3 onward; courtyard shop door in the earlier build',
     status: 'built',
     statusText: 'Rebuilt from the drawing on 22 October',
     drawing: skDrawing, inGame: skFull, face: skFace,
@@ -127,12 +131,13 @@ export const townsfolk: Character[] = [
   {
     slug: 'child',
     name: 'Child',
-    role: 'Runs the courtyard',
-    place: 'Courtyard',
+    role: 'Walks between the residents',
+    place: 'Street preview in internal B3 onward; courtyard in the earlier build',
     status: 'built',
     statusText: 'Rebuilt from the drawing on 22 October; one of the two walkers',
     drawing: chDrawing, inGame: chFull, face: chFace,
     body: [
+      'The internal B3 street preview checks walking and pauses between Rowan and Aldric, retained in B4 and B5. No goods transfer or complete navigation audit is claimed.',
       'A coral smock with a void at the chest and a brown bob. She is one of the two residents who walk a route instead of standing at a post, so the courtyard is never still. The bob reads as a cap at the moment; that is on the polish list.',
     ],
   },
@@ -166,7 +171,7 @@ export const townsfolk: Character[] = [
     slug: 'rowan',
     name: 'Innkeeper Rowan',
     role: 'Keeps The Weary Wanderer, airs every room',
-    place: 'Seaside lane, at the arched door',
+    place: 'Street preview in internal B3 onward; seaside lane in the earlier build',
     status: 'built',
     statusText: 'From the second lineup, 22 October',
     drawing: rowanDrawing, inGame: rowanFull, face: rowanFace,
@@ -192,12 +197,12 @@ export const townsfolk: Character[] = [
     slug: 'tom',
     name: 'Tom',
     role: 'Carries rumours, mostly secondhand',
-    place: 'Church square, walks the terrace',
+    place: 'Street conversation in internal B3 onward; church terrace in the earlier build',
     status: 'built',
     statusText: 'From the second lineup, 22 October; a walker, moved to the church square in batch 2',
     drawing: tomDrawing, inGame: tomFull, face: tomFace,
     body: [
-      'A short ordinary walk was observed in the internal par16 B2 preview on 3 November. That small route is checked; his wider daily routine remains unfinished.',
+      'The B2 church-terrace walk remains an earlier checkpoint. Internal B3 moves him into a street exchange with Anna, with readable captions and quiet during approach, dialogue and pause, then resume. B4 retains the preview; a wider daily routine remains unfinished.',
       'A long olive coat, a flat cap, and a void through the coat. He has heard about lights near the ruins. He did not see them.',
       '"You\u2019re new here. I was going to tell you what I\u2019ve heard, but perhaps that can wait."',
     ],
@@ -206,10 +211,11 @@ export const townsfolk: Character[] = [
     slug: 'anna',
     name: 'Anna',
     role: 'Watches which flowers have opened',
-    place: 'Hill village, at the basin',
+    place: 'Street conversation in internal B3 onward; hill-village basin in the earlier build',
     status: 'built',
     statusText: 'From the second lineup, 22 October; moved to the hill village in batch 2',
     drawing: annaDrawing, inGame: annaFull, face: annaFace,
+    extra: { src: par16Street, caption: 'Par16 B4, 4 November. Anna’s caption and the existing Child are visible in the retained street preview. Full daily routines remain unfinished.' },
     body: [
       'A cream dress with a cape, a swept red ponytail, and a ring through the sleeve. She stands by the fountain basin with her back to the sea.',
       '"Did you notice the flowers by the fountain? No matter if you didn\u2019t. You can look another time."',

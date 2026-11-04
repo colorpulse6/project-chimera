@@ -479,7 +479,39 @@ def par16_battle_life_b2():
         save(img, name)
 
 
+def par16_evening_b5():
+    """4 Nov gated B3/B4/B5 package originals, full frame and HUD retained.
+
+    B3 lowered pose has obscured legs; B4 battle/street and B5 mending/return
+    carry their own evidence limits. Verify every original against its manifest.
+    """
+    import hashlib
+    import json
+    run = Path("/Volumes/Agent Workspace/Chimera/ModelWork/Rex/Par16")
+    picks = [
+        ("b3-life-a2-packaged-runtime-a2", "ScreenShot00100.png", "par16-b3-kneeling"),
+        ("b4-life-a2-packaged-runtime-a1", "ScreenShot00008.png", "par16-b4-dissolving"),
+        ("b4-life-a2-packaged-runtime-a1", "ScreenShot00013.png", "par16-b4-street-conversation"),
+        ("b5-life-a3-packaged-runtime-a1", "ScreenShot00003.png", "par16-b5-evening-mending"),
+        ("b5-life-a3-packaged-runtime-a1", "ScreenShot00006.png", "par16-b5-well-return"),
+    ]
+    for folder, filename, name in picks:
+        manifest = json.loads((run / folder / "screenshot-manifest.json").read_text())
+        if "files" in manifest:
+            records = {Path(row.get("file", row.get("retained", ""))).name: row for row in manifest["files"]}
+        else:
+            records = manifest
+        original = run / folder / "evidence" / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == records[filename]["sha256"]
+        img = Image.open(original)
+        assert img.size == (1280, 720), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--par16-evening-b5" in sys.argv:
+    par16_evening_b5()
+    sys.exit(0)
 if "--par16-battle-life-b2" in sys.argv:
     par16_battle_life_b2()
     sys.exit(0)

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
-import par16Battle from '../assets/media/par16-b1-battle-ready.jpg';
+import par16Battle from '../assets/media/par16-b4-dissolving.jpg';
 import kaiInGame from '../assets/media/kai-hero.jpg';
 const base = import.meta.env.BASE_URL;
 
@@ -52,7 +52,7 @@ const companions = [
     <div class="narrow prose">
       <h1>Mechanics</h1>
       <p class="lede">A JRPG whose magic is machinery nobody remembers, whose save points are tears in the world, and whose battles sometimes change what century they are in.</p>
-      <p class="note"><b>Built versus designed.</b> The public demo walks, talks and saves. Internal par16 B2 now has a small keyboard-playable battle checkpoint. The broader combat phases, shards and spells below remain designs from 2025. Each section says which it is.</p>
+      <p class="note"><b>Built versus designed.</b> The public demo walks, talks and saves. Internal par16 B5 retains the reviewed keyboard battle checkpoint. The broader combat phases, shards and spells below remain designs from 2025. Each section says which it is.</p>
     </div>
   </section>
 
@@ -78,9 +78,9 @@ const companions = [
   <section class="section">
     <div class="narrow prose">
       <h2><span class="state state-now">The first battle checkpoint</span></h2>
-      <p>Par16 B2, 3 November: an internal Development package reviewed for early keyboard play. Kai has sword-ready, slash, low guard and hit actions. Attack, Defend, Item and Escape are available. B1 recorded victory and a return to exploration; B2 checked Escape and defeat-return, with Rex rejoining afterward.</p>
-      <Frame src={par16Battle} alt="Kai holds the Rusted Pipe Sword opposite a Stray, with turn order and battle commands visible." caption="Par16 B1 battle frame. B2 retains this battle code and data; the B2 checks separately cover Escape and defeat-return." />
-      <p>Mouse commands remain unaccepted. Defeat is a short stagger followed by a fade; a full collapse and hidden-relocation visuals are still unproved. This slice adds no Rex combat kit or new public demo. <a href={base + 'updates/2026-11-03-a-sword-and-a-broom/'}>The current checkpoint</a>.</p>
+      <p>Par16 B5, 4 November, retains the reviewed keyboard battle work. B3 adds a held kneeling defeat, with natural playback and Enter-skip returns checked separately. B4 checks enemy body and eyes, a reload replay, guard reducing a hit from seven to four, a Tonic healing twenty-five, victory and return to exploration.</p>
+      <Frame src={par16Battle} alt="A Stray dissolving into a dotted pattern after victory, opposite Kai and his sword." caption="Par16 B4. The enemy’s visible dissolution was followed by disappearance and a return to exploration. B3 defeat evidence is separate." />
+      <p>Physical mouse commands remain unproved. Game captures of the lowered defeat pose hide Kai’s lower legs behind the cape, so continuous foot contact is not established. Hidden-relocation visuals and general performance remain open. <a href={base + 'updates/2026-11-04-mind-your-cuffs/'}>The current checkpoint</a>.</p>
 
       <h2><span class="state state-next">Saving at a Temporal Distortion</span></h2>
       <p>Save points are places where the world is thin: a shimmer in the air like heat haze with the wrong colours in it, and a sound like whispering through static. Touching one shows Kai a single frame of his execution and puts a message on the screen, <em>Temporal Anchor Stabilized</em>, which is how the player learns the game has saved. They cluster near ruins. Later in the story they become unstable, and later still Kai learns to do things with them.</p>
