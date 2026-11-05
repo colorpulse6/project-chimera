@@ -1,3 +1,6 @@
+import saltArrival from '../assets/media/salt-road-cp1-arrival.jpg';
+import saltCity from '../assets/media/salt-road-cp1-kesler-pi.jpg';
+import saltCorridor from '../assets/media/salt-road-cp1-corridor.jpg';
 import par16Swept from '../assets/media/par16-b6-swept.jpg';
 import par16Reed from '../assets/media/par16-b7-reed-net.jpg';
 import par16Mending from '../assets/media/par16-b5-evening-mending.jpg';
@@ -118,6 +121,19 @@ export type Place = {
 };
 
 export const places: Place[] = [
+  {
+    slug: 'salt-road-trail',
+    name: 'The Salt Road and Kesler Pi',
+    status: 'now',
+    statusText: 'Internal checkpoint 1, packaged 5 November. Nic: “looks good for now.” Development picker access only; no new public demo.',
+    image: saltArrival,
+    imageAlt: 'Kai on a stone-bordered desert trail, with pale ribs to the left and the dark Kesler Pi skyline ahead. Checkpoint 1.',
+    frames: [
+      { src: saltCity, alt: 'The static painted Kesler Pi skyline above the dunes, beyond the stone-bordered road.', caption: 'Checkpoint 1 package, 5 November. The city is a painted skyline card here, with no moving parts or playable interior.' },
+      { src: saltCorridor, alt: 'Kai on sand beside the bordered trail during the automated westward walk.', caption: 'Checkpoint 1 package. Sixteen targets were reached on the straight corridor out and back. This frame shows why that does not establish steering along the bordered trail.' },
+    ],
+    body: 'A first walkable Salt Road, about 1.2 kilometres toward Kesler Pi. Border stones and rope poles lead through warm sand; pale ribs stand to the left, with an oasis and a distant Colossus in the layout. The city is a static painted silhouette at this checkpoint. Nic chose the buried, patched mass and named it Kesler Pi, separate from the smaller Zephyr convoy. The corrected packaged F8 check reaches Salt Road without a save write. The automated walk reaches all sixteen corridor targets, out and back, without a sea catch or fall; no human free-walking acceptance is recorded. Hard ground outlines, rectangular bands, thin ribs and a weak oasis remain composition findings. The route is straight where its painting winds. The Opening Desert has no walkable connection to it yet, and the High Pass sightline and city marker remain parked. This entry records checkpoint 1; later exterior work is not claimed here.',
+  },
   {
     slug: 'courtyard',
     name: 'The courtyard',

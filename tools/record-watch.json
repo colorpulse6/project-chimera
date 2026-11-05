@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-11-04T23:08:15+01:00",
-  "note": "Posted reviewed B6/B7/B8 Development checkpoints and Nic’s par16 closure through CLOSEOUT.md (4 Nov 23:08 Madrid). Three archive executable hashes verified. Five inspected manifest-verified full frames: B6 A1 00024/00025, B7 A1 00011, B8 A3 00001/00002. B6 A1 isolation/restoration failure and B7 A1 watchdog/stale-control failures remain distinct from later clean replays. Includes local cleaning, shutters, anonymous refuge book, seated cart greeting, short net route, quiet bell/tremor gestures, Item display and readable intent. Wider dialogue/extended Reed route remain unapplied; physical mouse, full Life/contact/navigation and performance unaccepted. Demo 0.1.0 unchanged.",
+  "posted_through": "2026-11-05T21:20:00+01:00",
+  "note": "Posted Salt Road checkpoint 1 through coordinator REPORT 5 Nov 21:20: Nic 20:50 looks good for now, 21:00 continue; corrected 21:17 no-sheet picker PASS. Retained CP1 evidence in round2/prev/2228: package-salt C1-kai-eye/KP-mid and package-walk W04-to-x+0, inspected full 1600x900 frames, manifest membership and exit0/original-user-files-equal checked, SHA256 pins in prep_media.py. CP1 executable SHA256 0896ebd25cfe6d6a9e582df11a16f71cf859c681da02f7fbc6c350eae179fbe1 recorded. Sixteen straight corridor targets, no SEA/FALL; not human or bordered-trail steering. Earlier picker failures, composition gaps and parked suite failures retained. CP2 package exists but draft proof/review incomplete at this run: no frames or acceptance posted; cursor deliberately does not advance past it. Demo 0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -106,6 +106,11 @@
       "date": "2026-11-05",
       "slug": "2026-11-05-one-thing-at-a-time",
       "covers": "B6 local cleaning, shutters and refuge book; B7 seated Old Man, Reed net, Silas and Rex gestures and Item display; B8 readable intent and Nic’s par16 closure, with remaining Life scope held"
+    },
+    {
+      "date": "2026-11-05",
+      "slug": "2026-11-05-a-city-at-the-end-of-the-salt-road",
+      "covers": "Accepted Salt Road checkpoint 1 and Kesler Pi static skyline; corrected packaged picker and bounded corridor checks, composition limits; checkpoint 2 held pending completed verification"
     }
   ]
 }

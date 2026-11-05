@@ -537,7 +537,38 @@ def par16_close_b8():
         save(img, name)
 
 
+def salt_road_checkpoint1():
+    """Nic: looks good for now, REPORT 5 Nov 21:20; CP1 only.
+
+    Read the retained CP1 package outputs, not the changing CP2 package folder.
+    Pin inspected originals; retain the full frame, including composition gaps.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round2/prev/2228"
+    picks = [
+        ("package-salt", "C1-kai-eye.png", "salt-road-cp1-arrival", "3d88ef0bc6b11f3d3518addfd2b79246f9a19a446ee3435e6218600844df50bd"),
+        ("package-salt", "KP-mid.png", "salt-road-cp1-kesler-pi", "d0089fadef152734385528fe0218a518e5efb14014f2a060ffc02d7c87a31937"),
+        ("package-walk", "W04-to-x+0.png", "salt-road-cp1-corridor", "287ba57487e71ed2ab7a077b6e1d8e2866370c524f2c637bc804e143263719e1"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        manifest = json.loads((evidence / "manifest.json").read_text())
+        assert result["complete"] and result["exit_code"] == 0
+        assert result["original_user_files_equal"]
+        assert manifest["complete"] and any(row["frame"] == filename for row in manifest["shots"])
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--salt-road-checkpoint1" in sys.argv:
+    salt_road_checkpoint1()
+    sys.exit(0)
 if "--par16-close-b8" in sys.argv:
     par16_close_b8()
     sys.exit(0)
