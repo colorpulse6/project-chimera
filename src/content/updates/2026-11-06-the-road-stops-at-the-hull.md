@@ -2,8 +2,8 @@
 title: The road stops at the hull
 date: 2026-11-06T07:27:00+01:00
 summary: The Salt Road reaches Kesler Pi’s outer wall. The blocker works, the opening is too bright, and Nic’s acceptance waits for his walk.
-cover: ../../assets/media/salt-road-cp2-arrival.jpg
-coverAlt: Kai on the Salt Road, with broader pale arches to the left, palms to the right and the new Kesler Pi hull wall ahead. Checkpoint 2.
+cover: ../../assets/media/salt-road-cp2-threshold.jpg
+coverAlt: The Kesler Pi hull opening from twenty metres, with uneven plates, sand at the foot and a pale patch inside the recess. Checkpoint 2 package.
 tags: [build, world, playtest]
 ---
 
@@ -15,9 +15,9 @@ The [public demo](/download/) remains 0.1.0.
 
 ## Closer to the wall
 
-![The Kesler Pi hull opening from twenty metres, with uneven plates, sand at the foot and a pale patch inside the recess. Checkpoint 2 package.](../../assets/media/salt-road-cp2-threshold.jpg)
-
 Five buried spurs stand along the approach. At the far end, the hull wall fills the view. The “Kesler Pi threshold” marker is reached by walking; it is not a separate picker destination. The opening blocks passage. There is no playable interior behind it.
+
+![Kai on the Salt Road, with broader pale arches to the left, palms to the right and the new Kesler Pi hull wall ahead. Checkpoint 2.](../../assets/media/salt-road-cp2-arrival.jpg)
 
 The ground has also changed since [checkpoint 1](/updates/2026-11-05-a-city-at-the-end-of-the-salt-road/). Broad arches replace the thin ribs, the repeated hard corridor outlines are gone, and the oasis palms and wall are easier to identify. Pink bands remain. The road is still straight where the painting winds, the water is weak in the view, and a strong ground crease survives in the far camera.
 

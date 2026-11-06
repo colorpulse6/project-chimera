@@ -9,8 +9,6 @@ tags: [build, places, characters]
 
 Two days, three batches, three packaged builds. On the morning of the 22nd the game was a courtyard and a street. It is now six places on one continuous map, and you can walk from the well to the sea and up to the chapel without a loading screen.
 
-![The church terrace on its sea wall, with rocks at the waterline, the chapel and the village houses above.](../../assets/media/sea-bay.jpg)
-
 ## Down the lane
 
 The seaside lane drops about three metres from the courtyard to the water, between pale and ochre fronts, past an arched door and a run of doorsteps. At the bottom is the harbour: a quay, bollards, a lantern, a bench, a water plane and one small boat. The kit gained the pieces for all of it.

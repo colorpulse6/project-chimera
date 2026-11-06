@@ -2,8 +2,8 @@
 title: The flowers can stay
 date: 2026-11-01T07:06:00+01:00
 summary: Par14 brings small yellow flowers, blue lake water, a warm lantern and desert dust. Nic keeps the flowers for now. The view, input and timing still have limits.
-cover: ../../assets/media/par14-refuge-approach.jpg
-coverAlt: Kai at the High Pass refuge porch beside stacked logs and a planter, with the dark mountain wall beyond. Par14 package.
+cover: ../../assets/media/par14-highpass-flowers.jpg
+coverAlt: Small yellow flower heads on stems between angular rocks, with the lake beyond. Par14 package; Nic says these are good for now.
 tags: [build, places, look, playtest]
 ---
 
@@ -17,13 +17,13 @@ Nic has played it. His latest note keeps the small yellow flowers unchanged. It 
 
 The refuge approach is clearer. A continuous packaged check walks to the door, enters, leaves and returns. The arrival direction and the slow indoor exposure settle stay as Nic chose them.
 
+![Kai at the High Pass refuge porch beside stacked logs and a planter, with the dark mountain wall beyond. Par14 package.](../../assets/media/par14-refuge-approach.jpg)
+
 ![The refuge terrace above blue water, with a formed dark mountain arch and a graphic gold seam. Par14 packaged frame.](../../assets/media/par14-highpass-lake.jpg)
 
 The lake is blue water now, with a moving pattern. A separate review of the actual package frames supports that motion. The original timestamp-based test still failed because the required capture timestamps were missing. That result has not been painted green.
 
 The rocks have gained form, but the broad dark faces remain. The amber seam reads as a graphic mark rather than light. The water keeps regular scalloped edges. In Nic’s own views, nearby trees and walls still obstruct the vista, and there is little walkable descent. A better terrace picture does not settle what the whole route feels like.
-
-![Small yellow flower heads on stems between angular rocks, with the lake beyond. Par14 package; Nic says these are good for now.](../../assets/media/par14-highpass-flowers.jpg)
 
 The density stayed. The heads and stems changed. This is the part Nic has asked to leave alone.
 

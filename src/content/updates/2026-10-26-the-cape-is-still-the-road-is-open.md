@@ -19,8 +19,6 @@ The covered arm is held across the body in every state. At a run the cape can li
 
 The taupe cloak has become charcoal-violet. The darkest tests lost the folds; the chosen one keeps them. The hole in the hood has not acquired a face.
 
-![Kai facing the charcoal-violet Hooded Stranger in the Rusted Cog, with the talk prompt below.](../../assets/media/stranger-b11-kai.jpg)
-
 This is a frame from the packaged build. Nic asked for darker and more ominous. The new look is built and packaged; it is not accepted until Nic has judged it in play.
 
 ## A road made of boxes

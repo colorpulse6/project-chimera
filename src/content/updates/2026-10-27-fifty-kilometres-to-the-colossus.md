@@ -17,8 +17,6 @@ The arrival on the Long Road, after its painting. The lone peak is ahead, the am
 
 ![The Long Road painting: a dirt road through golden hills above a river and a stone bridge, a village by the water, broken arches on the far ridge.](../../assets/media/painting-long-road-v3.jpg)
 
-![The same arrival in world1: Kai small on the road, cypresses and a red-roofed house, the Arc’s spans on the right, a lone peak ahead and a tall pale shape in the clouds.](../../assets/media/world1-road-valley.jpg)
-
 ## Walking it
 
 Sixteen seconds on the road in world1, in four cuts: standing at the arrival, walking toward the peak, the low path at a run, and the bridge. In the last cut the Colossus is the tall shape in the cloud, left of the peak. It was recorded from the packaged build at a fixed step, fifteen frames a second, so it says nothing about frame rate.

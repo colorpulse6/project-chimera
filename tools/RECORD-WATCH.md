@@ -53,6 +53,13 @@ When in doubt, wait for the next run.
    `batch_2_3` as the pattern), with its own flag, and run only that flag with
    `~/.venvs/chimera-ml/bin/python tools/prep_media.py --<flag>`. Look at every
    frame you pick. Prefer the frames with Kai or a resident in them.
+   Choose a cover that shows this post's main change and is visually distinct
+   from the other update covers. A new build number alone does not make a cover distinct.
+   Review the covers together at thumbnail size. Use only frames from that
+   post's gated checkpoint, and do not repeat the cover in its article body.
+   `npm run build` checks for duplicate and near-duplicate cover compositions
+   and repeated local images inside posts. Fix flagged choices before publishing;
+   the image check complements the visual review and does not replace it.
 2. Data: `src/data/places.ts` (status `built` / `now` / `next`, frames),
    `src/data/characters.ts` (new residents: drawing, figure, face, one line of
    their own dialogue), `src/data/roadmap.ts`, and the home ledger in

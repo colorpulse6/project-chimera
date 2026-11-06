@@ -2,8 +2,8 @@
 title: A name and a household
 date: 2026-10-30T17:08:00+01:00
 summary: Nic names the settlement Keepers’ Cove. Par10 furnishes its household and softens the path joins. The internal package passed its checks; Nic has not played it.
-cover: ../../assets/media/par10-household-inside.jpg
-coverAlt: Kai faces shelves, folded cloth and a work table inside the household. Par10 packaged check.
+cover: ../../assets/media/par10-household-door.jpg
+coverAlt: Kai faces the household door, drying cloth and a loom, with the work table across the foreground. Par10 packaged check.
 tags: [build, places, look]
 ---
 
@@ -17,9 +17,9 @@ The name is in the project data. It is not yet in the packaged area picker: the 
 
 The household has a loom, shelves with pots and folded cloth, a work table, stools and washing hung across the room. Thirteen pieces were added. The hall was furnished first. This room has smaller work to do.
 
-Its interior setting is lighter than the hall’s. The packaged check enters the household and records the setting chosen for that door. The reviewer sees a warmer, lighter room too. The camera still takes time to settle its brightness after entering.
+![Kai faces shelves, folded cloth and a work table inside the household. Par10 packaged check.](../../assets/media/par10-household-inside.jpg)
 
-![Kai faces the household door. Drying cloth hangs to the left, a loom stands to the right, and the work table crosses the bottom of the view. Par10 packaged check.](../../assets/media/par10-household-door.jpg)
+Its interior setting is lighter than the hall’s. The packaged check enters the household and records the setting chosen for that door. The reviewer sees a warmer, lighter room too. The camera still takes time to settle its brightness after entering.
 
 The pale patch around the arch remains. Facing back toward the door, the table hides Kai’s feet. A shorter camera boom was tried in review and left out: it did not improve both directions. The room is furnished, not finished.
 

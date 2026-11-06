@@ -2,14 +2,16 @@
 title: The road has learned the colour of grass
 date: 2026-10-27T04:50:00-05:00
 summary: Five more Long Road builds. Golden ground, river bends, olive trees and longer shadows. The jump changed after Nic played. The latest scenery is packaged, with acceptance still open.
-cover: ../../assets/media/longroad6-arrival.jpg
-coverAlt: Kai on the road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.
+cover: ../../assets/media/longroad6-river.jpg
+coverAlt: Turquoise river water, reeds and pale arches, with the Arc behind the houses. Long Road 6 packaged build.
 tags: [build, places, characters]
 ---
 
 Yesterday the Long Road was green boxes. It has kept some of the boxes. The grass has learned another colour.
 
 Five more packages followed the first blockout. This is Long Road 6, built on 27 October. Its launch checks passed, the review found no missing assets, and Continue returned to the courtyard. It is built and packaged; it is not accepted until Nic has played it.
+
+![Kai on the road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.](../../assets/media/longroad6-arrival.jpg)
 
 ## After walking it
 
@@ -26,8 +28,6 @@ The roadside shelter has a roof. There are shoulder walls, river arches, quays, 
 ![Kai approaches three figures and a broken cart under an olive tree, with long shadows across the road.](../../assets/media/longroad6-repair.jpg)
 
 Then the work turned toward the paintings: golden ground, pale stone, lavender distance, olives and cypresses, a softer sky and longer shadows. The Arc reaches above the village. All the new frames here come from the sixth packaged build.
-
-![Turquoise river water, reeds and pale arches, with the Arc behind the houses.](../../assets/media/longroad6-river.jpg)
 
 The river bends now. Reeds and glints break up its surface. Some straight bank edges remain. The hollow and the ring are further behind: dressed and lit, but still made of stacked blocks that show themselves.
 

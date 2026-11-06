@@ -2,8 +2,8 @@
 title: A city at the end of the Salt Road
 date: 2026-11-05T23:59:00+01:00
 summary: Kai can reach the first Salt Road checkpoint. Kesler Pi waits ahead as a painted skyline, while the road still has too many lines of its own.
-cover: ../../assets/media/salt-road-cp1-arrival.jpg
-coverAlt: Kai on the stone-bordered Salt Road, pale ribs to the left and the dark Kesler Pi skyline ahead. Internal checkpoint 1.
+cover: ../../assets/media/salt-road-cp1-kesler-pi.jpg
+coverAlt: Kesler Pi as a static painted skyline above the dunes. The road’s border stones lead toward it. Checkpoint 1 package.
 tags: [build, world, playtest]
 ---
 
@@ -13,9 +13,9 @@ The first Salt Road checkpoint is packaged: about 1.2 kilometres of desert corri
 
 This is an internal Development build. The [public demo](/download/) is still 0.1.0. For now, the development picker is the only way onto the Salt Road; there is no walking link from the Opening Desert.
 
-## Kesler Pi
+![Kai on the stone-bordered Salt Road, pale ribs to the left and the dark Kesler Pi skyline ahead. Internal checkpoint 1.](../../assets/media/salt-road-cp1-arrival.jpg)
 
-![Kesler Pi as a static painted skyline above the dunes. The road’s border stones lead toward it. Checkpoint 1 package.](../../assets/media/salt-road-cp1-kesler-pi.jpg)
+## Kesler Pi
 
 Nic named the larger city Kesler Pi. It is separate from Zephyr, the smaller mobile refuge convoy. The selected city is a dark, patched mass buried in sand. No wheels, treads, legs or dust wake announce it.
 
