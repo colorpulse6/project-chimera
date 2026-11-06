@@ -565,7 +565,41 @@ def salt_road_checkpoint1():
         save(img, name)
 
 
+def salt_road_checkpoint2():
+    """CP2 packaged checks complete; reviewer PASS-with-findings, Nic on hold.
+
+    Full frames preserve the unfinished mouth and spur composition. Pin the
+    inspected bytes because the coordinator package directory can later rotate.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round2/package"
+    picks = [
+        ("salt", "C1-kai-eye.png", "salt-road-cp2-arrival", "43f547c1e6af75f7370f9293455a117f76312702862f5e99f671697dd9bc4762"),
+        ("salt", "KP-E3-threshold.png", "salt-road-cp2-threshold", "a1888d0818c9aaa7d084d52c53f719920fd222e9f81c796929e77e5d63333da6"),
+        ("walk", "09-threshold-push-07.png", "salt-road-cp2-mouth", "a6d06f3e2203bd1e7d6e52ff768343f071196c39e2ac0fea4810816d7ff56fed"),
+        ("walk", "10-threshold-end-back-view.png", "salt-road-cp2-spurs", "d0ae359fd78c14dee1acde6287f578fc1d41695382c270f7e6fe1b167febbccf"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        manifest = json.loads((evidence / "manifest.json").read_text())
+        assert result["complete"] and result["exit_code"] == 0
+        assert result["original_user_files_equal"]
+        frames = {row["frame"] for row in manifest["shots"]}
+        frames.update(Path(f["file"]).name for row in manifest["shots"] for f in row.get("frames", []))
+        assert manifest["complete"] and filename in frames
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--salt-road-checkpoint2" in sys.argv:
+    salt_road_checkpoint2()
+    sys.exit(0)
 if "--salt-road-checkpoint1" in sys.argv:
     salt_road_checkpoint1()
     sys.exit(0)

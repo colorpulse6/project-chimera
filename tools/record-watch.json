@@ -1,6 +1,6 @@
 {
-  "posted_through": "2026-11-05T21:20:00+01:00",
-  "note": "Posted Salt Road checkpoint 1 through coordinator REPORT 5 Nov 21:20: Nic 20:50 looks good for now, 21:00 continue; corrected 21:17 no-sheet picker PASS. Retained CP1 evidence in round2/prev/2228: package-salt C1-kai-eye/KP-mid and package-walk W04-to-x+0, inspected full 1600x900 frames, manifest membership and exit0/original-user-files-equal checked, SHA256 pins in prep_media.py. CP1 executable SHA256 0896ebd25cfe6d6a9e582df11a16f71cf859c681da02f7fbc6c350eae179fbe1 recorded. Sixteen straight corridor targets, no SEA/FALL; not human or bordered-trail steering. Earlier picker failures, composition gaps and parked suite failures retained. CP2 package exists but draft proof/review incomplete at this run: no frames or acceptance posted; cursor deliberately does not advance past it. Demo 0.1.0 unchanged.",
+  "posted_through": "2026-11-06T07:27:00+01:00",
+  "note": "Posted Salt Road CP2 through coordinator REPORT 6 Nov 07:27. Gate: Development archive plus completed private packaged checks (exit0, original_user_files_equal) and reviewer PASS-with-findings. Nic 07:25 acceptance explicitly on hold until his walk; commit/canon consent is not play acceptance. Four inspected full 1600x900 package frames: salt C1-kai-eye/KP-E3-threshold; walk 09-threshold-push-07/10-threshold-end-back-view; manifest membership, clean results and pinned SHA256 in prep_media.py. CP2 executable SHA256 427d533c131f99f56aa553d131ad7d60e31b5db1fa6c873675bec94f32050a7d recorded. Entry/return, 16 targets and centre push bounded; save occurs only after return to courtyard in private UserDir. Failed chain and corrected offline gate re-evaluations preserved. Lit lilac cap, spur/wall composition, pink bands, weak water, straight route/far crease remain. No interior, human walk, full boundary or performance acceptance; Demo 0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -111,6 +111,11 @@
       "date": "2026-11-05",
       "slug": "2026-11-05-a-city-at-the-end-of-the-salt-road",
       "covers": "Accepted Salt Road checkpoint 1 and Kesler Pi static skyline; corrected packaged picker and bounded corridor checks, composition limits; checkpoint 2 held pending completed verification"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "2026-11-06-the-road-stops-at-the-hull",
+      "covers": "Packaged CP2 buried spurs, hull threshold and improved Salt Road; recovered package checks and reviewer findings; Nic’s acceptance held pending his walk"
     }
   ]
 }

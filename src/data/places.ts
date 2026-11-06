@@ -1,6 +1,7 @@
-import saltArrival from '../assets/media/salt-road-cp1-arrival.jpg';
-import saltCity from '../assets/media/salt-road-cp1-kesler-pi.jpg';
-import saltCorridor from '../assets/media/salt-road-cp1-corridor.jpg';
+import saltArrival from '../assets/media/salt-road-cp2-arrival.jpg';
+import saltThreshold from '../assets/media/salt-road-cp2-threshold.jpg';
+import saltMouth from '../assets/media/salt-road-cp2-mouth.jpg';
+import saltSpurs from '../assets/media/salt-road-cp2-spurs.jpg';
 import par16Swept from '../assets/media/par16-b6-swept.jpg';
 import par16Reed from '../assets/media/par16-b7-reed-net.jpg';
 import par16Mending from '../assets/media/par16-b5-evening-mending.jpg';
@@ -125,14 +126,15 @@ export const places: Place[] = [
     slug: 'salt-road-trail',
     name: 'The Salt Road and Kesler Pi',
     status: 'now',
-    statusText: 'Internal checkpoint 1, packaged 5 November. Nic: “looks good for now.” Development picker access only; no new public demo.',
+    statusText: 'Checkpoint 2, built and packaged; reviewer PASS-with-findings, 6 November. Nic’s acceptance is on hold until his walk. Development picker access only; Demo 0.1.0 is unchanged.',
     image: saltArrival,
-    imageAlt: 'Kai on a stone-bordered desert trail, with pale ribs to the left and the dark Kesler Pi skyline ahead. Checkpoint 1.',
+    imageAlt: 'Kai on the Salt Road with broad pale arches on the left, palms on the right and the new hull wall ahead. Checkpoint 2.',
     frames: [
-      { src: saltCity, alt: 'The static painted Kesler Pi skyline above the dunes, beyond the stone-bordered road.', caption: 'Checkpoint 1 package, 5 November. The city is a painted skyline card here, with no moving parts or playable interior.' },
-      { src: saltCorridor, alt: 'Kai on sand beside the bordered trail during the automated westward walk.', caption: 'Checkpoint 1 package. Sixteen targets were reached on the straight corridor out and back. This frame shows why that does not establish steering along the bordered trail.' },
+      { src: saltThreshold, alt: 'The plated Kesler Pi hull and its blocked opening from twenty metres, with a pale patch inside.', caption: 'Checkpoint 2 package. The hull now ends the walk. The opening does not yet match its dark reference.' },
+      { src: saltMouth, alt: 'Kai at the stopping point facing a lit lilac recess and visible back wall.', caption: 'The actual centre push test. The blocker holds; the cap still reads as a lit alcove. Collision success does not accept the artwork.' },
+      { src: saltSpurs, alt: 'Looking east from the threshold along the trail, with four buried hull spurs on both sides.', caption: 'Checkpoint 2 package. Four spurs are visible from this end. This view shows the field, not a finished match to the skyline-and-spurs painting.' },
     ],
-    body: 'A first walkable Salt Road, about 1.2 kilometres toward Kesler Pi. Border stones and rope poles lead through warm sand; pale ribs stand to the left, with an oasis and a distant Colossus in the layout. The city is a static painted silhouette at this checkpoint. Nic chose the buried, patched mass and named it Kesler Pi, separate from the smaller Zephyr convoy. The corrected packaged F8 check reaches Salt Road without a save write. The automated walk reaches all sixteen corridor targets, out and back, without a sea catch or fall; no human free-walking acceptance is recorded. Hard ground outlines, rectangular bands, thin ribs and a weak oasis remain composition findings. The route is straight where its painting winds. The Opening Desert has no walkable connection to it yet, and the High Pass sightline and city marker remain parked. This entry records checkpoint 1; later exterior work is not claimed here.',
+    body: 'The Salt Road now reaches a near hull wall, past five buried spurs. The Kesler Pi threshold is an approach marker, not a destination in the picker, and the opening is blocked with no playable interior behind it. The packaged check enters Salt Road, returns to the courtyard, and saves only after that return. A separate automated walk reaches sixteen targets without a sea catch or fall; a twenty-second centre push stops at the mouth. These are bounded checks, not a human walk or proof against every side approach. Broad arches replace the thin ribs, hard corridor outlines are removed and the oasis palms and wall are easier to see. Pink bands, weak oasis water, the straight route and a far-view ground crease remain. The lit lilac cap and regular wall silhouette still differ from the paintings. The reviewer passed the playable checkpoint with findings; Nic has withheld acceptance until he walks it. Kesler Pi remains distinct from Zephyr. The Opening Desert has no walking link here, and the High Pass sightline and city marker remain parked.',
   },
   {
     slug: 'courtyard',
