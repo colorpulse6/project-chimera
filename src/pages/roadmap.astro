@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { done, now, next } from '../data/roadmap';
+const base = import.meta.env.BASE_URL;
 const groups = [
   ['built', 'Anchored', done, 'In the packaged build, or decided and written down, which here is the same thing.'],
   ['now', 'Weaving', now, 'The current batch, running as parallel streams: places, figures, game side, polish.'],
@@ -22,7 +23,7 @@ const groups = [
             <ul>
               {items.map((it) => (
                 <li>
-                  <strong>{it.text}</strong>
+                  <strong>{it.href ? <a href={base + it.href}>{it.text}</a> : it.text}</strong>
                   {it.detail && <span>{it.detail}</span>}
                 </li>
               ))}
