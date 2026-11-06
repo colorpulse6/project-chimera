@@ -1,3 +1,6 @@
+import hp1Terrace from '../assets/media/hp1-terrace.jpg';
+import hp1Stair from '../assets/media/hp1-stair-escape.jpg';
+import hp1Lookout from '../assets/media/hp1-lookout-drop.jpg';
 import saltArrival from '../assets/media/salt-road-cp2-arrival.jpg';
 import saltThreshold from '../assets/media/salt-road-cp2-threshold.jpg';
 import saltMouth from '../assets/media/salt-road-cp2-mouth.jpg';
@@ -119,6 +122,7 @@ export type Place = {
   frames?: { src: ImageMetadata; alt: string; caption: string }[];
   painting?: ImageMetadata;
   body: string;
+  development: { status: string; notes: string[] };
 };
 
 export const places: Place[] = [
@@ -126,7 +130,7 @@ export const places: Place[] = [
     slug: 'salt-road-trail',
     name: 'The Salt Road and Kesler Pi',
     status: 'now',
-    statusText: 'Checkpoint 2, built and packaged; reviewer PASS-with-findings, 6 November. Nic’s acceptance is on hold until his walk. Development picker access only; Demo 0.1.0 is unchanged.',
+    statusText: "Internal build. Awaiting Nic’s playtest; no playable interior.",
     image: saltArrival,
     imageAlt: 'Kai on the Salt Road with broad pale arches on the left, palms on the right and the new hull wall ahead. Checkpoint 2.',
     frames: [
@@ -134,13 +138,22 @@ export const places: Place[] = [
       { src: saltMouth, alt: 'Kai at the stopping point facing a lit lilac recess and visible back wall.', caption: 'The actual centre push test. The blocker holds; the cap still reads as a lit alcove. Collision success does not accept the artwork.' },
       { src: saltSpurs, alt: 'Looking east from the threshold along the trail, with four buried hull spurs on both sides.', caption: 'Checkpoint 2 package. Four spurs are visible from this end. This view shows the field, not a finished match to the skyline-and-spurs painting.' },
     ],
-    body: 'The Salt Road now reaches a near hull wall, past five buried spurs. The Kesler Pi threshold is an approach marker, not a destination in the picker, and the opening is blocked with no playable interior behind it. The packaged check enters Salt Road, returns to the courtyard, and saves only after that return. A separate automated walk reaches sixteen targets without a sea catch or fall; a twenty-second centre push stops at the mouth. These are bounded checks, not a human walk or proof against every side approach. Broad arches replace the thin ribs, hard corridor outlines are removed and the oasis palms and wall are easier to see. Pink bands, weak oasis water, the straight route and a far-view ground crease remain. The lit lilac cap and regular wall silhouette still differ from the paintings. The reviewer passed the playable checkpoint with findings; Nic has withheld acceptance until he walks it. Kesler Pi remains distinct from Zephyr. The Opening Desert has no walking link here, and the High Pass sightline and city marker remain parked.',
+    body: "A desert trail past buried hull fragments to Kesler Pi’s outer wall. The entrance is blocked; the city cannot be explored yet.",
+    development: {
+      status: "Checkpoint 2, built and packaged; reviewer PASS-with-findings, 6 November. Nic’s acceptance is on hold until his walk. Development picker access only; Demo 0.1.0 is unchanged.",
+      notes: [
+        "The Salt Road now reaches a near hull wall, past five buried spurs. The Kesler Pi threshold is an approach marker, not a destination in the picker, and the opening is blocked with no playable interior behind it. The packaged check enters Salt Road, returns to the courtyard, and saves only after that return.",
+        "A separate automated walk reaches sixteen targets without a sea catch or fall; a twenty-second centre push stops at the mouth. These are bounded checks, not a human walk or proof against every side approach. Broad arches replace the thin ribs, hard corridor outlines are removed and the oasis palms and wall are easier to see.",
+        "Pink bands, weak oasis water, the straight route and a far-view ground crease remain. The lit lilac cap and regular wall silhouette still differ from the paintings. The reviewer passed the playable checkpoint with findings; Nic has withheld acceptance until he walks it.",
+        "Kesler Pi remains distinct from Zephyr. The Opening Desert has no walking link here, and the High Pass sightline and city marker remain parked.",
+      ],
+    },
   },
   {
     slug: 'courtyard',
     name: 'The courtyard',
     status: 'built',
-    statusText: 'In the build. The first place, where every look test happens.',
+    statusText: "Playable in the public demo.",
     image: streetArrival,
     imageAlt: 'Kai walks into the courtyard with the five townsfolk standing around the well and the shop.',
     painting: pCourtyard,
@@ -150,13 +163,19 @@ export const places: Place[] = [
       { src: shopCorner, alt: 'Kai and the Shopkeeper at the shop corner under the blue awning.', caption: 'The shop corner, where the look was decided.' },
       { src: shopWide, alt: 'Wide view of the shop front and the arched gate.', caption: 'Shop front and the gate to the street.' },
     ],
-    body: 'A square of pale paving with a well, a clock tower, a rose-plaster shop under a blue awning and a tree in a stone planter. The whole town starts here; the painting of it was the first asset, and the Unreal courtyard is built to match it.',
+    body: "Havenwood begins around a well, clock tower and rose-coloured shop. A round tree shades the square.",
+    development: {
+      status: "In the build. The first place, where every look test happens.",
+      notes: [
+        "A square of pale paving with a well, a clock tower, a rose-plaster shop under a blue awning and a tree in a stone planter. The whole town starts here; the painting of it was the first asset, and the Unreal courtyard is built to match it.",
+      ],
+    },
   },
   {
     slug: 'street',
     name: 'The street',
     status: 'built',
-    statusText: 'In the build since 21 October. Built from the modular town kit.',
+    statusText: "Public demo street. Newer resident routines are in development.",
     image: streetCentre,
     imageAlt: 'A quiet street with a tree in a planter, an arched door with steps, and a lantern on a post.',
     frames: [
@@ -165,13 +184,20 @@ export const places: Place[] = [
       { src: streetLane, alt: 'A lane opening into the street with a tree and shuttered windows.', caption: 'Lane into the street.' },
       { src: streetBack, alt: 'Looking back along the street toward the gate.', caption: 'Looking back toward the gate.' },
     ],
-    body: 'The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit. The lane, the harbour, the church square and the hill village were built the same way. Internal par16 B3 adds Tom and Anna’s street exchange and the Child’s short walk between Rowan and Aldric, retained in later checkpoints. B6 adds eight shutter leaves to four existing window frames: open by day and closed at dusk. The original frames and collision stay unchanged; next-day behavior still needs an audit.',
+    body: "A quiet street of plaster houses, arched doors and planted trees. Residents meet here, and the town continues downhill toward the sea.",
+    development: {
+      status: "In the build since 21 October. Built from the modular town kit.",
+      notes: [
+        "The first place made from the kit: a set of seventeen wall, door, step and planter pieces that snap to a one-metre grid, so new places can be laid out as a small text file instead of modelled one at a time. The street proved the kit. The lane, the harbour, the church square and the hill village were built the same way.",
+        "Internal par16 B3 adds Tom and Anna’s street exchange and the Child’s short walk between Rowan and Aldric, retained in later checkpoints. B6 adds eight shutter leaves to four existing window frames: open by day and closed at dusk. The original frames and collision stay unchanged; next-day behavior still needs an audit.",
+      ],
+    },
   },
   {
     slug: 'seaside-lane',
     name: 'Seaside lane',
     status: 'built',
-    statusText: 'In the build since 22 October. The way down from the courtyard to the water.',
+    statusText: "Playable in the public demo.",
     image: fLaneArrival,
     imageAlt: 'The lane from the courtyard end: pale and ochre house fronts, a blue awning, the sea at the bottom.',
     painting: pLane,
@@ -179,13 +205,20 @@ export const places: Place[] = [
       { src: fLaneKai, alt: 'Kai walking down the lane toward the sea.', caption: 'Kai going down. The sea is always at the end of it.' },
       { src: fLaneLookingBack, alt: 'Looking back up the lane steps toward the courtyard clock tower.', caption: 'Looking back up the steps to the courtyard.' },
     ],
-    body: 'A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay at the end. It drops about three metres and joins the courtyard to the harbour on one continuous map, no loading. Innkeeper Rowan stands at the arched door, Frida on a doorstep with her plums, Grandmother Edith on a step in the earlier build. The internal par16 B2 preview moves Edith to the church terrace.',
+    body: "A stepped lane links the courtyard to the harbour, with pale house fronts, doorsteps and a strip of sea ahead.",
+    development: {
+      status: "In the build since 22 October. The way down from the courtyard to the water.",
+      notes: [
+        "A broad descending passage with pale and ochre house fronts, an arched door, doorsteps, and the bay at the end. It drops about three metres and joins the courtyard to the harbour on one continuous map, no loading. Innkeeper Rowan stands at the arched door, Frida on a doorstep with her plums, Grandmother Edith on a step in the earlier build.",
+        "The internal par16 B2 preview moves Edith to the church terrace.",
+      ],
+    },
   },
   {
     slug: 'harbour',
     name: 'The harbour',
     status: 'built',
-    statusText: 'In the build since 22 October, with quay, water and boat pieces added to the kit.',
+    statusText: "Playable in the public demo.",
     image: fHarbourQuay,
     imageAlt: 'The harbour quay with bollards and a lantern, the lavender headland across the bay.',
     painting: pHarbour,
@@ -195,13 +228,20 @@ export const places: Place[] = [
       { src: fHarbourKai, alt: 'Kai on the quay beside the harbour house, the bay behind.', caption: 'Kai on the quay.' },
       { src: fSeaQuayPath, alt: 'The quay corner with Old Reed by the wall and the coast path climbing to the church terrace.', caption: 'From the quay the coast path climbs to the church square. Old Reed keeps the corner.' },
     ],
-    body: 'The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat in the earlier build; internal B7 moves the same actor to a short net-carry route on the Cove jetty. Sal carries crates between the quay and the foot of the lane. A ramped coast path climbs from here to the church square.',
+    body: "A small quay with a moored boat, residents and a view across the bay. The coast path climbs from here toward the chapel.",
+    development: {
+      status: "In the build since 22 October, with quay, water and boat pieces added to the kit.",
+      notes: [
+        "The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat in the earlier build; internal B7 moves the same actor to a short net-carry route on the Cove jetty. Sal carries crates between the quay and the foot of the lane.",
+        "A ramped coast path climbs from here to the church square.",
+      ],
+    },
   },
   {
     slug: 'church-square',
     name: 'Church square',
     status: 'built',
-    statusText: 'In the build since 22 October. Internal B6 adds visible local cleaning; B7 seats the Old Man on the original bench. Reviewed limited Development checkpoints, 4 November. Wider routines remain open. Demo 0.1.0 is unchanged.',
+    statusText: "Public demo square. Newer resident routines are in development.",
     image: fChurchPainting,
     imageAlt: 'The church square: a small white chapel with a bell gable and a navy arched door, a round tree, the headland across the bay.',
     painting: pChurch,
@@ -215,13 +255,21 @@ export const places: Place[] = [
       { src: fChurchHeadland, alt: 'The lavender headland across the bay, seen over the curved parapet of the lookout.', caption: 'The lookout. Something stands on the headland. Tom has heard about lights.' },
       { src: fChurchKai, alt: 'Kai on the terrace, cape blowing, the headland and the sea beyond.', caption: 'Kai on the terrace.' },
     ],
-    body: 'An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walked here in the earlier build, repeating what he had heard. The internal par16 B2 preview brings Edith onto the terrace with a broom and checks Tom’s short walk. The same residents have a little more to do; their full daily routines are unfinished. B3 later moves Tom to the street conversation preview. B6 makes Edith’s local dirt patch visibly clear. B7 seats the Old Man on the original bench, with a response to the genuine cart repair and move. Later approach checks cover only the travelled player corridors, with view assistance and failed attempts disclosed.',
+    body: "A terrace above the bay, with a white chapel, benches and a curved lookout. The town’s residents have a little more to do here.",
+    development: {
+      status: "In the build since 22 October. Internal B6 adds visible local cleaning; B7 seats the Old Man on the original bench. Reviewed limited Development checkpoints, 4 November. Wider routines remain open. Demo 0.1.0 is unchanged.",
+      notes: [
+        "An open lookout over the bay with a small chapel, a round clipped tree, benches and a curved parapet. It is built from the painting, on a terrace above the sea, and reached on foot up the coast path from the harbour. Tom walked here in the earlier build, repeating what he had heard.",
+        "The internal par16 B2 preview brings Edith onto the terrace with a broom and checks Tom’s short walk. The same residents have a little more to do; their full daily routines are unfinished. B3 later moves Tom to the street conversation preview.",
+        "B6 makes Edith’s local dirt patch visibly clear. B7 seats the Old Man on the original bench, with a response to the genuine cart repair and move. Later approach checks cover only the travelled player corridors, with view assistance and failed attempts disclosed.",
+      ],
+    },
   },
   {
     slug: 'hill-village',
     name: 'Hill village',
     status: 'built',
-    statusText: 'In the build since 22 October. The highest place in the town so far.',
+    statusText: "Playable in the public demo.",
     image: fVillageAnna,
     imageAlt: 'Anna standing by a stone fountain basin against the end parapet, the sea beyond.',
     painting: pHill,
@@ -231,13 +279,20 @@ export const places: Place[] = [
       { src: fVillageKai, alt: 'Kai walking toward the basin and Anna, the sea beyond the parapet.', caption: 'Kai in the village.' },
       { src: fSeaVillage, alt: 'The hill village from the sea: walls on a rocky shore, gable houses and a round tree above.', caption: 'From the sea, 24 October. The walls stand on rock now, not straight out of the water.' },
     ],
-    body: 'Past the chapel, a stair climbs to a small square of gable houses on a causeway in the sea, with a fountain basin against the end parapet. Anna watched the flowers by the basin in the earlier build; internal B3 moves her into the street conversation preview. The Old Man moved up here from the courtyard and had a doorstep in that earlier build. Internal B7 seats him on the church square bench.',
+    body: "Past the chapel, a long stair leads to a small square of gabled houses and a fountain, high above the sea.",
+    development: {
+      status: "In the build since 22 October. The highest place in the town so far.",
+      notes: [
+        "Past the chapel, a stair climbs to a small square of gable houses on a causeway in the sea, with a fountain basin against the end parapet. Anna watched the flowers by the basin in the earlier build; internal B3 moves her into the street conversation preview. The Old Man moved up here from the courtyard and had a doorstep in that earlier build.",
+        "Internal B7 seats him on the church square bench.",
+      ],
+    },
   },
   {
     slug: 'chapel',
     name: 'The chapel',
     status: 'built',
-    statusText: 'In the build since 24 October. Passed at its second look.',
+    statusText: "Built and reviewed. Newer bell gestures are in development.",
     image: fChapelKai,
     imageAlt: 'Kai from behind in the chapel aisle, benches either side, the arched window at the end.',
     painting: pChapel,
@@ -246,13 +301,20 @@ export const places: Place[] = [
       { src: fChapelRoom, alt: 'The chapel from the door: an aisle of warm light, benches, lavender floor, the window over the altar block.', caption: 'From the door, the way the painting sees it.' },
       { src: fChapelBenches, alt: 'Benches from the side, the sun patch on the floor, the altar block under the window.', caption: 'The sun comes in through the one window.' },
     ],
-    body: 'A small dim room behind the chapel door on the church square, with benches, an altar block and one tall window facing the late sun. It was the first door in the game that opens: a short fade to black and Kai is inside. Its walls first came out cream; the polish round warmed them toward the painting. Father Silas stands in here now. Internal B7 adds a quiet bell gesture with pause and Reduce motion checks. It does not establish rope grip or complete bystander reactions.',
+    body: "A small, warm chapel behind a navy door, with rows of benches and one window facing the late sun. Father Silas is inside.",
+    development: {
+      status: "In the build since 24 October. Passed at its second look.",
+      notes: [
+        "A small dim room behind the chapel door on the church square, with benches, an altar block and one tall window facing the late sun. It was the first door in the game that opens: a short fade to black and Kai is inside. Its walls first came out cream; the polish round warmed them toward the painting.",
+        "Father Silas stands in here now. Internal B7 adds a quiet bell gesture with pause and Reduce motion checks. It does not establish rope grip or complete bystander reactions.",
+      ],
+    },
   },
   {
     slug: 'rusted-cog',
     name: 'The Rusted Cog',
     status: 'built',
-    statusText: 'In the build since 24 October. Nic: fine for now.',
+    statusText: "Built. Nic’s verdict: fine for now.",
     image: fCogRoom,
     imageAlt: 'The tavern: a coral hearth with a cog wheel above it, teal beams, a bar with stools, an arch to the sunlit yard.',
     painting: pCog,
@@ -261,13 +323,20 @@ export const places: Place[] = [
       { src: fCogHearth, alt: 'The hearth with a pot hanging in it and the retired mill wheel above.', caption: 'The mill wheel retired over the hearth.' },
       { src: fCogKai, alt: 'Kai from behind inside the tavern, tables and the bar ahead.', caption: 'Kai inside. Old Ferris and the Hooded Stranger are here too.' },
     ],
-    body: 'A cooper\'s store that kept its hearth and its habit of receiving anyone who needed to sit down. The third interior: a coral hearth with the old mill wheel above it, dark teal beams, a bar with stools and a barrel, a niche of vessels, side tables. Greta keeps it. Old Ferris and the Hooded Stranger sit in it.',
+    body: "Greta’s tavern has a coral hearth, teal beams, a bar and tables for anyone who needs a rest. Old Ferris and the Hooded Stranger sit here.",
+    development: {
+      status: "In the build since 24 October. Nic: fine for now.",
+      notes: [
+        "A cooper's store that kept its hearth and its habit of receiving anyone who needed to sit down. The third interior: a coral hearth with the old mill wheel above it, dark teal beams, a bar with stools and a barrel, a niche of vessels, side tables. Greta keeps it.",
+        "Old Ferris and the Hooded Stranger sit in it.",
+      ],
+    },
   },
   {
     slug: 'dyers-steps',
     name: 'Dyers\' Steps',
     status: 'built',
-    statusText: 'In the build since 24 October. Passed at its second look.',
+    statusText: "Built and reviewed.",
     image: fDyersCourt,
     imageAlt: 'The stepped court in sun: a drying frame with indigo and coral cloths, a clay vat, a clipped tree, an arch.',
     painting: pDyers,
@@ -276,13 +345,20 @@ export const places: Place[] = [
       { src: fDyersVats, alt: 'Two dye vats, terracotta and ochre, under hanging indigo, coral and cream cloths and a loom.', caption: 'The vats, the cloths and the loom.' },
       { src: fDyersTerrace, alt: 'The court\'s buildings from the church terrace across the water, a stair down to the quay.', caption: 'From the church terrace across the water.' },
     ],
-    body: 'A textile court off the seaside lane, on the old Market Row, where cloth hangs to dry in the colours the town wears. Steps, a drying frame, dye vats, a loom, pots and plants. The second look added the plants, more cloth and a deeper indigo. The arch still looks onto rocks and a wall instead of down to the town.',
+    body: "Cloth dries above a stepped court of dye vats, a loom and potted plants. Indigo and coral carry the town’s colours through the lane.",
+    development: {
+      status: "In the build since 24 October. Passed at its second look.",
+      notes: [
+        "A textile court off the seaside lane, on the old Market Row, where cloth hangs to dry in the colours the town wears. Steps, a drying frame, dye vats, a loom, pots and plants. The second look added the plants, more cloth and a deeper indigo.",
+        "The arch still looks onto rocks and a wall instead of down to the town.",
+      ],
+    },
   },
   {
     slug: 'shop',
     name: 'Inside the shop',
     status: 'built',
-    statusText: 'In the build since 24 October. Built and packaged; not accepted until Nic has played it.',
+    statusText: "Built and packaged; awaiting Nic’s playtest.",
     image: fShopKai,
     imageAlt: 'Kai from behind inside the shop: coral walls, a pale counter, shelves of pots, a window on the right.',
     painting: pShop,
@@ -290,13 +366,19 @@ export const places: Place[] = [
       { src: fShopDoor, alt: 'The shop door open under its stone arch, shelves of jars inside.', caption: 'Through the door under the awning.' },
       { src: fShopRoom, alt: 'The shop interior from the door: the counter, the bell, shelves of jars and a bottle.', caption: 'The bell on the counter has no clapper.' },
     ],
-    body: 'Through the door under the awning. Coral walls, a pale counter with a bell, two shelves of jars and bottles, and one bright window. The second interior, built the way the chapel was.',
+    body: "Behind the shop’s blue awning: coral walls, shelves of jars and a pale counter with a bell.",
+    development: {
+      status: "In the build since 24 October. Built and packaged; not accepted until Nic has played it.",
+      notes: [
+        "Through the door under the awning. Coral walls, a pale counter with a bell, two shelves of jars and bottles, and one bright window. The second interior, built the way the chapel was.",
+      ],
+    },
   },
   {
     slug: 'lumina-garden',
     name: 'Lumina\'s still garden',
     status: 'built',
-    statusText: 'In the build since 24 October. Built and packaged; not accepted until Nic has played it.',
+    statusText: "Built and packaged; awaiting Nic’s playtest.",
     image: fGardenKai,
     imageAlt: 'Kai from behind in the walled rooftop garden: flower beds, a bench, a potted plant, the headland across the bay.',
     painting: pGarden,
@@ -305,13 +387,19 @@ export const places: Place[] = [
       { src: fGardenFountain, alt: 'The garden from the ladder: a dry stone fountain, flower beds, a bench by the far wall.', caption: 'The dry fountain.' },
       { src: fGardenView, alt: 'Rooftops below the garden wall and the lavender headland across the blue bay.', caption: 'The view out, over the town.' },
     ],
-    body: 'The walled rooftop garden where Kai wakes in the story: a stone bench, a dry fountain, beds of blue flowers, potted plants, and the bay over the wall. It is reached from the street, through a rose-coloured door, up an alley of steps and a ladder. It belongs to the Lumina estate, and the estate is still shut.',
+    body: "A quiet rooftop garden with a dry fountain, blue flowers and a view across the bay. Kai wakes here in the story.",
+    development: {
+      status: "In the build since 24 October. Built and packaged; not accepted until Nic has played it.",
+      notes: [
+        "The walled rooftop garden where Kai wakes in the story: a stone bench, a dry fountain, beds of blue flowers, potted plants, and the bay over the wall. It is reached from the street, through a rose-coloured door, up an alley of steps and a ladder. It belongs to the Lumina estate, and the estate is still shut.",
+      ],
+    },
   },
   {
     slug: 'estate-approach',
     name: 'The estate approach',
     status: 'built',
-    statusText: 'In the build since 25 October. Nic accepted it.',
+    statusText: "Built and accepted. The estate remains closed.",
     image: fEstateFoot,
     imageAlt: 'The road from below: tiers of retaining walls with lamps, cypresses and the estate house at the top.',
     painting: pEstate,
@@ -320,13 +408,20 @@ export const places: Place[] = [
       { src: fEstateViewBack, alt: 'From the gate, the parapet and the town and sea beyond.', caption: 'The view back from the gate.' },
       { src: fEstateGateLine, alt: 'Kai at the shut gate. A line reads: The Lumina Estate is home to the region\'s nobility. You have no business here... yet.', caption: 'The gate stays shut.' },
     ],
-    body: 'A road from the top of the town up to the Lumina gate, between retaining walls and formal stonework, with lamps, a statue in an alcove, cypresses and a view back over the bay. It was built from one of three paintings. The gate stays shut. Try it and a line says you have no business here, yet. It is the first thing in the game Kai cannot do.',
+    body: "A climbing road of retaining walls, lamps and cypresses ends at the Lumina estate. The gate stays shut.",
+    development: {
+      status: "In the build since 25 October. Nic accepted it.",
+      notes: [
+        "A road from the top of the town up to the Lumina gate, between retaining walls and formal stonework, with lamps, a statue in an alcove, cypresses and a view back over the bay. It was built from one of three paintings. The gate stays shut.",
+        "Try it and a line says you have no business here, yet. It is the first thing in the game Kai cannot do.",
+      ],
+    },
   },
   {
     slug: 'opening-desert',
     name: 'The opening desert',
     status: 'now',
-    statusText: 'Internal par14, 1 November: crest dust, camera tremors and Reduce motion are packaged. Nic reports missing shake; mouse input remains unresolved. Development only.',
+    statusText: "Internal prototype. Effects and controls still need work.",
     image: fPar12Desert,
     imageAlt: 'Kai on sand marked with pale strokes, facing broken dunes and a flat city silhouette under an amber sky. Par12 package.',
     frames: [
@@ -334,14 +429,23 @@ export const places: Place[] = [
       { src: fDesertKai, alt: 'Kai from behind on the sand, facing the shape on the ridge.', caption: 'The earlier arrival with Kai, 26 October.' },
       { src: fDesertRocks, alt: 'Tall terracotta rocks, Kai small beside them.', caption: 'The rocks in the first desert package, 26 October.' },
     ],
-    body: 'Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from town on the same map. The broken ridge, amber sky and sand strokes remain. Par14 adds three crest-dust pulses after a quiet interval of forty to seventy seconds, with subtle camera shake. Reduce motion suppresses the shake while keeping the dust. Package checks show the effect and preference persistence, but Nic later reported missing shake. Current logs show dust pulses after the setting was turned off; they do not prove what his camera displayed. A measured pulse gap at 1280 by 720 exceeded its limit; the passing timing test at 960 by 540 does not fix that failure. Mouse input and quiet performance remain open. No footprints or story sequence yet.',
+    body: "The game’s planned opening: Kai crosses amber dunes before waking in Havenwood. A small desert prototype is walkable; the story sequence is still to come.",
+    development: {
+      status: "Internal par14, 1 November: crest dust, camera tremors and Reduce motion are packaged. Nic reports missing shake; mouse input remains unresolved. Development only.",
+      notes: [
+        "Where the game will begin: Kai walking in a desert until he falls, before he wakes in the garden. A small walkable patch of sand, rocks, dry shrubs and dunes, 7.4 kilometres from town on the same map. The broken ridge, amber sky and sand strokes remain.",
+        "Par14 adds three crest-dust pulses after a quiet interval of forty to seventy seconds, with subtle camera shake. Reduce motion suppresses the shake while keeping the dust. Package checks show the effect and preference persistence, but Nic later reported missing shake.",
+        "Current logs show dust pulses after the setting was turned off; they do not prove what his camera displayed. A measured pulse gap at 1280 by 720 exceeded its limit; the passing timing test at 960 by 540 does not fix that failure. Mouse input and quiet performance remain open.",
+        "No footprints or story sequence yet.",
+      ],
+    },
   },
 
   {
     slug: 'long-road',
     name: 'The Long Road',
     status: 'now',
-    statusText: 'Walkable from the harbour in Demo 0.1.0. Nic said par7 looked good on 28 October. Internal par11 and par12 add a breeze after the ford victory and route flags that survive Quit and Continue. Packaged checks passed; Nic’s acceptance remains open. These changes are not in Demo 0.1.0.',
+    statusText: "Public demo route. Newer wind and save changes are internal.",
     image: fLongRoadArrival,
     imageAlt: 'Kai on a road through golden hills, cypress trees and pale houses, with the Arc and lavender ranges beyond.',
     frames: [
@@ -353,22 +457,38 @@ export const places: Place[] = [
       { src: fLongRoadHollow, alt: 'Kai above a rectangular pool inside stacked stone walls, surrounded by golden grass.', caption: 'The hollow: warmer light, but the stacked blocks still read as a quarry. Not finished scenery.' },
       { src: fLongRoad, alt: 'Kai at the Long Road arrival in the first packaged blockout.', caption: 'Before: the first package, 26 October. Movement and layout were accepted as a base.' },
     ],
-    body: 'An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return. The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par7 brought wind in the grass, reeds and trees, shore wrack and regional weather blending. Nic tested it and said it looked good. Par9 adds river bands that drift and break with the wind; their motion is visible in packaged captures. The town stays calm and overcast is a development option. Par11 and par12 retain that motion and add the first weather response: one ford victory eases the wind to a breeze over thirty seconds. The cleared flag and breeze survive Quit and Continue; New game restores the wind. Enemies still return after Continue even when the breeze remains. Continue restores saved campaign positions and route flags; par12 also removes a stale place card when restoring between places. The development area picker keeps its travel out of the campaign save. These are checked internal packages, not Nic’s acceptance or a new public demo.',
+    body: "A road through golden hills, river crossings and a small village. Repair a cart, find a hidden hollow, and return to Havenwood along the coast road.",
+    development: {
+      status: "Walkable from the harbour in Demo 0.1.0. Nic said par7 looked good on 28 October. Internal par11 and par12 add a breeze after the ford victory and route flags that survive Quit and Continue. Packaged checks passed; Nic’s acceptance remains open. These changes are not in Demo 0.1.0.",
+      notes: [
+        "An exploration loop, 245 by 140 metres: two branches, three river crossings, a cart to repair, a hidden hollow and a return to the village. The boxes have gained stone walls, houses, olives, cypresses, grass and longer shadows. The winch, seal and cart react, and residents have lines for the return.",
+        "The coast road now joins it to the harbour, without a fade or menu. Nic played the demo candidate and asked for further movement, resident and sea work. Par7 brought wind in the grass, reeds and trees, shore wrack and regional weather blending.",
+        "Nic tested it and said it looked good. Par9 adds river bands that drift and break with the wind; their motion is visible in packaged captures. The town stays calm and overcast is a development option.",
+        "Par11 and par12 retain that motion and add the first weather response: one ford victory eases the wind to a breeze over thirty seconds. The cleared flag and breeze survive Quit and Continue; New game restores the wind. Enemies still return after Continue even when the breeze remains.",
+        "Continue restores saved campaign positions and route flags; par12 also removes a stale place card when restoring between places. The development area picker keeps its travel out of the campaign save. These are checked internal packages, not Nic’s acceptance or a new public demo.",
+      ],
+    },
   },
   {
     slug: 'coast-road',
     name: 'The coast road',
     status: 'built',
-    statusText: 'In Demo 0.1.0, released 27 October. The frame below is from the later par2 Development package.',
+    statusText: "Playable in the public demo. Shown here in a later internal build.",
     image: fPar2Causeway,
     imageAlt: 'Kai on a long pale causeway over blue water, with golden hills and a small settlement ahead.',
-    body: 'A 1.16 kilometre causeway from the east edge of the harbour quay, through a gate and out to the Long Road. The packaged walk goes from the quay to the road and back without a fade, door or menu. Nic found the journey long in the demo candidate; a pass through the route is not the same as a settled travel design.',
+    body: "A long causeway links the harbour to the Long Road, with open water on either side. The walk is continuous.",
+    development: {
+      status: "In Demo 0.1.0, released 27 October. The frame below is from the later par2 Development package.",
+      notes: [
+        "A 1.16 kilometre causeway from the east edge of the harbour quay, through a gate and out to the Long Road. The packaged walk goes from the quay to the road and back without a fade, door or menu. Nic found the journey long in the demo candidate; a pass through the route is not the same as a settled travel design.",
+      ],
+    },
   },
   {
     slug: 'cove-settlement',
     name: 'Keepers’ Cove',
     status: 'now',
-    statusText: 'Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.',
+    statusText: "Internal build. Interiors and paths still need review.",
     image: fPar9Settlement,
     frames: [
       { src: fPar14Lantern, alt: 'Kai in the household, with a lantern lighting a small patch of wall and floor beside the shelves.', caption: 'Par14 package. The household lantern now casts a local warm pool; the existing indoor exposure settle is retained.' },
@@ -381,16 +501,31 @@ export const places: Place[] = [
       { src: fPar2Settlement, alt: 'Kai on the jetty facing the earlier settlement blockout.', caption: 'Before: par2, early on 28 October, before the sea treatment and ground wash.' },
     ],
     imageAlt: 'The settlement from the ridge: pale houses, red roofs, terraces and a long jetty across blue water.',
-    body: 'Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents. Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors. The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools. Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door. Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside. Par14 adds a real warm light pool from the household lantern, verified in matched on/off package views. That does not accept every furnishing or surface. Internal par16 B5 adds the courtyard Well Woman’s evening mending in this household. The same actor changes location out of view and returns to the well; ordinary door entry and the selected exposure settle passed. This is a limited routine, with prototype hand and cloth fit. B7 brings the existing Old Reed to the jetty with a small net sling. The reviewed short carry route retains his body and walking clips; the proposed longer route is not in B8.',
+    body: "A small settlement below the ridge, with a jetty, terraced houses, a hall and a household. Paths and warm interiors are taking shape.",
+    development: {
+      status: "Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.",
+      notes: [
+        "Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents.",
+        "Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors.",
+        "The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools.",
+        "Its interior setting is lighter than the hall’s. The path joins are shortened, though the reviewer could barely distinguish the change from the ridge. A pale patch remains around the household door.",
+        "Its five figures and their dialogue are still stand-ins. The par12 packaged interior checks passed. After playing par13, Nic kept the delayed downward exposure settle inside.",
+        "Par14 adds a real warm light pool from the household lantern, verified in matched on/off package views. That does not accept every furnishing or surface. Internal par16 B5 adds the courtyard Well Woman’s evening mending in this household.",
+        "The same actor changes location out of view and returns to the well; ordinary door entry and the selected exposure settle passed. This is a limited routine, with prototype hand and cloth fit. B7 brings the existing Old Reed to the jetty with a small net sling.",
+        "The reviewed short carry route retains his body and walking clips; the proposed longer route is not in B8.",
+      ],
+    },
   },
   {
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: 'Internal par14, packaged and played, 1 November. Nic says the small yellow flowers are good for now. The dark cliffs, near obstructions and limited descent still need work; no public walking route leads here.',
-    image: fPar14Lake,
-    imageAlt: 'The refuge terrace above blue lake water, with a dark formed mountain arch and a graphic gold seam. Par14 package.',
+    statusText: "Internal preview. The full walk failed review; not accepted by Nic.",
+    image: hp1Terrace,
+    imageAlt: 'HP-1 refuge terrace above the blue lake, with a bare tree and broad dark arch. Packaged preview, 6 November.',
     frames: [
+      { src: hp1Stair, alt: 'Kai on the open hillside beyond the intended stair stop.', caption: 'HP-1 failed walk: the twenty-second push slips around the stair stop. Solid ground beyond it does not make this a safe boundary.' },
+      { src: hp1Lookout, alt: 'The rock and slab face obstruct the view after the lookout drop.', caption: 'HP-1 failed walk: roughly two metres down, with several return targets missed before recovery. No permanent trap was proved.' },
       { src: rexHighPass, alt: 'Kai and Rex beside the first High Pass steps below the refuge.', caption: 'Game23, 3 November. A short diagnostic pilot with a clean launch and exit. Rex moved from arrival; full descent and ascent remain unproved.' },
       { src: rexRefugeReturn, alt: 'Rex behind Kai on the refuge porch after leaving through the door.', caption: 'Par15 A2 package, 2 November. A reviewed door return with Rex; not proof of a complete descent or unrestricted following.' },
       { src: fPar14Refuge, alt: 'Kai reaches the refuge porch beside stacked logs, a planter and a dark mountain wall.', caption: 'Par14 package. The approach, entry and exit passed a continuous door check; that is not acceptance of every player view.' },
@@ -403,7 +538,15 @@ export const places: Place[] = [
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
       { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: 'A terrace, refuge, stair and switchback above a blue lake. Par14 gives the rocks more form, opens the refuge approach, replaces the chip-like flowers with small yellow heads on stems, and adds visibly moving lake water. The arrival direction and indoor exposure settle are retained. The package check walks to the refuge, enters, leaves and returns; the lake motion is supported by a separately reviewed visual-pattern check, not by the failed acquisition-timestamp test. The amber seam remains graphic rather than luminous, with broad dark rock faces and regular scallops in the water. Nic has played it: the flowers are good for now, but his views still show dark cliffs, near trees and walls blocking the vista, and little walkable descent. B6 adds an anonymous logbook on the existing refuge table. Ordinary E reads a short request to leave room for the next traveller; it gives no item, flag or quest. Reading and leaving have separate checks, including assisted approaches, not proof of an unassisted whole-room route. The pass is not accepted as finished. Distant-scenery checks passed only under a bounded measuring protocol; default-renderer instability and quiet performance remain unresolved.',
+    body: "A cliff path and refuge above a blue lake, with small yellow flowers among the rocks. The view and walking routes are still being refined.",
+    development: {
+      status: "HP-1, packaged 6 November. Picker entry and return passed; full walk review failed. Limited private preview, not accepted by Nic. Demo 0.1.0 is unchanged.",
+      notes: [
+        "A refuge, terrace and stair above a blue lake. HP-1 gives High Pass a named picker entry while retaining the buildings and terrain. Entry and return passed, but the full walk failed: Kai can escape the stair stop and drop below the lookout floor.",
+        "Its continuous door test never entered; a separate door check passed. Settlement owns the boundary and test corrections; the coordinator must replay descent, pushes and the whole refuge loop. Nic keeps the small yellow flowers for now.",
+        "The dark massif, angular shore and repeated trees remain far from the painting. B6’s refuge logbook is retained. Human free walking, finished art and performance remain unaccepted.",
+      ],
+    },
   },
 ];
 

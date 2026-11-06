@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-06T07:27:00+01:00",
-  "roadmap_note": "6 November evening: refreshed Weaving from Round 3 PLAN and REPORT through 21:59. Named High Pass picker access and Battle B9 next-turn preview remain in progress without a new packaged checkpoint; Kesler Pi interior parked until the holidays, Salt Road iteration secondary to High Pass. No new frames or update post; posted_through retains the last qualifying packaged material.",
-  "note": "Posted Salt Road CP2 through coordinator REPORT 6 Nov 07:27. Gate: Development archive plus completed private packaged checks (exit0, original_user_files_equal) and reviewer PASS-with-findings. Nic 07:25 acceptance explicitly on hold until his walk; commit/canon consent is not play acceptance. Four inspected full 1600x900 package frames: salt C1-kai-eye/KP-E3-threshold; walk 09-threshold-push-07/10-threshold-end-back-view; manifest membership, clean results and pinned SHA256 in prep_media.py. CP2 executable SHA256 427d533c131f99f56aa553d131ad7d60e31b5db1fa6c873675bec94f32050a7d recorded. Entry/return, 16 targets and centre push bounded; save occurs only after return to courtyard in private UserDir. Failed chain and corrected offline gate re-evaluations preserved. Lit lilac cap, spur/wall composition, pink bands, weak water, straight route/far crease remain. No interior, human walk, full boundary or performance acceptance; Demo 0.1.0 unchanged.",
+  "posted_through": "2026-11-06T23:54:35+01:00",
+  "roadmap_note": "B9 next-turn preview remains Weaving only: no verified packaged checkpoint through REPORT 6 Nov 23:56. Kesler Pi interior remains parked until the holidays.",
+  "note": "HP-1 posted as a limited private terrace/art preview through reviewer 6 Nov 23:54:35. Gate: packaged Development build and clean corrected picker launch/return; original user files unchanged. Full walk REVIEW FAIL: stair escape, lookout drop and missed return targets, continuous door sequence never entered. Separate door check passed. 22/27 walk targets; zero SEA/FALL does not accept edges. Only route change: High Pass name and 160m arrival span; geometry retained. Three inspected 1600x900 package frames pinned by SHA256 in prep_media.py. No Nic acceptance, human free-walk, finished art or performance claim; Demo 0.1.0 unchanged. B9 held, including first mislabeled B8 preflight.",
   "log": [
     {
       "date": "2026-10-24",
@@ -117,6 +117,11 @@
       "date": "2026-11-06",
       "slug": "2026-11-06-the-road-stops-at-the-hull",
       "covers": "Packaged CP2 buried spurs, hull threshold and improved Salt Road; recovered package checks and reviewer findings; Nic’s acceptance held pending his walk"
+    },
+    {
+      "date": "2026-11-07",
+      "slug": "2026-11-07-the-stair-does-not-stop",
+      "covers": "HP-1 named picker access and clean packaged launch; limited terrace preview with failed stair/lookout walk and missing continuous door proof explicitly retained"
     }
   ]
 }

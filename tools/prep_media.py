@@ -596,7 +596,43 @@ def salt_road_checkpoint2():
         save(img, name)
 
 
+def high_pass_hp1():
+    """HP-1, 6 November: clean packaged launch; full walk review FAIL.
+
+    REPORT 23:52 and reviewer 23:54:35 authorize only a limited terrace/art
+    preview. Capture completion is not walk acceptance. Full frames retain the
+    stair escape and obstructed lookout return; no crop hides either defect.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round3/package"
+    picker = json.loads((run / "picker/RESULT.json").read_text())
+    assert picker["exit_code"] == 0 and picker["original_user_files_equal"]
+    picks = [
+        ("hp", "C0-painting.png", "hp1-terrace", "c12d65f45a81644b8d1ed3c56dff2c9d8d70e32f666ad7271e484025177cbd1b"),
+        ("walk", "32-stair-end-push-20s-04.png", "hp1-stair-escape", "0fddc3efda898a1dcc9de5d65a8fcb916028d016c0865b6f73a7179cf2101e8f"),
+        ("walk", "21-lookout-push-20s-04.png", "hp1-lookout-drop", "9487f04647ad4fa8625bcb0c46b86c41202ee4764fa4946e11595476350e540a"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        manifest = json.loads((evidence / "manifest.json").read_text())
+        assert result["complete"] and result["exit_code"] == 0
+        assert result["original_user_files_equal"]
+        frames = {row["frame"] for row in manifest["shots"]}
+        frames.update(Path(f["file"]).name for row in manifest["shots"] for f in row.get("frames", []))
+        assert manifest["complete"] and filename in frames
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--high-pass-hp1" in sys.argv:
+    high_pass_hp1()
+    sys.exit(0)
 if "--salt-road-checkpoint2" in sys.argv:
     salt_road_checkpoint2()
     sys.exit(0)

@@ -64,6 +64,11 @@ When in doubt, wait for the next run.
    `src/data/characters.ts` (new residents: drawing, figure, face, one line of
    their own dialogue), `src/data/roadmap.ts`, and the home ledger in
    `src/pages/index.astro`.
+   Keep each place's `body` to a short introduction (about 25–40 words) and
+   `statusText` to one plain line. Keep public-demo versus internal-build limits
+   visible. Put build numbers, test results, detailed caveats and history in
+   `development.status` and `development.notes`, shown only when readers open
+   the development details. Do not grow the introduction into a release log.
 3. Post: one markdown file in `src/content/updates/`, `YYYY-MM-DD-slug.md`,
    front matter as in the README. One post per run at most; group batches.
 4. Voice: the site's voice. Short, plain, calm, a little wrong. Every fact must

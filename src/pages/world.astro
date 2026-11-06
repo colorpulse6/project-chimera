@@ -11,11 +11,9 @@ import pSaltRoad from '../assets/media/painting-salt-road-v3.jpg';
 import pArchive from '../assets/media/painting-archive-forest-v3.jpg';
 import pHangingSea from '../assets/media/painting-hanging-sea-v3.jpg';
 import pColossus from '../assets/media/painting-weeping-colossus-v3.jpg';
-const base = import.meta.env.BASE_URL;
-const label = { built: 'In the build', now: 'Being built', next: 'Painted, not built' };
 // The canon regions (canon/INDEX.md). "painted" says what the v3 painting shows, not the concept text;
 // "world1" says what the open-world blockout of 27 October has of it.
-const regionLabel = { built: 'In the build', now: 'Walkable prototype', next: 'On the horizon' };
+const regionLabel = { built: 'In the public demo', now: 'Internal prototype', next: 'On the horizon' };
 const regions = [
   { id: 'havenwood', name: 'Havenwood', state: 'built', image: pHavenwood, alt: 'Painting of Havenwood: a square with a well, coloured houses and a bell tower.',
     painted: 'A square with a well and four flower beds, plaster houses in coral, lavender and ochre, and a bell tower. The walls of the Lumina estate stand on the hill above, and a lone peak to the right.',
@@ -25,7 +23,7 @@ const regions = [
     world1: 'Walkable as its own prototype, not yet accepted (see Weaving, above). In world1, from the arrival, the amber grove of the Archive Forest is on the left and the Colossus stands in the haze.' },
   { id: 'high-pass', name: 'The High Pass', state: 'now', image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
     painted: 'A plaster refuge with a terracotta roof on a cliff path, a dead tree beside it and a blue glacial lake below. Across the water, a great stone arch stands in the snow with a warm light inside.',
-    world1: 'Par14, 1 November: formed rocks, small yellow flowers, blue moving lake water and a checked refuge approach are packaged. Nic keeps the flowers for now; dark cliff faces, nearby obstructions and little walkable descent still limit the view. The whole vista is not accepted. Default-renderer instability and quiet performance remain open. Package frames are in Weaving, above.' },
+    world1: 'HP-1, 6 November: named picker entry and return passed. The full walk failed at the stair and lookout; the continuous door test also needs correction. Limited private terrace preview, not accepted by Nic. The broad dark cliffs and angular shore still differ from the painting. Human free walking and performance remain open. Package frames are in Weaving, above.' },
   { id: 'shadow-country', name: 'The Shadow Country', state: 'next', image: pShadow, alt: 'Painting of the Shadow Country: sunlit channels, willows and an aqueduct with waterfalls.',
     painted: 'Braided channels under willows, a ferry, sluice gates and an aqueduct that spills into waterfalls. High in the clouds, a vast shape lets a turquoise fall drop. The name is darker than the painting, and the painting wins.',
     world1: 'The arcade shelf and its falls stand far out. From the Long Road, the road’s own hills hide them for now.' },
@@ -98,11 +96,18 @@ const groups = [
                 <p class="small muted">{p.statusText}</p>
                 <p>{p.body}</p>
               </div>
-              {p.frames && (
-                <div class="frames frames-3 place-frames">
-                  {p.frames.map((f) => <Frame src={f.src} alt={f.alt} caption={f.caption} sizes="(min-width: 60rem) 25vw, 100vw" widths={[400, 800, 1200]} />)}
+              <details class="development place-development">
+                <summary>{p.frames?.length ? 'More images & development details' : 'Development details'}<span class="sr-only"> for {p.name}</span></summary>
+                <div class="development-notes">
+                  <p class="small muted">{p.development.status}</p>
+                  {p.development.notes.map((note) => <p>{note}</p>)}
                 </div>
-              )}
+                {p.frames && (
+                  <div class="frames frames-3">
+                    {p.frames.map((f) => <Frame src={f.src} alt={f.alt} caption={f.caption} sizes="(min-width: 60rem) 25vw, 100vw" widths={[400, 800, 1200]} />)}
+                  </div>
+                )}
+              </details>
             </article>
           ))}
         </div>
@@ -113,7 +118,7 @@ const groups = [
     <div class="wrap">
       <div class="section-head">
         <h2>The open world</h2>
-        <p>Every region is painted first, and the painting is the target. The town and the Long Road can be walked in the public demo. Internal par12 adds a High Pass prototype through the development picker. The remaining far regions can only be seen: since <a href={`${base}updates/2026-10-27-fifty-kilometres-to-the-colossus/`}>world1</a> on 27 October they stand on the horizon as painted silhouettes. Those remaining silhouettes cannot be reached, and their positions are provisional until Nic reviews them.</p>
+        <p>Every region starts as a painting. Havenwood and the Long Road can be explored in the public demo. High Pass and the Salt Road have internal prototypes; the other regions remain distant silhouettes.</p>
       </div>
       <div class="regions">
         {regions.map((r) => (
@@ -122,9 +127,12 @@ const groups = [
               <Image src={r.image} alt={r.alt} widths={[600, 900, 1280]} sizes="(min-width: 50rem) 50vw, 100vw" />
             </figure>
             <h3>{r.name}</h3>
-            <p class="small"><span class={`state state-${r.state}`}>{regionLabel[r.state]}</span></p>
+            <p class="small"><span class={`state state-${r.state}`}>{r.id === 'long-road' ? 'In the public demo' : regionLabel[r.state]}</span></p>
             <p>{r.painted}</p>
-            <p class="small muted">{r.world1}</p>
+            <details class="development">
+              <summary>Development details<span class="sr-only"> for {r.name}</span></summary>
+              <p class="small muted">{r.world1}</p>
+            </details>
           </article>
         ))}
       </div>
@@ -134,8 +142,11 @@ const groups = [
     <div class="wrap">
       <div class="section-head">
         <h2><span class="state state-next">Written, not painted</span></h2>
-        <p>The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of the places below is painted yet, and a place is not real here until it is painted.</p>
+        <p>Earlier designs for the continents and factions, written in 2025. These places are not yet painted or built.</p>
       </div>
+      <details class="development">
+        <summary>Explore the wider lore</summary>
+        <p class="small muted">The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of the places below is painted yet, and a place is not real here until it is painted.</p>
       <div class="world-notes">
         <div>
           <h3>Continents</h3>
@@ -149,13 +160,22 @@ const groups = [
           <p class="small muted">Stonehearth Post, in the foothills of the Spine, is a devout village warmed by a hearth that never cools because a precursor plant runs under it, and its Keeper of the Flame is an agent of The System in a robe. That is the pattern for every place: a plain surface, a machine underneath, and someone keeping it quiet.</p>
         </div>
       </div>
+      </details>
     </div>
   </section>
 </Base>
 <style>
   .places { display: grid; gap: clamp(3rem, 6vw, 5rem); }
   .place { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.5rem 3rem; align-items: start; }
-  .place-frames { grid-column: 1 / -1; }
+  .place-development { grid-column: 1 / -1; }
+  .development { border-top: var(--rule); padding-top: 0.8rem; }
+  .development summary { cursor: pointer; color: var(--fg-soft); font-size: 0.9rem; }
+  .development summary::marker { color: var(--lavender); }
+  .development summary:hover { color: var(--fg); }
+  .development summary:focus-visible { outline: 2px solid var(--kai); outline-offset: 4px; }
+  .development[open] > summary { margin-bottom: 1.2rem; color: var(--fg); }
+  .development-notes { max-width: var(--measure); margin-bottom: 1.5rem; font-size: 0.95rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
   .place h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 0.3rem; }
   @media (max-width: 55rem) { .place { grid-template-columns: 1fr; } }
   .regions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 5vw, 4rem) clamp(1.6rem, 3.5vw, 3rem); }
