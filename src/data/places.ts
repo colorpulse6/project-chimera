@@ -1,3 +1,6 @@
+import a2Road from '../assets/media/a2-run8-road.jpg';
+import a2End from '../assets/media/a2-run8-end.jpg';
+import a2Return from '../assets/media/a2-run8-cove-return.jpg';
 import hp1bRefuge from '../assets/media/hp1b-refuge-entry.jpg';
 import hp1bLookout from '../assets/media/hp1b-lookout-stop.jpg';
 import hp1bStair from '../assets/media/hp1b-stair-stop.jpg';
@@ -494,6 +497,9 @@ export const places: Place[] = [
     statusText: "Internal build. Interiors and paths still need review.",
     image: fPar9Settlement,
     frames: [
+      { src: a2Road, alt: 'Kai on the narrow walled road leaving Keepers’ Cove.', caption: 'Withdrawn A2 run 8, 7 November. The packaged road walk passed, but its place boundary claimed Havenwood. The previous project state was restored.' },
+      { src: a2End, alt: 'The solid cap at the far end of the first road leg.', caption: 'Withdrawn experiment: about 1.75 kilometres and 175 metres up, ending here. This does not reach High Pass.' },
+      { src: a2Return, alt: 'Kai back in Keepers’ Cove after the recorded road walk.', caption: 'All seventy-six walk targets passed in run 8. That bounded success did not catch the town place-name and private-save label defect.' },
       { src: fPar14Lantern, alt: 'Kai in the household, with a lantern lighting a small patch of wall and floor beside the shelves.', caption: 'Par14 package. The household lantern now casts a local warm pool; the existing indoor exposure settle is retained.' },
       { src: fPar10Household, alt: 'Kai faces shelves, folded cloth, a work table and a stool in a terracotta room.', caption: 'The household, par10 packaged check, 29 October. The room is furnished; Nic has not played this package.' },
       { src: par16Reed, alt: 'Kai talks to Old Reed, who holds a net sling on the Cove jetty.', caption: 'Par16 B7, 4 November. Same actor, short jetty route. The net stays through walking, turns and dialogue; full contact clearance and the longer route remain open.' },
@@ -508,6 +514,8 @@ export const places: Place[] = [
     development: {
       status: "Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.",
       notes: [
+        "A2 run 8, 7 November: a first road leg was packaged and passed clean launches, seventy-six walk targets and nine push files. The coordinator withdrew it after its place circle also claimed Havenwood and labelled a private town save as High Pass road 1. Previous project state restored; original save/settings unchanged. No road acceptance or public connection follows.",
+        "Replacement place boundaries and picker behavior still need a completed package check. The bare road and slab-like bank remain unfinished art. Earlier launch crashes and failed runs remain historical; wider human steering, campaign Continue and performance are not established.",
         "Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents.",
         "Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors.",
         "The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools.",

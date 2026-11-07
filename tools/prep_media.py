@@ -663,7 +663,42 @@ def hp1b_b9_rex_w1():
         save(img, name)
 
 
+def a2_withdrawn_run8():
+    """7 Nov A2 run 8: packaged clean launches, then withdrawn, NOT accepted.
+
+    COMMON.md coordinator 21:32:16 records the place circle claiming Havenwood
+    and restoration of the previous project state. Publication gate is the
+    retained clean package launch, not acceptance of the road or save labels.
+    These are archived package-walk frames, never replacement-run evidence.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round4/prev-w2/run8-placecircle/package-w2"
+    for folder in ("walk", "picker-High-Pass-road-1", "picker-High-Pass"):
+        result = json.loads((run / folder / "RESULT.json").read_text())
+        assert result["exit_code"] == 0 and result["original_user_files_equal"]
+    evidence = run / "walk"
+    manifest = json.loads((evidence / "manifest.json").read_text())
+    assert manifest["complete"]
+    frames = {row["frame"] for row in manifest["shots"]}
+    picks = [
+        ("020-out.png", "a2-run8-road", "a52e164d9a5ad07bffa37011783ebaf2e7cfd1d9aad0d3c064ae818f071eeeff"),
+        ("038-out.png", "a2-run8-end", "d96afa7c51873c7a82e04df39aabb20afeb0546efd031f67db3d435a1ee25529"),
+        ("076-return.png", "a2-run8-cove-return", "f343e0eb6082fd88ce6a4bbf8b60333be63a114fd5e8c33e81219adb51109bc2"),
+    ]
+    for filename, name, expected in picks:
+        original = evidence / filename
+        assert filename in frames
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--a2-withdrawn-run8" in sys.argv:
+    a2_withdrawn_run8()
+    sys.exit(0)
 if "--hp1b-b9-rex-w1" in sys.argv:
     hp1b_b9_rex_w1()
     sys.exit(0)

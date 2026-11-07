@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-07T11:32:00+01:00",
-  "roadmap_note": "Round 4 road links are source candidates only through REPORT 11:49: Cove first leg, Shadow Country site B and staged horizon treatments have no qualifying packaged traversal/art gate. No frames posted.",
-  "note": "Posted accepted HP-1b and B9 (round-3 REPORT 7 Nov 08:58; checkpoint acceptance lines), plus clean packaged W1 Rex profile repair (round-4 REPORT 11:32). HP-1b closes the three HP-1 findings: 29/29 continuous targets, both door transitions, supported stair/lookout pushes. B9 return-time/order preview accepted; cell index stays third in shown turn, scripted fixed-step input only. W1 restores measured existing Rex profile; visible before river fight, out of return frame, 162 route-history warnings retained; no new Nic acceptance or wider encounter/save play. Five inspected full 1600x900 frames pinned in prep_media.py --hp1b-b9-rex-w1; RESULT exit0 and original files equal, walk manifest membership checked. Previous HP-1 post retains failure record with dated successor link. Demo 0.1.0 unchanged; wider human navigation, physical input and performance unproved.",
+  "posted_through": "2026-11-07T21:32:16+01:00",
+  "roadmap_note": "A2 replacement compact place circles, same-label picker fix and verifier correction remain under test through COMMON 22:55:38 (run 10 started). Shadow Country and horizon/material trials held: no qualifying runtime package or accepted art. No replacement-run frames posted.",
+  "note": "Posted archived A2 W2 run 8 as WITHDRAWN / NOT ACCEPTED, per round-4 COMMON coordinator 7 Nov 21:32:16. Publication gate: retained packaged build Havenwood-r4-a2-20261107-run8-placecircle, clean walk and picker RESULT exit0/original_user_files_equal. 76/76 walk targets, pilot22/22,9/9 push files do not cure broad place circle claiming Havenwood and labelling private town saves High Pass road 1. Coordinator restored previous project state, original save unchanged. Three inspected full1600x900 walk frames pinned SHA256 and manifest in prep_media.py --a2-withdrawn-run8. No new current road/place/pin or completed High Pass link claimed. Earlier gate errors, crashes, shadow re-shot and unfinished slab/bare corridor retained. Replacement code/source packets held. Demo0.1.0 unchanged; human steering, campaign recovery and performance unproved.",
   "log": [
     {
       "date": "2026-10-24",
@@ -127,6 +127,11 @@
       "date": "2026-11-07",
       "slug": "2026-11-07-the-way-back-holds",
       "covers": "Nic-accepted HP-1b walk repairs and B9 return-time preview; clean W1 Rex profile package with bounded visibility and route-history limits"
+    },
+    {
+      "date": "2026-11-07",
+      "slug": "2026-11-07-the-road-calls-the-town-its-own",
+      "covers": "Withdrawn A2 run8 first road leg: clean packaged walk and boundary checks, rejected over Havenwood place/save labels; replacement remains under test"
     }
   ]
 }
