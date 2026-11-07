@@ -21,8 +21,20 @@ const playable = [
       </div>
       <div class="get">
         <div>
-          <p class="cta"><a class="button" href={demo.url}>Download for Mac ({mb} MB)</a></p>
-          <p class="small muted">macOS {demo.minMacOS} or newer, on a Mac with Apple silicon (M1 or later). There is no build for Intel Macs or Windows. The app is signed and notarized by Apple. <a href={demo.releaseUrl}>Release page on GitHub</a>.</p>
+          <div class="desk">
+            <p class="cta"><a class="button" href={demo.url}>Download for Mac ({mb} MB)</a></p>
+            <p class="small muted">macOS {demo.minMacOS} or newer, on a Mac with Apple silicon (M1 or later). There is no build for Intel Macs or Windows. The app is signed and notarized by Apple. <a href={demo.releaseUrl}>Release page on GitHub</a>.</p>
+          </div>
+          <div class="phone" aria-live="polite">
+            <p class="phone-head">This is a Mac download.</p>
+            <p>You are on a phone, and the demo runs only on a Mac with Apple silicon, so the file would not open here. Send the link to your Mac instead.</p>
+            <p class="phone-acts">
+              <button type="button" class="button" data-copy={demo.url}>Copy the link</button>
+              <a class="button ghost" href={`mailto:?subject=${encodeURIComponent(`Chimera Demo ${demo.version} for Mac`)}&body=${encodeURIComponent(`Chimera Demo ${demo.version}, for Macs with Apple silicon (macOS ${demo.minMacOS} or newer), ${mb} MB:\n${demo.url}\n\nAbout the demo: https://projectchimera.dev/download/`)}`}>Email it to yourself</a>
+              <a class="button ghost" href={`sms:?&body=${encodeURIComponent(`Chimera Demo ${demo.version} for Mac: ${demo.url}`)}`}>Text it to yourself</a>
+            </p>
+            <p class="small muted">macOS {demo.minMacOS} or newer, Apple silicon (M1 or later). No build for Intel Macs, Windows, iPhone or Android yet. <a href={demo.releaseUrl}>Release page on GitHub</a>, or <a href={demo.url}>download the {mb} MB disk image anyway</a>.</p>
+          </div>
           <dl class="ledger facts">
             <div><dt>Version</dt><dd>{demo.version}, {demo.date}</dd></div>
             <div><dt>File</dt><dd>{demo.file}, {mb} MB disk image</dd></div>
@@ -58,12 +70,24 @@ const playable = [
     </div>
   </section>
 </Base>
+<script>import '../scripts/device';</script>
 <style>
   .get { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 2rem 4rem; align-items: start; }
   @media (max-width: 60rem) { .get { grid-template-columns: 1fr; } }
   .cta { margin: 0 0 1rem; }
   .cta .button { font-size: 1.1rem; padding: 0.9rem 1.5rem; }
   .facts { margin-top: 2rem; }
+  /* Phone or desk: the script marks <html data-device>; without it the Mac button shows. */
+  .phone { display: none; padding: 1.25rem 1.5rem; margin: 0 0 1rem; border: 1px solid var(--edge); background: var(--bg-raised); box-shadow: var(--shadow); }
+  .phone p { margin: 0 0 0.6rem; }
+  .phone-acts .button { font: inherit; cursor: pointer; }
+  .phone-acts .ghost { background: transparent; box-shadow: none; }
+  .phone-acts .ghost:hover { transform: none; box-shadow: none; border-color: var(--fg-soft); }
+  :global(html[data-device="phone"]) .phone { display: block; }
+  :global(html[data-device="phone"]) .desk { display: none; }
+  .phone-head { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 0.5rem; }
+  .phone-acts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+  .phone-acts .button { font-size: 1rem; }
   .note { margin-top: 1.5rem; max-width: 70ch; }
   code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9rem; background: var(--bg-raised); padding: 0.2em 0.45em; border: 1px solid var(--line); }
   .hash { word-break: break-all; }
