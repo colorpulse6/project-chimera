@@ -21,8 +21,9 @@ and corrected itself.
 | --- | --- |
 | Home | The hero, the status ledger, the latest updates, the first recording |
 | Updates | Dated entries, one per build or decision, with frames from the rig |
-| World | Havenwood's places (anchored / weaving / unwritten), the open-world regions with their v3 paintings (`regions` in `world.astro`, media from `prep_media.py --regions`), and the 2025 written world |
-| Characters | Kai and the townsfolk, from drawing to game, and the cast still to draw |
+| World | The chart (`src/components/Chart.astro` from `src/data/atlas.ts`, a transcription of `fresh-game/assets/world/vista.json` pins on a log-polar scale), the three maps that exist, the depth gauge of region rules, and every Havenwood place as a tile whose record opens in a dialog (`src/scripts/records.ts`; old `#slug` anchors still open the right one) |
+| Characters | The people, weighted by meaning: Kai, Elara (a void), The System, the written companions as ink with a void (`src/data/cast.ts`, 2025 portraits), then the fifteen residents as a lineup with dialogs. Add a resident in `src/data/characters.ts`; it appears in the lineup |
+| Ideas | What the game is about, under the paint: the questions in two voices, the event everyone remembers differently, the six places that were only ideas. Sources are the 2025 philosophical framework and the Drive notes of 25 and 26 October 2026; no spoilers |
 | Story | Premise, Kai, Elara, the desert opening, the prologue and four acts (the 2025 outline kept folded), the endings. The chosen ending is not on the site |
 | Mechanics | Temporal anchors, the loop, combat phases, echo weaving, spells, companions |
 | Look | How the painted look works and how it is checked |

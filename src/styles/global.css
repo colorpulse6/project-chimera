@@ -229,3 +229,27 @@ body.humming::after { animation: grain-breathe 23s ease-in-out infinite; }
 .spec td { color: var(--fg-soft); }
 .spec td:first-child { color: var(--fg); }
 .spec-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+
+/* Tiles: one place or person per tile; the full record opens in a dialog. */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 1.4rem 1.2rem; }
+.tile { display: grid; gap: 0.5rem; text-decoration: none; color: inherit; align-content: start; }
+.tile img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--edge); box-shadow: 0.35rem 0.35rem 0 var(--lavender-deep); background: var(--bg-sunk); transition: transform 120ms ease, box-shadow 120ms ease, filter 200ms ease; }
+.tile:hover img, .tile:focus-visible img { transform: translate(-2px, -2px); box-shadow: 0.55rem 0.55rem 0 var(--lavender-deep); }
+.tiles:hover .tile:not(:hover) img { filter: saturate(0.55); }
+.tile-name { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 36; font-size: 1.15rem; line-height: 1.15; }
+.tile-state { line-height: 1.3; }
+
+/* The record: a dialog that holds everything the tile stands for. */
+dialog.record { width: min(62rem, 100% - 2rem); max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); margin: auto; padding: 0; border: 1px solid var(--edge); box-shadow: var(--shadow); background: var(--bg); color: var(--fg); overflow: auto; }
+dialog.record::backdrop { background: color-mix(in oklab, var(--bg-sunk) 82%, transparent); }
+dialog.record[open] { animation: record-in 160ms steps(3, end) both; }
+@keyframes record-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+html.record-open { overflow: hidden; }
+.record-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0; padding: 0.7rem 1.2rem; background: var(--bg-sunk); border-bottom: var(--rule); font-size: 0.88rem; color: var(--fg-soft); }
+.record-close { font: inherit; font-size: 1.4rem; line-height: 1; width: 2.2rem; height: 2.2rem; border: 1px solid var(--edge); background: var(--bg-raised); color: var(--fg); cursor: pointer; }
+.record-close:hover { background: var(--lavender-deep); }
+.record-body { padding: clamp(1.2rem, 3vw, 2.4rem); }
+.record-body h2 { margin-top: 1.2rem; }
+.record-lede { font-size: 1.1rem; }
+.record-body .frames { margin-top: 1.6rem; }
+@media (prefers-reduced-motion: reduce) { dialog.record[open] { animation: none; } .tile img { transition: none; } }

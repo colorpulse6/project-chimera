@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/pages/world.astro"
+        ],
+        "createdAt": "2026-11-06T23:48:07.748Z",
+        "reason": "designer decision: the depth-gauge names drain from solid fill to outline as the rows go deeper; it continues the site's existing .phase outline motif (global.css), not a colour gradient"
+      }
+    ]
+  }
+}

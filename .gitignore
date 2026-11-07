@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 npm-debug.log*
+
+# design-hook cache (the config.json is kept)
+.impeccable/hook.cache.json

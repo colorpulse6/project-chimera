@@ -1,0 +1,224 @@
+---
+/* The chart: the world as the build knows it, drawn from the provisional pins in
+   fresh-game/assets/world/vista.json. Distance from the square is on a log scale,
+   so the town is large and the Colossus, fifty kilometres off, still fits on the
+   page. Direction is true. A region renders when it is observed. */
+import { Image } from 'astro:assets';
+import { pins, ranges, sightlines, doubles, km } from '../data/atlas';
+
+const W = 1200, H = 860;
+const C = { x: 500, y: 400 };
+const RIM = 420; // px at 60 km
+const K = RIM / Math.log10(1 + 60000 / 400);
+const r = (m: number) => K * Math.log10(1 + m / 400);
+const proj = ([x, y]: [number, number]): [number, number] => {
+  const d = Math.hypot(x, y);
+  if (d === 0) return [C.x, C.y];
+  const s = r(d) / d;
+  return [C.x + x * s, C.y - y * s];
+};
+const pt = (p: [number, number]) => proj(p).map((n) => n.toFixed(1)).join(',');
+const ringPath = (centre: [number, number], radius: number, n = 72) =>
+  Array.from({ length: n }, (_, i) => {
+    const a = (i / n) * Math.PI * 2;
+    return pt([centre[0] + Math.cos(a) * radius, centre[1] + Math.sin(a) * radius]);
+  }).join(' ');
+const byId = Object.fromEntries(pins.map((p) => [p.id, p]));
+const labelAt: Record<string, [number, number, string]> = {
+  n: [0, -18, 'middle'], s: [0, 30, 'middle'], e: [16, 7, 'start'], w: [-16, 7, 'end'],
+  ne: [13, -12, 'start'], nw: [-13, -12, 'end'], se: [13, 26, 'start'], sw: [-13, 26, 'end'],
+};
+const rings = [1, 3, 10, 30];
+const fmt = (n: number) => (n < 1 ? n.toFixed(2) : n.toFixed(1));
+const initial = 'havenwood';
+const compass = [['N', 0, -1], ['E', 1, 0], ['S', 0, 1], ['W', -1, 0]] as const;
+---
+<div class="chart" data-chart>
+  <figure class="chart-fig">
+    <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label="Chart of the regions around Havenwood, drawn from the build’s own provisional positions. Distance from the square is on a logarithmic scale.">
+      <defs>
+        <radialGradient id="chart-sea" cx="0.417" cy="0.465" r="0.5">
+          <stop offset="0" stop-color="var(--chart-ground)" />
+          <stop offset="0.45" stop-color="var(--chart-ground)" stop-opacity="0.5" />
+          <stop offset="1" stop-color="var(--chart-ground)" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width={W} height={H} fill="url(#chart-sea)" />
+
+      {/* distance rings */}
+      {rings.map((kmr) => (
+        <g class="ring">
+          <circle cx={C.x} cy={C.y} r={r(kmr * 1000)} />
+          <text x={C.x + r(kmr * 1000) * Math.SQRT1_2 + 4} y={C.y - r(kmr * 1000) * Math.SQRT1_2 - 4}>{kmr} km</text>
+        </g>
+      ))}
+      <g class="ring rim"><circle cx={C.x} cy={C.y} r={RIM} /><text x={C.x + RIM * Math.SQRT1_2 + 4} y={C.y - RIM * Math.SQRT1_2 - 4}>60 km · the far grid ends</text></g>
+      {compass.map(([l, dx, dy]) => <text class="compass" x={C.x + dx * (RIM + 18)} y={C.y + dy * (RIM + 18) + 5} text-anchor="middle">{l}</text>)}
+
+      {/* far ranges: crest lines */}
+      {ranges.map((rg) => (
+        <g class="range" aria-label={rg.id}>
+          <polyline points={rg.pts.map(pt).join(' ')} />
+          <title>{rg.id}, {rg.h} m</title>
+        </g>
+      ))}
+
+      {/* each region's own ground */}
+      {pins.filter((p) => p.hole).map((p) => (
+        <polygon class="hole" data-for={p.id} points={ringPath(p.pos, p.hole!)} />
+      ))}
+
+      {/* sightlines: what each painted view must see */}
+      {sightlines.map(([from, to]) => {
+        const a = proj(byId[from].pos), b = proj(byId[to].pos);
+        return <line class="sight" data-from={from} data-to={to} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} />;
+      })}
+      {doubles.map(([a, b]) => {
+        const p = proj(byId[a].pos), q = proj(byId[b].pos);
+        return <line class="double" data-from={a} data-to={b} x1={p[0]} y1={p[1]} x2={q[0]} y2={q[1]} />;
+      })}
+
+      {/* pins */}
+      {pins.map((p) => {
+        const [x, y] = proj(p.pos);
+        const [dx, dy, anchor] = labelAt[p.label];
+        return (
+          <a class="pin" href={`#atlas-${p.id}`} data-pin={p.id} data-state={p.state} data-kind={p.kind} aria-label={`${p.name}, ${fmt(km(p.pos))} km from the square. ${p.stateText}.`} aria-current={p.id === initial ? 'true' : undefined}>
+            <circle class="halo" cx={x} cy={y} r={p.kind === 'region' ? 18 : 14} />
+            {p.id === 'colossus' && <circle class="colossus" cx={x} cy={y} r={30} />}
+            <circle class="dot" cx={x} cy={y} r={p.kind === 'region' ? 8 : p.kind === 'far' ? 6.5 : 4.5} />
+            <text class="label" x={x + dx} y={y + dy} text-anchor={anchor}>{p.name}</text>
+          </a>
+        );
+      })}
+    </svg>
+    <figcaption class="chart-note small muted">Pins v2.3 of 27 October 2026, every one provisional. Rings are distance from the square on a log scale; direction is true. Dashed outlines are ground a region owns; thin lines are what its painting must be able to see. Hover or tap a region to render it.</figcaption>
+  </figure>
+  <div class="chart-panel" aria-live="polite">
+    {pins.map((p) => (
+      <article class="chart-card" id={`atlas-${p.id}`} data-card={p.id} hidden={p.id !== initial}>
+        {p.image ? (
+          <figure class="frame chart-art"><Image src={p.image} alt={p.alt ?? ''} widths={[480, 800, 1200]} sizes="(min-width: 60rem) 26rem, 100vw" /></figure>
+        ) : (
+          <div class="chart-unpainted" aria-hidden="true"><span>not painted</span></div>
+        )}
+        <p class="chart-kicker"><span class={`state state-${p.state}`}>{p.stateText}</span><span class="chart-km">{km(p.pos) < 0.05 ? 'the origin' : `${fmt(km(p.pos))} km from the square`}</span></p>
+        <h3>{p.name}</h3>
+        <p class="chart-painted">{p.painted}</p>
+        <p class="small muted chart-record">{p.record}</p>
+        {p.href && <p class="small"><a href={p.href}>The full record</a></p>}
+      </article>
+    ))}
+  </div>
+</div>
+
+<script>
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const alias: Record<string, string> = { 'weeping-colossus': 'colossus', 'opening-desert': 'desert', 'cove-settlement': 'cove', 'salt-road-trail': 'salt-road' };
+  let tick = 0;
+  let onHash: () => void = () => {};
+  function init() {
+    clearTimeout(tick);
+    const root = document.querySelector<HTMLElement>('[data-chart]');
+    if (!root) return;
+    const pins = [...root.querySelectorAll<SVGAElement>('a.pin')];
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-card]')];
+    const ids = pins.map((a) => a.dataset.pin!);
+    let current = root.querySelector<SVGAElement>('a.pin[aria-current]')?.dataset.pin ?? ids[0];
+    const observe = (id: string, on: boolean) => {
+      root.querySelectorAll(`[data-for="${id}"], [data-from="${id}"]`).forEach((el) => el.classList.toggle('lit', on));
+      pins.find((a) => a.dataset.pin === id)?.classList.toggle('observed', on);
+    };
+    const select = (id: string, remember = true) => {
+      if (!ids.includes(id)) return;
+      observe(current, false);
+      current = id;
+      pins.forEach((a) => { if (a.dataset.pin === id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      cards.forEach((c) => { c.hidden = c.dataset.card !== id; });
+      observe(id, true);
+      if (remember) try { history.replaceState(null, '', `#atlas-${id}`); } catch {}
+    };
+    pins.forEach((a) => {
+      const id = a.dataset.pin!;
+      a.addEventListener('click', (e) => { e.preventDefault(); select(id); });
+      a.addEventListener('pointerenter', () => observe(id, true));
+      a.addEventListener('pointerleave', () => { if (id !== current) observe(id, false); });
+      a.addEventListener('focus', () => observe(id, true));
+      a.addEventListener('blur', () => { if (id !== current) observe(id, false); });
+    });
+    observe(current, true);
+    const fromHash = () => {
+      const m = location.hash.match(/^#(?:atlas|region)-(.+)$/);
+      if (!m) return;
+      const id = alias[m[1]] ?? m[1];
+      if (ids.includes(id)) { select(id, false); root.scrollIntoView({ block: 'start' }); }
+    };
+    fromHash();
+    window.removeEventListener('hashchange', onHash);
+    onHash = fromHash;
+    window.addEventListener('hashchange', onHash);
+    // Unobserved regions are unloaded now and then, to save memory. They come back.
+    if (!reduced) {
+      const derender = () => {
+        const candidates = pins.filter((a) => a.dataset.pin !== current && !a.classList.contains('observed'));
+        const a = candidates[Math.floor(Math.random() * candidates.length)];
+        if (a) { a.classList.add('derender'); setTimeout(() => a.classList.remove('derender'), 420 + Math.random() * 500); }
+        tick = window.setTimeout(derender, 5000 + Math.random() * 9000);
+      };
+      tick = window.setTimeout(derender, 4000);
+    }
+  }
+  document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:before-swap', () => clearTimeout(tick));
+</script>
+
+<style>
+  .chart { --chart-ground: color-mix(in oklab, var(--navy) 55%, var(--bg)); display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(18rem, 1fr); gap: clamp(1.4rem, 3vw, 2.6rem); align-items: start; }
+  @media (max-width: 60rem) { .chart { grid-template-columns: 1fr; } }
+  .chart-fig { margin: 0; }
+  svg { width: 100%; height: auto; display: block; border: 1px solid var(--edge); box-shadow: var(--shadow); background: var(--bg-sunk); font-family: var(--font-body); }
+  .ring circle { fill: none; stroke: var(--line); stroke-width: 1; }
+  .ring text { font-size: 16px; fill: var(--fg-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+  .ring.rim circle { stroke-dasharray: 2 6; }
+  .compass { font-family: var(--font-display); font-size: 24px; fill: var(--fg-faint); }
+  .range polyline { fill: none; stroke: var(--lavender-deep); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.55; }
+  .hole { fill: color-mix(in oklab, var(--ochre) 12%, transparent); stroke: var(--ochre); stroke-width: 1; stroke-dasharray: 4 5; opacity: 0.45; transition: opacity 300ms ease; }
+  .hole.lit { opacity: 1; }
+  .sight { stroke: var(--fg); stroke-width: 1; opacity: 0; transition: opacity 300ms ease; pointer-events: none; }
+  .sight.lit { opacity: 0.35; }
+  .double { stroke: var(--kai); stroke-width: 1; stroke-dasharray: 3 7; opacity: 0.35; }
+  .double.lit { opacity: 0.9; }
+  .pin { cursor: pointer; outline: none; }
+  .pin .halo { fill: var(--fg); opacity: 0; transition: opacity 200ms ease; }
+  .pin .colossus { fill: none; stroke: var(--lavender); stroke-width: 1; stroke-dasharray: 2 4; opacity: 0.6; }
+  .pin .dot { fill: var(--bg-sunk); stroke: var(--fg); stroke-width: 1.5; transition: fill 160ms steps(2, end); }
+  .pin[data-state='built'] .dot { stroke: var(--fg); }
+  .pin[data-state='now'] .dot { stroke: var(--kai); }
+  .pin[data-state='next'] .dot { stroke: var(--fg-faint); stroke-dasharray: 2 2; }
+  .pin .label { font-size: 21px; fill: var(--fg-faint); paint-order: stroke; stroke: var(--bg-sunk); stroke-width: 4px; stroke-linejoin: round; transition: fill 160ms steps(2, end); }
+  .pin[data-kind='region'] .label { font-size: 24px; font-family: var(--font-display); }
+  .pin.observed .halo, .pin:hover .halo, .pin:focus-visible .halo { opacity: 0.1; }
+  .pin.observed .dot, .pin:hover .dot, .pin:focus-visible .dot { fill: var(--fg); }
+  .pin[data-state='now'].observed .dot, .pin[data-state='now']:hover .dot { fill: var(--kai); }
+  .pin.observed .label, .pin:hover .label, .pin:focus-visible .label { fill: var(--fg); }
+  .pin[aria-current] .label { fill: var(--fg); }
+  .pin[aria-current] .dot { fill: var(--fg); }
+  .pin:focus-visible .halo { opacity: 0.25; fill: var(--kai); }
+  .pin:focus-visible .dot { stroke: var(--kai); stroke-width: 3; }
+  /* without scripts, the pin links still reach their cards */
+  .chart-card[hidden]:target { display: block; }
+  /* unloaded: the label loses its fill and keeps its outline */
+  .pin.derender .label { fill: transparent; stroke: var(--lavender); stroke-width: 0.6px; paint-order: normal; }
+  .pin.derender .dot { fill: transparent; stroke-dasharray: 1 3; }
+  .chart-note { margin-top: 1rem; max-width: 60ch; }
+  .chart-panel { position: sticky; top: 1rem; }
+  .chart-card h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); margin: 0.2rem 0 0.5rem; }
+  .chart-art { margin: 0 0 1rem; }
+  .chart-unpainted { aspect-ratio: 16 / 10; margin-bottom: 1rem; display: grid; place-content: center; border: 1px dashed var(--edge); color: var(--fg-faint); font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    background: repeating-conic-gradient(color-mix(in oklab, var(--bg-sunk) 70%, #000) 0 25%, color-mix(in oklab, var(--bg-raised) 85%, var(--lavender-deep)) 0 50%) 0 0 / 28px 28px; }
+  .chart-kicker { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: baseline; margin: 0; font-size: 0.88rem; color: var(--fg-soft); }
+  .chart-km { font-variant-numeric: tabular-nums; color: var(--fg-faint); }
+  .chart-painted { margin: 0 0 0.6rem; }
+  .chart-record { margin-bottom: 0.6rem; }
+  @media (max-width: 60rem) { .chart-panel { position: static; } }
+</style>

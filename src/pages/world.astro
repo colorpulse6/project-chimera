@@ -1,55 +1,40 @@
 ---
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
+import Chart from '../components/Chart.astro';
 import { Image } from 'astro:assets';
-import { places, courtyardConcept } from '../data/places';
-import pHavenwood from '../assets/media/painting-havenwood-v3.jpg';
-import pLongRoad from '../assets/media/painting-long-road-v3.jpg';
-import pHighPass from '../assets/media/painting-high-pass-v3.jpg';
-import pShadow from '../assets/media/painting-shadow-country-v3.jpg';
-import pSaltRoad from '../assets/media/painting-salt-road-v3.jpg';
-import pArchive from '../assets/media/painting-archive-forest-v3.jpg';
-import pHangingSea from '../assets/media/painting-hanging-sea-v3.jpg';
-import pColossus from '../assets/media/painting-weeping-colossus-v3.jpg';
-// The canon regions (canon/INDEX.md). "painted" says what the v3 painting shows, not the concept text;
-// "world1" says what the open-world blockout of 27 October has of it.
-const regionLabel = { built: 'In the public demo', now: 'Internal prototype', next: 'On the horizon' };
-const regions = [
-  { id: 'havenwood', name: 'Havenwood', state: 'built', image: pHavenwood, alt: 'Painting of Havenwood: a square with a well, coloured houses and a bell tower.',
-    painted: 'A square with a well and four flower beds, plaster houses in coral, lavender and ochre, and a bell tower. The walls of the Lumina estate stand on the hill above, and a lone peak to the right.',
-    world1: 'The town of the sections above. In world1 the walls and the peak stand where the painting puts them, and the Colossus is on the eastern horizon, over the sea.' },
-  { id: 'long-road', name: 'The Long Road', state: 'now', image: pLongRoad, alt: 'Painting of the Long Road: a dirt road through golden hills down to a river and the bay.',
-    painted: 'A dirt road through golden hills, down to a river, a stone bridge and a village by the water, and out to the bay. On the ridge stand the broken arches of the Arc and a ring of stone.',
-    world1: 'Walkable as its own prototype, not yet accepted (see Weaving, above). In world1, from the arrival, the amber grove of the Archive Forest is on the left and the Colossus stands in the haze.' },
-  { id: 'high-pass', name: 'The High Pass', state: 'now', image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
-    painted: 'A plaster refuge with a terracotta roof on a cliff path, a dead tree beside it and a blue glacial lake below. Across the water, a great stone arch stands in the snow with a warm light inside.',
-    world1: 'HP-1, 6 November: named picker entry and return passed. The full walk failed at the stair and lookout; the continuous door test also needs correction. Limited private terrace preview, not accepted by Nic. The broad dark cliffs and angular shore still differ from the painting. Human free walking and performance remain open. Package frames are in Weaving, above.' },
-  { id: 'shadow-country', name: 'The Shadow Country', state: 'next', image: pShadow, alt: 'Painting of the Shadow Country: sunlit channels, willows and an aqueduct with waterfalls.',
-    painted: 'Braided channels under willows, a ferry, sluice gates and an aqueduct that spills into waterfalls. High in the clouds, a vast shape lets a turquoise fall drop. The name is darker than the painting, and the painting wins.',
-    world1: 'The arcade shelf and its falls stand far out. From the Long Road, the road’s own hills hide them for now.' },
-  { id: 'salt-road', name: 'The Salt Road', state: 'now', image: pSaltRoad, alt: 'Painting of the Salt Road: steps above a salt basin, white ribs in the sand and a far city.',
-    painted: 'Sandstone steps by a house with a blue cloth in the door, then a salt basin between dunes, great white ribs half buried in the sand, a caravan, an oasis town in palms, and a city on the far horizon.',
-    world1: 'The older world1 salt flats and city marker remain provisional. Salt Road checkpoint 2 is built and packaged through the Development picker, with buried spurs, a near hull wall and blocked threshold. Reviewer PASS-with-findings; Nic’s acceptance is on hold until his walk. It has no walking link from the Opening Desert; the High Pass sightline and world marker are parked. Package frames and limits are in Weaving, above.' },
-  { id: 'archive-forest', name: 'The Great Archive Forest', state: 'next', image: pArchive, alt: 'Painting of the Archive Forest: giant amber trunks with turquoise veins over a stone house.',
-    painted: 'Trunks as wide as towers, amber and quartz with turquoise veins, and the shapes of people inside them. A stone house and a small waterfall at their feet.',
-    world1: 'A band of amber trees under the foothills. From the Long Road it is the amber grove left of the lone peak.' },
-  { id: 'hanging-sea', name: 'The Hanging Sea', state: 'next', image: pHangingSea, alt: 'Painting of the Hanging Sea: a sea overhead with ships and sharks, above a canyon harbour.',
-    painted: 'A sea overhead, with wrecks, sharks and shoals of fish, above a canyon town and its harbour. One column of water falls from it. A terrace of arches with a red awning in front, a round opening in the cliff behind.',
-    world1: 'The sea hangs 650 metres up between canyon walls. It shows from the High Pass, looking back.' },
-  { id: 'weeping-colossus', name: 'The Weeping Colossus', state: 'next', image: pColossus, alt: 'Painting of the Weeping Colossus: travellers on a hill path, and a vast tilted shape in the clouds.',
-    painted: 'Travellers on a hillside path past a villa, lakes and valleys below, and in the clouds a vast tilted shape with water pouring from it.',
-    world1: 'It stands on its own range, 50 kilometres from the town square and 9.6 kilometres tall, its shoulders in the cloud. It is in sight from the town, the road and the pass.' },
+import { places } from '../data/places';
+import firstMap from '../assets/media/orig-world-map.jpg';
+const base = import.meta.env.BASE_URL;
+
+// How far out it gets stranger. From the working notes of 25 October 2026 (Nic's seeds and
+// assistant proposals, saved, not all selected): outside Havenwood the regions are not climates,
+// they are deeper shortcuts in how the world is kept. Marked by what exists of each.
+const depth = [
+  { n: '0', name: 'Havenwood', rule: 'The pleasant facade.', text: 'A bright town built to calm one anomaly: simple errands, friendly people, a chapel on the headland, and small things that are wrong. Nobody patrols. You are told the gods restrict the road.', state: 'built', stateText: 'Built, in the public demo', href: '#havenwood' },
+  { n: '1', name: 'The settlement that expected him', rule: 'Identity written in advance.', text: 'In the concept, just outside the valley; in the build, half a kilometre from the square. A place that has prepared for Kai for generations: an empty bedroom kept, clothes cut to his measure, and household instructions that contradict each other. Havenwood tried to erase him. This place tries to write him.', state: 'now', stateText: 'Keepers’ Cove, internal build, with stand-ins', href: '#cove-settlement' },
+  { n: '2', name: 'The city that forgets every morning', rule: 'Memory as a ledger someone else keeps.', text: 'At dawn a chime takes yesterday and leaves language and craft. Every house has a morning table: who you are, whom you love, what you owe. The wealthy pay to have their memories certified. Someone edits the tables overnight. Kai, who does not reset, is asked to carry what people are afraid to write down.', state: 'next', stateText: 'Aethelburg, written, rules undesigned', href: 'ideas/#forgets' },
+  { n: '3', name: 'The city whose rooms migrate', rule: 'Space as a stage set.', text: 'The streets stay still. The rooms beneath them travel on tracks and counterweights through a huge internal structure: a house has its kitchen every third day, the public bath arrives under the square at noon. A door Kai passed earlier opens later on a room from his past.', state: 'next', stateText: 'An idea, saved', href: 'ideas/#migrate' },
+  { n: '4', name: 'The town that takes turns sleeping', rule: 'To be is to be perceived.', text: 'A street that nobody conscious is watching is unloaded. Watchkeepers, night bakers and musicians work overlapping shifts at bedroom observation windows to keep their streets present. Children know the names of the people keeping their street there until morning.', state: 'next', stateText: 'An idea, saved', href: 'ideas/#sleeping' },
+  { n: '5', name: 'The desert, again', rule: 'The beginning, and a late chapter.', text: 'The place where Kai first fell. The opening of the game, and also a late chapter, by a route that is still to be designed. What is under the sand answers to him, and the record does not say why.', state: 'now', stateText: 'First slice built; the pulse, the voice and the rising are not', href: '#opening-desert' },
 ] as const;
+
+const groups = [
+  ['built', 'Anchored', 'Walkable in the packaged build. As real as anything here gets.'],
+  ['now', 'Weaving', 'On the same map as the courtyard; the kit is growing to fit them.'],
+  ['next', 'Unwritten, but painted', 'They exist as paintings and wait for the kit.'],
+] as const;
+
 const continents = [
-  ['Aethelgard', 'Temperate forests and plains, feudal kingdoms, a church that reads the machine\u2019s interventions as providence. The Spine of the Ancients runs through it. Aethelburg, the Lumina capital, sits at its centre. Havenwood is here.'],
+  ['Aethelgard', 'Temperate forests and plains, feudal kingdoms, a church that reads the machine’s interventions as providence. The Spine of the Ancients runs through it. Aethelburg, the Lumina capital, sits at its centre. Havenwood is here.'],
   ['Ferrus Magna', 'Scarred by precursor wars and industrial collapse. Scavenger clans, rust, unstable power. Neo-Veridia is a cyberpunk city built inside a dead factory; Rustwater Fishery catches metal-shelled crabs from coolant-stained water.'],
   ['Sylvandell', 'Jungle that has eaten the ruins. Magic here is biological, a way of talking to a terraforming network nobody remembers building. Krystallos is grown around a crystal lattice; Whisperwind Hermitage hangs in the glowing canopy.'],
-  ['The Shifting Wastes', 'Where The System\u2019s grip is weak and reality is unreliable. Zephyr is a city that moves, a fleet of repurposed precursor vehicles that never stops.'],
+  ['The Shifting Wastes', 'Where The System’s grip is weak and reality is unreliable. Zephyr is a city that moves, a fleet of repurposed precursor vehicles that never stops.'],
 ];
 const factions = [
   ['The Lumina Orthodoxy', 'House Lumina, the Keepers of the Lineage and the Silent Guard. Order above all, because order is what The System wants.'],
   ['The Reality Weavers', 'Lord Kaelen Lumina and those who want to merge with the machine rather than serve it.'],
-  ['The Thorne Technocracy', 'Duchess Aris Thorne\u2019s engineers on Ferrus Magna, who want the technology without the religion.'],
+  ['The Thorne Technocracy', 'Duchess Aris Thorne’s engineers on Ferrus Magna, who want the technology without the religion.'],
   ['The Cult of the Whispering Glitch', 'Followers of Valerius, for whom the glitch is revelation.'],
   ['The Sylvan Concord', 'The guardians of Krystallos, in what they believe is harmony with living magic.'],
   ['The Unchained', 'Heretics, Glitched Scions and survivors of correction. Not a house, a network. The ones Kai is most likely to end up among.'],
@@ -61,132 +46,165 @@ const changes = [
   ['Zephyr', 'The smaller mobile refuge convoy, distinct from Kesler Pi. Nic kept both in the desert chapter on 5 November. Zephyr is outside the current build scope.'],
   ['The estate', 'Kai reaches its gate in Act I and finds it shut. Full access comes late.'],
 ];
-const groups = [
-  ['built', 'Anchored', 'Walkable in the packaged build. As real as anything here gets.'],
-  ['now', 'Weaving', 'On the same map as the courtyard; the kit is growing to fit them.'],
-  ['next', 'Unwritten, but painted', 'Every place starts as a painting. These exist as paintings and wait for the kit. They are not less real for it, only less walkable.'],
-] as const;
 ---
-<Base title="World" description="The places of Havenwood, painted before they were built; the regions of the open world on its horizon; and the wider world as written in 2025, not yet painted.">
+<Base title="World" description="A chart of the world as the build knows it, drawn from the game’s own provisional positions; how far out it gets stranger; and every place in Havenwood, one tile each, with its full record a click away.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h1>The world</h1>
-        <p>Havenwood is a hill town between a harbour and a chapel on the headland. Each place is painted before it is built, and the build is checked against the painting. Where they differ, the painting is right. Around the town lie seven more regions and the Weeping Colossus: <a href="#open-world">the open world</a>.</p>
+        <p>There is no finished map. There is the build, which keeps a number for where everything stands, and there are the paintings, which are right. This chart is the numbers. The paintings are a click away.</p>
       </div>
-      <Frame src={courtyardConcept} alt="Painting of the courtyard: a round teal tree, a tall pale tower, a rose shop with a blue awning, a well, a yellow arch with a clock, and hills behind." label="The town as a painting." caption="The courtyard concept that set the palette: ochre, coral, plaster, violet shadows." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1600, 2000]} />
+      <Chart />
     </div>
   </section>
 
-  {groups.map(([status, title, note]) => (
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class={`state state-${status}`}>{title}</span></h2>
-          <p>{note}</p>
-        </div>
-        <div class="places">
-          {places.filter((p) => p.status === status).map((p) => (
-            <article class="place" id={p.slug}>
-              <figure class="frame">
-                <Image src={p.image} alt={p.imageAlt} widths={[600, 1000, 1600]} sizes="(min-width: 60rem) 48rem, 100vw" />
-              </figure>
-              <div class="place-text">
-                <h3>{p.name}</h3>
-                <p class="small muted">{p.statusText}</p>
-                <p>{p.body}</p>
-              </div>
-              <details class="development place-development">
-                <summary>{p.frames?.length ? 'More images & development details' : 'Development details'}<span class="sr-only"> for {p.name}</span></summary>
-                <div class="development-notes">
-                  <p class="small muted">{p.development.status}</p>
-                  {p.development.notes.map((note) => <p>{note}</p>)}
-                </div>
-                {p.frames && (
-                  <div class="frames frames-3">
-                    {p.frames.map((f) => <Frame src={f.src} alt={f.alt} caption={f.caption} sizes="(min-width: 60rem) 25vw, 100vw" widths={[400, 800, 1200]} />)}
-                  </div>
-                )}
-              </details>
-            </article>
-          ))}
-        </div>
+  <section class="section">
+    <div class="wrap maps">
+      <div class="maps-text">
+        <h2>Three maps were drawn. None is the geography.</h2>
+        <dl class="ledger">
+          <div><dt>27 May 2025</dt><dd>The first map, painted before there was a game: four continents, sea creatures, labels that do not quite spell. Kept as it was, on <a href={base + 'timeline/'}>the timeline</a>. Its continents survive as names.</dd></div>
+          <div><dt>19 October 2026</dt><dd>A study of Havenwood and the near coast: a south-facing bay, ruins inland to the north-west, a marsh on the eastern shore, a beacon on an island. A proposal, and the build went another way: past the first kilometre, the town’s own ground is sea.</dd></div>
+          <div><dt>25 October 2026</dt><dd>A world map in the manner of the first one, with roads. Nic set it aside as too generic, and asked for stranger places instead. The stranger places are below.</dd></div>
+          <div><dt>Now</dt><dd>The chart above is drawn from the pins the build places its far silhouettes by. Nic moves a pin by editing a file. The map will exist when the regions do; until then the record charts what is there.</dd></div>
+        </dl>
       </div>
-    </section>
-  ))}
-  <section class="section" id="open-world">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The open world</h2>
-        <p>Every region starts as a painting. Havenwood and the Long Road can be explored in the public demo. High Pass and the Salt Road have internal prototypes; the other regions remain distant silhouettes.</p>
-      </div>
-      <div class="regions">
-        {regions.map((r) => (
-          <article class="region" id={`region-${r.id}`}>
-            <figure class="frame">
-              <Image src={r.image} alt={r.alt} widths={[600, 900, 1280]} sizes="(min-width: 50rem) 50vw, 100vw" />
-            </figure>
-            <h3>{r.name}</h3>
-            <p class="small"><span class={`state state-${r.state}`}>{r.id === 'long-road' ? 'In the public demo' : regionLabel[r.state]}</span></p>
-            <p>{r.painted}</p>
-            <details class="development">
-              <summary>Development details<span class="sr-only"> for {r.name}</span></summary>
-              <p class="small muted">{r.world1}</p>
-            </details>
-          </article>
-        ))}
-      </div>
+      <figure class="frame maps-first">
+        <Image src={firstMap} alt="A painted fantasy map of island continents: the Shifting Wastes, Aethelgard, Ferrus Magna, Sylvandell, with sea creatures in the water." widths={[400, 700, 1000]} sizes="(min-width: 60rem) 22rem, 100vw" />
+        <figcaption>The first map. Aethelgard three times, Ferrus Magna three times.</figcaption>
+      </figure>
     </div>
   </section>
+
+  <section class="section depth-section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The further out, the stranger the rule</h2>
+        <p>Outside Havenwood the regions are not climates. Each one is a deeper shortcut in how the world is kept, and each asks something of the people who live in it. From the working notes of 25 October; saved, not all chosen.</p>
+      </div>
+      <ol class="depth">
+        {depth.map((d, i) => (
+          <li class="depth-row" style={`--d: ${i / (depth.length - 1)}`}>
+            <span class="depth-n" aria-hidden="true">{d.n}</span>
+            <div class="depth-body">
+              <h3><span class="depth-name">{d.name}</span> <span class="depth-rule">{d.rule}</span></h3>
+              <p>{d.text}</p>
+              <p class="small"><a class={`state state-${d.state}`} href={d.href.startsWith('#') ? d.href : base + d.href}>{d.stateText}</a></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="havenwood">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Havenwood, place by place</h2>
+        <p>A hill town between a harbour and a chapel on the headland. Each place was painted before it was built, and the build is checked against the painting. Open a tile for its record: what it is, what has been checked, and the frames.</p>
+      </div>
+      {groups.map(([status, title, note]) => {
+        const group = places.filter((p) => p.status === status);
+        if (!group.length) return null;
+        return (
+          <div class="tile-group">
+            <h3><span class={`state state-${status}`}>{title}</span> <span class="muted tile-note">{note}</span></h3>
+            <div class="tiles">
+              {group.map((p) => (
+                <a class="tile" id={p.slug} href={`#${p.slug}`} data-dialog={`place-${p.slug}`}>
+                  <Image src={p.image} alt={p.imageAlt} widths={[400, 700]} sizes="(min-width: 60rem) 16rem, 45vw" />
+                  <span class="tile-name">{p.name}</span>
+                  <span class="tile-state small muted">{p.statusText}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  {places.map((p) => (
+    <dialog class="record" id={`place-${p.slug}`} aria-labelledby={`place-${p.slug}-title`}>
+      <form method="dialog" class="record-bar"><span class="record-kicker"><span class={`state state-${p.status}`}>{p.statusText}</span></span><button class="record-close" aria-label="Close">×</button></form>
+      <div class="record-body">
+        <figure class="frame"><Image src={p.image} alt={p.imageAlt} widths={[600, 1000, 1600]} sizes="(min-width: 60rem) 56rem, 100vw" /></figure>
+        <h2 id={`place-${p.slug}-title`}>{p.name}</h2>
+        <p class="record-lede">{p.body}</p>
+        <p class="small muted">{p.development.status}</p>
+        {p.development.notes.map((note) => <p class="small">{note}</p>)}
+        {p.frames && (
+          <div class="frames frames-3">
+            {p.frames.map((f) => <Frame src={f.src} alt={f.alt} caption={f.caption} sizes="(min-width: 60rem) 18rem, 100vw" widths={[400, 800]} />)}
+          </div>
+        )}
+      </div>
+    </dialog>
+  ))}
+
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h2><span class="state state-next">Written, not painted</span></h2>
-        <p>Earlier designs for the continents and factions, written in 2025. These places are not yet painted or built.</p>
+        <p>The continents and factions as written in 2025, before the painted look. A place is not real here until it is painted.</p>
       </div>
       <details class="development">
-        <summary>Explore the wider lore</summary>
-        <p class="small muted">The wider world as designed in 2025, before the painted look: four continents, four cities, three outposts and six factions. A first set of region paintings and a world map were made in October 2026 and set aside as too generic. None of the places below is painted yet, and a place is not real here until it is painted.</p>
-      <div class="world-notes">
-        <div>
-          <h3>Continents</h3>
-          <dl class="ledger">{continents.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+        <summary>The wider world of 2025, and what changed in October</summary>
+        <div class="world-notes">
+          <div>
+            <h3>Continents</h3>
+            <dl class="ledger">{continents.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+          </div>
+          <div>
+            <h3>Factions</h3>
+            <dl class="ledger">{factions.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+            <h3 class="changed">Changed in October and November</h3>
+            <dl class="ledger">{changes.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+            <p class="small muted">Stonehearth Post, in the foothills of the Spine, is a devout village warmed by a hearth that never cools because a precursor plant runs under it, and its Keeper of the Flame is an agent of The System in a robe. That is the pattern for every place: a plain surface, a machine underneath, and someone keeping it quiet.</p>
+          </div>
         </div>
-        <div>
-          <h3>Factions</h3>
-          <dl class="ledger">{factions.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-          <h3 class="changed">Changed on 26 October</h3>
-          <dl class="ledger">{changes.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-          <p class="small muted">Stonehearth Post, in the foothills of the Spine, is a devout village warmed by a hearth that never cools because a precursor plant runs under it, and its Keeper of the Flame is an agent of The System in a robe. That is the pattern for every place: a plain surface, a machine underneath, and someone keeping it quiet.</p>
-        </div>
-      </div>
       </details>
     </div>
   </section>
 </Base>
+
+<script>
+  import '../scripts/records';
+</script>
+
 <style>
-  .places { display: grid; gap: clamp(3rem, 6vw, 5rem); }
-  .place { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.5rem 3rem; align-items: start; }
-  .place-development { grid-column: 1 / -1; }
-  .development { border-top: var(--rule); padding-top: 0.8rem; }
-  .development summary { cursor: pointer; color: var(--fg-soft); font-size: 0.9rem; }
-  .development summary::marker { color: var(--lavender); }
-  .development summary:hover { color: var(--fg); }
-  .development summary:focus-visible { outline: 2px solid var(--kai); outline-offset: 4px; }
-  .development[open] > summary { margin-bottom: 1.2rem; color: var(--fg); }
-  .development-notes { max-width: var(--measure); margin-bottom: 1.5rem; font-size: 0.95rem; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-  .place h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 0.3rem; }
-  @media (max-width: 55rem) { .place { grid-template-columns: 1fr; } }
-  .regions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 5vw, 4rem) clamp(1.6rem, 3.5vw, 3rem); }
-  @media (max-width: 50rem) { .regions { grid-template-columns: 1fr; } }
-  .region h3 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin: 1.2rem 0 0.2rem; }
-  .region p { margin: 0.6rem 0 0; max-width: 60ch; }
+  .maps { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 22rem); gap: clamp(1.6rem, 4vw, 4rem); align-items: start; }
+  .maps h2 { max-width: 20ch; }
+  .maps-first { max-width: 22rem; }
+  @media (max-width: 55rem) { .maps { grid-template-columns: 1fr; } }
+
+  .depth { list-style: none; margin: 0; padding: 0; counter-reset: depth; }
+  .depth-row { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 0 1.5rem; padding: 1.6rem 0; border-top: var(--rule); color: color-mix(in oklab, var(--fg) calc(100% - var(--d) * 40%), var(--fg-faint)); }
+  .depth-row:last-child { border-bottom: var(--rule); }
+  .depth-n { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--fg-faint); padding-top: 0.5rem; }
+  .depth-n::before { content: 'LVL '; }
+  .depth-body h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: 0.5rem; }
+  .depth-name { color: transparent; background: linear-gradient(90deg, var(--fg) calc(100% - var(--d) * 100%), transparent); -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0.6px var(--fg); }
+  .depth-rule { display: block; font-size: 1rem; font-family: var(--font-body); color: var(--lavender); margin-top: 0.2rem; }
+  .depth-body p { max-width: 66ch; }
+  .depth-body a.state { text-decoration: none; color: var(--fg-soft); }
+  .depth-body a.state:hover { color: var(--fg); }
+  @media (max-width: 40rem) { .depth-row { grid-template-columns: 1fr; } }
+
+  .tile-group { margin-top: 2rem; }
+  .tile-group h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; margin-bottom: 1rem; }
+  .tile-note { font-family: var(--font-body); font-size: 0.9rem; font-weight: 400; }
+
   .world-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4rem; align-items: start; }
   .world-notes h3 { margin-bottom: 1rem; }
   .world-notes h3.changed { margin-top: 2.5rem; }
   .world-notes .ledger > div { grid-template-columns: minmax(7rem, 10rem) 1fr; }
   .world-notes .ledger dd { font-size: 0.95rem; color: var(--fg-soft); }
+  .development { border-top: var(--rule); padding-top: 0.8rem; }
+  .development summary { cursor: pointer; color: var(--fg-soft); }
+  .development summary::marker { color: var(--lavender); }
+  .development summary:hover { color: var(--fg); }
+  .development[open] > summary { margin-bottom: 1.5rem; color: var(--fg); }
   @media (max-width: 60rem) { .world-notes { grid-template-columns: 1fr; } }
   @media (max-width: 38rem) { .world-notes .ledger > div { grid-template-columns: 1fr; gap: 0.35rem; } }
 </style>

@@ -3,93 +3,118 @@ import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 import { Image } from 'astro:assets';
 import { kai, townsfolk, rexCheckpoint } from '../data/characters';
+import { written, systemLines } from '../data/cast';
 import composite from '../assets/media/townsfolk-today-vs-drawn.jpg';
+import lineup1 from '../assets/media/lineup-drawing.jpg';
 import lineup2 from '../assets/media/lineup-2-drawing.jpg';
 import strip2 from '../assets/media/townsfolk-second-lineup.jpg';
 import lineup3 from '../assets/media/lineup-3-drawing.jpg';
 import strip3 from '../assets/media/townsfolk-third-lineup.jpg';
 import walkerFisherman from '../assets/media/walker-fisherman.jpg';
 import walkerChild from '../assets/media/walker-child.jpg';
-const all = [kai, ...townsfolk];
-const cast = [
-  ['Elara', 'Kai\u2019s sister', 'Went into the old ruins and did not come back. The one memory the execution left him. What she turns out to be decides the ending.'],
-  ['Rex', 'The pragmatic scavenger', 'Patched leather with glowing conduits, goggles made from old sensors, a pneumatic tool that fires charged bolts. Calls magic broken machinery and is usually right. Found in the ruins outside Havenwood.'],
-  ['Seraph', 'The awakened enforcer', 'A Corrector who saw one Nullification too many. Still wears the under-suit, has defaced the armour. Precise, formal, and bitter about it.'],
-  ['Zenith', 'The glitch-witch', 'Lives where the distortions cluster. Mismatched layers covered in corrupted glyphs and blinking salvage, hair streaked by exposure. Speaks in fragments that turn out to be true.'],
-  ['Valerian', 'The archivist', 'A scholar, possibly a former Keeper of the Lineage, with a satchel of forbidden texts and a decoder for old machines. Believes in verifiable truth over dogma.'],
-  ['Lyra', 'The apostate', 'A Lumina whose family faked her death to save her from correction. Wears a defaced sigil and hides the Mark in her eyes. Wants to rewrite the code she was born with.'],
-  ['Cog', 'The discarded construct', 'Unit 734, a precursor maintenance robot that became conscious by watching the resets. Patched from every era, one eye flickering. Asks whether your will is any different from its programming.'],
-  ['Cora', 'The princess', 'Youngest of House Lumina, not glitched, cheerful, curious, and tired of the gilded walls. Her luck is The System keeping her blessed, though she does not know it.'],
-  ['Kaelen Lumina', 'The reality weaver', 'A lord who understands The System as a machine and wants to become its source code. The nearest thing the story has to a villain who is not the architect.'],
-  ['Aris Thorne', 'The technocrat', 'A Lumina by birth, married into an engineering house on Ferrus Magna. Rejects the mysticism and wants the technology.'],
-  ['Valerius Lumina', 'The whispering glitch', 'A Glitched Scion in unstable symbiosis with a fragment of precursor AI at a Whispering Ruin. A cult has grown around him.'],
-];
+const base = import.meta.env.BASE_URL;
+const people = [kai, ...townsfolk];
+const line = (c: typeof kai) => c.body.find((s) => s.startsWith('"'))?.replace(/^"|"$/g, '');
 ---
-<Base title="Characters" description="Kai, who is drawn, and the townsfolk of Havenwood, who are painted and do not remark on the voids in their clothes. Rex’s Development checks, and the wider written cast.">
+<Base title="The people" description="Weighted by what they mean to the story, not by what is built. Kai, who is drawn; Elara, who is missing; The System, which has no face; the companions, written and shown as ink until they are painted; and fifteen residents of Havenwood with one void each.">
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <h1>Characters</h1>
-        <p>Tall figures, calm colour, a mask or no face, and one round void each. Nobody in Havenwood remarks on the voids. They were drawn as a lineup first; the game keeps the drawing’s ink and colour and most of its intentions.</p>
+        <h1>The people</h1>
+        <p>Weighted by what they mean, not by what is built. The townsfolk are built and small. The companions are written and large. Until a person is drawn in the town’s hand, the record shows them as ink and gives them a void.</p>
       </div>
-      <div class="people">
-        {all.map((c) => (
-          <article class="person" id={c.slug}>
-            <figure class="portrait">
-              <Image src={c.drawing} alt={`Drawing of ${c.name}.`} widths={[300, 600, 900]} sizes="(min-width: 60rem) 16rem, 40vw" />
-            </figure>
-            <div class="person-text">
-              <h2>{c.name}</h2>
-              <p class="role">{c.role}. {c.place}.</p>
-              <p class="small muted"><span class={`state state-${c.status}`}>{c.statusText}</span></p>
-              {c.body.map((para) => <p>{para}</p>)}
+
+      <div class="weight">
+        <article class="w-kai" id="kai">
+          <figure class="w-art"><Image src={kai.inGame} alt="Kai in the Havenwood street, cape and red hair, in the game." widths={[600, 1000, 1400]} sizes="(min-width: 60rem) 36rem, 100vw" /></figure>
+          <figure class="w-draw"><Image src={kai.drawing} alt="The drawing of Kai." widths={[300, 500]} sizes="12rem" /></figure>
+          <div class="w-text">
+            <p class="w-kicker"><span class="state state-built">{kai.statusText}</span></p>
+            <h2><span class="phase" data-text="Kai">Kai</span></h2>
+            <p class="w-role">The hero. In The System’s terms an anomaly, KAI_7.34, a discrepancy in the code: he comes from nowhere and is no one. He is the one person in Havenwood who notices when the world stutters, and the one person who is drawn.</p>
+            <p>{kai.body[0]}</p>
+            <p class="small"><a href="#kai" data-dialog="person-kai">The full record: movement, the jump, the sword, what is still wrong</a></p>
+          </div>
+        </article>
+
+        <article class="w-elara" id="elara">
+          <div class="w-void" aria-hidden="true"><span>no image on record</span></div>
+          <div class="w-text">
+            <p class="w-kicker"><span class="state state-next">Missing</span></p>
+            <h2>Elara</h2>
+            <p class="w-role">Kai’s sister.</p>
+            <p class="small">Went into the old ruins and did not come back. The one memory the execution left him; her name is in the fragments. Finding her is his first reason of his own to leave the town. What she turns out to be decides the ending, and that is not on the record.</p>
+          </div>
+        </article>
+
+        <article class="w-system" id="system">
+          <div class="sys" aria-hidden="true"><div class="sys-roll">{[...systemLines, ...systemLines].map((l) => <span>{l}</span>)}</div></div>
+          <div class="w-text">
+            <p class="w-kicker"><span class="state state-built">Running</span></p>
+            <h2>The System</h2>
+            <p class="w-role">Not a god. Not evil.</p>
+            <p class="small">Rational, patient and amoral, and it wants the world to stay exactly as it is. The few who know of it call it the Silent Algorithm. Everyone else calls it providence, or the spirits, or luck. It has no face, and it has every face that corrects you kindly.</p>
+          </div>
+        </article>
+
+        {written.map((w) => (
+          <article class="w-card" id={`cast-${w.key}`} style={`--vx: ${w.void[0]}%; --vy: ${w.void[1]}%; --vr: ${(w.void[2] * 0.28).toFixed(2)}rem`}>
+            {w.image ? (
+              <figure class="ink"><Image src={w.image} alt={`${w.name}, the May 2025 portrait, shown as ink.`} widths={[300, 500, 700]} sizes="(min-width: 60rem) 16rem, 45vw" /></figure>
+            ) : (
+              <div class="ink ink-blank" aria-hidden="true"><span>never drawn</span></div>
+            )}
+            <div class="w-text">
+              <h3>{w.name}</h3>
+              <p class="w-role">{w.epithet}</p>
+              <p class="small">{w.text}</p>
+              <p class="small">{w.href ? <a class={`state state-${w.state}`} href={w.href}>{w.stateText}</a> : <span class={`state state-${w.state}`}>{w.stateText}</span>}</p>
             </div>
-            <div class="person-frames">
-              <Frame src={c.inGame} alt={`${c.name} in the game.`} caption="In the game." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />
-              {c.face && <Frame src={c.face} alt={`${c.name}, close.`} caption="Close." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />}
-            </div>
-            {c.extra && <div class="person-extra"><Frame src={c.extra.src} alt={c.extra.caption} caption={c.extra.caption} sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1800]} /></div>}
           </article>
+        ))}
+      </div>
+      <p class="small muted weight-note">The companions were designed in 2025 and drawn that May as portraits and pixel sprites; the originals are on <a href={base + 'timeline/#cast'}>the timeline</a>. They remain story designs. What they do in the game is on <a href={base + 'mechanics/'}>the mechanics page</a>, written and not built.</p>
+    </div>
+  </section>
+
+  <section class="section" id="residents">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Fifteen residents, one void each</h2>
+        <p>Tall figures, calm colour, a mask or no face, and one round void somewhere in their clothes. Nobody in Havenwood remarks on the voids. They were drawn as lineups first, and the game keeps the drawing’s ink and colour. Each has a name and something to say. Open one.</p>
+      </div>
+      <div class="lineup">
+        {townsfolk.map((c) => (
+          <a class="figure" id={c.slug} href={`#${c.slug}`} data-dialog={`person-${c.slug}`} data-line={line(c) ?? c.role}>
+            <Image src={c.drawing} alt={`Drawing of ${c.name}.`} widths={[200, 400]} sizes="(min-width: 60rem) 7rem, 22vw" />
+            <span class="figure-name">{c.name}</span>
+            <span class="figure-role small muted">{c.role}</span>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The second lineup</h2>
-        <p>Six more, drawn on 22 October in the first lineup's hand and picked from three versions. By the evening all six were standing in the lane, the harbour and the courtyard, with names, lines and two walking routes. Rowan was meant to be a man. The drawing disagreed and was kept.</p>
+  {people.map((c) => (
+    <dialog class="record" id={`person-${c.slug}`} aria-labelledby={`person-${c.slug}-title`}>
+      <form method="dialog" class="record-bar"><span class="record-kicker"><span class={`state state-${c.status}`}>{c.statusText}</span></span><button class="record-close" aria-label="Close">×</button></form>
+      <div class="record-body person-body">
+        <div class="person-grid">
+          <figure class="portrait"><Image src={c.drawing} alt={`Drawing of ${c.name}.`} widths={[300, 600]} sizes="(min-width: 60rem) 14rem, 40vw" /></figure>
+          <div>
+            <h2 id={`person-${c.slug}-title`}>{c.name}</h2>
+            <p class="w-role">{c.role}. {c.place}.</p>
+            {c.body.map((para) => (para.startsWith('"') ? <p class="said">{para.replace(/^"|"$/g, '')}</p> : <p class="small">{para}</p>))}
+          </div>
+        </div>
+        <div class="frames frames-2">
+          <Frame src={c.inGame} alt={`${c.name} in the game.`} caption="In the game." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />
+          {c.face && <Frame src={c.face} alt={`${c.name}, close.`} caption="Close." sizes="(min-width: 60rem) 28rem, 100vw" widths={[500, 900, 1400]} />}
+        </div>
+        {c.extra && <div class="person-extra"><Frame src={c.extra.src} alt={c.extra.caption} caption={c.extra.caption} sizes="(min-width: 70rem) 58rem, 100vw" widths={[800, 1200, 1800]} /></div>}
       </div>
-      <div class="frames frames-2">
-        <Frame src={lineup2} alt="Drawing of six figures: Sal in slate blue, Rowan in a pale apron, Frida in ochre with a teal scarf, Tom in an olive coat, Anna in cream, Grandmother Edith in lavender." label="Lineup two." caption="Masks and holes again. One void each, and one crescent." sizes="(min-width: 70rem) 39rem, 100vw" />
-        <Frame src={strip2} alt="The six figures in the game, side by side, in the order of the drawing." label="In the game, the same evening." caption="Sal, Rowan, Frida, Tom, Anna, Edith." sizes="(min-width: 70rem) 39rem, 100vw" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The third lineup, and Greta</h2>
-        <p>Three more for the chapel and the Rusted Cog, drawn on 25 October and accepted as drawn. In the game they first came out a little off: long dark necks, paler cloth, hair like a white cap. They were reworked against the drawing, two or three rounds each, before Nic passed them. Greta came a day earlier, on her own sheet.</p>
-      </div>
-      <div class="frames frames-2">
-        <Frame src={lineup3} alt="Drawing of three figures: Father Silas in a red robe with a cream stole, Old Ferris in an ochre coat with a cane, the Hooded Stranger in a taupe cloak." label="Lineup three." caption="Silas, Ferris, the Stranger. The Stranger's void is the hood." sizes="(min-width: 70rem) 39rem, 100vw" />
-        <Frame src={strip3} alt="The same three in the game, side by side." label="In the game, 25 October." caption="Silas in the chapel, Ferris and the Stranger in the Cog. The Stranger is being made darker." sizes="(min-width: 70rem) 39rem, 100vw" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Before and after</h2>
-        <p>The left columns are the earlier procedural figures, built from primitives. The right columns are the drawn ones that replaced them on 22 October. Same places, same light.</p>
-      </div>
-      <Frame src={composite} alt="A sheet of five rows, one per resident, comparing the procedural figure and the drawn figure, full and close." label="Today versus drawn." caption="The review sheet that made the decision." sizes="(min-width: 70rem) 78rem, 100vw" widths={[800, 1200, 1800, 2400]} />
-    </div>
-  </section>
+    </dialog>
+  ))}
 
   <section class="section">
     <div class="wrap">
@@ -102,63 +127,121 @@ const cast = [
         <Frame src="media/loop-street.mp4" alt="Kai walks down the street between the yellow house and the blue house." caption="The street." />
         <Frame src="media/loop-arch.mp4" alt="Kai walks under the arch and into the courtyard with the well." caption="The arch, back into the courtyard." />
       </div>
-      <div class="frames frames-2 walkers">
-        <Frame src={walkerFisherman} alt="The Fisherman mid-stride in the courtyard." caption="The Fisherman mid-stride, from the walk test." />
-        <Frame src={walkerChild} alt="The Child walking past the shop." caption="The Child on her route past the shop." />
-      </div>
     </div>
   </section>
 
   <section class="section" id="rex">
-    <div class="wrap">
-      <div class="section-head">
+    <div class="wrap rex">
+      <div>
         <h2>{rexCheckpoint.name}</h2>
-        <p>{rexCheckpoint.statusText}</p>
-        <p>{rexCheckpoint.body}</p>
+        <p class="small muted">{rexCheckpoint.statusText}</p>
+        <p class="small">{rexCheckpoint.body}</p>
       </div>
       <div class="frames frames-2">
-        {rexCheckpoint.frames.map((frame) => <Frame {...frame} />)}
+        {rexCheckpoint.frames.map((frame) => <Frame {...frame} sizes="(min-width: 60rem) 22rem, 100vw" widths={[500, 900]} />)}
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2><span class="state state-next">From the written cast</span></h2>
-        <p>The companions and the people of the wider story, as written in 2025. They were drawn once, in May 2025, as portraits and pixel sprites; those are on <a href={import.meta.env.BASE_URL + 'timeline/#cast'}>the timeline</a>. These descriptions remain story designs. Rex now has the separate Development checkpoint above; that does not establish his recruitment or finished appearance.</p>
-      </div>
-      <div class="cast">
-        {cast.map(([name, role, body]) => (
-          <article class="cast-card">
-            <h3>{name}</h3>
-            <p class="role">{role}</p>
-            <p>{body}</p>
-          </article>
-        ))}
-      </div>
+      <details class="development">
+        <summary>The lineups and the review sheets, as drawn and as built</summary>
+        <div class="sheets">
+          <Frame src={lineup1} alt="The first lineup drawing: five figures with masks and voids." label="Lineup one, 21 October." caption="The Well Woman, the Shopkeeper, the Old Man, the Child, the Fisherman. The first five through the drawing-to-game route." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={composite} alt="A sheet of five rows, one per resident, comparing the procedural figure and the drawn figure, full and close." label="Today versus drawn." caption="The review sheet that made the decision: procedural figures on the left, drawn ones on the right, 22 October." sizes="(min-width: 70rem) 39rem, 100vw" widths={[800, 1200, 1800]} />
+          <Frame src={lineup2} alt="Drawing of six figures: Sal in slate blue, Rowan in a pale apron, Frida in ochre with a teal scarf, Tom in an olive coat, Anna in cream, Grandmother Edith in lavender." label="Lineup two, 22 October." caption="Six more, picked from three versions. Rowan was meant to be a man. The drawing disagreed and was kept." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={strip2} alt="The six figures in the game, side by side, in the order of the drawing." label="In the game, the same evening." caption="Sal, Rowan, Frida, Tom, Anna, Edith." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={lineup3} alt="Drawing of three figures: Father Silas in a red robe with a cream stole, Old Ferris in an ochre coat with a cane, the Hooded Stranger in a taupe cloak." label="Lineup three, 25 October." caption="Silas, Ferris, the Stranger. The Stranger’s void is the hood. Greta came a day earlier, on her own sheet." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={strip3} alt="The same three in the game, side by side." label="In the game, 25 October." caption="Silas in the chapel, Ferris and the Stranger in the Cog. They first came out with long dark necks and hair like a white cap, and were reworked against the drawing." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={walkerFisherman} alt="The Fisherman mid-stride in the courtyard." caption="The Fisherman mid-stride, from the walk test." sizes="(min-width: 70rem) 39rem, 100vw" />
+          <Frame src={walkerChild} alt="The Child walking past the shop." caption="The Child on her route past the shop." sizes="(min-width: 70rem) 39rem, 100vw" />
+        </div>
+      </details>
     </div>
   </section>
 </Base>
+
+<script>
+  import '../scripts/records';
+</script>
+
 <style>
-  .people { display: grid; gap: clamp(3.5rem, 7vw, 6rem); }
-  .person { display: grid; grid-template-columns: 14rem minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.5rem 3rem; align-items: start; padding-top: 2.5rem; border-top: var(--rule); }
-  .people .person:first-child { border-top: 0; padding-top: 0; }
+  .weight { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1.1rem, 2vw, 1.8rem); align-items: start; }
+  .weight article { min-width: 0; }
+  .w-kicker { margin: 0 0 0.3rem; font-size: 0.85rem; }
+  .w-role { color: var(--fg-soft); margin: 0 0 0.6rem; }
+  .w-text h2 { margin-bottom: 0.2rem; }
+  .w-text h3 { margin: 0.7rem 0 0.1rem; }
+
+  /* Kai: two columns wide, the game frame with the drawing pinned on it */
+  .w-kai { grid-column: span 2; grid-row: span 2; position: relative; display: grid; gap: 1rem; }
+  .w-art { margin: 0; }
+  .w-art img { border: 1px solid var(--edge); box-shadow: var(--shadow); }
+  .w-draw { position: absolute; top: 1rem; right: 1rem; width: clamp(5rem, 22%, 9rem); margin: 0; }
+  .w-draw img { border: 1px solid var(--edge); background: #faf6ee; box-shadow: 0.3rem 0.3rem 0 var(--lavender-deep); transform: rotate(2deg); }
+  .w-kai .w-text p { max-width: 60ch; }
+
+  /* Elara: a frame with nothing in it but a void */
+  .w-elara { grid-column: span 2; display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 1.5fr); gap: 1.2rem; align-items: start; }
+  .w-void { aspect-ratio: 3 / 4; border: 1px dashed var(--edge); position: relative; display: grid; place-content: end center; padding-bottom: 0.8rem;
+    background: radial-gradient(circle at 50% 42%, var(--bg-sunk) 0 20%, transparent 20.5%), var(--bg-raised); }
+  .w-void::before { content: ''; position: absolute; left: 50%; top: 42%; width: 40%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px solid var(--lavender); animation: elara 7s ease-in-out infinite; }
+  @keyframes elara { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.9; } }
+  .w-void span { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-faint); }
+
+  /* The System: the scroll, rolling */
+  .w-system { grid-column: span 2; display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 1.5fr); gap: 1.2rem; align-items: start; }
+  .sys { aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--edge); background: var(--bg-sunk); position: relative; }
+  .sys::after { content: ''; position: absolute; inset: 0; background: linear-gradient(var(--bg-sunk), transparent 25%, transparent 75%, var(--bg-sunk)); pointer-events: none; }
+  .sys-roll { display: grid; gap: 0.9rem; padding: 1rem; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-faint); animation: roll 40s linear infinite; }
+  .sys-roll span:nth-child(3n) { color: var(--kai); }
+  @keyframes roll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+
+  /* The written: ink, with a void */
+  .w-card .ink { margin: 0 0 0.6rem; background: var(--bg-raised); border: 1px solid var(--edge); aspect-ratio: 3 / 4; overflow: hidden; position: relative; }
+  .w-card .ink img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(1.08); mix-blend-mode: luminosity; opacity: 0.85; transition: filter 300ms ease, opacity 300ms ease;
+    -webkit-mask-image: radial-gradient(circle at var(--vx) var(--vy), transparent var(--vr), #000 calc(var(--vr) + 0.5px)); mask-image: radial-gradient(circle at var(--vx) var(--vy), transparent var(--vr), #000 calc(var(--vr) + 0.5px)); }
+  .w-card .ink::after { content: ''; position: absolute; left: var(--vx); top: var(--vy); width: calc(var(--vr) * 2); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px solid var(--lavender-deep); pointer-events: none; }
+  .w-card:hover .ink img { filter: grayscale(0.6) contrast(1.1); opacity: 1; }
+  .ink-blank { display: grid; place-content: center; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-faint);
+    background: repeating-conic-gradient(color-mix(in oklab, var(--bg-sunk) 70%, #000) 0 25%, color-mix(in oklab, var(--bg-raised) 85%, var(--lavender-deep)) 0 50%) 0 0 / 28px 28px; }
+  .w-card .w-text a.state { text-decoration: none; color: var(--fg-soft); }
+  .w-card .w-text a.state:hover { color: var(--fg); }
+  .weight-note { margin-top: 2rem; max-width: 70ch; }
+
+  @media (max-width: 70rem) { .weight { grid-template-columns: repeat(3, minmax(0, 1fr)); } .w-kai { grid-column: span 3; grid-row: auto; } .w-elara, .w-system { grid-column: span 3; } }
+  @media (max-width: 44rem) { .weight { grid-template-columns: repeat(2, minmax(0, 1fr)); } .w-kai, .w-elara, .w-system { grid-column: span 2; } .w-elara, .w-system { grid-template-columns: minmax(6rem, 10rem) 1fr; } }
+
+  /* The residents: a lineup. Hover for the line. */
+  .lineup { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 7.2rem), 1fr)); gap: 1.6rem 0.9rem; align-items: end; }
+  .figure { display: grid; gap: 0.4rem; text-decoration: none; color: inherit; position: relative; align-content: end; }
+  .figure img { width: 100%; aspect-ratio: 1 / 2; object-fit: contain; background: #faf6ee; border: 1px solid var(--edge); transition: transform 140ms ease; }
+  .figure:hover img, .figure:focus-visible img { transform: translateY(-4px); }
+  .lineup:hover .figure:not(:hover) img { filter: saturate(0.5); }
+  .figure-name { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 24; font-size: 1rem; line-height: 1.15; }
+  .figure-role { line-height: 1.25; font-size: 0.78rem; }
+  .figure::after { content: '“' attr(data-line) '”'; position: absolute; left: 0; bottom: 100%; width: max(100%, 15rem); max-width: 60vw; margin-bottom: 0.5rem; padding: 0.55rem 0.7rem; background: var(--bg-sunk); border: 1px solid var(--edge); box-shadow: 0.3rem 0.3rem 0 var(--lavender-deep); font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 20; font-size: 0.92rem; line-height: 1.3; color: var(--fg); opacity: 0; pointer-events: none; transition: opacity 120ms steps(2, end); z-index: 3; }
+  .figure:hover::after, .figure:focus-visible::after { opacity: 1; }
+
+  .person-grid { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.6rem; align-items: start; margin-bottom: 1.6rem; }
   .portrait { margin: 0; }
-  .portrait :global(img) { width: 100%; height: auto; border: 1px solid var(--edge); box-shadow: var(--shadow); background: #faf6ee; }
-  .person h2 { margin-bottom: 0.2rem; }
-  .role { color: var(--fg-soft); margin-bottom: 0.4rem; }
-  .person-frames { display: grid; gap: 1.6rem; min-width: 0; }
-  .person-text { min-width: 0; }
-  .person-extra { grid-column: 1 / -1; }
-  .person-text .state { white-space: normal; align-items: flex-start; }
-  .person-text .state::before { margin-top: 0.3em; }
-  @media (max-width: 70rem) { .person { grid-template-columns: 12rem minmax(0, 1fr); } .person-frames { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 40rem) { .person { grid-template-columns: minmax(0, 1fr); } .portrait { max-width: 12rem; } .person-frames { grid-template-columns: minmax(0, 1fr); } }
-  .walkers { margin-top: clamp(1.6rem, 3.5vw, 3rem); }
-  .cast { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1.4rem; }
-  .cast-card { border: 1px solid var(--line); background: var(--bg-raised); padding: 1.2rem 1.3rem 1rem; }
-  .cast-card h3 { margin-bottom: 0.15rem; }
-  .cast-card .role { color: var(--fg-faint); font-size: 0.88rem; margin-bottom: 0.6rem; }
-  .cast-card p:last-child { margin: 0; color: var(--fg-soft); font-size: 0.95rem; }
+  .portrait img { width: 100%; background: #faf6ee; border: 1px solid var(--edge); box-shadow: var(--shadow); }
+  .said { font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'opsz' 20; font-size: 1.15rem; color: var(--lavender); }
+  .said::before { content: '“'; } .said::after { content: '”'; }
+  .person-extra { margin-top: 1.6rem; }
+  @media (max-width: 40rem) { .person-grid { grid-template-columns: 1fr; } .portrait { max-width: 10rem; } }
+
+  .rex { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem 3rem; align-items: start; }
+  .rex h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+  @media (max-width: 55rem) { .rex { grid-template-columns: 1fr; } }
+
+  .development { border-top: var(--rule); padding-top: 0.8rem; }
+  .development summary { cursor: pointer; color: var(--fg-soft); }
+  .development summary::marker { color: var(--lavender); }
+  .development summary:hover { color: var(--fg); }
+  .development[open] > summary { margin-bottom: 1.5rem; color: var(--fg); }
+  .sheets { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: clamp(1.6rem, 3.5vw, 3rem) clamp(1.4rem, 3vw, 2.4rem); }
+
+  @media (prefers-reduced-motion: reduce) { .sys-roll { animation: none; } .w-void::before { animation: none; } .figure img, .tile img { transition: none; } }
 </style>

@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+
+/* What the game is about, under the paint. Each question has two voices: the
+   Scroll's, which is the voice of order, and a person's. The System lines are
+   written in the register of the Scroll of Judgment that opens the 2025 design;
+   the person's lines are the kind of thing someone in these places would say.
+   Sources: the 2025 philosophical framework (Sartre, Camus, the simulation
+   argument, Berkeley), the master direction of 26 October 2026, and the saved
+   working notes of 25 October 2026. Nothing here is a level. */
+const questions = [
+  {
+    id: 'real', q: 'Is any of this real?',
+    system: 'The town is stable. The clock keeps time. Three rows of tulips, each the same.',
+    person: 'Nobody has ever wound the clock.',
+    body: [
+      'The world looks medieval: lords, chapels, wells, bandits on the roads. Under it is the wreck of a civilisation that could do anything, and over it sits an intelligence that wants the world to stay exactly as it is. So the ruins are called cursed and nobody goes in. The relics are called holy. The medicine is called magic. A person who sees too much is corrected, usually by people who think they serve a king or a god.',
+      'The game takes the old question seriously, and then does something odd with it. In the studio the painting outranks the build: every place is painted first, and where the game and the painting differ, the painting is right. Havenwood is exactly as real as its painting, and no realer. That is the rule the whole thing is made under, and the game knows it.',
+    ],
+    built: 'Havenwood, in the public demo: a town that is bright on purpose, with a clock that has never been wound.', href: 'world/#havenwood',
+  },
+  {
+    id: 'written', q: 'Who wrote you?',
+    system: 'Prime code lineage. Intuition is script. The mark shows in certain light.',
+    person: 'The clothes fit. I have never been here.',
+    body: [
+      'House Lumina has ruled for a thousand years of unbroken light because its founders were written: their line carries the machine’s code, and their uncanny judgement is that code agreeing with what the machine wants. Now and then the line degrades, and a Lumina is born seeing the seams. These Glitched Scions are hidden, declared mad, or tragically lost. Kai may be one.',
+      'Havenwood tries to erase him: a kindly woman, no memory, small errands. The first settlement outside the valley tries the opposite. It has been preparing for him for generations, with an empty bedroom kept made, clothes cut to his measure, and household scriptures that disagree about what he is supposed to do next. A person made before he arrived, by people who need him to be the one they expected. The player can follow one household’s script, or break all of them.',
+    ],
+    built: 'Keepers’ Cove is built with stand-ins; its scriptures are not written. The Lumina gate is shut.', href: 'world/#cove-settlement',
+  },
+  {
+    id: 'sleeping', q: 'Does a street exist when nobody is looking?',
+    system: 'Unobserved sectors unloaded. Memory reclaimed. Restored on observation.',
+    person: 'Someone is paid to stay awake so that my street is there in the morning.',
+    body: [
+      'A game engine does not draw what the camera cannot see. The idea makes that a civic arrangement: a street with no conscious person watching it is unloaded, so watchkeepers, night bakers and musicians work overlapping shifts at bedroom observation windows to keep their streets present. Children know the names of the people keeping their street there until morning. An exhausted watchkeeper matters as much as a lighthouse keeper. Put out a lantern and the medieval wall goes, and the conduit behind it shows.',
+      'The build already does this, without meaning to. Regions are culled past 3,600 metres; the far regions are painted silhouettes until someone walks to them; the chart on the world page unloads a label now and then, to save memory, and puts it back.',
+    ],
+    built: 'The far layer: seven regions and the Colossus as silhouettes, placed by provisional pins.', href: 'world/',
+  },
+  {
+    id: 'forgets', q: 'Who keeps your yesterday?',
+    system: 'Daily cache cleared at dawn. Language and craft retained. Ledgers certified on payment.',
+    person: 'Tell me tomorrow what I was afraid to write down.',
+    body: [
+      'At dawn a chime takes yesterday and leaves the skills. Every house has a morning table: your name, your work, whom you trust, what you owe, an account of the day before. Couples leave introductions for each other. Someone decides, again, to leave a partner, and wakes to an edited account of a happy marriage. The wealthy pay a Public Witness Office to certify their memories; the poor depend on neighbours; the ruler edits the ledgers overnight to remove dissent.',
+      'Kai does not reset. People ask him to carry across the night the things they cannot bring themselves to write. The question under it is older than the chime: how much of who you are is a ledger that someone else keeps.',
+    ],
+    built: 'Aethelburg, the Lumina capital, now the city that forgets every morning. Its rules are still to be designed.', href: 'world/',
+  },
+  {
+    id: 'migrate', q: 'Where is home, if the rooms move?',
+    system: 'Defragmentation in progress. Rooms cycled. Addresses are families, not places.',
+    person: 'The kitchen is here on Thursdays.',
+    body: [
+      'The streets stay still. The rooms beneath them travel on tracks and counterweights through a huge internal structure: a house has its kitchen every third day, the public bath arrives under the square at noon. People organise their lives around room schedules. Above, modest familiar streets; below, slowly passing interiors. A door Kai went through earlier opens later on a room from his past.',
+      'A second version of the same thought: a city dismantled from behind while it builds forward, so that you can visit your childhood house only until its scheduled taking-apart, and wealth buys postponements. Both are ways for a city to move. The moving city Nic asked for is now Kesler Pi, buried in the sand, and Zephyr, the smaller convoy.',
+    ],
+    built: 'An idea, saved. Kesler Pi’s exterior is built; nothing in it moves yet.', href: 'world/#salt-road-trail',
+  },
+  {
+    id: 'lost', q: 'What comes back?',
+    system: 'Unreferenced objects surface in the canal. Claims are adjudicated.',
+    person: 'That is mine. Someone has already claimed it, with evidence.',
+    body: [
+      'A settlement on a dry canal, where objects emerge each morning: buttons, tools, shoes, furniture. Some were lost centuries ago. Some have not been lost yet by their owners. Families work particular stretches of the canal, sorting, repairing and claiming, and ownership disputes are ordinary civic business. An object connected to Kai appears. Somebody else has already claimed it, convincingly.',
+    ],
+    built: 'An idea, saved.', href: 'world/',
+  },
+  {
+    id: 'loop', q: 'Can a loop be lived in?',
+    system: 'Temporal anchor stabilized. Loop 01. Routine nominal.',
+    person: 'The same routes every time, which is fine.',
+    body: [
+      'Sisyphus pushes the boulder up and watches it roll back, and Camus says one must imagine him happy. Chimera is full of loops: the anchors that save you by holding you in place; the residents who walk the same routes every day; a town that may be one long repetition arranged for a single person; a hero who cannot tell whether he watched his execution or died in it. The question may not be how to get out. It may be whether a loop can be a life, and who gets to decide that.',
+      'The site counts your loops in the corner, and has noticed you before.',
+    ],
+    built: 'Anchors are the save system in the demo. The residents’ routes are in the build.', href: 'mechanics/',
+  },
+  {
+    id: 'owe', q: 'What do you owe a world you did not choose?',
+    system: 'Deviation is error. Correction is care.',
+    person: 'I would rather be wrong on my own.',
+    body: [
+      'Sartre’s bad faith is accepting the world as given and blaming the machine for your life in it. The other thing, revolt, is not escape; it is choosing, inside a world you did not make, what to keep. The four acts are changes in what Kai understands, and the last one is about responsibility: what is worth changing, and what is worth keeping, in a place that was built to hold him.',
+      'That is why Havenwood has to be worth coming back to. Its people have their own days. The limits on Kai are bureaucratic and religious, found through ordinary errands. Someone mentions that an old bell rang the night he arrived, although it has no clapper.',
+    ],
+    built: 'Act I only. The town, its people, four trades and a gate that stays shut.', href: 'story/',
+  },
+];
+
+const remembered = [
+  ['Aethelburg', 'A sacred command that restored order. The basis of Lumina authority, kept in the official genealogies, and a reason the capital decides whose memories survive.'],
+  ['Ferrus Magna', 'Stopped machinery, answering lights, survivors carried away. Kept by workers and coastal people in songs, tools and practical customs rather than in temples.'],
+  ['Sylvandell', 'A wound in the living world, remembered by the canopy and the people who talk to it.'],
+  ['The desert', 'Its own account, not yet written. Kai has felt a pulse through stone and seen lights answer across the horizon. He does not know that is an old story.'],
+];
+
+const saved = [
+  ['The settlement that expected him', 'An empty bedroom kept made for generations. Now Keepers’ Cove.'],
+  ['The city that forgets every morning', 'Nic’s seed. Now Aethelburg.'],
+  ['The city whose rooms migrate', 'Streets still, rooms on tracks.'],
+  ['The town that takes turns sleeping', 'Unwatched streets unload.'],
+  ['The return of lost things', 'A dry canal that gives back.'],
+  ['The city dismantled from behind', 'Built forward, taken apart behind; addresses are families.'],
+];
+---
+<Base title="Ideas" description="What Chimera is about, under the paint: whether any of it is real, who wrote you, whether a street exists when nobody looks, who keeps your yesterday, whether a loop can be lived in, and what you owe a world you did not choose.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1>Ideas</h1>
+        <p>What the game is about, under the paint. Each question is asked in two voices: the Scroll’s, which is the voice of order, and a person’s. Nothing on this page is a level. Some of it is a decision; most of it is a question the places are built to ask.</p>
+      </div>
+      <ol class="questions">
+        {questions.map((x, i) => (
+          <li class="question" id={x.id}>
+            <p class="q-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
+            <h2>{x.q}</h2>
+            <div class="voices">
+              <p class="voice-system"><span class="voice-who">the scroll</span>{x.system}</p>
+              <p class="voice-person"><span class="voice-who">a person</span>{x.person}</p>
+            </div>
+            <div class="q-body">
+              {x.body.map((p) => <p>{p}</p>)}
+              <p class="small q-built"><span class="q-built-label">In the build</span> {x.built} <a href={base + x.href}>Go there</a>.</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap remembered">
+      <div class="section-head">
+        <h2>One event, remembered differently everywhere</h2>
+        <p>An old upheaval left the same mark on every culture, and each kept a different story about its cause, its survivors and its meaning, the way flood stories do. A few details are shared, oddly specific: a pulse felt through stone, lights answering across the horizon, a moving refuge. Similar stories are clues. No single tradition is wholly right or wholly invented.</p>
+      </div>
+      <dl class="ledger">{remembered.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      <p class="small muted">From the master direction of 26 October 2026. The desert opening is an echo of the old event, not the event. What began it is not on the record.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Six places that were only ideas</h2>
+        <p>Nic found the first regions and map too generic and asked for stranger places. These were proposed on 25 October 2026 and saved at his request. Saving them approves none of them. Two have since become somewhere.</p>
+      </div>
+      <dl class="ledger saved">{saved.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      <p class="small"><a href={base + 'world/'}>How far out it gets stranger, on the world page</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .questions { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
+  .question { display: grid; grid-template-columns: 4rem minmax(0, 1fr); grid-template-rows: auto auto auto; gap: 0 clamp(1rem, 3vw, 2.5rem); border-top: var(--rule); padding-top: 1.6rem; }
+  .q-n { grid-row: 1 / 4; margin: 0; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--fg-faint); padding-top: 0.6rem; }
+  .question h2 { grid-column: 2; max-width: 22ch; }
+  .voices { grid-column: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0.4rem 0 1.6rem; }
+  .voices p { margin: 0; padding: 1rem 1.1rem; border: 1px solid var(--line); }
+  .voice-who { display: block; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 0.6rem; }
+  .voice-system { background: var(--bg-sunk); font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.6; color: var(--fg-soft); }
+  .voice-system .voice-who { color: var(--kai); }
+  .voice-person { background: var(--bg-raised); font-family: var(--font-display); font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 24; font-size: 1.35rem; line-height: 1.25; color: var(--fg); box-shadow: 0.35rem 0.35rem 0 var(--lavender-deep); }
+  .voice-person .voice-who { color: var(--lavender); }
+  .q-body { grid-column: 2; }
+  .q-body p { max-width: var(--measure); }
+  .q-built { border-left: 3px solid var(--lavender-deep); padding-left: 0.9rem; color: var(--fg-soft); }
+  .q-built-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-faint); margin-right: 0.4rem; }
+  @media (max-width: 48rem) { .question { grid-template-columns: 1fr; } .q-n { grid-row: auto; padding: 0 0 0.4rem; } .question h2, .voices, .q-body { grid-column: 1; } .voices { grid-template-columns: 1fr; } }
+  .remembered .ledger > div { grid-template-columns: minmax(7rem, 10rem) 1fr; }
+  .remembered dd, .saved dd { color: var(--fg-soft); font-size: 0.95rem; }
+  .saved > div { grid-template-columns: minmax(10rem, 18rem) 1fr; }
+  @media (max-width: 38rem) { .remembered .ledger > div, .saved > div { grid-template-columns: 1fr; gap: 0.35rem; } }
+</style>
