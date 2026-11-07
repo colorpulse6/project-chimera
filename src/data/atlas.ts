@@ -82,10 +82,10 @@ export const pins: Pin[] = [
     label: 's', href: '#salt-road-trail',
   },
   {
-    id: 'high-pass', name: 'The High Pass', pos: [-12500, 1500], kind: 'region', state: 'now', stateText: 'Internal preview, not accepted',
+    id: 'high-pass', name: 'The High Pass', pos: [-12500, 1500], kind: 'region', state: 'now', stateText: 'Private terrace slice accepted, 7 November',
     image: pHighPass, alt: 'Painting of the High Pass: a refuge on a cliff path above a blue lake and a stone arch in the snow.',
     painted: 'A plaster refuge with a terracotta roof on a cliff path, a dead tree beside it, a blue glacial lake below. Across the water a great stone arch in the snow, with a warm light inside.',
-    record: 'The terrace stands 12.6 km west at 1,500 m, on its own shelf; the lake, the gateway massif and the snow crest of the Spine are placed around it. HP-1, 6 November: entry and return passed; the walk failed at the stair and the lookout.',
+    record: 'The terrace stands 12.6 km west at 1,500 m, on its own shelf; the lake, the gateway massif and the snow crest of the Spine are placed around it. HP-1b, accepted 7 November: twenty-nine walk targets, both refuge transitions and supported edge pushes passed, closing HP-1’s three findings. Wider side approaches, finished art and performance remain open.',
     hole: 482, label: 'n', href: '#high-pass-refuge',
   },
   {

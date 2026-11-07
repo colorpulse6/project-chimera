@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-06T23:54:35+01:00",
-  "roadmap_note": "B9 next-turn preview remains Weaving only: no verified packaged checkpoint through REPORT 6 Nov 23:56. Kesler Pi interior remains parked until the holidays.",
-  "note": "HP-1 posted as a limited private terrace/art preview through reviewer 6 Nov 23:54:35. Gate: packaged Development build and clean corrected picker launch/return; original user files unchanged. Full walk REVIEW FAIL: stair escape, lookout drop and missed return targets, continuous door sequence never entered. Separate door check passed. 22/27 walk targets; zero SEA/FALL does not accept edges. Only route change: High Pass name and 160m arrival span; geometry retained. Three inspected 1600x900 package frames pinned by SHA256 in prep_media.py. No Nic acceptance, human free-walk, finished art or performance claim; Demo 0.1.0 unchanged. B9 held, including first mislabeled B8 preflight.",
+  "posted_through": "2026-11-07T11:32:00+01:00",
+  "roadmap_note": "Round 4 road links are source candidates only through REPORT 11:49: Cove first leg, Shadow Country site B and staged horizon treatments have no qualifying packaged traversal/art gate. No frames posted.",
+  "note": "Posted accepted HP-1b and B9 (round-3 REPORT 7 Nov 08:58; checkpoint acceptance lines), plus clean packaged W1 Rex profile repair (round-4 REPORT 11:32). HP-1b closes the three HP-1 findings: 29/29 continuous targets, both door transitions, supported stair/lookout pushes. B9 return-time/order preview accepted; cell index stays third in shown turn, scripted fixed-step input only. W1 restores measured existing Rex profile; visible before river fight, out of return frame, 162 route-history warnings retained; no new Nic acceptance or wider encounter/save play. Five inspected full 1600x900 frames pinned in prep_media.py --hp1b-b9-rex-w1; RESULT exit0 and original files equal, walk manifest membership checked. Previous HP-1 post retains failure record with dated successor link. Demo 0.1.0 unchanged; wider human navigation, physical input and performance unproved.",
   "log": [
     {
       "date": "2026-10-24",
@@ -122,6 +122,11 @@
       "date": "2026-11-07",
       "slug": "2026-11-07-the-stair-does-not-stop",
       "covers": "HP-1 named picker access and clean packaged launch; limited terrace preview with failed stair/lookout walk and missing continuous door proof explicitly retained"
+    },
+    {
+      "date": "2026-11-07",
+      "slug": "2026-11-07-the-way-back-holds",
+      "covers": "Nic-accepted HP-1b walk repairs and B9 return-time preview; clean W1 Rex profile package with bounded visibility and route-history limits"
     }
   ]
 }

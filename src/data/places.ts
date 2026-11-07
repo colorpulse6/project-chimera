@@ -1,3 +1,6 @@
+import hp1bRefuge from '../assets/media/hp1b-refuge-entry.jpg';
+import hp1bLookout from '../assets/media/hp1b-lookout-stop.jpg';
+import hp1bStair from '../assets/media/hp1b-stair-stop.jpg';
 import hp1Terrace from '../assets/media/hp1-terrace.jpg';
 import hp1Stair from '../assets/media/hp1-stair-escape.jpg';
 import hp1Lookout from '../assets/media/hp1-lookout-drop.jpg';
@@ -520,12 +523,15 @@ export const places: Place[] = [
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: "Internal preview. The full walk failed review; not accepted by Nic.",
+    statusText: "Internal terrace slice accepted. No public walking route leads here.",
     image: hp1Terrace,
     imageAlt: 'HP-1 refuge terrace above the blue lake, with a bare tree and broad dark arch. Packaged preview, 6 November.',
     frames: [
-      { src: hp1Stair, alt: 'Kai on the open hillside beyond the intended stair stop.', caption: 'HP-1 failed walk: the twenty-second push slips around the stair stop. Solid ground beyond it does not make this a safe boundary.' },
-      { src: hp1Lookout, alt: 'The rock and slab face obstruct the view after the lookout drop.', caption: 'HP-1 failed walk: roughly two metres down, with several return targets missed before recovery. No permanent trap was proved.' },
+      { src: hp1bRefuge, alt: 'Kai inside the refuge at the logbook after continuous door entry.', caption: 'HP-1b, accepted 7 November. The continuous walk now enters the refuge and returns outside; all twenty-nine targets passed.' },
+      { src: hp1bLookout, alt: 'Kai on the supported lookout apron after the push.', caption: 'HP-1b: the lookout holds and the return targets pass. This closes the earlier two-metre drop within the tested route.' },
+      { src: hp1bStair, alt: 'Kai held at the recut stair stop, with the hillside beyond.', caption: 'HP-1b: the twenty-second push stays at the stair boundary. Wider human side approaches remain unproved.' },
+      { src: hp1Stair, alt: 'Kai on the open hillside beyond the intended stair stop.', caption: 'Earlier HP-1 failed walk: the twenty-second push slips around the stair stop. Solid ground beyond it does not make this a safe boundary.' },
+      { src: hp1Lookout, alt: 'The rock and slab face obstruct the view after the lookout drop.', caption: 'Earlier HP-1 failed walk: roughly two metres down, with several return targets missed before recovery. No permanent trap was proved.' },
       { src: rexHighPass, alt: 'Kai and Rex beside the first High Pass steps below the refuge.', caption: 'Game23, 3 November. A short diagnostic pilot with a clean launch and exit. Rex moved from arrival; full descent and ascent remain unproved.' },
       { src: rexRefugeReturn, alt: 'Rex behind Kai on the refuge porch after leaving through the door.', caption: 'Par15 A2 package, 2 November. A reviewed door return with Rex; not proof of a complete descent or unrestricted following.' },
       { src: fPar14Refuge, alt: 'Kai reaches the refuge porch beside stacked logs, a planter and a dark mountain wall.', caption: 'Par14 package. The approach, entry and exit passed a continuous door check; that is not acceptance of every player view.' },
@@ -538,13 +544,13 @@ export const places: Place[] = [
       { src: fPar12Refuge, alt: 'Kai inside the refuge facing a hearth, stacked logs, a table and stools.', caption: 'Inside the refuge, par12 package. The door was checked in both directions.' },
       { src: fPar12Terrace, alt: 'The earlier High Pass terrace before the flowers and surface revisions.', caption: 'Before: par12, 30 October. The lavender wedge was larger.' },
     ],
-    body: "A cliff path and refuge above a blue lake, with small yellow flowers among the rocks. The view and walking routes are still being refined.",
+    body: "A cliff path and refuge above a blue lake, with small yellow flowers among the rocks. The private terrace walk is accepted; the wider landscape remains unfinished.",
     development: {
-      status: "HP-1, packaged 6 November. Picker entry and return passed; full walk review failed. Limited private preview, not accepted by Nic. Demo 0.1.0 is unchanged.",
+      status: "HP-1b, accepted by Nic on 7 November. Reviewer PASS for the bounded private terrace walk: twenty-nine targets, both door transitions and supported edge pushes. Demo 0.1.0 is unchanged.",
       notes: [
-        "A refuge, terrace and stair above a blue lake. HP-1 gives High Pass a named picker entry while retaining the buildings and terrain. Entry and return passed, but the full walk failed: Kai can escape the stair stop and drop below the lookout floor.",
-        "Its continuous door test never entered; a separate door check passed. Settlement owns the boundary and test corrections; the coordinator must replay descent, pushes and the whole refuge loop. Nic keeps the small yellow flowers for now.",
-        "The dark massif, angular shore and repeated trees remain far from the painting. B6’s refuge logbook is retained. Human free walking, finished art and performance remain unaccepted.",
+        "HP-1b recuts and joins the stair stop, adds a supported lookout apron and corrects the door-test headings. All twenty-nine packaged targets pass, both refuge transitions work and the continuous return reaches its targets. Original save and settings stayed unchanged.",
+        "The earlier HP-1 walk failed at the stair, lookout and door test. HP-1b closes those three findings in the retained route and pushes. Its first attempt failed a distant-view comparison; the second passed against fresh bases. The harbour comparison has no spare margin. Nic keeps the small yellow flowers for now.",
+        "The dark massif, angular shore and repeated trees remain far from the painting. B6’s refuge logbook is retained. Every human side approach, finished art and performance remain unproved. No walking connection to the pass is claimed.",
       ],
     },
   },

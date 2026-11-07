@@ -629,7 +629,44 @@ def high_pass_hp1():
         save(img, name)
 
 
+def hp1b_b9_rex_w1():
+    """7 Nov: Nic accepted HP-1b/B9; W1 has a clean packaged launch.
+
+    Gates: round-3 REPORT 08:58 and round-4 REPORT 11:32. HP frames are
+    from the continuous 29-target walk, not the independently seeded sheet.
+    B9 uses fixed-step scripted input; W1 does not prove Rex visible on return.
+    Pin inspected bytes because coordinator directories can rotate.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator"
+    picks = [
+        ("round3/package/walk", "04-door-in-02.png", "hp1b-refuge-entry", "35a53ae9ca2dbf578c156de77c62e8f7e7377eadccc323f2c9b42d777a87d20a"),
+        ("round3/package/walk", "21-lookout-push-20s-04.png", "hp1b-lookout-stop", "103446b264bdc81fcdb020dd13bfd3c57a6e1b63e862b2d39b05e841be17a4c3"),
+        ("round3/package/walk", "32-stair-end-push-20s-02.png", "hp1b-stair-stop", "87c86810ef485ca9a6e54fd0f872d2a9f4635e0e196619fa71e6e5c2f6bcf21b"),
+        ("round3/package-b9/normal-dense", "HighresScreenshot00212.png", "b9-next-kai-defend", "16f658a384c2309463e318a925329bf725f517a705f59a16f31558463051301a"),
+        ("round4/package-w1/b9", "HighresScreenshot00000.png", "w1-rex-river", "5776de6f180a63ccc87d2327af3821374643c79c0a4c462e1e6738781f5f319b"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        assert result["exit_code"] == 0 and result["original_user_files_equal"]
+        if folder.endswith("/walk"):
+            manifest = json.loads((evidence / "manifest.json").read_text())
+            frames = {row["frame"] for row in manifest["shots"]}
+            frames.update(Path(f["file"]).name for row in manifest["shots"] for f in row.get("frames", []))
+            assert result["complete"] and manifest["complete"] and filename in frames
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--hp1b-b9-rex-w1" in sys.argv:
+    hp1b_b9_rex_w1()
+    sys.exit(0)
 if "--high-pass-hp1" in sys.argv:
     high_pass_hp1()
     sys.exit(0)

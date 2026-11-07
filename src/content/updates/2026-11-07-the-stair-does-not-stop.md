@@ -7,6 +7,8 @@ coverAlt: Kai on the open hillside beyond the intended stair stop, among angular
 tags: [build, world, playtest]
 ---
 
+**Update, 7 November morning:** Nic accepted [HP-1b](/updates/2026-11-07-the-way-back-holds/), which closes the three walk findings below. This post records the earlier failed checkpoint.
+
 The High Pass has lost its placeholder label. It has not yet learned where to stop.
 
 HP-1 was built and packaged on 6 November. The development picker reaches the refuge terrace and returns to the courtyard. That check passed. The reviewer **failed the full playable walk**: the stair lets Kai past its intended boundary, and the lookout drops him below its floor.

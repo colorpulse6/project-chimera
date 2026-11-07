@@ -22,7 +22,7 @@ export type Written = {
 };
 
 export const written: Written[] = [
-  { key: 'rex', name: 'Rex', epithet: 'The pragmatic scavenger', void: [68, 30, 9], state: 'now', stateText: 'Written; stands in a checkpoint, parked', href: '#rex',
+  { key: 'rex', name: 'Rex', epithet: 'The pragmatic scavenger', void: [68, 30, 9], state: 'now', stateText: 'Restored in a private river checkpoint; broader work parked', href: '#rex',
     text: 'Patched leather with glowing conduits, goggles made from old sensors, a pneumatic tool that fires charged bolts. Calls magic broken machinery and is usually right. Found in the ruins outside Havenwood. In the internal builds he already follows Kai, badly, and flinches at the desert’s tremors.' },
   { key: 'seraph', name: 'Seraph', epithet: 'The awakened enforcer', void: [34, 62, 8], state: 'next', stateText: 'Written, drawn in May 2025',
     text: 'A Corrector who saw one Nullification too many. Still wears the under-suit, has defaced the armour. Precise, formal, and bitter about it.' },

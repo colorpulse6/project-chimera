@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
+import b9Preview from '../assets/media/b9-next-kai-defend.jpg';
 import par16Battle from '../assets/media/par16-b8-charge.jpg';
 import kaiInGame from '../assets/media/kai-hero.jpg';
 const base = import.meta.env.BASE_URL;
@@ -52,7 +53,7 @@ const companions = [
     <div class="narrow prose">
       <h1>Mechanics</h1>
       <p class="lede">A JRPG whose magic is machinery nobody remembers, whose save points are tears in the world, and whose battles sometimes change what century they are in.</p>
-      <p class="note"><b>Built versus designed.</b> The public demo walks, talks and saves. Internal par16 B8 is the reviewed keyboard battle checkpoint at the close of the round. The broader combat phases, shards and spells below remain designs from 2025. Each section says which it is.</p>
+      <p class="note"><b>Built versus designed.</b> The public demo walks, talks and saves. Nic accepted internal B9’s return-time preview on 7 November; its proof uses scripted input. The broader combat phases, shards and spells below remain designs from 2025. Each section says which it is.</p>
     </div>
   </section>
 
@@ -78,9 +79,11 @@ const companions = [
   <section class="section">
     <div class="narrow prose">
       <h2 id="battle-checkpoint"><span class="state state-now">The first battle checkpoint</span></h2>
+      <p>Nic accepted B9 on 7 November. The gold “Next Kai” label and highlighted command show the projected return: Attack +25 ticks, Defend +17 in the recorded first turn. The return time and later order change; Kai’s cell stays third in these frames. Costs and battle rules are unchanged.</p>
+      <Frame src={b9Preview} alt="Defend selected with Next Kai and next turn plus seventeen ticks visible." caption="B9 accepted preview, 1600 by 900. Scripted fixed-step capture; not a physical-input or real-time performance test." />
       <p>Par16 B8, 4 November, retains the reviewed keyboard battle work. The next-intent line now distinguishes Charge (preparing) from Heavy Strike, with paper text on an ink panel. B7 adds the Item count and +25HP display; the actual heal still stops at the health cap. B3 adds a held kneeling defeat, with natural playback and Enter-skip returns checked separately. B4 checks enemy body and eyes, a reload replay, guard reducing a hit from seven to four, a Tonic healing twenty-five, victory and return to exploration.</p>
       <Frame src={par16Battle} alt="Kai defends opposite a Stray, with Charge (preparing) readable below the turn order." caption="Par16 B8. The next-intent label is readable at 1280 by 720. The separate replay checked Charge, Heavy Strike, capped healing, Escape and normal quit; battle rules are unchanged." />
-      <p>Physical mouse commands remain unproved. Game captures of the lowered defeat pose hide Kai’s lower legs behind the cape, so continuous foot contact is not established. Hidden-relocation visuals and general performance remain open. <a href={base + 'updates/2026-11-05-one-thing-at-a-time/'}>The current checkpoint</a>.</p>
+      <p>Physical mouse commands remain unproved. Game captures of the lowered defeat pose hide Kai’s lower legs behind the cape, so continuous foot contact is not established. Hidden-relocation visuals and general performance remain open. <a href={base + 'updates/2026-11-07-the-way-back-holds/'}>The current checkpoint</a>.</p>
 
       <h2><span class="state state-next">Saving at a Temporal Distortion</span></h2>
       <p>Save points are places where the world is thin: a shimmer in the air like heat haze with the wrong colours in it, and a sound like whispering through static. Touching one shows Kai a single frame of his execution and puts a message on the screen, <em>Temporal Anchor Stabilized</em>, which is how the player learns the game has saved. They cluster near ruins. Later in the story they become unstable, and later still Kai learns to do things with them.</p>
