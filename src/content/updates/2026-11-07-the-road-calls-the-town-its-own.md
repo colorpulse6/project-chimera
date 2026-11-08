@@ -40,3 +40,5 @@ Earlier attempts also had gate mistakes, interrupted or timed-out checks, and re
 The replacement needs a road boundary that excludes the town, a single picker entry and correct arrival, return and save-place behavior. It must retain the continuous road and boundary checks. That replacement is still under test, with no new accepted checkpoint to show here.
 
 The [roadmap](/roadmap/) keeps the first leg in progress. The town keeps its own name for now.
+
+**8 November update:** [The corrected first-leg package keeps the town’s name](/updates/2026-11-08-a-way-across-the-water/). A later road check exposes Rex blocking the return. The withdrawn run-8 record above remains unchanged.

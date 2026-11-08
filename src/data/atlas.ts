@@ -122,11 +122,11 @@ export const pins: Pin[] = [
     label: 'e', href: '#salt-road-trail',
   },
   {
-    id: 'shadow-country', name: 'The Shadow Country', pos: [22100, -10800], kind: 'far', state: 'next', stateText: 'Painted, a silhouette on the horizon',
+    id: 'shadow-country', name: 'The Shadow Country', pos: [22100, -10800], kind: 'far', state: 'now', stateText: 'Near basin packaged; this pin marks the distant arcade',
     image: pShadow, alt: 'Painting of the Shadow Country: sunlit channels, willows and an aqueduct with waterfalls.',
     painted: 'Braided channels under willows, a ferry, sluice gates and an aqueduct that spills into waterfalls. High in the clouds a vast shape lets a turquoise fall drop. The name is darker than the painting, and the painting wins.',
-    record: 'An arcade and its falls on a shelf hill 24.6 km out, 4 degrees off the bearing to the Colossus. From the Long Road the road’s own hills hide it for now.',
-    label: 'ne',
+    record: 'This unchanged pin marks the distant arcade and falls, 24.6 km out. A separate near basin now has an internal walking approach from the River village and ferry checks, 8 November. Nic’s acceptance and full painting parity remain open; the distant landmark has not moved.',
+    label: 'ne', href: '#shadow-country-basin',
   },
   {
     id: 'hanging-sea', name: 'The Hanging Sea', pos: [9500, 9500], kind: 'far', state: 'next', stateText: 'Painted, a silhouette on the horizon',

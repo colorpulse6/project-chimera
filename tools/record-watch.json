@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-07T21:32:16+01:00",
-  "roadmap_note": "A2 replacement compact place circles, same-label picker fix and verifier correction remain under test through COMMON 22:55:38 (run 10 started). Shadow Country and horizon/material trials held: no qualifying runtime package or accepted art. No replacement-run frames posted.",
-  "note": "Posted archived A2 W2 run 8 as WITHDRAWN / NOT ACCEPTED, per round-4 COMMON coordinator 7 Nov 21:32:16. Publication gate: retained packaged build Havenwood-r4-a2-20261107-run8-placecircle, clean walk and picker RESULT exit0/original_user_files_equal. 76/76 walk targets, pilot22/22,9/9 push files do not cure broad place circle claiming Havenwood and labelling private town saves High Pass road 1. Coordinator restored previous project state, original save unchanged. Three inspected full1600x900 walk frames pinned SHA256 and manifest in prep_media.py --a2-withdrawn-run8. No new current road/place/pin or completed High Pass link claimed. Earlier gate errors, crashes, shadow re-shot and unfinished slab/bare corridor retained. Replacement code/source packets held. Demo0.1.0 unchanged; human steering, campaign recovery and performance unproved.",
+  "posted_through": "2026-11-08T11:45:00+01:00",
+  "roadmap_note": "W5 second road leg restored after Rex blocked return; same risk exists in W2 road1. Battle passage repair and fresh packaged return proof remain open. Horizon/material trials held; no new frames. W4 placeholder-tree foreground shadows remain parked. Continue proof belongs to W3, not W4.",
+  "note": "Posted W2 run10 corrected first road place circles/picker (REPORT 02:10), W3 Shadow Country plus W4 B4a grounded stones/natural banks/ferry both ways (06:37/09:46), W3 private campaign save/Continue both sides (09:58), and W5 failed pilot/Rex body-block with verified restore (11:45). All qualify as retained packages with clean successful launches; no Nic acceptance inferred. W4 11 RESULTs exit0/original files equal; W3 Continue 4 RESULTs exit0 and verdict passed; W2 previous launch crash retained; W5 relaunch exit0 complete11 frames but only5/10 targets reached, earlier launch crash retained. W2 76 targets/167 probes; W4 56 targets/16 sampled push cases. Four visually inspected W4 full1600x900 originals SHA256/manifest pinned in prep_media.py --shadow-country-w4. No W5 frames posted. New near basin entry; distant arcade pin unchanged and distinguished. Previous run8 post gains dated successor link. Demo0.1.0 unchanged; painting/look interval, human steering, performance and safe narrow-road passage remain open.",
   "log": [
     {
       "date": "2026-10-24",
@@ -132,6 +132,11 @@
       "date": "2026-11-07",
       "slug": "2026-11-07-the-road-calls-the-town-its-own",
       "covers": "Withdrawn A2 run8 first road leg: clean packaged walk and boundary checks, rejected over Havenwood place/save labels; replacement remains under test"
+    },
+    {
+      "date": "2026-11-08",
+      "slug": "2026-11-08-a-way-across-the-water",
+      "covers": "Corrected first road leg; internal Shadow Country approach, W4 ferry/banks and W3 private Continue; later Rex-blocked second leg restored"
     }
   ]
 }

@@ -695,7 +695,40 @@ def a2_withdrawn_run8():
         save(img, name)
 
 
+
+def shadow_country_w4():
+    """8 Nov W4 B4a: clean packaged walk/ferry checks, Nic acceptance unrecorded.
+
+    REPORT 09:46; retained W4 RESULTs exit 0 and originals unchanged.
+    These frames do not illustrate the separate W3 campaign Continue test.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round4/package-w4"
+    picks = [
+        ("ferry", "F00-outside-stand.png", "sc-w4-ferry-outside", "a408b4f952b52429cc6ffbbe9ba2a18fd14cd755e6c73fbd1644817887a07b8f"),
+        ("reveal", "V-hint-pocket-eye.png", "sc-w4-water-hint", "4acc7999d6b00dc36c4f676eb2fc7867245a2b16c293d201e6a62e9bd3da7daf"),
+        ("reveal", "V-wide-square-eye.png", "sc-w4-wide-water", "fb6713a7611523e919425368f67a1379283f888c57c0d805ef46912d0d8e9a33"),
+        ("ferry", "F02-inside-settled.png", "sc-w4-ferry-across", "435510451f3515984e365bc3a5c855479459d436eb50ede40f53e9b4f58cc314"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        manifest = json.loads((evidence / "manifest.json").read_text())
+        assert result["exit_code"] == 0 and result["original_user_files_equal"]
+        assert manifest["complete"]
+        assert filename in {shot["frame"] for shot in manifest["shots"]}
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--shadow-country-w4" in sys.argv:
+    shadow_country_w4()
+    sys.exit(0)
 if "--a2-withdrawn-run8" in sys.argv:
     a2_withdrawn_run8()
     sys.exit(0)

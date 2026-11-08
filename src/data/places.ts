@@ -1,3 +1,8 @@
+import scFerry from '../assets/media/sc-w4-ferry-outside.jpg';
+import scHint from '../assets/media/sc-w4-water-hint.jpg';
+import scWide from '../assets/media/sc-w4-wide-water.jpg';
+import scAcross from '../assets/media/sc-w4-ferry-across.jpg';
+import pShadow from '../assets/media/painting-shadow-country-v3.jpg';
 import a2Road from '../assets/media/a2-run8-road.jpg';
 import a2End from '../assets/media/a2-run8-end.jpg';
 import a2Return from '../assets/media/a2-run8-cove-return.jpg';
@@ -132,6 +137,30 @@ export type Place = {
 };
 
 export const places: Place[] = [
+  {
+    slug: 'shadow-country-basin',
+    name: 'Shadow Country',
+    status: 'now',
+    statusText: 'Internal build. Nic’s acceptance is not yet recorded.',
+    image: scWide,
+    imageAlt: 'Turquoise water between irregular banks and pale houses in Shadow Country, with a hard foreground shadow.',
+    painting: pShadow,
+    body: 'A sunny basin reached on foot from the River village. Small pockets of water and planting lead to a wider view, pale houses and a ferry crossing. The distant arcade remains a separate horizon landmark.',
+    frames: [
+      { src: scHint, alt: 'A small turquoise water pocket with reeds beside the approach.', caption: 'W4 package, 8 November. Water and planting give the first hint before the wider basin.' },
+      { src: scFerry, alt: 'Kai and Rex beside the ferry crossing.', caption: 'W4. Both ferry directions passed using the existing fade transition; no animated boat journey is claimed.' },
+      { src: scAcross, alt: 'Kai on the opposite bank after the ferry transition.', caption: 'W4. The landing is now within reach of the return interaction, fixing the earlier stranded return press.' },
+    ],
+    development: {
+      status: 'W4 B4a, built and packaged 8 November. Clean launches; no Nic acceptance recorded. Internal only, absent from Demo 0.1.0.',
+      notes: [
+        'The packaged walk reached 56/56 targets, River village to Shadow Country and back. Both ferry directions passed. Four push specs covered sixteen cases with no errors: sampled centre containment only, not every-frame contact or all side approaches.',
+        'Grounded stones and irregular banks replace the earlier floating stacks and paved troughs. Hard foreground shadows from placeholder trees remain an art finding. The look transition along the approach and full painting parity remain open.',
+        'A separate W3 private campaign check saved, quit and continued at the Shadow Country spot, returned, then saved and continued at the River village spot. All four launches passed; original user files stayed unchanged. This was the earlier package, not a W4 campaign replay. W4 retains that terrain but changes stones, banks and the ferry landing.',
+        'Earlier gate errors, a launch crash and the failed flying-mode campaign check remain recorded. The successful campaign run restores walking after one diagnostic seed; queried grounded poses do not prove every frame. Human steering and performance remain unmeasured. No desert or Salt Road connection follows.',
+      ],
+    },
+  },
   {
     slug: 'salt-road-trail',
     name: 'The Salt Road and Kesler Pi',
@@ -514,8 +543,10 @@ export const places: Place[] = [
     development: {
       status: "Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.",
       notes: [
+        "A2 run 10, 8 November: corrected road place circles and one picker entry per label keep the town as Courtyard. The internal package passed 76 walk targets and 167 boundary probes, with one launch crash followed by a passing repeat. Nic acceptance is not recorded. The first leg still ends before High Pass.",
+        "A later second-leg pilot found Rex stuck on the narrow tread, blocking Kai’s return. The same following failure exists on road 1; its earlier walk passed because Rex was not in the way. The second leg was restored out. Player passage needs a verified repair; no safe full mountain connection is claimed.",
         "A2 run 8, 7 November: a first road leg was packaged and passed clean launches, seventy-six walk targets and nine push files. The coordinator withdrew it after its place circle also claimed Havenwood and labelled a private town save as High Pass road 1. Previous project state restored; original save/settings unchanged. No road acceptance or public connection follows.",
-        "Replacement place boundaries and picker behavior still need a completed package check. The bare road and slab-like bank remain unfinished art. Earlier launch crashes and failed runs remain historical; wider human steering, campaign Continue and performance are not established.",
+        "The run-10 package closes the earlier place-boundary and picker checks. The bare road and slab-like bank remain unfinished art. Earlier launch crashes and failed runs remain historical; wider human steering, campaign Continue and performance are not established.",
         "Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents.",
         "Nic kept the ground wash, the hall keeper and gate watcher positions, and the hall-door framing after testing par7. Par8 and par9 add indoor climate and a furnished hall: benches, ledger tables, a lectern, stools and a hearth. The packaged check enters the hall, settles inside and returns outdoors.",
         "The earlier paths read faintly from the ridge; par14 packages Nic’s selected T3 path strips. A grey patch on the hall wall remains unresolved. Par10 furnishes the household with a loom, drying cloth, shelves, a work table and stools.",
