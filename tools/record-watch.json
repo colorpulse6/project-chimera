@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-08T11:45:00+01:00",
-  "roadmap_note": "W5 second road leg restored after Rex blocked return; same risk exists in W2 road1. Battle passage repair and fresh packaged return proof remain open. Horizon/material trials held; no new frames. W4 placeholder-tree foreground shadows remain parked. Continue proof belongs to W3, not W4.",
-  "note": "Posted W2 run10 corrected first road place circles/picker (REPORT 02:10), W3 Shadow Country plus W4 B4a grounded stones/natural banks/ferry both ways (06:37/09:46), W3 private campaign save/Continue both sides (09:58), and W5 failed pilot/Rex body-block with verified restore (11:45). All qualify as retained packages with clean successful launches; no Nic acceptance inferred. W4 11 RESULTs exit0/original files equal; W3 Continue 4 RESULTs exit0 and verdict passed; W2 previous launch crash retained; W5 relaunch exit0 complete11 frames but only5/10 targets reached, earlier launch crash retained. W2 76 targets/167 probes; W4 56 targets/16 sampled push cases. Four visually inspected W4 full1600x900 originals SHA256/manifest pinned in prep_media.py --shadow-country-w4. No W5 frames posted. New near basin entry; distant arcade pin unchanged and distinguished. Previous run8 post gains dated successor link. Demo0.1.0 unchanged; painting/look interval, human steering, performance and safe narrow-road passage remain open.",
+  "posted_through": "2026-11-08T15:13:00+01:00",
+  "roadmap_note": "W6 road3 restored out before packaging after strict salt07 harbour shading mismatch; no exception per Nic20:04, cause unresolved. Nic selected B1 sky20:02 from C1 diagnostic trials, but live/package proof held by same investigation; dark massif unchanged. Diagnostic windows1-5 incomplete; window6 started23:30, no conclusion inferred. No road3 or sky-trial frames published.",
+  "note": "Posted W5 run2 A3 road2 package and Rex pair-only passage fix (round4 REPORT 8 Nov15:13), with Battle12:10 corrected W2 attribution. Retained package-w5 has15 RESULT files, all exit0/original_user_files_equal; pilot12/12 and fullwalk56/56,159 negative probes;3 close pilot crossings plus1 walk crossing; battle escape/return smoke passes. Actual friendly visual overlap retained, following unchanged, reload/replacement beyond battle return open, no Nic acceptance. Three inspected full1600x900 W5 originals SHA256/manifest and strip-membership pinned in prep_media.py --a3-rex-passage. Previous water post corrects first-road refusal attribution and links successor; current Rex/Cove/roadmap/home reflect bounded fix. No complete High Pass connection or public release; Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -137,6 +137,11 @@
       "date": "2026-11-08",
       "slug": "2026-11-08-a-way-across-the-water",
       "covers": "Corrected first road leg; internal Shadow Country approach, W4 ferry/banks and W3 private Continue; later Rex-blocked second leg restored"
+    },
+    {
+      "date": "2026-11-08",
+      "slug": "2026-11-08-room-to-pass",
+      "covers": "W5 second road package and real close Rex passages, explicit friendly overlap/following limits, corrected first-road refusal attribution"
     }
   ]
 }

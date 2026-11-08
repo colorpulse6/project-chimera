@@ -1,3 +1,6 @@
+import a3Overlap from '../assets/media/a3-rex-overlap.jpg';
+import a3Passed from '../assets/media/a3-rex-passed.jpg';
+import a3End from '../assets/media/a3-road-end.jpg';
 import scFerry from '../assets/media/sc-w4-ferry-outside.jpg';
 import scHint from '../assets/media/sc-w4-water-hint.jpg';
 import scWide from '../assets/media/sc-w4-wide-water.jpg';
@@ -526,6 +529,9 @@ export const places: Place[] = [
     statusText: "Internal build. Interiors and paths still need review.",
     image: fPar9Settlement,
     frames: [
+      { src: a3Overlap, alt: 'Rex and Kai briefly overlapping during a close road passage.', caption: 'W5 run 2, 8 November. Kai passes the stationary Rex; friendly bodies can now overlap. This does not fix following.' },
+      { src: a3Passed, alt: 'Kai beyond Rex in a later frame of the same continuous passage.', caption: 'The pilot crossed the former stopping point in both headings. Twelve pilot targets and fifty-six full-walk targets passed in this internal package.' },
+      { src: a3End, alt: 'Kai at the closed end of the second High Pass road leg.', caption: 'Road 2 adds about 1.75 kilometres and 175 metres of climb. Its plain end wall and high banks remain unfinished art; the High Pass terrace is not connected.' },
       { src: a2Road, alt: 'Kai on the narrow walled road leaving Keepers’ Cove.', caption: 'Withdrawn A2 run 8, 7 November. The packaged road walk passed, but its place boundary claimed Havenwood. The previous project state was restored.' },
       { src: a2End, alt: 'The solid cap at the far end of the first road leg.', caption: 'Withdrawn experiment: about 1.75 kilometres and 175 metres up, ending here. This does not reach High Pass.' },
       { src: a2Return, alt: 'Kai back in Keepers’ Cove after the recorded road walk.', caption: 'All seventy-six walk targets passed in run 8. That bounded success did not catch the town place-name and private-save label defect.' },
@@ -544,7 +550,8 @@ export const places: Place[] = [
       status: "Internal par14, 1 November: the selected T3 path strips and a warm household lantern pool are packaged and checked. Nic kept the indoor exposure settle. Not in Demo 0.1.0.",
       notes: [
         "A2 run 10, 8 November: corrected road place circles and one picker entry per label keep the town as Courtyard. The internal package passed 76 walk targets and 167 boundary probes, with one launch crash followed by a passing repeat. Nic acceptance is not recorded. The first leg still ends before High Pass.",
-        "A later second-leg pilot found Rex stuck on the narrow tread, blocking Kai’s return. The same following failure exists on road 1; its earlier walk passed because Rex was not in the way. The second leg was restored out. Player passage needs a verified repair; no safe full mountain connection is claimed.",
+        "W5 run 1 stopped against Rex and was restored out. Run 2, 8 November, packages road 2 with a Kai/Rex passage rule: three close pilot crossings and one full-walk crossing pass, at the visible cost of friendly body overlap. Following remains unchanged. Twelve pilot targets, fifty-six walk targets, 159 boundary probes and a battle escape/return check pass. No Nic acceptance or full mountain connection is claimed.",
+        "Correction, 8 November: the earlier claim that first-road refusal logs established the same tread failure was wrong. The audit attributes most refusals to a Cove edge, none to first-road actors. The second-road failure instead has an unsupported three-metre sideways scouting goal. The passage repair does not repair that goal, following, wider reload behavior or performance.",
         "A2 run 8, 7 November: a first road leg was packaged and passed clean launches, seventy-six walk targets and nine push files. The coordinator withdrew it after its place circle also claimed Havenwood and labelled a private town save as High Pass road 1. Previous project state restored; original save/settings unchanged. No road acceptance or public connection follows.",
         "The run-10 package closes the earlier place-boundary and picker checks. The bare road and slab-like bank remain unfinished art. Earlier launch crashes and failed runs remain historical; wider human steering, campaign Continue and performance are not established.",
         "Nic named the settlement Keepers’ Cove on 30 October. Par11 and par12 now carry the name in the picker and place card. A small settlement at the foot of the ridge, with a jetty, houses, a hall and five placeholder residents.",

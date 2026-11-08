@@ -39,6 +39,8 @@ The first High Pass road leg has also been rebuilt after [its place boundary cla
 
 A later check of the second leg found a different obstruction: Rex. He could not find support on the narrow tread, stood still, and blocked Kai’s return. Only five of ten pilot targets were reached. The second leg was restored out of the project.
 
-The same following failure appears in the first leg’s logs. That earlier walk passed because Rex was not in Kai’s way. The next road check must show that he cannot permanently trap the player before it can claim a successful return.
+**Correction, later on 8 November:** the source audit corrected the first-leg log attribution. Those counted refusals were mainly at a Cove edge, with no first-road actors hit. They do not establish the same tread failure on road one. The second-leg obstruction described above remains a verified failure.
 
 The [roadmap](/roadmap/) keeps that repair open. Shadow Country has a way across and back. The mountain road still has someone standing in it.
+
+**Later checkpoint, 8 November:** [Room to pass](/updates/2026-11-08-room-to-pass/) records the rebuilt second leg and actual crossings past Rex. Friendly bodies can now overlap; following remains unfinished.

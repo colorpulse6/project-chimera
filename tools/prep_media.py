@@ -725,7 +725,41 @@ def shadow_country_w4():
         save(img, name)
 
 
+
+def a3_rex_passage():
+    """8 Nov W5 run 2: packaged road 2 and real close passage, not following.
+
+    REPORT 15:13. The friendly body overlap is an explicit visible tradeoff.
+    Only retained W5 frames; no road-3 or uninstalled sky trial images.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round4/package-w5"
+    picks = [
+        ("pilot", "005a-passage-return-08.png", "a3-rex-overlap", "82d151e8f4efc8ef3f10a092e54b2582e4cf6c4095ae21a9ade9a6db22b5773a"),
+        ("pilot", "005a-passage-return-16.png", "a3-rex-passed", "1450d57f70cb31127dacf2a4e61ac425ada2d0acb239d4439d84661b214f0583"),
+        ("walk", "028-out.png", "a3-road-end", "b1ac6e68a85385cf4218bcf00e5228ad9c91a4a902cda20674144eb2fac4621a"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        manifest = json.loads((evidence / "manifest.json").read_text())
+        assert result["exit_code"] == 0 and result["original_user_files_equal"]
+        assert manifest["complete"]
+        frames = {shot.get("frame") for shot in manifest["shots"]}
+        frames.update(Path(f["file"]).name for shot in manifest["shots"] for f in shot.get("frames", []))
+        assert filename in frames
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--a3-rex-passage" in sys.argv:
+    a3_rex_passage()
+    sys.exit(0)
 if "--shadow-country-w4" in sys.argv:
     shadow_country_w4()
     sys.exit(0)
