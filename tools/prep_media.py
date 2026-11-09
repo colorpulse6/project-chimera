@@ -756,7 +756,37 @@ def a3_rex_passage():
         save(img, name)
 
 
+
+def map_m1():
+    """9 Nov M1 packaged map preview; function checks pass, cost gate fails.
+
+    COMMON 10:01 and REPORT Systems 10:12 retain the performance limitation.
+    Only completed F2 Courtyard / F3 Salt Road frames, never staged M r2 art.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round5/package-m1"
+    picks = [
+        ("f2-courtyard", "HighresScreenshot00010.png", "m1-full-map", "1987c387a166758e75838328143cf9239fdb765356aa6d8a3ffde4dac19856f1"),
+        ("f2-courtyard", "HighresScreenshot00002.png", "m1-courtyard-mini", "507c4570a4bf92b5a15a63bc0c4cf078a950c4a54705378ca1e8e8e573b27c1e"),
+        ("f3-Salt-Road", "HighresScreenshot00018.png", "m1-salt-mini", "ed0cbd5227d6ef7303a4085d62aa6cdb134a0fd6a7603880853bc9c78d430ca1"),
+    ]
+    for folder, filename, name, expected in picks:
+        evidence = run / folder
+        result = json.loads((evidence / "RESULT.json").read_text())
+        assert result["exit_code"] == 0 and result["original_user_files_equal"]
+        assert filename in result["shots"]
+        original = evidence / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900), (filename, img.size)
+        save(img, name)
+
+
 import sys
+if "--map-m1" in sys.argv:
+    map_m1()
+    sys.exit(0)
 if "--a3-rex-passage" in sys.argv:
     a3_rex_passage()
     sys.exit(0)

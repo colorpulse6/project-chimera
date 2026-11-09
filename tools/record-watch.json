@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-08T15:13:00+01:00",
-  "roadmap_note": "W6 road3 restored out before packaging after strict salt07 harbour shading mismatch; no exception per Nic20:04, cause unresolved. Nic selected B1 sky20:02 from C1 diagnostic trials, but live/package proof held by same investigation; dark massif unchanged. Diagnostic windows1-5 incomplete; window6 started23:30, no conclusion inferred. No road3 or sky-trial frames published.",
-  "note": "Posted W5 run2 A3 road2 package and Rex pair-only passage fix (round4 REPORT 8 Nov15:13), with Battle12:10 corrected W2 attribution. Retained package-w5 has15 RESULT files, all exit0/original_user_files_equal; pilot12/12 and fullwalk56/56,159 negative probes;3 close pilot crossings plus1 walk crossing; battle escape/return smoke passes. Actual friendly visual overlap retained, following unchanged, reload/replacement beyond battle return open, no Nic acceptance. Three inspected full1600x900 W5 originals SHA256/manifest and strip-membership pinned in prep_media.py --a3-rex-passage. Previous water post corrects first-road refusal attribution and links successor; current Rex/Cove/roadmap/home reflect bounded fix. No complete High Pass connection or public release; Demo0.1.0 unchanged.",
+  "posted_through": "2026-11-09T10:12:00+01:00",
+  "roadmap_note": "Round5 open-world HighPass journey replaces further enclosed road legs. Nic approved direction and P1/P2/F1b/F2b/F3b choices; ground G0/G1, western sea-to-land and final shore/stair remain unqualified runtime candidates through10:57. M r2 detail/cost changes source-only; no frames. Salt07 investigation stopped by Nic05:23 with narrow exception authority, then parked for new journey; B1 sky not integrated. No ungated terrain/approach/sky frames posted.",
+  "note": "Posted internal M1 minimap/full map package Havenwood-r5-m1-20261109: round5 COMMON09:46/09:59/10:01 corrected controls and REPORT Systems10:12 no-shot timing limits. F2 Courtyard/HighPass and F3 SaltRoad clean exits/original files equal;39POIs,2opens/2closes,keyboard controls,centre HP/Salt0cm,Courtyard9m. Prior moving-pointer picker and transition-timing failures retained. No-shot full mean0.158632ms/max0.585709ms,mini max0.855248ms exceed0.3ms; timer cannot distinguish execution from preemption/stall. No Nic acceptance or finished map/performance claim. Three inspected full1600x900 screenshots SHA256/RESULT shot-membership pinned via prep_media.py --map-m1. Home/roadmap/mechanics and courtyard/Salt detail updated. Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -142,6 +142,11 @@
       "date": "2026-11-08",
       "slug": "2026-11-08-room-to-pass",
       "covers": "W5 second road package and real close Rex passages, explicit friendly overlap/following limits, corrected first-road refusal attribution"
+    },
+    {
+      "date": "2026-11-09",
+      "slug": "2026-11-09-the-map-has-blank-places",
+      "covers": "M1 internal minimap and full map, corrected three-location control proofs, missing atlas detail and failed no-shot draw budget; open-world journey direction"
     }
   ]
 }

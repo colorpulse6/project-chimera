@@ -1,3 +1,5 @@
+import m1Courtyard from '../assets/media/m1-courtyard-mini.jpg';
+import m1Salt from '../assets/media/m1-salt-mini.jpg';
 import a3Overlap from '../assets/media/a3-rex-overlap.jpg';
 import a3Passed from '../assets/media/a3-rex-passed.jpg';
 import a3End from '../assets/media/a3-road-end.jpg';
@@ -172,6 +174,7 @@ export const places: Place[] = [
     image: saltArrival,
     imageAlt: 'Kai on the Salt Road with broad pale arches on the left, palms on the right and the new hull wall ahead. Checkpoint 2.',
     frames: [
+      { src: m1Salt, alt: 'Kai on the Salt Road with an almost flat olive minimap panel.', caption: 'M1 package. Map controls pass after the arrival transition, but this flat panel exposes missing terrain detail. The map preview does not accept the city artwork.' },
       { src: saltThreshold, alt: 'The plated Kesler Pi hull and its blocked opening from twenty metres, with a pale patch inside.', caption: 'Checkpoint 2 package. The hull now ends the walk. The opening does not yet match its dark reference.' },
       { src: saltMouth, alt: 'Kai at the stopping point facing a lit lilac recess and visible back wall.', caption: 'The actual centre push test. The blocker holds; the cap still reads as a lit alcove. Collision success does not accept the artwork.' },
       { src: saltSpurs, alt: 'Looking east from the threshold along the trail, with four buried hull spurs on both sides.', caption: 'Checkpoint 2 package. Four spurs are visible from this end. This view shows the field, not a finished match to the skyline-and-spurs painting.' },
@@ -180,6 +183,7 @@ export const places: Place[] = [
     development: {
       status: "Checkpoint 2, built and packaged; reviewer PASS-with-findings, 6 November. Nic’s acceptance is on hold until his walk. Development picker access only; Demo 0.1.0 is unchanged.",
       notes: [
+        "M1, 9 November: the map opens, pans, zooms, centres and closes in the corrected Salt Road check. The flat olive panel lacks useful local detail. Internal preview only; the timing budget remains failed and Demo 0.1.0 is unchanged.",
         "The Salt Road now reaches a near hull wall, past five buried spurs. The Kesler Pi threshold is an approach marker, not a destination in the picker, and the opening is blocked with no playable interior behind it. The packaged check enters Salt Road, returns to the courtyard, and saves only after that return.",
         "A separate automated walk reaches sixteen targets without a sea catch or fall; a twenty-second centre push stops at the mouth. These are bounded checks, not a human walk or proof against every side approach. Broad arches replace the thin ribs, hard corridor outlines are removed and the oasis palms and wall are easier to see.",
         "Pink bands, weak oasis water, the straight route and a far-view ground crease remain. The lit lilac cap and regular wall silhouette still differ from the paintings. The reviewer passed the playable checkpoint with findings; Nic has withheld acceptance until he walks it.",
@@ -196,6 +200,7 @@ export const places: Place[] = [
     imageAlt: 'Kai walks into the courtyard with the five townsfolk standing around the well and the shop.',
     painting: pCourtyard,
     frames: [
+      { src: m1Courtyard, alt: 'Kai in the courtyard with the new minimap at upper left.', caption: 'Internal M1 package, 9 November. Courtyard map controls pass in the corrected check; draw-time budget and map detail remain open. Not in Demo 0.1.0.' },
       { src: rexSpawn, alt: 'Rex beside Kai in the courtyard after normal startup.', caption: 'Rex at normal startup in the par15 Development package, 1 November. A bounded companion checkpoint; not a new public demo or final art acceptance.' },
       { src: courtyardKai, alt: 'Kai from behind, cape blowing, with the Shopkeeper and Child in the courtyard.', caption: 'Late afternoon in the courtyard. The painted sky replaces the atmosphere beyond two kilometres.' },
       { src: shopCorner, alt: 'Kai and the Shopkeeper at the shop corner under the blue awning.', caption: 'The shop corner, where the look was decided.' },
@@ -205,6 +210,7 @@ export const places: Place[] = [
     development: {
       status: "In the build. The first place, where every look test happens.",
       notes: [
+        "M1, 9 November: a minimap and M-key map are packaged. Corrected control checks pass in the courtyard, High Pass and Salt Road. The courtyard centre is within nine metres of its proof point. No Nic acceptance recorded; the no-screenshot draw timer still exceeds the 0.3 ms budget.",
         "A square of pale paving with a well, a clock tower, a rose-plaster shop under a blue awning and a tree in a stone planter. The whole town starts here; the painting of it was the first asset, and the Unreal courtyard is built to match it.",
       ],
     },
