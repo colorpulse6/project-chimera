@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-09T10:12:00+01:00",
-  "roadmap_note": "Round5 open-world HighPass journey replaces further enclosed road legs. Nic approved direction and P1/P2/F1b/F2b/F3b choices; ground G0/G1, western sea-to-land and final shore/stair remain unqualified runtime candidates through10:57. M r2 detail/cost changes source-only; no frames. Salt07 investigation stopped by Nic05:23 with narrow exception authority, then parked for new journey; B1 sky not integrated. No ungated terrain/approach/sky frames posted.",
-  "note": "Posted internal M1 minimap/full map package Havenwood-r5-m1-20261109: round5 COMMON09:46/09:59/10:01 corrected controls and REPORT Systems10:12 no-shot timing limits. F2 Courtyard/HighPass and F3 SaltRoad clean exits/original files equal;39POIs,2opens/2closes,keyboard controls,centre HP/Salt0cm,Courtyard9m. Prior moving-pointer picker and transition-timing failures retained. No-shot full mean0.158632ms/max0.585709ms,mini max0.855248ms exceed0.3ms; timer cannot distinguish execution from preemption/stall. No Nic acceptance or finished map/performance claim. Three inspected full1600x900 screenshots SHA256/RESULT shot-membership pinned via prep_media.py --map-m1. Home/roadmap/mechanics and courtyard/Salt detail updated. Demo0.1.0 unchanged.",
+  "posted_through": "2026-11-11T02:51:00+01:00",
+  "roadmap_note": "G0 editor checks are not packaged terrain acceptance. A r2j run15 launched11Nov11:41 after prior restored failures; no qualifying approach package. Sea-to-land revision awaits acceptance. Map quiet repeat pending; no ungated frames published.",
+  "note": "Posted g0m run8 internal package timing, COMMON 11Nov02:48 and Systems REPORT02:51. Package Havenwood-r5-g0m-20261111 clean retained launch exit0, shots=[], original_user_files_equal=true; RESULT SHA ad469f5effc21e3b70e0880ac50f2d6f1ed95b85b8b88a022522c8b69d8542f7.40x240 draws,15full/25mini,one batch exceeds0.3ms wall; worst pair0.334375wall/0.078916thread; other maxima<=0.2575. No cause or complete frame/GPU claim. Quiet same-package repeat pending through11:42. No new G0 data in package. Text-only post: no captured frames to prepare or publish; existing design preserved. No Nic acceptance; Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -147,6 +147,11 @@
       "date": "2026-11-09",
       "slug": "2026-11-09-the-map-has-blank-places",
       "covers": "M1 internal minimap and full map, corrected three-location control proofs, missing atlas detail and failed no-shot draw budget; open-world journey direction"
+    },
+    {
+      "date": "2026-11-11",
+      "slug": "2026-11-11-the-map-still-takes-too-long",
+      "covers": "Clean internal package timing run; failed elapsed-time limit, paired thread measurement and pending quiet repeat. No new screenshots or terrain acceptance."
     }
   ]
 }
