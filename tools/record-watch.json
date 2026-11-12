@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-11T02:51:00+01:00",
-  "roadmap_note": "G0 editor checks are not packaged terrain acceptance. A r2j run15 launched11Nov11:41 after prior restored failures; no qualifying approach package. Sea-to-land revision awaits acceptance. Map quiet repeat pending; no ungated frames published.",
-  "note": "Posted g0m run8 internal package timing, COMMON 11Nov02:48 and Systems REPORT02:51. Package Havenwood-r5-g0m-20261111 clean retained launch exit0, shots=[], original_user_files_equal=true; RESULT SHA ad469f5effc21e3b70e0880ac50f2d6f1ed95b85b8b88a022522c8b69d8542f7.40x240 draws,15full/25mini,one batch exceeds0.3ms wall; worst pair0.334375wall/0.078916thread; other maxima<=0.2575. No cause or complete frame/GPU claim. Quiet same-package repeat pending through11:42. No new G0 data in package. Text-only post: no captured frames to prepare or publish; existing design preserved. No Nic acceptance; Demo0.1.0 unchanged.",
+  "posted_through": "2026-11-12T10:30:00+01:00",
+  "roadmap_note": "Wider ground/mainland journey remains ungated; map quiet repeat pending. A run19b started10:18 after run18 restored; no later result claimed. S3 cottage readability remains open.",
+  "note": "Posted A r2k run18, COMMON12Nov10:30: clean packaged picker exit0/shots00000/original_user_files_equal. Editor shore4/4 stair8/8 full78/78 XY51/Z16cm continuity0, no sea/fall/catch,42sidepushes/door; fixed paritypass. Camera05 by Nic documented exact eave exception, rawFAIL retained; other cameras strict. Full packaged walk UNRUN: arrival_spec64-strip assertion, corrected for78; windowRED/restored. Archive Havenwood-r5-a2-20261112-run18-red. No Nic approach acceptance/full companion/art/performance claim. Three fullsize inspected SHA-pinned frames via --approach-run18:2explicit editor checkpoint frames,1package arrival. Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -152,6 +152,11 @@
       "date": "2026-11-11",
       "slug": "2026-11-11-the-map-still-takes-too-long",
       "covers": "Clean internal package timing run; failed elapsed-time limit, paired thread measurement and pending quiet repeat. No new screenshots or terrain acceptance."
+    },
+    {
+      "date": "2026-11-12",
+      "slug": "2026-11-12-the-stair-reaches-the-terrace",
+      "covers": "Internal lakeshore approach package and clean arrival; bounded editor traversal, camera05 exception, full packaged walk blocked by tool bug."
     }
   ]
 }

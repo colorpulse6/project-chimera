@@ -783,7 +783,36 @@ def map_m1():
         save(img, name)
 
 
+
+def approach_run18():
+    """12 Nov run18: clean packaged picker; editor walk passed, packaged walk unrun.
+
+    COMMON 10:30 retains tool failure and documented camera05 exception.
+    Editor frames are from this packaged checkpoint, labelled as editor proof.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round5/a2/runs/20261112-065628"
+    receipt = json.loads((run / "package/picker/RESULT.json").read_text())
+    assert receipt["exit_code"] == 0 and receipt["original_user_files_equal"]
+    assert "HighresScreenshot00000.png" in receipt["shots"]
+    picks = [
+        ("evidence/spec-pilot-shore/00-shore-first80-return.png", "a2r18-shore", "224b56e5e554fc28415bc5d1419d45b1a0037b7ecf9ae1beb4b898a58d221e6b"),
+        ("evidence/spec-pilot-stair/03-stair-cut-part-01-of-02.png", "a2r18-stair", "b545c7a9150d828b2d9a8eda54b7c9b180d0dfcff7e6b0bb491f5b04740fcaf8"),
+        ("package/picker/HighresScreenshot00000.png", "a2r18-arrival", "a8647ba7ab791d53a0c6136707499599be1a54f67a5b8aef02872f14b2006779"),
+    ]
+    for relative, name, expected in picks:
+        original = run / relative
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900)
+        save(img, name)
+
+
 import sys
+if "--approach-run18" in sys.argv:
+    approach_run18()
+    sys.exit(0)
 if "--map-m1" in sys.argv:
     map_m1()
     sys.exit(0)
