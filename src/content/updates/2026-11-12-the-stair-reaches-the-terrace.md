@@ -7,6 +7,8 @@ coverAlt: Kai and Rex at the walled lakeshore approach, with placeholder figures
 tags: [build, world, playtest]
 ---
 
+**Later on 12 November:** the next package completed its walk, but Nic rejected the approach’s art and the candidate was restored out. [Read the result and verdict](/updates/2026-11-12-the-walk-passes-the-place-does-not/). The frames below remain the earlier run 18 record.
+
 The lake has a way up. The proof has one more way to go.
 
 The new High Pass approach climbs from the lakeshore through switchbacks and a stone stair to the existing terrace. In run 18, all seventy-eight targets of the editor walk were reached in order. The short shore and stair pilots passed too. The worst recorded target errors in the full walk were fifty-one centimetres across the ground and sixteen centimetres vertically; no sea, fall or catch event was recorded.

@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-12T10:30:00+01:00",
-  "roadmap_note": "Wider ground/mainland journey remains ungated; map quiet repeat pending. A run19b started10:18 after run18 restored; no later result claimed. S3 cottage readability remains open.",
-  "note": "Posted A r2k run18, COMMON12Nov10:30: clean packaged picker exit0/shots00000/original_user_files_equal. Editor shore4/4 stair8/8 full78/78 XY51/Z16cm continuity0, no sea/fall/catch,42sidepushes/door; fixed paritypass. Camera05 by Nic documented exact eave exception, rawFAIL retained; other cameras strict. Full packaged walk UNRUN: arrival_spec64-strip assertion, corrected for78; windowRED/restored. Archive Havenwood-r5-a2-20261112-run18-red. No Nic approach acceptance/full companion/art/performance claim. Three fullsize inspected SHA-pinned frames via --approach-run18:2explicit editor checkpoint frames,1package arrival. Demo0.1.0 unchanged.",
+  "posted_through": "2026-11-12T22:28:00+01:00",
+  "roadmap_note": "Sea-to-landR2 sourceboards approved22:12 only; actualgame/finalacceptance pending. r2l source sentback, r2m sourceunderway, noframes. Mapquietrepeat pending. No fullopenworld claim.",
+  "note": "Run19b COMMON12:56 packaged walk78/78 XY51/Z16cm noSEA/FALL/CATCH; picker/walk RESULTexit0 original_user_equal. Four far cameras strict incl05, fixedparitypass. Nic22:18 rejects S3/S4 art; COMMON22:24 restore verified, archive retained. Text-only post records proof and rejection, corrects currentstatus and adds laterverdict to run18post; no new rejected frames. Standing detailstandard22:25/COMMON22:28 painting-v-game and close-updetail required. No acceptance/fullcompanion/fullbody/performance claim; Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -157,6 +157,11 @@
       "date": "2026-11-12",
       "slug": "2026-11-12-the-stair-reaches-the-terrace",
       "covers": "Internal lakeshore approach package and clean arrival; bounded editor traversal, camera05 exception, full packaged walk blocked by tool bug."
+    },
+    {
+      "date": "2026-11-12",
+      "slug": "2026-11-12-the-walk-passes-the-place-does-not",
+      "covers": "Run19b packaged walk passes; Nic rejects lakeshore/stair art, candidate restored out, painting-match standard and mainland source-choice limits."
     }
   ]
 }
