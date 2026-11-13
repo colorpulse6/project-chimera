@@ -829,7 +829,30 @@ def mainland_r2():
         save(img, name)
 
 
+def approach_r2m():
+    """13 Nov technical-green package; painting match and Nic acceptance open."""
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round5/a2/runs/20261113-091247-r2m"
+    for group in ("picker", "walk", "art"):
+        receipt = json.loads((run / "package" / group / "RESULT.json").read_text())
+        assert receipt["exit_code"] == 0 and receipt["original_user_files_equal"]
+    for filename, name, expected in [
+        ("art/S3-painting.png", "a2m-shore", "e7ec07a29b06e6b614e258c44777dc10b7f2e763fbf1043a899f234922ee051a"),
+        ("art/S4-winding.png", "a2m-winding", "7a8092e111bd0a9977d21c7a7f28ab6a30365356d24359037ae8fd58d48cba2c"),
+        ("walk/73-arrival-shore-return.png", "a2m-walk", "4c5b4ec1394f92460ff1f202c2cbf33d5bd57650a2fe56406ab02c2ce29b08ec"),
+    ]:
+        original = run / "package" / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900)
+        save(img, name)
+
+
 import sys
+if "--approach-r2m" in sys.argv:
+    approach_r2m()
+    sys.exit(0)
 if "--mainland-r2" in sys.argv:
     mainland_r2()
     sys.exit(0)

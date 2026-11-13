@@ -1,3 +1,5 @@
+import a2mShore from '../assets/media/a2m-shore.jpg';
+import a2mWinding from '../assets/media/a2m-winding.jpg';
 import r2sQuay from '../assets/media/r2s-quay.jpg';
 import a2r18Shore from '../assets/media/a2r18-shore.jpg';
 import a2r18Stair from '../assets/media/a2r18-stair.jpg';
@@ -581,10 +583,12 @@ export const places: Place[] = [
     slug: 'high-pass-refuge',
     name: 'The High Pass refuge',
     status: 'now',
-    statusText: "Terrace accepted; new approach rejected and restored out. No public route leads here.",
+    statusText: "Terrace accepted; replacement approach packaged, art unaccepted. No public route leads here.",
     image: hp1Terrace,
     imageAlt: 'HP-1 refuge terrace above the blue lake, with a bare tree and broad dark arch. Packaged preview, 6 November.',
     frames: [
+      { src: a2mShore, alt: 'Pale cottages above the blue lake, carts and a misplaced dock among angular ground surfaces.', caption: '13 November r2m internal package. The cottage cluster is present and all 146 packaged walk targets pass. The Coordinator’s painting comparison still fails; Nic’s art acceptance remains open.' },
+      { src: a2mWinding, alt: 'Separate paving stones wind up pale ground beside an irregular low wall.', caption: 'Same r2m package. The winding line still reads as stones on sand rather than the painted stone stair. Ordinary Rex travel, full-body turns and performance remain open.' },
       { src: a2r18Shore, alt: 'Kai and Rex at the walled lakeshore path beside placeholder figures.', caption: 'Historical candidate, rejected by Nic later on 12 November. Run 18 editor proof of the 12 November package. Shore pilot passed; full packaged walk remains unproved.' },
       { src: a2r18Stair, alt: 'Kai faces the long stone stair with Rex ahead.', caption: 'Historical candidate, rejected by Nic later on 12 November. Run 18 editor stair pilot. The editor full walk reached 78 targets; unrestricted movement and companion following remain open.' },
       { src: a2r18Arrival, alt: 'Kai at the High Pass arrival with the minimap visible.', caption: 'Historical candidate, rejected by Nic later on 12 November. Actual run 18 packaged picker arrival. Clean exit; subsequent walk preparation failed in the test tool.' },
@@ -609,6 +613,7 @@ export const places: Place[] = [
     development: {
       status: "HP-1b, accepted by Nic on 7 November. Reviewer PASS for the bounded private terrace walk: twenty-nine targets, both door transitions and supported edge pushes. Demo 0.1.0 is unchanged.",
       notes: [
+        "13 November r2m replaces the rejected approach: cottage cluster, winding upper route and more dressing. Clean packaged picker, 146/146 arrival-to-shore-and-back targets and art captures; original user files equal. Worst walk error XY 51/Z 17 cm, no sea/fall/catch. Editor shore 4/4, stair 54/54 and full 146/146 pass; 78 side-push captures have no sea/fall, doors clear, four distant cameras strict and fixed comparisons pass. Candidate retained, not accepted: flat angular ground, misplaced dock/dressing, spaced stones instead of the painted stair, pale rocks and unfinished backdrop. Nic art, ordinary Rex travel, full-body turn contact and cost remain open.",
         "12 November evening: run 19b’s packaged arrival-to-shore-and-back walk passes 78/78 targets, with clean exits and original user files equal. All four distant cameras pass strictly, including camera 05. Nic then rejects S3/S4 art: missing lakeshore cottage cluster, wide straight stair and pale box rocks instead of the paintings. Candidate restored out; build retained as evidence. Replacement art, ordinary Rex travel, full-body turns and final acceptance remain open.",
         "12 November run 18 packages the lakeshore approach: editor shore 4/4, stair 8/8 and full walk 78/78 targets pass, with 42 side-push shots and door checks. Fixed comparisons pass; camera 05 uses Nic’s documented eave-shadow exception, with raw failure retained. Packaged picker launch/arrival exits cleanly and user files remain equal. The full packaged walk never ran because its preparation tool still expected 64 strips instead of 78. Archive retained as run18-red; no Nic approach acceptance, complete following, art or performance claim.",
         "HP-1b recuts and joins the stair stop, adds a supported lookout apron and corrects the door-test headings. All twenty-nine packaged targets pass, both refuge transitions work and the continuous return reaches its targets. Original save and settings stayed unchanged.",
