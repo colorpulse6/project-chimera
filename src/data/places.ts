@@ -1,3 +1,4 @@
+import r2sQuay from '../assets/media/r2s-quay.jpg';
 import a2r18Shore from '../assets/media/a2r18-shore.jpg';
 import a2r18Stair from '../assets/media/a2r18-stair.jpg';
 import a2r18Arrival from '../assets/media/a2r18-arrival.jpg';
@@ -270,6 +271,7 @@ export const places: Place[] = [
     imageAlt: 'The harbour quay with bollards and a lantern, the lavender headland across the bay.',
     painting: pHarbour,
     frames: [
+      { src: r2sQuay, alt: 'The harbour quay below pale western land and raised road banks.', caption: 'R2 internal package checkpoint, 13 November. Editor capture; clean packaged picker launch, but the in-game mainland look fails the Coordinator’s painting comparison and awaits Nic’s art acceptance.' },
       { src: fPar7Sea, alt: 'Kai on the harbour quay facing deep blue water, the causeway gate and lavender hills.', caption: 'Par7 internal package, 28 October. Nic later said this build looked good; a clean performance result remains open.' },
       { src: fHarbourBoat, alt: 'A small dark boat moored against the quay by a brass bollard.', caption: 'The boat. It does not go anywhere yet.' },
       { src: fHarbourKai, alt: 'Kai on the quay beside the harbour house, the bay behind.', caption: 'Kai on the quay.' },
@@ -279,6 +281,7 @@ export const places: Place[] = [
     development: {
       status: "In the build since 22 October, with quay, water and boat pieces added to the kit.",
       notes: [
+        "13 November R2 raises the western background while retaining harbour water. Source boards approved; internal package launched cleanly with original user files unchanged. The in-game look remains unaccepted: pale flat land, straight road-bank skyline, lost distant glimpse and unexplained headland light patch. Unchanged cameras pass; intentionally changed views require review. This far background does not establish walking ground or a finished town-to-High-Pass connection.",
         "The quay at the bottom of the lane: a sea wall, bollards, a lantern, a bench, a water plane and one small boat. Old Reed stands by the boat in the earlier build; internal B7 moves the same actor to a short net-carry route on the Cove jetty. Sal carries crates between the quay and the foot of the lane.",
         "A ramped coast path climbs from here to the church square.",
       ],

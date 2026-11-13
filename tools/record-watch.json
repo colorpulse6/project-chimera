@@ -1,7 +1,7 @@
 {
-  "posted_through": "2026-11-12T22:28:00+01:00",
-  "roadmap_note": "Sea-to-landR2 sourceboards approved22:12 only; actualgame/finalacceptance pending. r2l source sentback, r2m sourceunderway, noframes. Mapquietrepeat pending. No fullopenworld claim.",
-  "note": "Run19b COMMON12:56 packaged walk78/78 XY51/Z16cm noSEA/FALL/CATCH; picker/walk RESULTexit0 original_user_equal. Four far cameras strict incl05, fixedparitypass. Nic22:18 rejects S3/S4 art; COMMON22:24 restore verified, archive retained. Text-only post records proof and rejection, corrects currentstatus and adds laterverdict to run18post; no new rejected frames. Standing detailstandard22:25/COMMON22:28 painting-v-game and close-updetail required. No acceptance/fullcompanion/fullbody/performance claim; Demo0.1.0 unchanged.",
+  "posted_through": "2026-11-13T07:33:00+01:00",
+  "roadmap_note": "Approach r2m window inprogress/report incomplete through10:38; clean picker/art receipts observed but no final Coordinator package outcome; no new approach frames. r3 sourceonly. G1/K source/window drafts not acceptance. R2s look pending Nic; terrain is background not walking proof.",
+  "note": "R2s234731 package picker exit0 original_user_equal; COMMON13Nov01:2x WRITTEN notaccepted, lookFAIL.2inspected SHA-pinned editor harbour frames from packaged checkpoint via --mainland-r2. Sourceapproval distinct from pending Nativeart; pale terrain/banks/lostglimpse/lightpatch and P2 battlecomparison uncertainty explicit. Systems07:33 repeat39batches6breaches max0.499252ms, cleanexit/userequal but quietpreconditionfailed; no waiver. No finishedwalkablemainland claim. Demo0.1.0 unchanged.",
   "log": [
     {
       "date": "2026-10-24",
@@ -162,6 +162,11 @@
       "date": "2026-11-12",
       "slug": "2026-11-12-the-walk-passes-the-place-does-not",
       "covers": "Run19b packaged walk passes; Nic rejects lakeshore/stair art, candidate restored out, painting-match standard and mainland source-choice limits."
+    },
+    {
+      "date": "2026-11-13",
+      "slug": "2026-11-13-land-behind-the-harbour",
+      "covers": "R2 mainland internal package, failed in-game look and unchanged-camera limits; map repeat failed with quiet conditions unmet."
     }
   ]
 }

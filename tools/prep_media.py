@@ -809,7 +809,30 @@ def approach_run18():
         save(img, name)
 
 
+def mainland_r2():
+    """R2 clean packaged launch, 13 Nov; Coordinator look FAIL, Nic art pending.
+    Same-checkpoint editor harbour captures, not packaged harbour-walk proof.
+    """
+    import hashlib
+    import json
+    run = FG / "tools/diag/coordinator/round5/r2s/runs/20261112-234731"
+    receipt = json.loads((run / "package/picker/RESULT.json").read_text())
+    assert receipt["exit_code"] == 0 and receipt["original_user_files_equal"]
+    for filename, name, expected in [
+        ("02-quay-along.png", "r2s-quay", "516d5cd44ed01f812d4bf6567eccda8e2036f18cbc92c78ca00de4096ad88b0c"),
+        ("04-water-wide.png", "r2s-water", "1ed580e3a5cc02b647632f219edcd1546ec19b2a95acdfbe23d8319fdc341e6e"),
+    ]:
+        original = run / "evidence/harbour" / filename
+        assert hashlib.sha256(original.read_bytes()).hexdigest() == expected
+        img = Image.open(original)
+        assert img.size == (1600, 900)
+        save(img, name)
+
+
 import sys
+if "--mainland-r2" in sys.argv:
+    mainland_r2()
+    sys.exit(0)
 if "--approach-run18" in sys.argv:
     approach_run18()
     sys.exit(0)
